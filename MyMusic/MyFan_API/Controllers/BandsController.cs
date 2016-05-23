@@ -7,28 +7,57 @@ using System.Web.Http;
 
 namespace MyFan_API.Controllers
 {
+    [RoutePrefix("api/v1/users/bands")]
     public class BandsController : ApiController
     {
-        [Route("api/v1/bands/")]
+
+        [Route("")]
         [HttpPost]
-        public IHttpActionResult CreateBand(object json) {
-            System.Diagnostics.Debug.WriteLine("Created Band");
-            System.Diagnostics.Debug.WriteLine(json);
-
-            return Json(new { jobId = json });
+        // api/v1/users/bands POST
+        public IHttpActionResult CreateBand() {
+            //Endpoint for creating a band
+            throw new NotImplementedException();
         }
 
-        [Route("api/v1/bands/{id}")]
+        [Route("")]
         [HttpGet]
-        public IHttpActionResult GetBand(int id)
+        // api/v1/users/bands GET
+        public IHttpActionResult GetAllBands()
         {
-            System.Diagnostics.Debug.WriteLine("Got Band");
-            System.Diagnostics.Debug.WriteLine(id);
+            //Endpoint for retrieving all bands
+            throw new NotImplementedException();
+        }
 
-            return Json(new { bandName = "Test M8" });
+        [Route("{bandId}")]
+        [HttpGet]
+        // api/v1/users/bands/1 GET
+        public IHttpActionResult GetOneBand(int bandId)
+        {
+            //Endpoint for retrieving one band
+            throw new NotImplementedException();
+        }
+
+        [Route("{bandId}")]
+        [HttpPut]
+        // api/v1/users/bands/1 PUT
+        public IHttpActionResult UpdateOneBand(int bandId)
+        {
+            //Endpoint for updating one band
+            throw new NotImplementedException();
+        }
+
+        [Route("{bandId}")]
+        [HttpDelete]
+        // api/v1/users/bands/1 DELETE
+        public IHttpActionResult DeleteOneBand(int bandId)
+        {
+            //Endpoint for deleting one band
+            throw new NotImplementedException();
         }
 
 
+
+        /*
         [Route("api/v1/bands/{id}/albums")]
         [HttpGet]
         public IHttpActionResult GetAlbums(int id)
@@ -48,6 +77,6 @@ namespace MyFan_API.Controllers
             String r = "Showing album " + albumId + " from band " + id;
             return Json(new { response = r });
         }
-
+        */
     }
 }

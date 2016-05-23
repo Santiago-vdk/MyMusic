@@ -21,6 +21,13 @@ namespace MyFan_API
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            /*
+            config.Routes.MapHttpRoute(
+                name: "v2Api",
+                routeTemplate: "api/v2/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );*/
+
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
