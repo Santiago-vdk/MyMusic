@@ -52,7 +52,7 @@ namespace MyFan_API.Controllers
         public IHttpActionResult DeleteOneDisc(int bandId, int albumId, int discId)
         {
             //Endpoint for deleting one disc of an album of a band
-            throw new NotImplementedException();
+            throw new NotImplementedException( );
         }
     }
 }
