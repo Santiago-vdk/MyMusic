@@ -3,28 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Webapp", "Webapp\", "{719BAFCD-E0A5-4B06-AB3C-E04C9BB1196F}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_57504"
-		Debug.AspNetCompiler.PhysicalPath = "Webapp\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57504\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_57504"
-		Release.AspNetCompiler.PhysicalPath = "Webapp\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57504\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "57504"
-		SlnRelativePath = "Webapp\"
-		DefaultWebSiteLanguage = "Visual Basic"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tweetupdater", "tweetupdater\tweetupdater.csproj", "{1940AE68-5D84-4A53-AB5E-33E31F951FF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFan_API", "MyFan_API\MyFan_API.csproj", "{99B9185C-6F5F-41B6-95C1-10F750944A27}"
@@ -35,16 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFest_API", "MyFest_API\My
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFest_API.Tests", "MyFest_API.Tests\MyFest_API.Tests.csproj", "{D951AD14-47B6-4448-8B0B-0B004075FB6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFan_Webapp", "MyFan_Webapp\MyFan_Webapp.csproj", "{A1C655A1-4E3C-4B7B-ABE0-94739CEF665B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFan_Webapp.Tests", "MyFan_Webapp.Tests\MyFan_Webapp.Tests.csproj", "{71853A6A-11BA-4CC6-B3C0-AEDB73608EDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{719BAFCD-E0A5-4B06-AB3C-E04C9BB1196F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{719BAFCD-E0A5-4B06-AB3C-E04C9BB1196F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{719BAFCD-E0A5-4B06-AB3C-E04C9BB1196F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{719BAFCD-E0A5-4B06-AB3C-E04C9BB1196F}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{1940AE68-5D84-4A53-AB5E-33E31F951FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1940AE68-5D84-4A53-AB5E-33E31F951FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1940AE68-5D84-4A53-AB5E-33E31F951FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,6 +43,14 @@ Global
 		{D951AD14-47B6-4448-8B0B-0B004075FB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D951AD14-47B6-4448-8B0B-0B004075FB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D951AD14-47B6-4448-8B0B-0B004075FB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C655A1-4E3C-4B7B-ABE0-94739CEF665B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C655A1-4E3C-4B7B-ABE0-94739CEF665B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C655A1-4E3C-4B7B-ABE0-94739CEF665B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C655A1-4E3C-4B7B-ABE0-94739CEF665B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71853A6A-11BA-4CC6-B3C0-AEDB73608EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71853A6A-11BA-4CC6-B3C0-AEDB73608EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71853A6A-11BA-4CC6-B3C0-AEDB73608EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71853A6A-11BA-4CC6-B3C0-AEDB73608EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

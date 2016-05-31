@@ -11,16 +11,14 @@ namespace MyFan_API.Controllers
     public class BandsController : ApiController
     {
 
-        [Route("")]
-        [HttpPost]
+        [Route(""), HttpPost]
         // api/v1/users/bands POST
         public IHttpActionResult CreateBand() {
             //Endpoint for creating a band
             throw new NotImplementedException();
         }
 
-        [Route("")]
-        [HttpGet]
+        [Route(""), HttpGet]
         // api/v1/users/bands GET
         public IHttpActionResult GetAllBands()
         {
@@ -28,8 +26,7 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-        [Route("{bandId}")]
-        [HttpGet]
+        [Route("{bandId}"), HttpGet]
         // api/v1/users/bands/1 GET
         public IHttpActionResult GetOneBand(int bandId)
         {
@@ -37,8 +34,7 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-        [Route("{bandId}")]
-        [HttpPut]
+        [Route("{bandId}"), HttpPut]
         // api/v1/users/bands/1 PUT
         public IHttpActionResult UpdateOneBand(int bandId)
         {
@@ -46,8 +42,7 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-        [Route("{bandId}")]
-        [HttpDelete]
+        [Route("{bandId}"), HttpDelete]
         // api/v1/users/bands/1 DELETE
         public IHttpActionResult DeleteOneBand(int bandId)
         {
@@ -55,7 +50,12 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-
+        [Route("{bandId:int}/review"), HttpPost]
+        // api/v1/users/bands/1/review POST
+        public IHttpActionResult ReviewOneBand(int bandId)
+        {
+            return Json(new { response = "r" });
+        }
 
         /*
         [Route("api/v1/bands/{id}/albums")]
