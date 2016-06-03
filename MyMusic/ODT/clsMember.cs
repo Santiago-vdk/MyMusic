@@ -8,6 +8,5 @@ namespace ODT
     public class clsMember
     {
         public String Name { get; set; }
-        public String Gender { get; set; }
     }
 }
