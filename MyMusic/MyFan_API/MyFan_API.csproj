@@ -131,15 +131,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Layer_Objects\clsDisc.cs" />
-    <Compile Include="Layer_Objects\clsEvent.cs" />
-    <Compile Include="Layer_Objects\clsInfoBand.cs" />
-    <Compile Include="Layer_Objects\clsInfoFan.cs" />
-    <Compile Include="Layer_Objects\clsMember.cs" />
-    <Compile Include="Layer_Objects\clsNew.cs" />
-    <Compile Include="Layer_Objects\clsSong.cs" />
-    <Compile Include="Layer_Objects\clsReview.cs" />
-    <Compile Include="Layer_Objects\clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -177,6 +168,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
+      <Project>{82e8b34e-0b70-4244-a14f-e1315e0c0317}</Project>
+      <Name>AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ODT\ODT.csproj">
+      <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
+      <Name>ODT</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
