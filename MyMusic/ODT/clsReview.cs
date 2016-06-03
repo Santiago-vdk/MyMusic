@@ -5,9 +5,9 @@ using System.Web;
 
 namespace ODT
 {
-    public class Review
+    public class clsReview
     {
-        public User Author { get; set; }
+        public clsUser Author { get; set; }
         public String Calification { get; set; }
         public String Comment { get; set; }
 
