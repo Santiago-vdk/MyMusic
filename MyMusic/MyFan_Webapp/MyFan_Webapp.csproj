@@ -126,6 +126,8 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="Areas\Fans\Views\web.config" />
+    <Content Include="Areas\Bands\Views\web.config" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -134,7 +136,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Bands\BandsAreaRegistration.cs" />
+    <Compile Include="Areas\Bands\Controllers\AlbumsController.cs" />
+    <Compile Include="Areas\Bands\Controllers\BandsController.cs" />
+    <Compile Include="Areas\Fans\Controllers\AlbumsController.cs" />
+    <Compile Include="Areas\Fans\Controllers\BandsController.cs" />
+    <Compile Include="Areas\Fans\Controllers\FansController.cs" />
+    <Compile Include="Areas\Fans\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,11 +159,12 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -162,6 +174,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Bands\Models\" />
+    <Folder Include="Areas\Bands\Views\Albums\" />
+    <Folder Include="Areas\Bands\Views\Bands\" />
+    <Folder Include="Areas\Bands\Views\Shared\" />
+    <Folder Include="Areas\Fans\Models\" />
+    <Folder Include="Areas\Fans\Views\Albums\" />
+    <Folder Include="Areas\Fans\Views\Bands\" />
+    <Folder Include="Areas\Fans\Views\Fans\" />
+    <Folder Include="Areas\Fans\Views\News\" />
+    <Folder Include="Areas\Fans\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
