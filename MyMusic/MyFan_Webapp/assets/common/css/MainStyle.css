@@ -1,0 +1,250 @@
+/*------------------------------------------------------------------------------Main Styles*/
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+h1 {
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+}
+h2 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 5px;
+}
+.artwork-header {
+    color: #FFFFFF;
+}
+.post-header {
+    color: #000000;
+}
+h3 {
+    font-size: 18.72px;
+}
+h4 {
+    margin-top: 5px;
+}
+h5 {
+    font-size: 13.28px;
+    margin-top: 5px;
+}
+p {}
+.artwork-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0px;
+    color: #FFFFFF;
+    line-height: 20px;
+    height: 40px;
+}
+.artwork-date {
+    color: #999;
+}
+.btn-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+}
+.btn-home {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.no-float {
+    float: none;
+}
+
+/*------------------------------------------------------------------------------Header Section*/
+
+#header-section {
+    background-color: #77C9D4;
+}
+#header-section .left img {
+    height: 85px;
+    width: 200px;
+}
+#middle-section .search-box {
+    padding-top: 30px;
+}
+#middle-section .page-title {
+    text-align: center;
+}
+#right-section {
+    margin-top: 10px;
+    float: right;
+}
+#right-section #user-profile-picture {
+    text-align: right;
+}
+#right-section #user-profile-picture img {
+    height: 70px;
+    width: 70px;
+}
+#right-section #profile-manage {
+    margin-top: 10px;
+}
+#right-section #welcome {
+    font-weight: 700;
+    margin-top: 0px;
+}
+#right-section #myprofile {
+    font-weight: 700;
+    margin-top: 0px;
+}
+#right-section #user-button-menu {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/*Artwork Section*/
+
+#artwork-section {
+    background-color: #222;
+}
+#artwork-section .col-md-2 {
+    width: 16.7%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+#previous .half-circle {
+    width: 80px;
+    height: 40px;
+    background-color: #FFF;
+    opacity: 0.9;
+    border-top-left-radius: 110px;
+    border-top-right-radius: 110px;
+    border: 0;
+    transform: rotate(90deg);
+    position: relative;
+    left: -10px;
+    float: left;
+}
+#previous .icon {
+    width: 35%;
+    margin: 0 auto;
+    transform: rotate(-90deg);
+}
+#previous {
+    padding: 0;
+}
+#next .half-circle {
+    width: 80px;
+    height: 40px;
+    background-color: #FFF;
+    opacity: 0.9;
+    border-top-left-radius: 110px;
+    border-top-right-radius: 110px;
+    border: 0;
+    transform: rotate(-90deg);
+    position: relative;
+    left: 10px;
+    float: right;
+}
+#next .icon {
+    width: 35%;
+    margin: 0 auto;
+    transform: rotate(90deg);
+}
+#next {
+    padding: 0;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+/* -----------------------------------------------------------------------------Posts Section*/
+
+#post-section {
+    background: rgba(254, 189, 18, .03);
+}
+.post-box {
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    margin: 40px auto;
+    background: rgba(165, 165, 175, .28);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 0px rgba(0, 0, 0, 0.1) inset;
+}
+.post-box h2 {
+    margin-top: 0px;
+    font-family: 'Bree Serif', sans-serif;
+}
+.post-box h5 {
+    margin-top: 0px;
+    text-align: right;
+}
+.post-box .post-title {}
+.post-box .post-date {}
+.post-box .post-content {
+    padding-top: 25px;
+    padding-left: 70px;
+    padding-right: 70px;
+    text-align: center;
+}
+.post-box .post-text {
+    width: 100%;
+    font-size: 18.72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+/* -----------------------------------------------------------------------------Search Box */
+
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+@media screen and (min-width: 768px) {
+    #adv-search {
+        margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 500px;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------- */

@@ -16,8 +16,9 @@ namespace MyFan_Webapp
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Login", action = "Index"}
-            );
+                defaults: new { controller = "Login", action = "Index"},
+                namespaces: new[] { "MyFan_Webapp.Controllers" }
+            ).DataTokens["UseNamespaceFallback"] = false; 
         }
     }
 }

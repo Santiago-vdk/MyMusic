@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace MyFan_Webapp.Areas.Bands.Controllers
 {
-    public class AlbumsController : Controller
+    public class NewsController : Controller
     {
-        // GET: Bands/Albums
+        // GET: Bands/News
         public ActionResult Index(int userId, int id)
         {
-            System.Diagnostics.Debug.WriteLine("check band from " + userId + " with album " + id);
+            System.Diagnostics.Debug.WriteLine("check band from " + userId + " with new " + id);
             return View();
         }
     }

@@ -18,25 +18,29 @@ namespace MyFan_Webapp.Areas.Fans
                 "Fans_default",
                 "Fans/{userId}/{action}",
                 defaults: new { controller = "Fans", action = "Index" },
-                constraints: new { userId = @"\d+" }
+                constraints: new { userId = @"\d+" },
+                namespaces: new[] { "MyFan_Webapp.Areas.Fans.Controllers" }
             );
 
             context.MapRoute(
                 "Fans_Edit",
                 "Fans/{userId}/profile/edit",
-                defaults: new { controller = "Fans", action = "Edit" }
+                defaults: new { controller = "Fans", action = "Edit" },
+                namespaces: new[] { "MyFan_Webapp.Areas.Fans.Controllers" }
             );
 
             context.MapRoute(
                 "Fans_Bands",
                 "Fans/{userId}/bands/{bandId}",
-                defaults: new { controller = "Bands", action = "Index" }
+                defaults: new { controller = "Bands", action = "Index" },
+                namespaces: new[] { "MyFan_Webapp.Areas.Fans.Controllers" }
             );
 
             context.MapRoute(
                 "Fans_BandsContent",
                 "Fans/{userId}/bands/{bandId}/{controller}/{id}",
-                defaults: new { controller = "Bands", action = "Index" } //Hmmmmm?????
+                defaults: new { controller = "Bands", action = "Index" }, //Hmmmmm?????
+                namespaces: new[] { "MyFan_Webapp.Areas.Fans.Controllers" }
             );
 
 
