@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ODT
+namespace AccesoDatos
 {
-    public class Class1
+    class clsRead
     {
+        public clsConnection Connection { get; set; }
     }
 }

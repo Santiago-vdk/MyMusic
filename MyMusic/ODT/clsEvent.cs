@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyFan_API.Layer_Objects
+namespace ODT
 {
     public class clsEvent
     {

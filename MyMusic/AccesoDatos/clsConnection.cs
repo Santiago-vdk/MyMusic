@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-    public class Class1
+    class clsConnection
     {
+        protected String SqlConnection { get; }// cambiar a tipo Port
+
     }
 }
