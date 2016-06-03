@@ -1,0 +1,12 @@
+﻿html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+h1 {
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+}
