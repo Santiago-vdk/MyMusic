@@ -12,6 +12,7 @@ namespace DTO
         String Salt { get; set; }
         int Rol { get; set; }
         Boolean Active { get; set; }
+        String toJson();
 
     }
 }

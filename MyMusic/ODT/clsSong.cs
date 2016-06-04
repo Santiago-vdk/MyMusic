@@ -11,5 +11,6 @@ namespace DTO
         public String Duration { get; set; }
         public Boolean Type { get; set; }
         public String Link { get; set; }
+
     }
 }

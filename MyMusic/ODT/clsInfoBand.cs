@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace DTO
 {
@@ -13,5 +14,17 @@ namespace DTO
         public String Country { get; set; }
         public String Hashtag { get; set; }
         public List<clsMember> Members { get; set; }
+        public bool Success { get; set; }
+        public int ErrorCode { get; set; }
+        public String ErrorMessage { get; set; }
+
+        public String toJson()
+        {
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            String json = "Success:" + Success + "," + "ErrorCode:" + ErrorCode + "," + "ErrorMessage:" + ErrorMessage + "," + "Data:";
+            String data = javaScriptSerializer.Serialize(this);
+            json += data;
+            return json;
+        }
     }
 }
