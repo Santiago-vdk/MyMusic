@@ -1,4 +1,5 @@
 ﻿using AccesoDatos;
+using DTO;
 using ODT;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,12 @@ namespace LogicaNegocios
             clsFanaticoDA objFanaticoDA = new clsFanaticoDA();
             return objFanaticoDA.obtenerListaSexos();
         }
+
+        public clsInfoFan crearFanatico(clsInfoFan pFanatico)
+        {
+            
+            return pFanatico;
+        }
+
     }
 }
