@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace AccesoDatos
 {
-    class clsDataController
+    public class clsDataController
     {
-        public clsRead Read { get; set; }
-        public clsWrite Write { get; set; }
+         clsRead Read { get; set; }
+         clsWrite Write { get; set; }
 
         public void updateFan(List<clsInfoFan> pData)
         {
