@@ -27,9 +27,9 @@ namespace AccesoDatos
 
             try
             {
-                sqlConecction = new SqlConnection(connectionString);
-                sqlConecction.Open();
-                sqlCommand = new SqlCommand(" SELECT intCodSexo, strDescripcion FROM myFan.VW_ObtenerSexosHabilitados ",sqlConecction);
+                sqlCommand = new SqlCommand("myFan.SP_SP_ObtenerSexosHabilitados", sqlConecction);
+                sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
                 dr = sqlCommand.ExecuteReader();
 
                 while (dr.Read())
