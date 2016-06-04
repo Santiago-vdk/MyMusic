@@ -19,5 +19,7 @@ namespace ODT
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         //public int Rol { get; set; }
+
+
     }
 }
