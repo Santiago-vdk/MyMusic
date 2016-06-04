@@ -13,6 +13,7 @@ namespace DTO
         public String Gender { get; set; }
         public String Country { get; set; }
         public List<String> Genres { get; set; }
+        public string Biography { get; set; }
 
         //interface atributes
         public string Username { get; set; }

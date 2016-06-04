@@ -6,7 +6,7 @@ using System.Web.Script.Serialization;
 
 namespace DTO
 {
-    public class clsInfoBand
+    public class clsInfoBand:IUser
     {
         public String Name { get; set; }
         public String DateCreation { get; set; }
@@ -14,6 +14,14 @@ namespace DTO
         public String Country { get; set; }
         public String Hashtag { get; set; }
         public List<clsMember> Members { get; set; }
+
+        //interface atributes
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Salt { get; set; }
+        public int Rol { get; set; }
+        public bool Active { get; set; }
+
         public bool Success { get; set; }
         public int ErrorCode { get; set; }
         public String ErrorMessage { get; set; }
