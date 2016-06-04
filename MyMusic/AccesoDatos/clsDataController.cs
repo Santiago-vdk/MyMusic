@@ -12,9 +12,9 @@ namespace AccesoDatos
         {
             Write.updateFan(pData);
         }
-        public void createUser(List<IUser> pData)
+        public void createUser(clsInfoFan pData)
         {
-            Write.createUser(pData);
+            Write.createFan(pData);
         }
         public void insertDisc(List<clsDisc> pData)
         {
