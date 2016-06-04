@@ -19,7 +19,7 @@ namespace LogicaNegocios
             return objFanaticoDA.obtenerListaSexos();
         }
 
-        public clsInfoFan crearFanatico(clsInfoFan pFanatico)
+        public clsFanForm crearFanatico(clsFanForm pFanatico)
         {
             
             return pFanatico;

@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,7 @@
   <ItemGroup>
     <Compile Include="clsConnection.cs" />
     <Compile Include="clsDataController.cs" />
+    <Compile Include="clsFanaticoDA.cs" />
     <Compile Include="clsRead.cs" />
     <Compile Include="clsWrite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +56,9 @@
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

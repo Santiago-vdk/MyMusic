@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ODT
 {
-    class clsFanForm
+    public class clsFanForm
     {
         public String Name { get; set; }
         public String Birthday { get; set; }
@@ -18,8 +18,20 @@ namespace ODT
         public string Username { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
+
+        public string MensageError { get; set; }
+
+        public string CodigoError { get; set; }
         //public int Rol { get; set; }
 
         //test
+
+        public object EstadoSite { get; set; }
+
+        public object intSexo { get; set; }
+
+        public object strSalt { get; set; }
+
+        public object strSaltPassword { get; set; }
     }
 }

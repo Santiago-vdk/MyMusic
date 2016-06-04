@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsErrorValidator.cs" />
+    <Compile Include="clsFanaticoBL.cs" />
     <Compile Include="clsJsonParser.cs" />
     <Compile Include="clsLogicController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
