@@ -15,10 +15,14 @@ namespace MyFan_API.Controllers
         [Route("")]
         [HttpPost]
         // api/v1/users/fans POST
-        public IHttpActionResult CreateFan()
+        public IHttpActionResult CreateFan(HttpRequestMessage request)
         {
+            System.Diagnostics.Debug.WriteLine("Creating new user");
+            System.Diagnostics.Debug.WriteLine(request.Headers);
+            string Jsoncontent = request.Content.ReadAsStringAsync().Result;
+            return new clsFanResult(Jsoncontent, Request);
             //Endpoint for creating a new fan user
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [Route("")]
@@ -35,16 +39,12 @@ namespace MyFan_API.Controllers
         [Route("{fanId}")]
         [HttpGet]
         // api/v1/users/fans/1 GET
-        public HttpResponseMessage GetOneFan(int fanId)
+        public IHttpActionResult GetOneFan(int fanId)
         {
-            System.Diagnostics.Debug.WriteLine("request for fan with id " + fanId);
-            String r = "Showing albums from band " + fanId;
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, Json(new { response = r }));
-            return response;
 
             //Endpoint for retrieving one fan
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         [Route("{fanId}")]
