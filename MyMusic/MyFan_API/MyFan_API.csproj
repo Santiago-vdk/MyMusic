@@ -170,9 +170,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
-      <Project>{82e8b34e-0b70-4244-a14f-e1315e0c0317}</Project>
-      <Name>AccesoDatos</Name>
+    <ProjectReference Include="..\LogicaNegocios\LogicaNegocios.csproj">
+      <Project>{818f0ad3-54a2-4ea2-bd3d-6c0693e07ddf}</Project>
+      <Name>LogicaNegocios</Name>
     </ProjectReference>
     <ProjectReference Include="..\ODT\DTO.csproj">
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
