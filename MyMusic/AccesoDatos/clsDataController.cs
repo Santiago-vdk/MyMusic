@@ -1,9 +1,5 @@
-﻿using ODT;
-using System;
+﻿using DTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
@@ -16,7 +12,7 @@ namespace AccesoDatos
         {
             Write.updateFan(pData);
         }
-        public void createUser(List<clsUser> pData)
+        public void createUser(List<IUser> pData)
         {
             Write.createUser(pData);
         }

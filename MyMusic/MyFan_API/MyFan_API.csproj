@@ -174,9 +174,9 @@
       <Project>{82e8b34e-0b70-4244-a14f-e1315e0c0317}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ODT\ODT.csproj">
+    <ProjectReference Include="..\ODT\DTO.csproj">
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
-      <Name>ODT</Name>
+      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
