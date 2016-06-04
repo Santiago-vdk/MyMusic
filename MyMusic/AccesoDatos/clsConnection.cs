@@ -8,15 +8,26 @@ namespace AccesoDatos
 {
     class clsConnection
     {
-        SqlConnection conn = null;
-        private String database = " ";
+        private SqlConnection conn = null;
+        private String database = "Server=tcp:mymusic.database.windows.net,1433;Data Source=mymusic.database.windows.net;Initial Catalog=myMusic;Persist Security Info=False;User ID={your_username};Password={your_password};Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public clsConnection(){
             conn = new SqlConnection(database);
+            conn.Open();
         }
-        protected String SqlConnection { get; }// cambiar a tipo Port
+        protected SqlConnection getPort() {
+            return conn;
+        }
         
-       
+       public static void  main()
+        {
+            clsConnection a = new clsConnection();
+            a.getPort();
+
+           
+           
+           
+        } 
         
     }
 }
