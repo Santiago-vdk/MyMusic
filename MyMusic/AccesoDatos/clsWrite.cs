@@ -9,15 +9,18 @@ namespace AccesoDatos
 {
     class clsWrite
     {
-        public clsConnection Connection { get; set; }
+        private clsConnection conn = new clsConnection();
+
+        public void createFan(clsInfoFan pData)
+        {
+
+
+        }
 
         public void updateFan(List<clsInfoFan> pData) {
 
         }
-        public void createUser(List<clsUser> pData)
-        {
-
-        }
+       
         public void insertDisc(List<clsDisc> pData)
         {
 

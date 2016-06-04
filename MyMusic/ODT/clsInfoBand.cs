@@ -12,6 +12,6 @@ namespace ODT
         public List<String> Genres { get; set; }
         public String Country { get; set; }
         public String Hashtag { get; set; }
-        public List<Member> Members { get; set; }
+        public List<clsMember> Members { get; set; }
     }
 }

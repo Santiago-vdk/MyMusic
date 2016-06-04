@@ -12,6 +12,6 @@ namespace ODT
         public String Location { get; set; }
         public Boolean IsConcert { get; set; }
         public Boolean State { get; set; }
-        public List<Review> Reviews { get; set; }    
+        public List<clsReview> Reviews { get; set; }    
     }
 }
