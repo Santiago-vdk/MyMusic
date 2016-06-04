@@ -1,4 +1,4 @@
-﻿using ODT;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace AccesoDatos
         public void updateFan(List<clsInfoFan> pData) {
 
         }
-        public void createUser(List<clsUser> pData)
+        public void createUser(List<IUser> pData)
         {
 
         }
