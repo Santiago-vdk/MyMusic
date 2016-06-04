@@ -54,7 +54,8 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1/review POST
         public IHttpActionResult ReviewOneBand(int bandId)
         {
-            return Json(new { response = "r" });
+            //Endpoint for deleting one band
+            throw new NotImplementedException();
         }
 
         /*
