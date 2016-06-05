@@ -24,12 +24,6 @@ namespace MyFan_Webapp.Requests.Register
             public string Accept { get; set; }
         }
 
-        class registerResponse
-        {
-            success
-                code
-                data
-        }
 
         internal static async Task RegisterRequest(string inputUsername, string inputPassword, string inputConfirmPassword,
             string inputName, string inputBirthday, string selectGenre, string selectCountry,
