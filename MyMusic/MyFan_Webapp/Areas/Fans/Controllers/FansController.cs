@@ -9,11 +9,11 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
     public class FansController : Controller
     {
         // GET: Fans/Fans
-        public async System.Threading.Tasks.Task<ActionResult> Index(int userId)
+        public ActionResult Index(int userId)
         {
             System.Diagnostics.Debug.WriteLine(userId);
-          
-            
+
+
             return View();
         }
 

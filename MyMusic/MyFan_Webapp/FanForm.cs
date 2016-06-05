@@ -5,10 +5,11 @@ using System.Web;
 
 namespace MyFan_Webapp
 {
-    public class FanForm
-    {
-
-        public string[] MusicalGenres { get; set; }
+    public class FanForm { 
+    
         public string[] genres { get; set; }
+        public string[] genders { get; set; }
     }
+
+    //{"genres":[{"intCodigo":1,"strDescripcion":"Rock"},{"intCodigo":2,"strDescripcion":"Pop"},{"intCodigo":3,"strDescripcion":"Metal"},{"intCodigo":4,"strDescripcion":"Salsa"}],"genders":[{"intCodigo":1,"strDescripcion":"Femenino"},{"intCodigo":2,"strDescripcion":"Masculino"}]}
 }

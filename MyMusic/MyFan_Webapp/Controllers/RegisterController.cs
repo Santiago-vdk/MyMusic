@@ -17,7 +17,7 @@ namespace MyFan_Webapp.Controllers
             FanForm form = await clsRegisterRequests.GetRegisterFanForm();
             ViewBag.AvailableMusicalGenres = form.MusicalGenres;
             ViewBag.Genres = form.genres;
-
+            System.Diagnostics.Debug.WriteLine("view form" + form.MusicalGenres);
             return View();
         }
 

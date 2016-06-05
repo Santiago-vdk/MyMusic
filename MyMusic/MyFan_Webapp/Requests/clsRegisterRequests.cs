@@ -25,9 +25,12 @@ namespace MyFan_Webapp.Requests.Register
                 HttpResponseMessage response = await client.GetAsync("users/fans?q=form");
                 if (response.IsSuccessStatusCode)
                 {
-                    string json = await response.Content.ReadAsAsync<string>();
-                    FanForm form = JsonConvert.DeserializeObject<FanForm>(json);
-                    System.Diagnostics.Debug.WriteLine(form);
+                    string json = response.Content.ReadAsStringAsync().Result;
+                    
+                    JsonResponse jsonresponse = JsonConvert.DeserializeObject<JsonResponse>(json);
+
+                    FanForm form = JsonConvert.DeserializeObject<FanForm>(jsonresponse.data);
+
                     return await Task.FromResult(form);
                 }
                 else

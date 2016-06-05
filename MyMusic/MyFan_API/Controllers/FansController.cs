@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogic;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -20,21 +22,53 @@ namespace MyFan_API.Controllers
             System.Diagnostics.Debug.WriteLine("Creating new user");
 
             string Jsoncontent = request.Content.ReadAsStringAsync().Result;
-            return new clsFanResult(Request);
+            //return new clsFanResult(Request);
             //Endpoint for creating a new fan user
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
+
+        class JSON
+        {
+            public int code { get; set; }
+            public bool success { get; set; }
+            public string data { get; set; }
+        }
+
+
 
         [Route("")]
         [HttpGet]
         // api/v1/users/fans?q=form GET
-        public IHttpActionResult GetAllFans(string q)
+        public HttpResponseMessage GetAllFans(string q)
         {
             System.Diagnostics.Debug.WriteLine(q);
             if (String.Equals(q, "form"))
             {
-                System.Diagnostics.Debug.WriteLine("getting form");
-                return new clsFanResult(Request);
+
+                /* JSON obj = new JSON();
+                 obj.code = 200;
+                 obj.success = true;
+                 obj.data = new string[] { "Indie", "Rock", "Reggae", "Metal", "Techno", "House" };*/
+
+                FacadeBL facade = new FacadeBL();
+
+                string data = facade.getFanForm();
+
+                JSON json = new JSON();
+                json.code = 200;
+                json.success = true;
+                json.data = data;
+             
+                string r = JsonConvert.SerializeObject(json);
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = new StringContent(r);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                
+
+
+                return response;
+
             }
             //Endpoint for retrieving all fans
             throw new NotImplementedException();

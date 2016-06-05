@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,7 +14,28 @@ namespace MyFan_API
 {
     public class clsFanResult : IHttpActionResult
     {
+
+        string _value;
         HttpRequestMessage _request;
+
+        public clsFanResult(string value, HttpRequestMessage request)
+        {
+            _value = value;
+            _request = request;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_value),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+
+
+        /*HttpRequestMessage _request;
+
 
         public clsFanResult(HttpRequestMessage request)
         {
@@ -29,32 +51,34 @@ namespace MyFan_API
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
+            System.Diagnostics.Debug.WriteLine("called");
             JSON obj = new JSON();
             obj.code = 200;
             obj.success = true;
             obj.data = new string[] { "Indie","Rock","Reggae","Metal","Techno","House" };
 
             string json = JsonConvert.SerializeObject(obj);
-
+            System.Diagnostics.Debug.WriteLine(json);
 
             HttpResponseMessage response = new HttpResponseMessage();
             response.Content = new StringContent(json);
-            
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            response.RequestMessage = _request;
 
-            // NOTE: Here I am just setting the result on the Task and not really doing any async stuff. 
-            // But let's say you do stuff like contacting a File hosting service to get the file, then you would do 'async' stuff here.
+
+
 
             return Task.FromResult(response);
 
 
-            /*
-            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            var response = new HttpResponseMessage()
             {
-                Content = new StringContent(json),
+                Content = new StringContent(_value),
+                
                 RequestMessage = _request
-
             };
-            return Task.FromResult(response);*/
-        }
+            return Task.FromResult(response);
+            
+    }*/
     }
 }

@@ -170,6 +170,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{228555ec-837e-46b7-9cea-5d3585ce2ecd}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ODT\DTO.csproj">
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
       <Name>DTO</Name>
