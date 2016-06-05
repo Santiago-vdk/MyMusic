@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class clsRead
+    class clsFanWrite
     {
-        public clsConnection Connection { get; set; }
     }
 }

@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>AccesoDatos.clsConnection</StartupObject>
+    <StartupObject>AccesoDatos.clsFanRead</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsConnection.cs" />
-    <Compile Include="clsDataController.cs" />
+    <Compile Include="clsFacadeDA.cs" />
+    <Compile Include="clsFanRead.cs" />
     <Compile Include="clsRead.cs" />
     <Compile Include="clsWrite.cs" />
+    <Compile Include="clsFanDataAccess.cs" />
+    <Compile Include="clsFanWrite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

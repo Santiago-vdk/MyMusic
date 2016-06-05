@@ -47,9 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
+    <ProjectReference Include="..\AccesoDatos\DataAccess.csproj">
       <Project>{82e8b34e-0b70-4244-a14f-e1315e0c0317}</Project>
-      <Name>AccesoDatos</Name>
+      <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\ODT\DTO.csproj">
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>

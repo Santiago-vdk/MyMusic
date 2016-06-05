@@ -5,27 +5,45 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using System.Configuration;
+using Newtonsoft.Json;
 
 namespace MyFan_Webapp.Requests.Register
 {
     public class clsRegisterRequests
     {
 
-        class Request
+        public static async Task<FanForm> GetRegisterFanForm()
         {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string ConfirmPassword { get; set; }
-            public string Name { get; set; }
-            public string Birthday { get; set; }
-            public string Genre { get; set; }
-            public string Country { get; set; }
-            public string[] MusicalGenres { get; set; }
-            public string Accept { get; set; }
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiEndpoint"]);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // HTTP GET
+                HttpResponseMessage response = await client.GetAsync("users/fans?q=form");
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsAsync<string>();
+                    FanForm form = JsonConvert.DeserializeObject<FanForm>(json);
+                    System.Diagnostics.Debug.WriteLine(form);
+                    return await Task.FromResult(form);
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
         }
 
+        /*string inputUsername, string inputPassword, string inputConfirmPassword,
+        string inputName, string inputBirthday, string selectGenre, string selectCountry,
+    string[] selectMusicalGenres, string accept*/
 
-        internal static async Task RegisterRequest(string inputUsername, string inputPassword, string inputConfirmPassword,
+
+        /*internal static async Task PostRegisterForm(string inputUsername, string inputPassword, string inputConfirmPassword,
             string inputName, string inputBirthday, string selectGenre, string selectCountry,
             string[] selectMusicalGenres, string accept)
         {
@@ -55,11 +73,10 @@ namespace MyFan_Webapp.Requests.Register
                 if (response.IsSuccessStatusCode)
                 {
 
-
                     Uri requestUrl = response.Headers.Location;
                 }
 
             }
-        }
+        }*/
     }
 }

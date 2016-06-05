@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class clsDoubleValue
+    public class clsForm
     {
-
-        public int intCodigo { get; set; }
-        public string strDescripcion { get; set; }
-
+        public List<clsDoubleValue> genres { get; set; }
+        public List<clsDoubleValue> genders { get; set; }
     }
 }
