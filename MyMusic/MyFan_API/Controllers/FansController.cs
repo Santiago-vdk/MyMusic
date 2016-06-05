@@ -18,7 +18,7 @@ namespace MyFan_API.Controllers
         public IHttpActionResult CreateFan(HttpRequestMessage request)
         {
             System.Diagnostics.Debug.WriteLine("Creating new user");
-            System.Diagnostics.Debug.WriteLine(request.Headers);
+
             string Jsoncontent = request.Content.ReadAsStringAsync().Result;
             return new clsFanResult(Jsoncontent, Request);
             //Endpoint for creating a new fan user

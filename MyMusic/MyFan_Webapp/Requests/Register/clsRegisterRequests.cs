@@ -24,6 +24,13 @@ namespace MyFan_Webapp.Requests.Register
             public string Accept { get; set; }
         }
 
+        class registerResponse
+        {
+            success
+                code
+                data
+        }
+
         internal static async Task RegisterRequest(string inputUsername, string inputPassword, string inputConfirmPassword,
             string inputName, string inputBirthday, string selectGenre, string selectCountry,
             string[] selectMusicalGenres, string accept)
@@ -46,11 +53,15 @@ namespace MyFan_Webapp.Requests.Register
                     MusicalGenres = selectMusicalGenres,
                     Accept = accept
                 };
+
+
+
                 HttpResponseMessage response = await client.PostAsJsonAsync("users/fans", request);
                 System.Diagnostics.Debug.WriteLine(response.StatusCode);
                 if (response.IsSuccessStatusCode)
                 {
-                    // Get the URI of the created resource.
+
+
                     Uri requestUrl = response.Headers.Location;
                 }
 

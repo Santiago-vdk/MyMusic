@@ -40,7 +40,7 @@ namespace MyFan_Webapp.Controllers
             inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres,
             accept);
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return Redirect("/");
         }
 
         public ActionResult Band()

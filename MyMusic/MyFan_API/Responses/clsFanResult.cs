@@ -23,6 +23,7 @@ namespace MyFan_API
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
+            
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 RequestMessage = _request
