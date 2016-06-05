@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogicaNegocios.Controllers
+namespace BusinessLogic.Controllers
 {
     public class clsNewBL
     {
