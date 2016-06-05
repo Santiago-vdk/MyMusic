@@ -29,7 +29,7 @@ namespace DataAccess
                 values.Add(tmp);
 
             }
-            pclsForm.genres = values;
+            pclsForm.genders = values;
             conn.Close();
 
             return pclsForm;

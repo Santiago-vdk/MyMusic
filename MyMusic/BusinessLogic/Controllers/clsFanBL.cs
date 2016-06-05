@@ -28,12 +28,6 @@ namespace BusinessLogic.Controllers
             
         }
 
-        public static void Main()
-        {
-            clsFanBL a = new clsFanBL();
-
-            Console.WriteLine(a.getForm());
-            Console.ReadKey();
-        }
+     
     }
 }
