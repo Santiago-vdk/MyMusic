@@ -47,10 +47,10 @@
   <ItemGroup>
     <Compile Include="clsConnection.cs" />
     <Compile Include="clsFacadeDA.cs" />
-    <Compile Include="clsFanDA.cs" />
-    <Compile Include="clsFanRead.cs" />
-    <Compile Include="clsUserDA.cs" />
-    <Compile Include="clsUserRead.cs" />
+    <Compile Include="FanDataAccess\clsFanDA.cs" />
+    <Compile Include="FanDataAccess\clsFanRead.cs" />
+    <Compile Include="UserDataAccess\clsUserDA.cs" />
+    <Compile Include="UserDataAccess\clsUserRead.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

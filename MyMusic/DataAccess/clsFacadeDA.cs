@@ -1,4 +1,6 @@
-﻿using DTO;
+﻿using DataAccess.FanDataAccess;
+using DataAccess.UserDataAccess;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

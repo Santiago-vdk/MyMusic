@@ -6,17 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess
+namespace DataAccess.UserDataAccess
 {
-    public class clsFanRead
+    public class clsUserRead
     {
-
         SqlConnection conn = new clsConnection().getPort();
 
 
-        public clsForm getAllgenders(clsForm pclsForm)
+        public clsForm getAllgenres(clsForm pclsForm)
         {
-            SqlCommand cmd = new SqlCommand("myFan.SP_ObtenerSexosHabilitados", conn);
+            SqlCommand cmd = new SqlCommand("myFan.SP_GetAllGenresAvaibles", conn);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             conn.Open();
             SqlDataReader result = cmd.ExecuteReader();
@@ -24,12 +23,12 @@ namespace DataAccess
             while (result.Read())
             {
                 clsDoubleValue tmp = new clsDoubleValue();
-                tmp.intCodigo = Convert.ToInt32(result["intCodSexo"]);
+                tmp.intCodigo = Convert.ToInt32(result["intCodGenero"]);
                 tmp.strDescripcion = result["strDescripcion"].ToString();
                 values.Add(tmp);
 
             }
-            pclsForm.genders = values;
+            pclsForm.genres = values;
             conn.Close();
 
             return pclsForm;
@@ -37,8 +36,8 @@ namespace DataAccess
 
         public static void Main()
         {
-            clsFanRead a = new clsFanRead();
-            Console.WriteLine(a.getAllgenders(new clsForm()).genres[1].strDescripcion);
+            clsUserRead a = new clsUserRead();
+            Console.WriteLine(a.getAllgenres(new clsForm()).genres[1].intCodigo);
             Console.ReadKey();
         }
     }
