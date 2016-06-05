@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace DTO
 {
@@ -11,9 +13,12 @@ namespace DTO
         public List<clsDoubleValue> genres { get; set; }
         public List<clsDoubleValue> genders { get; set; }
 
-        public String toString()
+        public String toJson()
         {
-            return "";
+            return JsonConvert.SerializeObject(this);
+            
         }
+
+        
     }
 }

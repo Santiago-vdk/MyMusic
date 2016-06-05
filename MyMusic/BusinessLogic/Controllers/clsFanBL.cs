@@ -11,14 +11,15 @@ namespace BusinessLogic.Controllers
     public class clsFanBL
     {
 
-        public clsFacadeDA FacadeDA { get; set; }
+        clsFacadeDA FacadeDA = new clsFacadeDA();
 
-        public void getForm()
+        public String getForm()
         {
-            clsForm Form = new clsForm();
-            Form = FacadeDA.getAllGenres(Form);
-            Form = FacadeDA.getAllGenders(Form);
-           
+            clsForm form = new clsForm();
+            form = FacadeDA.getAllGenres(form);
+            form = FacadeDA.getAllGenders(form);
+            return form.toJson();
+
         }
 
         public void createFan()
@@ -27,5 +28,12 @@ namespace BusinessLogic.Controllers
             
         }
 
+        public static void Main()
+        {
+            clsFanBL a = new clsFanBL();
+
+            Console.WriteLine(a.getForm());
+            Console.ReadKey();
+        }
     }
 }
