@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ODT
+namespace DTO
 {
     public class clsSong
     {
@@ -11,5 +11,6 @@ namespace ODT
         public String Duration { get; set; }
         public Boolean Type { get; set; }
         public String Link { get; set; }
+
     }
 }

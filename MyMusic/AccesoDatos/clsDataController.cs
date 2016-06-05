@@ -1,20 +1,20 @@
-﻿using ODT;
+﻿using DTO;
 using System.Collections.Generic;
 
 namespace AccesoDatos
 {
-    class clsDataController
+    public class clsDataController
     {
-        public clsRead Read { get; set; }
-        public clsWrite Write { get; set; }
+         clsRead Read { get; set; }
+         clsWrite Write { get; set; }
 
         public void updateFan(List<clsInfoFan> pData)
         {
             Write.updateFan(pData);
         }
-        public void createUser(List<clsUser> pData)
+        public void createUser(clsInfoFan pData)
         {
-            Write.createUser(pData);
+            Write.createFan(pData);
         }
         public void insertDisc(List<clsDisc> pData)
         {
