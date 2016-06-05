@@ -1,7 +1,7 @@
 ﻿using DTO;
 using System.Collections.Generic;
 
-namespace AccesoDatos
+namespace DataAccess
 {
     public class clsDataController
     {
