@@ -13,7 +13,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
         {
             System.Diagnostics.Debug.WriteLine(userId);
           
-            await Client.RunAsync();
+            
             return View();
         }
 
