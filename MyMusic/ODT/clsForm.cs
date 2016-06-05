@@ -10,5 +10,10 @@ namespace DTO
     {
         public List<clsDoubleValue> genres { get; set; }
         public List<clsDoubleValue> genders { get; set; }
+
+        public String toString()
+        {
+            return "";
+        }
     }
 }
