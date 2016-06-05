@@ -8,7 +8,7 @@ using System.Data.Sql;
 using System.Data;
 using System.Configuration;
 
-namespace AccesoDatos
+namespace DataAccess
 {
     class clsConnection
     {

@@ -1,4 +1,4 @@
-﻿using AccesoDatos;
+﻿using DataAccess;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,6 @@ namespace LogicaNegocios
     {
          clsJsonParser JsonParser { get; set; }
          clsErrorValidator ErrorValidator { get; set; }
-        public clsDataController DataController { get; set; }
+        public clsFacadeDA DataController { get; set; }
     }
 }
