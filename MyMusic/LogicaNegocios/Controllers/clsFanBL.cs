@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogicaNegocios
+namespace BusinessLogic.Controllers
 {
-    public class clsFanaticoBL
+    public class clsFanBL
     {
 
 
-        public void obtenerListaSexos()
+        public void getForm()
         {
             
         }
 
-        public void crearFanatico()
+        public void createFan()
         {
             
             

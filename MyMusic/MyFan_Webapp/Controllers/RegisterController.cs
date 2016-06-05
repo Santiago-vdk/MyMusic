@@ -12,8 +12,12 @@ namespace MyFan_Webapp.Controllers
     public class RegisterController : Controller
     {
         // GET: Register
-        public ActionResult Fan()
+        public async Task<ActionResult> Fan()
         {
+            FanForm form = await clsRegisterRequests.GetRegisterFanForm();
+            ViewBag.AvailableMusicalGenres = form.MusicalGenres;
+
+
             return View();
         }
 
