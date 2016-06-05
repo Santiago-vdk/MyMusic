@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="clsConnection.cs" />
     <Compile Include="clsDataController.cs" />
-    <Compile Include="clsFanaticoDA.cs" />
     <Compile Include="clsRead.cs" />
     <Compile Include="clsWrite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,7 +13,7 @@ namespace AccesoDatos
     {
         SqlConnection conn = new clsConnection().getPort();
         
-        public void createFan(clsInfoFan pFanatico)
+        public clsInfoFan createFan(clsInfoFan pFanatico)
         {
             
             try
@@ -53,7 +53,7 @@ namespace AccesoDatos
             }
             finally
             {
-                sqlConecction.Close();
+                conn.Close();
             }
             return pFanatico;
         }
@@ -61,18 +61,5 @@ namespace AccesoDatos
 
     }
 
-    public void updateFan(List<clsInfoFan> pData) {
 
-        }
-       
-        public void insertDisc(List<clsDisc> pData)
-        {
-
-        }
-        public void updateDisc(List<clsDisc> pData)
-        {
-
-        }
-
-    }
 }

@@ -13,16 +13,15 @@ namespace LogicaNegocios
     {
 
 
-        public List<clsDoubleValue> obtenerListaSexos()
-        {
-            clsFanaticoDA objFanaticoDA = new clsFanaticoDA();
-            return objFanaticoDA.obtenerListaSexos();
-        }
-
-        public clsFanForm crearFanatico(clsFanForm pFanatico)
+        public void obtenerListaSexos()
         {
             
-            return pFanatico;
+        }
+
+        public void crearFanatico()
+        {
+            
+            
         }
 
     }

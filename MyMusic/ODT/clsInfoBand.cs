@@ -26,6 +26,19 @@ namespace DTO
         public int ErrorCode { get; set; }
         public String ErrorMessage { get; set; }
 
+        public string SaltHashed
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public String toJson()
         {
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
