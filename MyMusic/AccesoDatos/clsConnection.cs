@@ -6,20 +6,23 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Data;
+using System.Configuration;
 
 namespace AccesoDatos
 {
     class clsConnection
     {
         private SqlConnection conn = null;
-        private String database = "Server=tcp:mymusic.database.windows.net,1433;Data Source=mymusic.database.windows.net;Initial Catalog=myMusic;Persist Security Info=False;User ID=David;Password=x100preXD;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        ConnectionStringSettings conSettings = null;
+        string connectionString = null;
 
         public clsConnection()
         {
-            conn = new SqlConnection(database);
-            conn.Open();
+            conSettings = ConfigurationManager.ConnectionStrings["myMusicConnection"];
+            connectionString = conSettings.ConnectionString;
+            conn = new SqlConnection(connectionString);
         }
-        protected SqlConnection getPort()
+        public SqlConnection getPort()
         {
             return conn;
         }

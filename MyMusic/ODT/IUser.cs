@@ -10,6 +10,7 @@ namespace DTO
         String Username { get; set; }
         String Password { get; set; }
         String Salt { get; set; }
+        String SaltHashed { get; set; }
         int Rol { get; set; }
         Boolean Active { get; set; }
         String toJson();

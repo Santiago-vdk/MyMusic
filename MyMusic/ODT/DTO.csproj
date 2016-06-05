@@ -45,7 +45,6 @@
     <Compile Include="clsDisc.cs" />
     <Compile Include="clsDoubleValue.cs" />
     <Compile Include="clsEvent.cs" />
-    <Compile Include="clsFanForm.cs" />
     <Compile Include="clsInfoBand.cs" />
     <Compile Include="clsInfoFan.cs" />
     <Compile Include="clsMember.cs" />
