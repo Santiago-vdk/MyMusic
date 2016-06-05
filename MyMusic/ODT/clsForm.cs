@@ -13,7 +13,11 @@ namespace DTO
         public List<clsDoubleValue> genres { get; set; }
         public List<clsDoubleValue> genders { get; set; }
 
-        0
+        public String toJson()
+        {
+            return JsonConvert.SerializeObject(this);
+            
+        }
 
         
     }
