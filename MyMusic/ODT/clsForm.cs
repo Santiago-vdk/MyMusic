@@ -10,8 +10,8 @@ namespace DTO
 {
     public class clsForm
     {
-        public List<clsDoubleValue> genres { get; set; }
-        public List<clsDoubleValue> genders { get; set; }
+        public List<String> genres { get; set; }
+        public List<String> genders { get; set; }
 
         public String toJson()
         {

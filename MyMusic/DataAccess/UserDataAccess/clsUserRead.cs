@@ -10,7 +10,7 @@ namespace DataAccess.UserDataAccess
 {
     public class clsUserRead
     {
-        SqlConnection conn = new clsConnection().getPort();
+        private SqlConnection conn = new clsConnection().getPort();
 
 
         public clsForm getAllgenres(clsForm pclsForm)
@@ -19,14 +19,10 @@ namespace DataAccess.UserDataAccess
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             conn.Open();
             SqlDataReader result = cmd.ExecuteReader();
-            List<clsDoubleValue> values = new List<clsDoubleValue>();
+            List<String> values = new List<String>();
             while (result.Read())
             {
-                clsDoubleValue tmp = new clsDoubleValue();
-                tmp.intCodigo = Convert.ToInt32(result["intCodGenero"]);
-                tmp.strDescripcion = result["strDescripcion"].ToString();
-                values.Add(tmp);
-
+                values.Add(result["strDescripcion"].ToString());
             }
             pclsForm.genres = values;
             conn.Close();
@@ -34,10 +30,14 @@ namespace DataAccess.UserDataAccess
             return pclsForm;
         }
 
+
+
+
+
         public static void Main()
         {
             clsUserRead a = new clsUserRead();
-            Console.WriteLine(a.getAllgenres(new clsForm()).genres[1].intCodigo);
+            //Console.WriteLine(a.getAllgenres(new clsForm()).genres[1].intCodigo);
             Console.ReadKey();
         }
     }
