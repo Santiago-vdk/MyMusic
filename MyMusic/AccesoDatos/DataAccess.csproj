@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="clsConnection.cs" />
     <Compile Include="clsFacadeDA.cs" />
-    <Compile Include="clsFanRead.cs" />
     <Compile Include="clsRead.cs" />
     <Compile Include="clsWrite.cs" />
     <Compile Include="clsFanDataAccess.cs" />

@@ -40,9 +40,9 @@ namespace MyFan_Webapp.Controllers
             System.Diagnostics.Debug.WriteLine(selectMusicalGenres[4]);
             System.Diagnostics.Debug.WriteLine(accept);
 
-            await clsRegisterRequests.RegisterRequest(inputUsername, inputPassword, inputConfirmPassword,
+            /*await clsRegisterRequests.RegisterRequest(inputUsername, inputPassword, inputConfirmPassword,
             inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres,
-            accept);
+            accept);*/
 
             return Redirect("/");
         }
