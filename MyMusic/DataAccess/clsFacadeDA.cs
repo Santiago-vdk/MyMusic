@@ -9,11 +9,17 @@ namespace DataAccess
 {
     public class clsFacadeDA
     {
-        clsUserDA FanDA = new clsUserDA();
+        clsUserDA UserDA = new clsUserDA();
+        clsFanDA FanDA = new clsFanDA();
 
         public clsForm getAllGenres(clsForm pclsForm)
         {
-            return FanDA.getAllGenres(pclsForm);
+            return UserDA.getAllGenres(pclsForm);
+        }
+
+        public clsForm getAllGenders(clsForm pclsForm)
+        {
+            return FanDA.getAllGenders(pclsForm);
         }
     }
 }
