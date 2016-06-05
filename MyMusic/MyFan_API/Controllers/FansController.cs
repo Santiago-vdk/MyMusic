@@ -20,18 +20,22 @@ namespace MyFan_API.Controllers
             System.Diagnostics.Debug.WriteLine("Creating new user");
 
             string Jsoncontent = request.Content.ReadAsStringAsync().Result;
-            return new clsFanResult(Jsoncontent, Request);
+            return new clsFanResult(Request);
             //Endpoint for creating a new fan user
             //throw new NotImplementedException();
         }
 
         [Route("")]
         [HttpGet]
-        // api/v1/users/fans GET
-        public IHttpActionResult GetAllFans()
+        // api/v1/users/fans?q=form GET
+        public IHttpActionResult GetAllFans(string q)
         {
- 
-
+            System.Diagnostics.Debug.WriteLine(q);
+            if (String.Equals(q, "form"))
+            {
+                System.Diagnostics.Debug.WriteLine("getting form");
+                return new clsFanResult(Request);
+            }
             //Endpoint for retrieving all fans
             throw new NotImplementedException();
         }

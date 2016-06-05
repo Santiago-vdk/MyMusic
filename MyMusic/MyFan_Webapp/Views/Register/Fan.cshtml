@@ -86,8 +86,11 @@
                     </div>
                     <div class="col-xs-9">
                         <select class="selectpicker" name="selectGenre" data-width="100%">
-                            <option>Male</option>
-                            <option>Female</option>
+
+                            @foreach (var genre in ViewBag.Genres)
+                            {
+                                <option>genre</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -111,14 +114,12 @@
                     </div>
                     <div class="col-xs-9">
                         <select class="selectpicker" data-live-search="true" name="selectMusicalGenres[]" id="genres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
-                            <option data-tokens="Rock">Rock</option>
-                            <option data-tokens="Indie">Indie</option>
-                            <option data-tokens="Metal">Metal</option>
-                            <option data-tokens="Pop">Pop</option>
-                            <option data-tokens="Reggae">Reggae</option>
-                            <option data-tokens="Alternative">Alternative</option>
-                            <option data-tokens="Celta">Celta</option>
-                            <option data-tokens="House">House</option>
+                            
+                            @foreach (var musicalgenre in ViewBag.AvailableMusicalGenres)
+                            {
+                                <option data-tokens="musicalgenre">musicalgenre</option>
+                            }
+
                         </select>
                     </div>
                 </div>
