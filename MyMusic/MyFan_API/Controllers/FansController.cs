@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,11 +46,6 @@ namespace MyFan_API.Controllers
             if (String.Equals(q, "form"))
             {
 
-                /* JSON obj = new JSON();
-                 obj.code = 200;
-                 obj.success = true;
-                 obj.data = new string[] { "Indie", "Rock", "Reggae", "Metal", "Techno", "House" };*/
-
                 FacadeBL facade = new FacadeBL();
 
                 string data = facade.getFanForm();
@@ -64,8 +60,6 @@ namespace MyFan_API.Controllers
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                 response.Content = new StringContent(r);
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                
-
 
                 return response;
 

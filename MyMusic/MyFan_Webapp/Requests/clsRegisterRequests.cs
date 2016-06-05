@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections;
 
 namespace MyFan_Webapp.Requests.Register
 {
@@ -29,7 +31,40 @@ namespace MyFan_Webapp.Requests.Register
                     
                     JsonResponse jsonresponse = JsonConvert.DeserializeObject<JsonResponse>(json);
 
-                    FanForm form = JsonConvert.DeserializeObject<FanForm>(jsonresponse.data);
+
+                    FanForm form = new FanForm();
+
+                    dynamic data = JObject.Parse(jsonresponse.data);
+                    var genres = (IEnumerable) data.genres;
+
+                    List<string> generos = new List<string>();
+
+                    foreach (var genre in genres)
+                    {
+                        dynamic Actualgenre = JObject.Parse(Convert.ToString(genre));
+                        string genreName = Convert.ToString(Actualgenre.strDescripcion);
+                        generos.Add(genreName);
+                        System.Diagnostics.Debug.WriteLine(genreName);
+                    }
+
+
+
+                    var sexos = (IEnumerable)data.genders;
+
+                    List<string> sexs = new List<string>();
+
+                    foreach (var sex in sexos)
+                    {
+                        dynamic Actualsex = JObject.Parse(Convert.ToString(sex));
+                        string sexName = Convert.ToString(Actualsex.strDescripcion);
+                        sexs.Add(sexName);
+                        System.Diagnostics.Debug.WriteLine(sexName);
+                    }
+
+
+                    form.genres = generos;
+                    form.genders = sexs;
+
 
                     return await Task.FromResult(form);
                 }

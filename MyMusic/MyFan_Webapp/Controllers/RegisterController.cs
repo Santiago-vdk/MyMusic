@@ -15,9 +15,9 @@ namespace MyFan_Webapp.Controllers
         public async Task<ActionResult> Fan()
         {
             FanForm form = await clsRegisterRequests.GetRegisterFanForm();
-            ViewBag.AvailableMusicalGenres = form.MusicalGenres;
-            ViewBag.Genres = form.genres;
-            System.Diagnostics.Debug.WriteLine("view form" + form.MusicalGenres);
+            ViewBag.AvailableMusicalGenres = form.genres;
+            ViewBag.Genres = form.genders;
+            //System.Diagnostics.Debug.WriteLine("view form" + form.MusicalGenres);
             return View();
         }
 

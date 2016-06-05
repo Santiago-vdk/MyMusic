@@ -15,7 +15,7 @@ namespace BusinessLogic
         public clsBandBL BandBL { get; set; }
         public clsDiskBL DiskBL { get; set; }
         public clsEventBL EventBL { get; set; }
-        public clsFanBL FanBL { get; set; }
+        clsFanBL FanBL = new clsFanBL();
         public clsNewBL NewBL { get; set; }
         public clsUserBL UserBL { get; set; }
 
