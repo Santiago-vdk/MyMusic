@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 
-namespace LogicaNegocios
+namespace BusinessLogic
 {
     class clsJsonParser
     {
