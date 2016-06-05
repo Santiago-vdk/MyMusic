@@ -20,17 +20,11 @@ namespace BusinessLogic
         public clsUserBL UserBL { get; set; }
 
 
-        public void getFanForm()
+        public String getFanForm()
         {
-            FanBL.getForm();
+            return FanBL.getForm();
         }
-        public static void Main()
-        {
-            
-
-            Console.WriteLine();
-            Console.ReadKey();
-        }
+        
 
     }
 }
