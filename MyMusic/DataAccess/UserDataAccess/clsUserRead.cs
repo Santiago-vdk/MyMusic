@@ -28,7 +28,7 @@ namespace DataAccess.UserDataAccess
                 }
                 pclsForm.genres = values;
                 pclsForm.ErrorCode = "0";
-                pclsForm.ErrorCode = "Done";
+                pclsForm.ErrorMessage = "Done";
             }
             catch (SqlException ex)
             {

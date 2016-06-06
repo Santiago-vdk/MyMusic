@@ -29,7 +29,7 @@ namespace DataAccess.FanDataAccess
                 }
                 pclsForm.genders = values;
                 pclsForm.ErrorCode = "0";
-                pclsForm.ErrorCode = "Done";        
+                pclsForm.ErrorMessage = "Done";        
             }
             catch (SqlException ex)
             {
