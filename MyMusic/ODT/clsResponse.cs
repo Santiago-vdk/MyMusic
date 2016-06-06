@@ -9,9 +9,9 @@ namespace DTO
 {
     public class clsResponse
     {
-        public int ErrorCode { get; set; }
-        public bool ErrorState { get; set; } //success/fail of request
-        public String ErrorMessage { get; set; }
+        public int Code { get; set; }
+        public bool Success { get; set; } //success/fail of request
+        public String Message { get; set; }
         public String Data { get; set; }
 
 
@@ -19,9 +19,9 @@ namespace DTO
         {
             //inicializa las variables en estado de exito
 
-            ErrorCode = 200; 
-            ErrorState = true;
-            ErrorMessage = "";
+            Code = 200; 
+            Success = true;
+            Message = "";
             Data = null;
         }
 

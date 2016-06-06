@@ -19,9 +19,9 @@ namespace DataAccess.UserDataAccess
             }
             catch
             {
-                pclsResponse.ErrorCode = 007;
-                pclsResponse.ErrorState = false;
-                pclsResponse.ErrorMessage = "Internal Error";
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";
                 return pclsForm;//cambiar por error
             }
 

@@ -26,9 +26,9 @@ namespace BusinessLogic.Controllers
             }
             catch
             {
-                response.ErrorCode = 667; //Error code
-                response.ErrorState = false; // fail request
-                response.ErrorMessage = "Internal Error...";
+                response.Code = 667; //Error code
+                response.Success = false; // fail request
+                response.Message = "Internal Error...";
                 
             }
 
