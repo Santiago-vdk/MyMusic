@@ -12,6 +12,8 @@ namespace DTO
     {
         public List<String> genres { get; set; }
         public List<String> genders { get; set; }
+        public String ErrorCode { get; set; }
+        public String ErrorMessage { get; set; }
 
         public String toJson()
         {
