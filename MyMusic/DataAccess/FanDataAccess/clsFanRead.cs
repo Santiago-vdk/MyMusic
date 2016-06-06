@@ -28,18 +28,20 @@ namespace DataAccess.FanDataAccess
                     values.Add(result["strDescripcion"].ToString());
                 }
                 pclsForm.genders = values;
-                pclsForm.ErrorCode = "0";
-                pclsForm.ErrorMessage = "Done";        
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";        
             }
             catch (SqlException ex)
             {
-                pclsForm.ErrorCode= ex.ErrorCode.ToString();
-                pclsForm.ErrorMessage = ex.Message.ToString();
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
             }
             catch (Exception ex)
             {
-                pclsForm.ErrorCode = "s001";
-                pclsForm.ErrorMessage = ex.Message.ToString();               
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
             }
             finally
             {

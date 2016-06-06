@@ -1,4 +1,5 @@
 ﻿using MyFan_Webapp.Requests.Register;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -17,15 +18,21 @@ namespace MyFan_Webapp.Controllers
             if (!ParsedMessage.Equals(""))
             {
                 //Hubo error
+                List<string> list = new List<string>();
+                list.Add("Not available");
                 ViewBag.Message = ParsedMessage;
+                ViewBag.AvailableMusicalGenres = list;
+                ViewBag.Genders = list;
                 return View();
             }
 
             DataParser DataParser = new DataParser();
+            System.Diagnostics.Debug.WriteLine(response);
             form = DataParser.parseFanForm(form, response);
 
+            ViewBag.Message = "";
             ViewBag.AvailableMusicalGenres = form.genres;
-            ViewBag.Genres = form.genders;
+            ViewBag.Genders = form.genders;
             //System.Diagnostics.Debug.WriteLine("view form" + form.MusicalGenres);
             return View();
         }

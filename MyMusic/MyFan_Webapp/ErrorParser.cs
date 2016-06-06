@@ -28,6 +28,15 @@ namespace MyFan_Webapp
 
         private string HandleError(int pIntCode, string pStringMessage)
         {
+            if(pIntCode == 1)
+            {
+                return "Unable to retrieve information...";
+            }
+            if (pIntCode == 0)
+            {
+                return "The monkeys took a break... Please try again later :/";
+            }
+           
             return pStringMessage;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using DTO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -40,9 +41,11 @@ namespace MyFan_API.Controllers
             {
 
                 FacadeBL facade = new FacadeBL();
-                JSONResponse JsonData = new JSONResponse(200,true,facade.getFanForm());
 
-                string ResponseBody = JsonConvert.SerializeObject(JsonData);
+
+                string ResponseBody = facade.getFanForm();
+
+                System.Diagnostics.Debug.WriteLine(ResponseBody);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                 response.Content = new StringContent(ResponseBody);

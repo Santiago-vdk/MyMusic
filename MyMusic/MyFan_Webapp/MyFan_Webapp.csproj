@@ -159,7 +159,6 @@
     <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="ErrorInterpreter.cs" />
     <Compile Include="DataParser.cs" />
     <Compile Include="ErrorParser.cs" />
     <Compile Include="Models\FanForm.cs" />

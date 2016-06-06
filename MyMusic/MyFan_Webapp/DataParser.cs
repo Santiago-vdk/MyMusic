@@ -13,7 +13,7 @@ namespace MyFan_Webapp
         internal FanForm parseFanForm(FanForm form, string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
-
+            
             dynamic data = JObject.Parse(Response.Data);
 
             List<string> genres = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.genres));

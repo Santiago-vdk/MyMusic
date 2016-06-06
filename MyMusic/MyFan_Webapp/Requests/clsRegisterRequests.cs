@@ -18,17 +18,17 @@ namespace MyFan_Webapp.Requests.Register
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // HTTP GET
-                HttpResponseMessage response = await client.GetAsync("users/fans?q=form");
-                ErrorInterpreter ErrorInterpreter = new ErrorInterpreter(Int32.Parse(response.StatusCode.ToString()));
-
-                //Aqui evaluar los codigos http
-
+                HttpResponseMessage response = await client.GetAsync("users/fans?q=form");         
                 if (response.IsSuccessStatusCode)
                 {
                     string JsonResponse = response.Content.ReadAsStringAsync().Result;
                     return await Task.FromResult(JsonResponse);
                 }
-                else { return null; }
+                else //if ((int) response.StatusCode == 500)
+                {
+                    return await Task.FromResult("Unexpected error ocurred");
+                }
+               
             }
         }
         
