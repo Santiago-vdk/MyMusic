@@ -1,10 +1,5 @@
 ﻿using MyFan_Webapp.Requests.Register;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MyFan_Webapp.Controllers
@@ -14,7 +9,14 @@ namespace MyFan_Webapp.Controllers
         // GET: Register
         public async Task<ActionResult> Fan()
         {
-            FanForm form = await clsRegisterRequests.GetRegisterFanForm();
+            string response = await clsRegisterRequests.GetRegisterFanForm();
+
+
+            FanForm form = new FanForm();
+            JSONParser parser = new JSONParser();
+            form = parser.parseFanForm(form, response);
+
+
             ViewBag.AvailableMusicalGenres = form.genres;
             ViewBag.Genres = form.genders;
             //System.Diagnostics.Debug.WriteLine("view form" + form.MusicalGenres);

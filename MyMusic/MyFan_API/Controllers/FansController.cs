@@ -28,13 +28,6 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-        class JSON
-        {
-            public int code { get; set; }
-            public bool success { get; set; }
-            public string data { get; set; }
-        }
-
 
 
         [Route("")]
@@ -47,18 +40,12 @@ namespace MyFan_API.Controllers
             {
 
                 FacadeBL facade = new FacadeBL();
+                JSONResponse JsonData = new JSONResponse(200,true,facade.getFanForm());
 
-                string data = facade.getFanForm();
-
-                JSON json = new JSON();
-                json.code = 200;
-                json.success = true;
-                json.data = data;
-             
-                string r = JsonConvert.SerializeObject(json);
+                string ResponseBody = JsonConvert.SerializeObject(JsonData);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
-                response.Content = new StringContent(r);
+                response.Content = new StringContent(ResponseBody);
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 return response;
