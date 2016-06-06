@@ -13,7 +13,7 @@ namespace DataAccess.UserDataAccess
         private SqlConnection conn = new clsConnection().getPort();
 
 
-        public clsForm getAllgenres(clsForm pclsForm)
+        public clsForm getAllgenres(clsForm pclsForm, ref clsResponse pclsResponse)
         {
             try
             {

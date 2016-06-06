@@ -14,7 +14,7 @@ namespace DataAccess.FanDataAccess
         private SqlConnection conn = new clsConnection().getPort();
 
 
-        public clsForm getAllgenders(clsForm pclsForm)
+        public clsForm getAllgenders(clsForm pclsForm, ref clsResponse pclsResponse)
         {
             try
             {

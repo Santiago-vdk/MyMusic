@@ -16,9 +16,23 @@ namespace BusinessLogic.Controllers
         public String getForm()
         {
             clsForm form = new clsForm();
-            form = FacadeDA.getAllGenres(form);
-            form = FacadeDA.getAllGenders(form);
-            return form.toJson();
+            clsResponse response = new clsResponse();
+            try
+            {
+                form = FacadeDA.getAllGenres(form,ref response);
+                form = FacadeDA.getAllGenders(form,ref response);
+
+                response.Data =  form.toJson();
+            }
+            catch
+            {
+                response.ErrorCode = 667; //Error code
+                response.ErrorState = false; // fail request
+                response.ErrorMessage = "Internal Error...";
+                
+            }
+
+            return response.toJson();
 
         }
 

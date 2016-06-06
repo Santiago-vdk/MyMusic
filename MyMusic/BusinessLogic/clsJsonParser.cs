@@ -9,6 +9,11 @@ namespace BusinessLogic
 {
     class clsJsonParser
     {
-        
+        /*public String parseResponse(clsError pclsError, String pStringData)
+        {
+            String response = "ErrorCode: " + pclsError.Code + "," + "State: " + pclsError.State + "," + "ErrorMessage: " + 
+                pclsError.Message + "," + "Data: ";
+            return "";
+        }*/
     }
 }
