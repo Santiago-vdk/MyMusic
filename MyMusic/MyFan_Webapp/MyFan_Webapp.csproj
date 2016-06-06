@@ -160,7 +160,8 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="ErrorInterpreter.cs" />
-    <Compile Include="JSONParser.cs" />
+    <Compile Include="DataParser.cs" />
+    <Compile Include="ErrorParser.cs" />
     <Compile Include="Models\FanForm.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,6 +210,12 @@
     <Folder Include="Areas\Fans\Views\Fans\" />
     <Folder Include="Areas\Fans\Views\News\" />
     <Folder Include="Areas\Fans\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ODT\DTO.csproj">
+      <Project>{C80A7542-8DB4-440C-B61E-D0DE3D702060}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

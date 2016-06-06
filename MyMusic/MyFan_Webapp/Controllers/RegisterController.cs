@@ -11,11 +11,18 @@ namespace MyFan_Webapp.Controllers
         {
             string response = await clsRegisterRequests.GetRegisterFanForm();
 
-
             FanForm form = new FanForm();
-            JSONParser parser = new JSONParser();
-            form = parser.parseFanForm(form, response);
+            ErrorParser ErrorParser = new ErrorParser();
+            string ParsedMessage = ErrorParser.parse(response);
+            if (!ParsedMessage.Equals(""))
+            {
+                //Hubo error
+                ViewBag.Message = ParsedMessage;
+                return View();
+            }
 
+            DataParser DataParser = new DataParser();
+            form = DataParser.parseFanForm(form, response);
 
             ViewBag.AvailableMusicalGenres = form.genres;
             ViewBag.Genres = form.genders;
