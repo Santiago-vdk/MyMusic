@@ -11,6 +11,7 @@ namespace MyFan_Webapp.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            ViewBag.Message = "";
             return View();
         }
     }

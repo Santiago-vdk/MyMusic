@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MyFan_Webapp.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using DTO;
@@ -10,7 +9,7 @@ namespace MyFan_Webapp
     public class DataParser
     {
 
-        internal FanForm parseFanForm(FanForm form, string json)
+        internal GetRegisterFanForm parseFanForm(GetRegisterFanForm form, string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
             

@@ -21,9 +21,9 @@ namespace MyFan_API.Controllers
         // api/v1/users/fans POST
         public IHttpActionResult CreateFan(HttpRequestMessage request)
         {
-            System.Diagnostics.Debug.WriteLine("Creating new user");
+            string RequestBody = request.Content.ReadAsStringAsync().Result;
 
-            string Jsoncontent = request.Content.ReadAsStringAsync().Result;
+            System.Diagnostics.Debug.WriteLine(RequestBody);
             //return new clsFanResult(Request);
             //Endpoint for creating a new fan user
             throw new NotImplementedException();
@@ -36,23 +36,17 @@ namespace MyFan_API.Controllers
         // api/v1/users/fans?q=form GET
         public HttpResponseMessage GetAllFans(string q)
         {
-            System.Diagnostics.Debug.WriteLine(q);
             if (String.Equals(q, "form"))
-            {
-
+            { 
                 FacadeBL facade = new FacadeBL();
 
-
                 string ResponseBody = facade.getFanForm();
-
-                System.Diagnostics.Debug.WriteLine(ResponseBody);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                 response.Content = new StringContent(ResponseBody);
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 return response;
-
             }
             //Endpoint for retrieving all fans
             throw new NotImplementedException();
