@@ -9,18 +9,15 @@ namespace DTO
 {
     class clsBandForm
     {
-        public String Name { get; set; }
-        public String DateCreation { get; set; }
-        public List<String> Genres { get; set; }
-        public String Country { get; set; }
-        public String Hashtag { get; set; }
-        public List<clsMember> Members { get; set; }
-
+        public string Name { get; set; }
+        public string DateCreation { get; set; }
+        public List<string> Genres { get; set; }
+        public string Country { get; set; }
+        public string Hashtag { get; set; }
+        public List<string> Members { get; set; }
         public string Biography { get; set; }
-
         public string Username { get; set; }
         public string Password { get; set; }
-
         public string ConfirmPassword { get; set; }
     }
 }

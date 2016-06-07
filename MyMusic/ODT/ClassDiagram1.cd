@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DTO.clsBandForm">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQIAAAQAAAIAAAACAAAEAAAAIEA=</HashCode>
+      <FileName>clsBandForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsDisc">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAEAAgAAAAAAAEAAQAAgggAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsDisc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsInfoBand">
+    <Position X="8" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQDAAAAAAAAAAAAAAQIAAAQAAgogAgAiAAAEAAAAIAA=</HashCode>
+      <FileName>clsInfoBand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DTO.clsInfoFan">
+    <Position X="10.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQDAAAAAAAAAAACAAQIAAAQAAgooAgAiAAAAAAAAIEA=</HashCode>
+      <FileName>clsInfoFan.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DTO.IUser">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AADAAAAAAAAAAAAAAQAAAAAAAAAgAgAiAAAAAAAAAAA=</HashCode>
+      <FileName>IUser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
