@@ -11,9 +11,20 @@ namespace DataAccess.UserDataAccess
     {
         clsUserRead FanRead = new clsUserRead();
 
-        public clsForm getAllGenres(clsForm pclsForm)
+        public clsForm getAllGenres(clsForm pclsForm, ref clsResponse pclsResponse)
         {
-            return FanRead.getAllgenres(pclsForm);
+            try
+            {
+                return FanRead.getAllgenres(pclsForm,ref pclsResponse);
+            }
+            catch
+            {
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";
+                return pclsForm;//cambiar por error
+            }
+
         }
     }
 }

@@ -15,14 +15,14 @@ namespace DataAccess
         clsUserDA UserDA = new clsUserDA();
         clsFanDA FanDA = new clsFanDA();
 
-        public clsForm getAllGenres(clsForm pclsForm)
+        public clsForm getAllGenres(clsForm pclsForm,ref clsResponse pclsResponse)
         {
-            return UserDA.getAllGenres(pclsForm);
+            return UserDA.getAllGenres(pclsForm,ref pclsResponse);
         }
 
-        public clsForm getAllGenders(clsForm pclsForm)
+        public clsForm getAllGenders(clsForm pclsForm,ref clsResponse pclsResponse)
         {
-            return FanDA.getAllGenders(pclsForm);
+            return FanDA.getAllGenders(pclsForm,ref pclsResponse);
         }
 
 
@@ -34,9 +34,10 @@ namespace DataAccess
             System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();
             clsFacadeDA a = new clsFacadeDA();
             clsForm b = new clsForm();
+            clsResponse c = new clsResponse();
             
             
-            Console.WriteLine(a.getAllGenres(a.getAllGenders(b)).toJson());
+            Console.WriteLine(a.getAllGenres(a.getAllGenders(b,ref c),ref c).toJson());
             Console.WriteLine(sw.ElapsedMilliseconds);
             sw.Stop();
             Console.ReadKey();

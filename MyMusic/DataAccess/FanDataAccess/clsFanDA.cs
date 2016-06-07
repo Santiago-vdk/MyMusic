@@ -10,9 +10,19 @@ namespace DataAccess.FanDataAccess
     public class clsFanDA
     {
         clsFanRead FanRead = new clsFanRead();
-        public clsForm getAllGenders(clsForm pclsForm)
+        public clsForm getAllGenders(clsForm pclsForm,ref clsResponse pclsResponse)
         {
-            return FanRead.getAllgenders(pclsForm);
+            try
+            {
+                return FanRead.getAllgenders(pclsForm,ref pclsResponse);
+            }
+            catch
+            {
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";
+                return pclsForm;// cambiar x error
+            }
         }
     }
 }

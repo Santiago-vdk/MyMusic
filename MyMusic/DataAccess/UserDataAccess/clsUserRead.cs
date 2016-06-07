@@ -13,7 +13,7 @@ namespace DataAccess.UserDataAccess
         private SqlConnection conn = new clsConnection().getPort();
 
 
-        public clsForm getAllgenres(clsForm pclsForm)
+        public clsForm getAllgenres(clsForm pclsForm, ref clsResponse pclsResponse)
         {
             try
             {
@@ -27,18 +27,18 @@ namespace DataAccess.UserDataAccess
                     values.Add(result["strDescripcion"].ToString());
                 }
                 pclsForm.genres = values;
-                pclsForm.ErrorCode = "0";
-                pclsForm.ErrorMessage = "Done";
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
             }
             catch (SqlException ex)
             {
-                pclsForm.ErrorCode = ex.ErrorCode.ToString();
-                pclsForm.ErrorMessage = ex.Message.ToString();
+                pclsResponse.Code = 1;
+                pclsResponse.Message = "Error while procesing your request.";
             }
             catch (Exception ex)
             {
-                pclsForm.ErrorCode = "s001";
-                pclsForm.ErrorMessage = ex.Message.ToString();
+                pclsResponse.Code = 2;
+                pclsResponse.Message = "Unexpected error.";
             }
             finally
             {

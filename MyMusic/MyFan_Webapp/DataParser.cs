@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using MyFan_Webapp.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using DTO;
 
 namespace MyFan_Webapp
 {
-    public class JSONParser
+    public class DataParser
     {
 
-        internal FanForm parseFanForm(FanForm form, string json)
+        internal GetRegisterFanForm parseFanForm(GetRegisterFanForm form, string json)
         {
-            JSONResponse jsonresponse = JsonConvert.DeserializeObject<JSONResponse>(json);
-
-            dynamic data = JObject.Parse(jsonresponse.Data);
+            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
+            
+            dynamic data = JObject.Parse(Response.Data);
 
             List<string> genres = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.genres));
             List<string> genders = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.genders));

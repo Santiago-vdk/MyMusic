@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyFan_Webapp
 {
-    public class FanForm { 
+    public class GetRegisterFanForm { 
     
         public List<string> genres { get; set; }
         public List<string> genders { get; set; }
