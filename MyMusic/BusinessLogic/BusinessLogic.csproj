@@ -34,6 +34,10 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsErrorValidator.cs" />
-    <Compile Include="clsJsonParser.cs" />
     <Compile Include="Controllers\clsAlbumBL.cs" />
     <Compile Include="Controllers\clsBandBL.cs" />
     <Compile Include="Controllers\clsDiskBL.cs" />
     <Compile Include="Controllers\clsEventBL.cs" />
-    <Compile Include="Controllers\clsFanBL.cs" />
+    <Compile Include="FanBusinessLogic\clsFanBL.cs" />
     <Compile Include="Controllers\clsNewBL.cs" />
     <Compile Include="Controllers\clsUserBL.cs" />
     <Compile Include="FacadeBL.cs" />
+    <Compile Include="clsDeserializeJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagrama de clases\UML_Business.cd" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
