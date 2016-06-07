@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DataAccess.clsConnection">
+    <Position X="13.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAgA=</HashCode>
+      <FileName>clsConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.clsFacadeDA">
+    <Position X="6" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACAAAAAAAAAAAAAAAAAAAAQAAAAAAAEBAAAAAA=</HashCode>
+      <FileName>clsFacadeDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.FanDataAccess.clsFanDA">
+    <Position X="9" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FanDataAccess\clsFanDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.FanDataAccess.clsFanRead">
+    <Position X="0.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>FanDataAccess\clsFanRead.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.UserDataAccess.clsUserDA">
+    <Position X="1" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>UserDataAccess\clsUserDA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataAccess.UserDataAccess.clsUserRead">
+    <Position X="6.75" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAABAA=</HashCode>
+      <FileName>UserDataAccess\clsUserRead.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

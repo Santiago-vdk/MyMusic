@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsBandForm.cs" />
     <Compile Include="clsDisc.cs" />
     <Compile Include="clsResponse.cs" />
     <Compile Include="clsEvent.cs" />
@@ -74,7 +73,7 @@
     <Content Include="obj\Debug\ODT.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="Diagrama de clases\UML_DTO.cd" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\DTO.csprojResolveAssemblyReference.cache" />
     <None Include="packages.config" />
