@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="DTO.clsBandForm">
-    <Position X="0.5" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAQIAAAQAAAIAAAACAAAEAAAAIEA=</HashCode>
-      <FileName>clsBandForm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DTO.clsDisc">
     <Position X="4.5" Y="5.5" Width="2" />
     <TypeIdentifier>
@@ -15,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsInfoBand">
-    <Position X="8" Y="0.5" Width="2.25" />
+    <Position X="2.75" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AADAAAAAAAAAAAAAAQIAAAQAAAIAAgAiAAAEAAAAIAA=</HashCode>
       <FileName>clsInfoBand.cs</FileName>
@@ -23,7 +16,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DTO.clsInfoFan">
-    <Position X="10.5" Y="0.5" Width="2.25" />
+    <Position X="5.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AADAAAAAAAAAAACAAQIAAAQAAAIIAgAiAAAAAAAAIAA=</HashCode>
       <FileName>clsInfoFan.cs</FileName>
@@ -38,7 +31,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsForm">
-    <Position X="13" Y="0.5" Width="2" />
+    <Position X="7.75" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAEAAAAACAAAgAAAAAAAAAAAAAAA=</HashCode>
       <FileName>clsForm.cs</FileName>
@@ -52,7 +45,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsResponse">
-    <Position X="15.25" Y="0.5" Width="1.5" />
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAgABAAAAAAIAAAAAA=</HashCode>
       <FileName>clsResponse.cs</FileName>
@@ -73,7 +66,7 @@
     </TypeIdentifier>
   </Class>
   <Interface Name="DTO.IUser">
-    <Position X="5.75" Y="0.5" Width="2" />
+    <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AADAAAAAAAAAAAAAAQAAAAAAAAAAAgAiAAAAAAAAAAA=</HashCode>
       <FileName>IUser.cs</FileName>

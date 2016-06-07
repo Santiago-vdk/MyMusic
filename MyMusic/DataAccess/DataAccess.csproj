@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Diagrama de clases\UML_DataAccess.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ODT\DTO.csproj">
