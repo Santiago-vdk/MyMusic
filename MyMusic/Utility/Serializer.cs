@@ -9,7 +9,7 @@ namespace Utility
 {
     public class Serializer
     {
-        public Object tojson(Object pObjectObj)
+        public string Serialize(Object pObjectObj)
         {
             return JsonConvert.SerializeObject(pObjectObj);
         }    

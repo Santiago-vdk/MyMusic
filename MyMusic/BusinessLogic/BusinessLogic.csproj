@@ -68,6 +68,10 @@
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{d2a969ee-db6e-4af7-a730-dd4584326c5c}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagrama de clases\UML_Business.cd" />
