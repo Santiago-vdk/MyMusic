@@ -7,13 +7,11 @@ namespace DTO
 {
     public interface IUser
     {
-        String Username { get; set; }
-        String Password { get; set; }
-        String Salt { get; set; }
-        String SaltHashed { get; set; }
+        string Username { get; set; }
+        string Password { get; set; }
+        string Salt { get; set; }
+        string SaltHashed { get; set; }
         int Rol { get; set; }
-        Boolean Active { get; set; }
-        String toJson();
-
+        bool Active { get; set; }
     }
 }

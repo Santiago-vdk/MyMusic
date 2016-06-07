@@ -8,16 +8,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsDisc">
-    <Position X="3.25" Y="0.5" Width="2" />
+    <Position X="4.5" Y="5.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AQAAAEAAEAAgAAAAAAAEAAQAAgggAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAEAAEAAgAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>clsDisc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsInfoBand">
     <Position X="8" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AQDAAAAAAAAAAAAAAQIAAAQAAgogAgAiAAAEAAAAIAA=</HashCode>
+      <HashCode>AADAAAAAAAAAAAAAAQIAAAQAAAIAAgAiAAAEAAAAIAA=</HashCode>
       <FileName>clsInfoBand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -25,15 +25,57 @@
   <Class Name="DTO.clsInfoFan">
     <Position X="10.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AQDAAAAAAAAAAACAAQIAAAQAAgooAgAiAAAAAAAAIEA=</HashCode>
+      <HashCode>AADAAAAAAAAAAACAAQIAAAQAAAIIAgAiAAAAAAAAIAA=</HashCode>
       <FileName>clsInfoFan.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="DTO.clsEvent">
+    <Position X="0.5" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAgAEAAAAIAAAABAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>clsEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsForm">
+    <Position X="13" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAACAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsNew">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAEAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>clsNew.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsResponse">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAgABAAAAAAIAAAAAA=</HashCode>
+      <FileName>clsResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsReview">
+    <Position X="6.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsReview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsSong">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAQAAQAAAAAA=</HashCode>
+      <FileName>clsSong.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="DTO.IUser">
     <Position X="5.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AADAAAAAAAAAAAAAAQAAAAAAAAAgAgAiAAAAAAAAAAA=</HashCode>
+      <HashCode>AADAAAAAAAAAAAAAAQAAAAAAAAAAAgAiAAAAAAAAAAA=</HashCode>
       <FileName>IUser.cs</FileName>
     </TypeIdentifier>
   </Interface>

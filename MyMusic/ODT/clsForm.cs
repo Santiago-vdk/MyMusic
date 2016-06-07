@@ -13,13 +13,10 @@ namespace DTO
         public List<String> genres { get; set; }
         public List<String> genders { get; set; }
 
-
         public String toJson()
         {
             return JsonConvert.SerializeObject(this);
             
-        }
-
-        
+        }     
     }
 }

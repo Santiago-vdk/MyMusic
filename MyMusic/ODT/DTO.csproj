@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="clsBandForm.cs" />
     <Compile Include="clsDisc.cs" />
-    <Compile Include="clsDoubleValue.cs" />
     <Compile Include="clsResponse.cs" />
     <Compile Include="clsEvent.cs" />
     <Compile Include="clsInfoBand.cs" />

@@ -8,13 +8,12 @@ namespace DTO
 {
     public class clsInfoFan : IUser
     {
-        public String Name { get; set; }
-        public String Birthday { get; set; }
-        public String Gender { get; set; }
-        public String Location { get; set; }
-        public String Country { get; set; }
-        public List<String> Genres { get; set; }
-        public string Biography { get; set; }
+        public string Name { get; set; }
+        public string Birthday { get; set; }
+        public string Gender { get; set; }
+        public string Location { get; set; }
+        public string Country { get; set; }
+        public List<string> Genres { get; set; }
 
         //interface atributes
         public string Username { get; set; }
@@ -24,18 +23,5 @@ namespace DTO
         public string SaltHashed { get; set; }
         public int Rol  {get;set;}
         public bool Active {get;set;}
-
-        public bool Success { get; set; }
-        public String ErrorCode { get; set; }
-        public String ErrorMessage { get; set; }
-
-        public String toJson()
-        {
-            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            String json = "Success:"+Success+","+"ErrorCode:"+ ErrorCode+ "," + "ErrorMessage:" + ErrorMessage + "," + "Data:";
-            String data = javaScriptSerializer.Serialize(this);
-            json += data;
-            return json;
-        }
     }
 }

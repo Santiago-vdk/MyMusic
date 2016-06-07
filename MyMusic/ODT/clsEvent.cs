@@ -8,24 +8,11 @@ namespace DTO
 {
     public class clsEvent
     {
-        public String Title { get; set; }
-        public String Description { get; set; }
-        public String Location { get; set; }
-        public Boolean IsConcert { get; set; }
-        public Boolean State { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public bool IsConcert { get; set; }
+        public bool State { get; set; }
         public List<clsReview> Reviews { get; set; }
-        public bool Success { get; set; }
-        public int ErrorCode { get; set; }
-        public String ErrorMessage { get; set; }
-
-        public String toJson()
-        {
-            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            // String json = "Success:" + Success + "," + "ErrorCode:" + ErrorCode + "," + "ErrorMessage:" + ErrorMessage + "," + "Data:";
-            String json = "";
-            String data = javaScriptSerializer.Serialize(this);
-            json += data;
-            return json;
-        }
     }
 }
