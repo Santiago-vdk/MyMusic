@@ -1,14 +1,5 @@
-﻿using BusinessLogic;
-using DTO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Web.Http;
 
 namespace MyFan_API.Controllers
@@ -34,19 +25,21 @@ namespace MyFan_API.Controllers
         [Route("")]
         [HttpGet]
         // api/v1/users/fans?q=form GET
-        public HttpResponseMessage GetAllFans(string q)
+        public IHttpActionResult GetAllFans(string q)
         {
             if (String.Equals(q, "form"))
-            { 
-                FacadeBL facade = new FacadeBL();
+            {
+                /*FacadeBL facade = new FacadeBL();
 
                 string ResponseBody = facade.getFanForm();
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                 response.Content = new StringContent(ResponseBody);
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                
+                return response;*/
 
-                return response;
+                return new GetForm(Request);
             }
             //Endpoint for retrieving all fans
             throw new NotImplementedException();

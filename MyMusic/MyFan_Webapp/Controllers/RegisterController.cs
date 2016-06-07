@@ -23,7 +23,6 @@ namespace MyFan_Webapp.Controllers
             }
 
             DataParser DataParser = new DataParser();
-            System.Diagnostics.Debug.WriteLine(response);
             form = DataParser.parseFanForm(form, response);
 
             ViewBag.Message = "";
@@ -37,19 +36,6 @@ namespace MyFan_Webapp.Controllers
         public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputName, 
             string inputBirthday, string selectGenre, string selectCountry, string[] selectMusicalGenres)
         {
-            /* System.Diagnostics.Debug.WriteLine(inputUsername);
-             System.Diagnostics.Debug.WriteLine(inputPassword);
-             System.Diagnostics.Debug.WriteLine(inputName);
-             System.Diagnostics.Debug.WriteLine(inputBirthday);
-             System.Diagnostics.Debug.WriteLine(selectGenre);
-             System.Diagnostics.Debug.WriteLine(selectCountry);
-             System.Diagnostics.Debug.WriteLine(selectMusicalGenres[0]);
-             System.Diagnostics.Debug.WriteLine(selectMusicalGenres[1]);
-             System.Diagnostics.Debug.WriteLine(selectMusicalGenres[2]);
-             System.Diagnostics.Debug.WriteLine(selectMusicalGenres[3]);
-             System.Diagnostics.Debug.WriteLine(selectMusicalGenres[4]);*/
-
-
             string response = await clsRegisterRequests.PostRegisterFanForm(inputUsername, inputPassword,
             inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres);
             
