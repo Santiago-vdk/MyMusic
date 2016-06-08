@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using MyFan_API.ControllerCalls;
+using System;
 using System.Web.Http;
 
 namespace MyFan_API.Controllers
@@ -15,14 +12,18 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands POST
         public IHttpActionResult CreateBand() {
             //Endpoint for creating a band
-            throw new NotImplementedException();
+            return new BandControllerCallsRegisterBand(Request);
         }
 
         [Route(""), HttpGet]
         // api/v1/users/bands GET
-        public IHttpActionResult GetAllBands()
+        public IHttpActionResult GetAllBands(string q)
         {
-            //Endpoint for retrieving all bands
+            if (String.Equals(q, "form"))
+            {
+                return new BandControllerCallsGetForm(Request);
+            }
+            //Endpoint for retrieving all fans
             throw new NotImplementedException();
         }
 

@@ -13,9 +13,6 @@ namespace MyFan_API.Controllers
         public IHttpActionResult CreateFan()
         {
             return new FanControllerCallsRegisterFan(Request);
-            
-            //Endpoint for creating a new fan user
-            //throw new NotImplementedException();
         }
 
 
