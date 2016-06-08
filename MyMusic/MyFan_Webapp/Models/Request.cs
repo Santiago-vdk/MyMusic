@@ -8,7 +8,6 @@ namespace MyFan_Webapp
     public class Request
     {
 
-
         public string Token { get; set; }
         public int Id { get; set; }
         public string Data { get; set; }

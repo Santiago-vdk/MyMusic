@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Configuration;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MyFan_Webapp.Requests.Register
 {
@@ -32,9 +33,9 @@ namespace MyFan_Webapp.Requests.Register
 
             }
         }
-
-        internal static async Task<string> PostRegisterFanForm(string inputUsername, string inputPassword, string inputName,
-            string inputBirthday, string selectGenre, string selectCountry, string[] selectMusicalGenres)
+/*
+        public static async Task<string> PostRegisterFanForm(string inputUsername, string inputPassword, string inputConfirmPassword, 
+            string inputName, string inputBirthday, string selectGenre, string selectCountry, List<string> selectMusicalGenres)
         {
             using (var client = new HttpClient())
             {
@@ -42,7 +43,7 @@ namespace MyFan_Webapp.Requests.Register
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                PostRegisterFanForm RequestObj = new PostRegisterFanForm(inputUsername, inputPassword,
+                PostRegisterFanForm RequestObj = new PostRegisterFanForm(inputUsername, inputPassword, inputConfirmPassword,
             inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres);
 
                 // HTTP POST
@@ -61,6 +62,6 @@ namespace MyFan_Webapp.Requests.Register
                     return await Task.FromResult("Unexpected error ocurred");
                 }
             }
-        }
+        }*/
     }
 }

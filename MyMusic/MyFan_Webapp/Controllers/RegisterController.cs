@@ -24,30 +24,40 @@ namespace MyFan_Webapp.Controllers
 
             DataParser DataParser = new DataParser();
             form = DataParser.parseFanForm(form, response);
-
+            
             ViewBag.Message = "";
             ViewBag.AvailableMusicalGenres = form.genres;
             ViewBag.Genders = form.genders;
 
-            return View();
+            PostRegisterFanForm model = new PostRegisterFanForm();
+          //  model.Genres = form.genres;
+          //  model.Gender = form.genders;
+
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputName, 
-            string inputBirthday, string selectGenre, string selectCountry, string[] selectMusicalGenres)
+        public async Task<ActionResult> RegisterFan(PostRegisterFanForm form)
         {
-            string response = await clsRegisterRequests.PostRegisterFanForm(inputUsername, inputPassword,
-            inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres);
-            
-            ErrorParser ErrorParser = new ErrorParser();
-            string ParsedMessage = ErrorParser.parse(response);
-            if (!ParsedMessage.Equals(""))
-            {
-                ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
-            }
+            System.Diagnostics.Debug.WriteLine(form.Username);
 
-            ViewBag.Message = "We are glad to have you onboard!";
+            /* 
+             * string inputUsername, string inputPassword,string inputConfirmPassword,
+             string inputName, string inputBirthday, string selectGenre, string selectCountry, List<string> selectMusicalGenres
+             * 
+             * 
+             * string response = await clsRegisterRequests.PostRegisterFanForm(inputUsername, inputPassword,inputConfirmPassword,
+             inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres);
+
+             ErrorParser ErrorParser = new ErrorParser();
+             string ParsedMessage = ErrorParser.parse(response);
+             if (!ParsedMessage.Equals(""))
+             {
+                 ViewBag.Message = ParsedMessage;
+                 return View("~/Views/Login/Index.cshtml");
+             }
+
+             ViewBag.Message = "We are glad to have you onboard!";*/
 
             return View("~/Views/Login/Index.cshtml");
         }
