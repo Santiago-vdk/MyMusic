@@ -63,6 +63,10 @@
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{D2A969EE-DB6E-4AF7-A730-DD4584326C5C}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

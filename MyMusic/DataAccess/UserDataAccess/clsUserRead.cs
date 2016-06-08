@@ -22,11 +22,14 @@ namespace DataAccess.UserDataAccess
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 List<String> values = new List<String>();
+                List<int> cods = new List<int>();
                 while (result.Read())
                 {
                     values.Add(result["strDescripcion"].ToString());
+                    cods.Add(Convert.ToInt32(result["intCodGenero"]));
                 }
                 pclsForm.genres = values;
+                pclsForm.codGenres = cods;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
             }

@@ -12,11 +12,9 @@ namespace DTO
     {
         public List<String> genres { get; set; }
         public List<String> genders { get; set; }
-
-        public String toJson()
-        {
-            return JsonConvert.SerializeObject(this);
-            
-        }     
+        public List<String> locations { get; set; }
+        public List<int> codGenres { get; set; }
+        public List<int> codGenders { get; set; }
+        public List<int> codLocations { get; set; }  
     }
 }
