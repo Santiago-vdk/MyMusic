@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DTO;
 using BusinessLogic.FanBusinessLogic;
+using BusinessLogic.BandBusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,19 @@ namespace BusinessLogic
         {
             return FanBL.getForm();
         }
-
-        public string createFan(string pstringData)
+        public string getBandForm()
         {
-            return FanBL.createFan(pstringData);
+            return BandBL.getForm();
+        }
+
+
+        public string createFan(string pstringRequest)
+        {
+            return FanBL.createFan(pstringRequest);
+        }
+        public string createBand(string pstringRequest)
+        {
+            return BandBL.createBand(pstringRequest);
         }
 
     }
