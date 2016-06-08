@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace DataAccess
 {
@@ -38,9 +39,10 @@ namespace DataAccess
             clsFacadeDA a = new clsFacadeDA();
             clsForm b = new clsForm();
             clsResponse c = new clsResponse();
+            Serializer j = new Serializer();
             
             
-            Console.WriteLine(a.getAllGenres(a.getAllGenders(b,ref c),ref c).toJson());
+            Console.WriteLine(j.Serialize(a.getAllGenres(a.getAllGenders(b,ref c),ref c)));
             Console.WriteLine(sw.ElapsedMilliseconds);
             sw.Stop();
             Console.ReadKey();
