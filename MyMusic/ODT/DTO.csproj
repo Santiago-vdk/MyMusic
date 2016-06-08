@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsDisc.cs" />
+    <Compile Include="clsRequest.cs" />
     <Compile Include="clsResponse.cs" />
     <Compile Include="clsEvent.cs" />
     <Compile Include="clsInfoBand.cs" />

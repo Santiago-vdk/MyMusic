@@ -31,7 +31,7 @@ namespace MyFan_API
         }
     }
 
-    /*public class FanControllerCallsRegisterFan : IHttpActionResult
+    public class FanControllerCallsRegisterFan : IHttpActionResult
     {
         HttpRequestMessage _request;
         FacadeBL _facade;
@@ -45,10 +45,10 @@ namespace MyFan_API
         {
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(_facade.registerFan()),
+                Content = new StringContent(_facade.createFan(_request.Content.ReadAsStringAsync().Result)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
         }
-    }*/
+    }
 }

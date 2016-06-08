@@ -10,12 +10,12 @@ namespace MyFan_API.Controllers
         [Route("")]
         [HttpPost]
         // api/v1/users/fans POST
-        public IHttpActionResult CreateFan(HttpRequestMessage request)
+        public IHttpActionResult CreateFan()
         {
-           //return new FanControllerCallsRegisterFan(Request);
-
+            return new FanControllerCallsRegisterFan(Request);
+            
             //Endpoint for creating a new fan user
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 

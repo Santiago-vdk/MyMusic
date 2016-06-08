@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MyFan_Webapp
+namespace DTO
 {
-    public class Request
+    public class clsRequest
     {
-
         public string Token { get; set; }
         public int Id { get; set; }
         public string Data { get; set; }
 
-        public Request(string pStringToken, int pIntId, string pStringData)
+        public clsRequest(string pStringToken, int pIntId, string pStringData)
         {
             Token = pStringToken;
             Id = pIntId;
-           Data = pStringData;
+            Data = pStringData;
         }
-
     }
 }

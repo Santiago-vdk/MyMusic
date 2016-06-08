@@ -1,5 +1,4 @@
-﻿@model MyFan_Webapp.PostRegisterFanForm
-@{
+﻿@{
     Layout = null;
 }
 
@@ -41,8 +40,7 @@
                         <label for="inputUsername">Username</label>
                     </div>
                     <div class="col-xs-9">
-                        <!-- <input type="text" class="form-control" placeholder="Username" name="inputUsername" required/> -->
-                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control",  placeholder = "Username" }) 
+                        <input type="text" class="form-control" placeholder="Username" name="inputUsername" required/>
                     </div>
                 </div>
 
@@ -51,9 +49,7 @@
                         <label for="inputPassword">Password</label>
                     </div>
                     <div class="col-xs-9">
-                        <!-- <input type="password" class="form-control" placeholder="Password" name="inputPassword" /> -->
-                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
-                        
+                        <input type="password" class="form-control" placeholder="Password" name="inputPassword" />
                     </div>
                 </div>
 
@@ -62,8 +58,7 @@
                         <label for="inputConfirmPassword">Confirm Password</label>
                     </div>
                     <div class="col-xs-9">
-                        <!-- <input type="password" class="form-control" placeholder="Confirm Password" name="inputConfirmPassword" />-->
-                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                        <input type="password" class="form-control" placeholder="Confirm Password" name="inputConfirmPassword" />
                     </div>
                 </div>
 
@@ -72,8 +67,7 @@
                         <label for="inputName">Name</label>
                     </div>
                     <div class="col-xs-9">
-                        <!-- <input type="text" class="form-control" placeholder="Name" name="inputName" /> -->
-                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
+                        <input type="text" class="form-control" placeholder="Name" name="inputName" />
                     </div>
                 </div>
 
@@ -82,8 +76,7 @@
                         <label for="inputBirthday">Birthday</label>
                     </div>
                     <div class="col-xs-9">
-                        <!-- <input type="date" name="inputBirthday"> -->
-                        @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", placeholder = "Birthday", type = "date" })
+                        <input type="date" name="inputBirthday">
                     </div>
                 </div>
 
@@ -93,7 +86,9 @@
                     </div>
                     <div class="col-xs-9">
                         <select class="selectpicker" name="selectGender" data-width="100%">
-                           @foreach (string gender in ViewBag.Genders)
+
+
+                            @foreach (string gender in ViewBag.Genders)
                             {
                                 <option>@gender</option>
                             }
@@ -119,10 +114,10 @@
                         <label for="selectMusicalGenre">Musical Genres</label>
                     </div>
                     <div class="col-xs-9">
-                        <select class="selectpicker" data-live-search="true" name="selectMusicalGenres[]" id="genres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
-                            @foreach (string musicalgenre in ViewBag.AvailableMusicalGenres)
+                        <select class="selectpicker" data-live-search="true" name="selectGenres[]" id="genres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
+                            @foreach (string genre in ViewBag.Genres)
                             {
-                                <option data-tokens="@musicalgenre">@musicalgenre</option>
+                                <option data-tokens="@genre">@genre</option>
                             }
                         </select>
                     </div>
@@ -138,7 +133,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <h4>@ViewBag.Message</h4>
                     <div class="row">
                         <div class="col-xs-offset-4 col-xs-3">
                             <button type="submit" class="btn btn-success">Submit</button>

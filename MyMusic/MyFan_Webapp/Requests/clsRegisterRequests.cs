@@ -4,7 +4,9 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Configuration;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using DTO;
+using MyFan_Webapp.Models;
+using Utility;
 
 namespace MyFan_Webapp.Requests.Register
 {
@@ -20,11 +22,11 @@ namespace MyFan_Webapp.Requests.Register
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // HTTP GET
-                HttpResponseMessage response = await client.GetAsync("users/fans?q=form");
-                if (response.IsSuccessStatusCode)
+                HttpResponseMessage request = await client.GetAsync("users/fans?q=form");
+                if (request.IsSuccessStatusCode)
                 {
-                    string JsonResponse = response.Content.ReadAsStringAsync().Result;
-                    return await Task.FromResult(JsonResponse);
+                    string response = request.Content.ReadAsStringAsync().Result;
+                    return await Task.FromResult(response);
                 }
                 else //if ((int) response.StatusCode == 500)
                 {
@@ -33,9 +35,8 @@ namespace MyFan_Webapp.Requests.Register
 
             }
         }
-/*
-        public static async Task<string> PostRegisterFanForm(string inputUsername, string inputPassword, string inputConfirmPassword, 
-            string inputName, string inputBirthday, string selectGenre, string selectCountry, List<string> selectMusicalGenres)
+
+        public static async Task<string> PostRegisterFanForm(PostRegisterFanForm form)
         {
             using (var client = new HttpClient())
             {
@@ -43,25 +44,71 @@ namespace MyFan_Webapp.Requests.Register
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                PostRegisterFanForm RequestObj = new PostRegisterFanForm(inputUsername, inputPassword, inputConfirmPassword,
-            inputName, inputBirthday, selectGenre, selectCountry, selectMusicalGenres);
+                // HTTP POST
+                Serializer Serializer = new Serializer();
+                string RequestBody = Serializer.Serialize(form);
+
+                clsRequest RequestObject = new clsRequest("-1",-1,RequestBody);
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", JsonConvert.SerializeObject(RequestObject));
+                if (request.IsSuccessStatusCode)
+                {
+                    string response = request.Content.ReadAsStringAsync().Result;
+                    return await Task.FromResult(response);
+                }
+                else
+                {
+                    return await Task.FromResult("Unexpected error ocurred");
+                }
+           }
+        }
+
+
+        public static async Task<string> GetRegisterBandForm()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiEndpoint"]);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // HTTP GET
+                HttpResponseMessage request = await client.GetAsync("users/bands?q=form");
+                if (request.IsSuccessStatusCode)
+                {
+                    string response = request.Content.ReadAsStringAsync().Result;
+                    return await Task.FromResult(response);
+                }
+                else 
+                {
+                    return await Task.FromResult("Unexpected error ocurred");
+                }
+
+            }
+        }
+
+        public static async Task<string> PostRegisterBandForm(PostRegisterBandForm form)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiEndpoint"]);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // HTTP POST
-                string RequestBody = RequestObj.toJson();
-                System.Diagnostics.Debug.WriteLine(RequestBody);
-                Request request = new Request("-1",-1,RequestBody);
-
-                HttpResponseMessage response = await client.PostAsJsonAsync("users/fans", JsonConvert.SerializeObject(request));
-                if (response.IsSuccessStatusCode)
+                Serializer Serializer = new Serializer();
+                string RequestBody = Serializer.Serialize(form);
+                clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", JsonConvert.SerializeObject(RequestObject));
+                if (request.IsSuccessStatusCode)
                 {
-                    string JsonResponse = response.Content.ReadAsStringAsync().Result;
-                    return await Task.FromResult(JsonResponse);
+                    string response = request.Content.ReadAsStringAsync().Result;
+                    return await Task.FromResult(response);
                 }
                 else
                 {
                     return await Task.FromResult("Unexpected error ocurred");
                 }
             }
-        }*/
+        }
     }
 }

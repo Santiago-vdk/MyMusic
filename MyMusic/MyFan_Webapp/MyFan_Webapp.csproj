@@ -159,13 +159,14 @@
     <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Models\GetRegisterBandForm.cs" />
+    <Compile Include="Models\PostRegisterBandForm.cs" />
     <Compile Include="Parsers\DataParser.cs" />
     <Compile Include="Parsers\ErrorParser.cs" />
     <Compile Include="Models\GetRegisterFanForm.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\PostRegisterFanForm.cs" />
     <Compile Include="Requests\clsRegisterRequests.cs" />
@@ -213,6 +214,10 @@
     <ProjectReference Include="..\ODT\DTO.csproj">
       <Project>{C80A7542-8DB4-440C-B61E-D0DE3D702060}</Project>
       <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{D2A969EE-DB6E-4AF7-A730-DD4584326C5C}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
