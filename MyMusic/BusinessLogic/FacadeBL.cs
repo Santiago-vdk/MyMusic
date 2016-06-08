@@ -1,11 +1,12 @@
 ﻿using DataAccess;
 using DTO;
-using BusinessLogic.Controllers;
+using BusinessLogic.FanBusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessLogic.Controllers;
 
 namespace BusinessLogic
 {
@@ -20,11 +21,15 @@ namespace BusinessLogic
         public clsUserBL UserBL { get; set; }
 
 
-        public String getFanForm()
+        public string getFanForm()
         {
             return FanBL.getForm();
         }
-        
+
+        public string createFan(string pstringData)
+        {
+            return FanBL.createFan(pstringData);
+        }
 
     }
 }

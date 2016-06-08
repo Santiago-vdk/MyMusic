@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="8521ab4a-6752-41d1-a5c9-40bef3f57ddf" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="7f909c6c-370d-4760-80b8-4124bd9b5929" name="DTO1">
+      <references>
+        <reference Id="75c97719-8a4e-4455-9291-b8d09e071ca3" name="DTO">
+          <ArtifactNode Label="DTO" Category="CodeSchema_Project" Id="(Assembly=../ODT/DTO.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=DTO)" Label="DTO.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="cc30d942-c3b5-4329-ab9e-dab434221da2" name="DataAccess">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="0987c1b4-0ab9-4f89-98fa-8476f2498cbf" direction="Forward">
+          <layerMoniker Id="7f909c6c-370d-4760-80b8-4124bd9b5929" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="67bfed9d-93ac-4ad0-bb37-9d3b56d54101" name="DataAccess">
+          <ArtifactNode Label="DataAccess" Category="CodeSchema_Project" Id="(Assembly=../DataAccess/DataAccess.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=DataAccess)" Label="DataAccess.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="527b98dc-8997-4a8f-a610-5163a5b65920" name="BusinessLogic">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="cc86cf78-4761-4d26-a898-9fa7efba3dfa" direction="Forward">
+          <layerMoniker Id="cc30d942-c3b5-4329-ab9e-dab434221da2" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="58bc2773-7192-47d6-8741-e3befb8b63d7" direction="Forward">
+          <layerMoniker Id="7f909c6c-370d-4760-80b8-4124bd9b5929" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="28676ff3-bd7d-46c0-8dcd-7955fb57dfa9" name="BusinessLogic">
+          <ArtifactNode Label="BusinessLogic" Category="CodeSchema_Project" Id="(Assembly=../BusinessLogic/BusinessLogic.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=BusinessLogic)" Label="BusinessLogic.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="d346ca23-e91a-4c95-9787-b2c27b532f27" name="MyFan_API">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="8ded119b-d68f-4052-89ff-46cda6a06ab2" direction="Forward">
+          <layerMoniker Id="527b98dc-8997-4a8f-a610-5163a5b65920" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0da017d2-c389-4087-b6d0-9097ec1b1de9" direction="Forward">
+          <layerMoniker Id="7f909c6c-370d-4760-80b8-4124bd9b5929" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="468651f1-81bf-464c-bbe0-53f5e376d676" name="MyFan_API">
+          <ArtifactNode Label="MyFan_API" Category="CodeSchema_Project" Id="(Assembly=../MyFan_API/MyFan_API.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=MyFan_API)" Label="MyFan_API.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="e1029618-6fca-4b27-b46a-8cf0db41282a" name="Utility">
+      <references>
+        <reference Id="55522e71-5000-4cc2-aebc-f0e308006626" name="Utility">
+          <ArtifactNode Label="Utility" Category="CodeSchema_Project" Id="(Assembly=../Utility/Utility.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Utility)" Label="Utility.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

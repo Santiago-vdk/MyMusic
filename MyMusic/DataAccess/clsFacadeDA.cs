@@ -25,7 +25,10 @@ namespace DataAccess
             return FanDA.getAllGenders(pclsForm,ref pclsResponse);
         }
 
-
+        public clsInfoFan sendForm(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        {
+            return FanDA.sendForm(pclsInfoFan, ref pclsResponse);
+        }
 
 
 
