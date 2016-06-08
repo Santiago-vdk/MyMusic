@@ -24,7 +24,8 @@ namespace MyFan_API.ControllerCalls
         {
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(_facade.getBandForm()),
+
+                //Content = new StringContent(_facade.getBandForm()),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
@@ -45,7 +46,7 @@ namespace MyFan_API.ControllerCalls
         {
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(_facade.createBand(_request.Content.ReadAsStringAsync().Result)),
+                //Content = new StringContent(_facade.createBand(_request.Content.ReadAsStringAsync().Result)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
