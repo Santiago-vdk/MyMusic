@@ -8,11 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Utility;
 
-namespace BusinessLogic.FanBusinessLogic
+namespace BusinessLogic.BandBusinessLogic
 {
-    public class clsFanBL
+    public class clsBandBL
     {
-
         clsFacadeDA FacadeDA = new clsFacadeDA();
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
@@ -21,24 +20,21 @@ namespace BusinessLogic.FanBusinessLogic
         {
             clsForm form = new clsForm();
             clsResponse response = new clsResponse();
-            form = FacadeDA.getAllGenres(form,ref response);
-            form = FacadeDA.getAllGenders(form,ref response);
+            form = FacadeDA.getAllGenres(form, ref response);
             response.Data = serializer.Serialize(form);
             return serializer.Serialize(response);
 
         }
 
-        public string createFan(string pstringRequest)
+        public string createBand(string pstringRequest)
         {
 
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
-            clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
+            clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data);
             clsResponse response = new clsResponse();
-            InfoFan = FacadeDA.sendForm(InfoFan,ref response);
-            response.Data = serializer.Serialize(InfoFan);
+            //InfoBand = FacadeDA.sendForm(InfoBand, ref response);
+            response.Data = serializer.Serialize(InfoBand);
             return serializer.Serialize(response);
         }
-
-     
     }
 }
