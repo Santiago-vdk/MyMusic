@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,8 +10,12 @@ namespace MyFan_Webapp.Controllers
     public class LoginController : Controller
     {
 
-         private bool isExpired()
+
+       
+        // GET: Login
+        public ActionResult Index()
         {
+
             if (Session["token"] != null)
             {
                 if (Session.IsNewSession)
@@ -21,62 +26,48 @@ namespace MyFan_Webapp.Controllers
                     {
                         // IsNewSession is true, but session cookie exists,
                         // so, ASP.NET session is expired
-                        return true;
+                        Session["token"] = null;
+                        ViewBag.Message = "logged out";
+                        return View();
                     }
+                    ViewBag.Message = "you just loggued in";
+                    return View();
+
                 }
             }
-
-            // Session is not expired and function will return false,
-            // could be new session, or existing active session
-            return false;
+            ViewBag.Message = "You are in";
+            return View();
         }
 
-       
-        // GET: Login
-        public ActionResult Index()
+        public async Task<ActionResult> Login(string inputUsername, string inputPassword)
         {
-          
-            if (isExpired())
+            PostLoginUserForm form = new PostLoginUserForm();
+            form.Username = inputUsername;
+            form.Password = inputPassword;
+
+            string response = await clsLoginRequests.PostLoginUserForm(form);
+
+            ErrorParser ErrorParser = new ErrorParser();
+            string ParsedMessage = ErrorParser.parse(response);
+            //Hubo error
+            if (!ParsedMessage.Equals(""))
             {
-                ViewBag.Message = "Your session expired ";
-
-                string token = Guid.NewGuid().ToString();
-                Session["token"] = token;
-                Session["username"] = "shagy";
-                Session["id"] = 532563;
-                Session.Timeout = 1;
-                
-                ViewBag.Message = "Here is a new session " + Session["username"] + ":" + token;
-                return View();
-            }
-            else
-            {
-                ViewBag.Message = "Session active " + Session["username"] + ":" + Session["token"];
-                return View();
+                ViewBag.Message = ParsedMessage;
+                return View("~/Views/Login/Index.cshtml");
             }
 
+            DataParser DataParser = new DataParser();
+            int id = DataParser.parseUserForm(response);
 
-           /* if (Session["token"] == null)
-            {
-                string token = Guid.NewGuid().ToString();
-                Session["token"] = token;
-                Session["username"] = "shagy";
-                Session["id"] = 532563;
-                Session.Timeout = 1;
-                System.Diagnostics.Debug.WriteLine("created session");
-                ViewBag.Message = "created session with value " + token;
-                return View();
-            }
-            else if (Session.Timeout == 0) {
-                ViewBag.Message = "Your session expired ";
-                Session["username"] 
-                return View();
-            }
+            string token = Guid.NewGuid().ToString();
+            Session["token"] = token;
+            Session["username"] = form.Username;
+            Session["id"] = id;
+            Session.Timeout = 1;
 
+            ViewBag.Message = "good to have you on board";
 
-
-            ViewBag.Message = "you already have a session, " + Session["username"] + ":" + Session["id"];
-            return View();*/
+            return View();
         }
     }
 }

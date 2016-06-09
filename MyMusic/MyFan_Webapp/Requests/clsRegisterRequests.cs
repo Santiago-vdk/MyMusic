@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Configuration;
-using Newtonsoft.Json;
 using DTO;
 using MyFan_Webapp.Models;
 using Utility;
+using Newtonsoft.Json;
 
 namespace MyFan_Webapp.Requests.Register
 {
