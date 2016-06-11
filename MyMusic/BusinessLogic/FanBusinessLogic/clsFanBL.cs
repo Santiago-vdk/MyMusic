@@ -2,6 +2,10 @@
 using DTO;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Utility;
 
 namespace BusinessLogic.FanBusinessLogic
@@ -26,10 +30,16 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string createFan(string pstringRequest)
         {
-            System.Diagnostics.Debug.WriteLine("In Method: " + pstringRequest);
+
+
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
             clsResponse response = new clsResponse();
+
+            InfoFan.Salt = clsHasher.genSalt();
+            InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
+
+
             InfoFan = FacadeDA.sendForm(InfoFan,ref response);
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);

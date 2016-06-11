@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsInfoUser.cs" />
     <Compile Include="clsDisc.cs" />
     <Compile Include="clsRequest.cs" />
     <Compile Include="clsResponse.cs" />
