@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ControllerCalls\BandControllerCalls.cs" />
+    <Compile Include="ControllerCalls\UserControllerCalls.cs" />
     <Compile Include="Models\JSONResponse.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\BandsController.cs" />

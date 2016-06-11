@@ -1,11 +1,7 @@
 ﻿using BusinessLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 
 namespace MyFan_API
@@ -20,8 +16,10 @@ namespace MyFan_API
             _request = request;
             _facade = new FacadeBL();
         }
+
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
+
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_facade.getFanForm()),

@@ -7,10 +7,10 @@ using MyFan_Webapp.Models;
 
 namespace MyFan_Webapp
 {
-    public class DataParser
+    public static class DataParser
     {
 
-        internal GetRegisterFanForm parseFanForm(GetRegisterFanForm form, string json)
+        public static GetRegisterFanForm parseFanForm(GetRegisterFanForm form, string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
             
@@ -25,7 +25,7 @@ namespace MyFan_Webapp
             return form;
         }
 
-        internal GetRegisterBandForm parseBandForm(GetRegisterBandForm form, string json)
+        public static GetRegisterBandForm parseBandForm(GetRegisterBandForm form, string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
 

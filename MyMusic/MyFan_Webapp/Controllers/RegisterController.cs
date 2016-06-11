@@ -15,7 +15,6 @@ namespace MyFan_Webapp.Controllers
             string response = await clsRegisterRequests.GetRegisterFanForm();
 
             GetRegisterFanForm form = new GetRegisterFanForm();
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
 
             //Hubo error
@@ -24,7 +23,6 @@ namespace MyFan_Webapp.Controllers
                 ViewBag.Message = ParsedMessage;
                 return View("~/Views/Login/Index.cshtml");
             }
-            DataParser DataParser = new DataParser();
             form = DataParser.parseFanForm(form, response);
 
             ViewBag.Genres = form.genres;
@@ -49,7 +47,6 @@ namespace MyFan_Webapp.Controllers
 
             string response = await clsRegisterRequests.PostRegisterFanForm(form);
             
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
             if (!ParsedMessage.Equals(""))
             {
@@ -67,7 +64,6 @@ namespace MyFan_Webapp.Controllers
             string response = await clsRegisterRequests.GetRegisterBandForm();
 
             GetRegisterBandForm form = new GetRegisterBandForm();
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
             
             //Hubo error
@@ -77,7 +73,6 @@ namespace MyFan_Webapp.Controllers
                 return View("~/Views/Login/Index.cshtml");
             }
 
-            DataParser DataParser = new DataParser();
             form = DataParser.parseBandForm(form, response);
 
             ViewBag.Genres = form.genres;
@@ -103,7 +98,6 @@ namespace MyFan_Webapp.Controllers
 
             string response = await clsRegisterRequests.PostRegisterBandForm(form);
 
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
             if (!ParsedMessage.Equals(""))
             {
