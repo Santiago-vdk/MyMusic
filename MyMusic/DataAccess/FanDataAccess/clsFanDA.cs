@@ -26,11 +26,11 @@ namespace DataAccess.FanDataAccess
             }
         }
 
-        public clsInfoFan sendForm(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
             try
             {
-                return FanWrite.crearFanatico(pclsInfoFan, ref pclsResponse);
+                return FanWrite.createFan(pclsInfoFan, ref pclsResponse);
             }
             catch
             {

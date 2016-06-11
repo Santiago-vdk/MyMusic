@@ -14,7 +14,7 @@ namespace DataAccess.FanDataAccess
         private SqlConnection conn = new clsConnection().getPort();
 
 
-        public clsInfoFan crearFanatico(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
          {
            
              try
@@ -25,10 +25,10 @@ namespace DataAccess.FanDataAccess
                  cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Username;
                  cmd.Parameters.Add("@strContrasena", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Password;
                  cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
-                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Genres.ToString();
+                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",",pclsInfoFan.Genres);
                  cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;
                  cmd.Parameters.Add("@strPais", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Country;
-                    cmd.Parameters.Add("@intSexo", System.Data.SqlDbType.Int).Value = pclsInfoFan.Gender;
+                 cmd.Parameters.Add("@intSexo", System.Data.SqlDbType.Int).Value = pclsInfoFan.Gender;
                  cmd.Parameters.Add("@strSalt", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Salt;
                  cmd.Parameters.Add("@strSaltHashedPassword", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.SaltHashed;
                  SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
@@ -38,7 +38,9 @@ namespace DataAccess.FanDataAccess
                  conn.Open();
                  cmd.ExecuteNonQuery();
                  pclsResponse.Code = 0;
-                 pclsResponse.Message = "Done";
+                 pclsResponse.Message = "SQL insertion error";
+                 pclsResponse.Success = true;
+
             }
              catch (SqlException ex)
              {
@@ -63,19 +65,19 @@ namespace DataAccess.FanDataAccess
         {
             clsFanWrite a = new clsFanWrite();
             clsInfoFan b = new clsInfoFan();
-            b.Username = "panocho3";
+            b.Username = "panocho007";
             b.Password = "panocho";
             b.Name = "panocho";
             b.Genres = new List<string>(new string[] { "Rock","Metal" });
             b.Birthday = "1-2-2016";
             b.Country = "Panocho";
             b.Gender = "1";
-            b.Salt = "dhjsdhjssaasrddsds";
-            b.SaltHashed = "dsdssdsd";
+            b.Salt = "dhjsdhjss3600177aasrddsds";
+            b.SaltHashed = "dsdssd001sd";
             clsFanWrite d = new clsFanWrite();
             clsResponse f = new clsResponse();
-            d.crearFanatico(b,ref f);
-            Console.WriteLine(f.Message.ToString());
+            d.createFan(b,ref f);
+            Console.WriteLine(f.Code.ToString());
             Console.ReadKey();
         }
     }

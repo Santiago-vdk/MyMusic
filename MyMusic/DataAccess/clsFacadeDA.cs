@@ -1,4 +1,5 @@
-﻿using DataAccess.FanDataAccess;
+﻿using DataAccess.BandDataAccess;
+using DataAccess.FanDataAccess;
 using DataAccess.UserDataAccess;
 using DTO;
 using System;
@@ -15,6 +16,7 @@ namespace DataAccess
     {
         clsUserDA UserDA = new clsUserDA();
         clsFanDA FanDA = new clsFanDA();
+        clsBandDA BandDA = new clsBandDA();
 
         public clsForm getAllGenres(clsForm pclsForm,ref clsResponse pclsResponse)
         {
@@ -26,12 +28,15 @@ namespace DataAccess
             return FanDA.getAllGenders(pclsForm,ref pclsResponse);
         }
 
-        public clsInfoFan sendForm(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
-            return FanDA.sendForm(pclsInfoFan, ref pclsResponse);
+            return FanDA.createFan(pclsInfoFan, ref pclsResponse);
         }
 
-
+        public clsInfoBand createBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            return BandDA.createBand(pclsInfoBand, ref pclsResponse);
+        }
 
         public static void Main()
         {
