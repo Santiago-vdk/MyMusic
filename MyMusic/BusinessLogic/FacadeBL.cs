@@ -41,5 +41,22 @@ namespace BusinessLogic
             return BandBL.createBand(pstringRequest);
         }
 
+        public string login(string pstringRequest)
+        {
+            return UserBL.login(pstringRequest);
+        }
+        public string checkUsername(string pstringUsername)
+        {
+            return UserBL.checkUsername(pstringUsername);
+        }
+
+        public string checkHashtag(string pstringHashtag)
+        {
+            return BandBL.checkHashtag(pstringHashtag);
+        }
+
+
+
+
     }
 }

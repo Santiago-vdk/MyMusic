@@ -1,4 +1,6 @@
-﻿using DTO;
+﻿using DataAccess;
+using DTO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +13,36 @@ namespace BusinessLogic.Controllers
     public class clsUserBL
     {
 
-        public void register(IUser pIUser)
+        clsFacadeDA FacadeDA = new clsFacadeDA();
+        clsDeserializeJson DeserializeJson = new clsDeserializeJson();
+        Serializer serializer = new Serializer();
+
+        public string login(string pstringRequest)
         {
-            string salt = clsHasher.genSalt();
-            string password = clsHasher.hashPassword(pIUser.Password,salt);
+
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsInfoUser InfoUser = DeserializeJson.DeserializeInfoUser(request.Data);
+            clsResponse response = new clsResponse();
+
+            IUser user = new clsInfoUser();
+            //llenar el objeto llamando al DA con el username de pIUser
+
+            string password1 = clsHasher.hashPassword(InfoUser.Password, user.Salt);
+
+
+            bool match = clsHasher.compare(password1, user.SaltHashed);
+
+            return "";
+
         }
+
+        public string checkUsername(string pstringUsername)
+        {
+            //llamar a DA a validar existencia
+            return "";
+
+        }
+
+
     }
 }

@@ -32,9 +32,20 @@ namespace BusinessLogic.BandBusinessLogic
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data);
             clsResponse response = new clsResponse();
+
+            InfoBand.Salt = clsHasher.genSalt();
+            InfoBand.SaltHashed = clsHasher.hashPassword(InfoBand.Password, InfoBand.Salt);
+
             //InfoBand = FacadeDA.sendForm(InfoBand, ref response);
             response.Data = serializer.Serialize(InfoBand);
             return serializer.Serialize(response);
+        }
+
+        public string checkHashtag(string pstringHashtag)
+        {
+            //llamar a DA a validar existencia
+            return "";
+
         }
     }
 }

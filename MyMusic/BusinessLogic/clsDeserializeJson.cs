@@ -47,5 +47,20 @@ namespace BusinessLogic
 
             return InfoBand;
         }
+
+        public clsInfoUser DeserializeInfoUser(string pstringData)
+        {
+            clsInfoUser InfoUser = new clsInfoUser();
+            dynamic data = JObject.Parse(pstringData);
+
+            InfoUser.Username = Convert.ToString(data.Username);
+            InfoUser.Password = Convert.ToString(data.Password);
+            InfoUser.ConfirmPassword = Convert.ToString(data.ConfirmPassword);
+            InfoUser.Active = Convert.ToBoolean(data.Active);
+           
+
+            return InfoUser;
+
+        }
     }
 }
