@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DataAccess.BandDataAccess.clsBandWrite</StartupObject>
+    <StartupObject>DataAccess.FanDataAccess.clsFanWrite</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

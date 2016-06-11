@@ -38,6 +38,14 @@ namespace DataAccess
             return BandDA.createBand(pclsInfoBand, ref pclsResponse);
         }
 
+        public clsInfoFan updateFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        {
+            return FanDA.updateFan(pclsInfoFan, ref pclsResponse);
+        }
+
+
+
+
         public static void Main()
         {
             System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();
