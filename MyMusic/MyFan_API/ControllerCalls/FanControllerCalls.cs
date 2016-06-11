@@ -41,6 +41,7 @@ namespace MyFan_API
         }
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
+            
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_facade.createFan(_request.Content.ReadAsStringAsync().Result)),

@@ -49,7 +49,8 @@ namespace MyFan_Webapp.Requests.Register
                 string RequestBody = Serializer.Serialize(form);
 
                 clsRequest RequestObject = new clsRequest("-1",-1,RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", JsonConvert.SerializeObject(RequestObject));
+
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;
@@ -98,7 +99,7 @@ namespace MyFan_Webapp.Requests.Register
                 Serializer Serializer = new Serializer();
                 string RequestBody = Serializer.Serialize(form);
                 clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", JsonConvert.SerializeObject(RequestObject));
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;

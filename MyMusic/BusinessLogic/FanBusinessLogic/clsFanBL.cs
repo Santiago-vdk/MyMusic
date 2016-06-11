@@ -2,10 +2,6 @@
 using DTO;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utility;
 
 namespace BusinessLogic.FanBusinessLogic
@@ -30,7 +26,7 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string createFan(string pstringRequest)
         {
-
+            System.Diagnostics.Debug.WriteLine("In Method: " + pstringRequest);
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
             clsResponse response = new clsResponse();
