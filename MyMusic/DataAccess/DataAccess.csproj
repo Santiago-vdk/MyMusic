@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BandDataAccess\clsBandDA.cs" />
+    <Compile Include="BandDataAccess\clsBandRead.cs" />
+    <Compile Include="BandDataAccess\clsBandWrite.cs" />
     <Compile Include="clsConnection.cs" />
     <Compile Include="clsFacadeDA.cs" />
     <Compile Include="FanDataAccess\clsFanWrite.cs" />
