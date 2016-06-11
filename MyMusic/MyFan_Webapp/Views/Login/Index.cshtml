@@ -24,14 +24,18 @@
 <body>
     <div class="container">
         <div class="col-xs-4 col-xs-offset-4">
-            <form class="form-signin">
+
+
+            @using (Html.BeginForm("Login", "Index", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+            <!--<form class="form-signin">-->
                 <img class="img-responsive" src="~/assets/common/img/logo2.png">
                 <br>
                 <label for="inputEmail" class="sr-only">Username</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <input type="text" name="inputUsername" class="form-control" placeholder="Username" required autofocus>
                 <br>
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
                 <br>
                 <button class="btn btn-primary btn-block" type="submit">Login</button>
                 <br />
@@ -44,10 +48,11 @@
                     </div>
                   </div>
                 <h4>@ViewBag.Message</h4>
-            </form>
-
+            
+     <!-- </form> -->
+            }
         </div>
-        <!-- /container -->
+       
     </div>
 </body>
 

@@ -31,9 +31,15 @@ namespace BusinessLogic.FanBusinessLogic
         public string createFan(string pstringRequest)
         {
 
+
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
             clsResponse response = new clsResponse();
+
+            InfoFan.Salt = clsHasher.genSalt();
+            InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
+
+
             InfoFan = FacadeDA.sendForm(InfoFan,ref response);
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);

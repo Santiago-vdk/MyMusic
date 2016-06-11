@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using BCrypt.Net;
+using MyFan_API.ControllerCalls;
 
 namespace MyFan_API.Controllers
 {
@@ -12,16 +8,23 @@ namespace MyFan_API.Controllers
     public class UsersController : ApiController
     {
         [Route("users"), HttpGet]
-        public IHttpActionResult GetAllUsers()
+        public IHttpActionResult GetUsers()
         {
-            //System.Diagnostics.Debug.WriteLine(uniqueCode());
-            //return Json(new { response = "r" });
 
             //Endpoint for retrieving all users
             throw new NotImplementedException();
         }
 
-        private void register(string v)
+        [Route("users/login"), HttpGet]
+        public IHttpActionResult Login()
+        {
+            return new UserControllerCallsLoginUser(Request);
+
+            //Endpoint for retrieving all users
+            throw new NotImplementedException();
+        }
+
+      /*  private void register(string v)
         {
             string hashedForSending = BCrypt.Net.BCrypt.HashPassword(v);
             System.Diagnostics.Debug.WriteLine("Hash when sended " + hashedForSending);
@@ -32,6 +35,6 @@ namespace MyFan_API.Controllers
             string password = BCrypt.Net.BCrypt.HashPassword(hashedForSending, mySalt);
             System.Diagnostics.Debug.WriteLine("Final password " + password);
             System.Diagnostics.Debug.WriteLine("\n");
-        }
+        }*/
     }
 }

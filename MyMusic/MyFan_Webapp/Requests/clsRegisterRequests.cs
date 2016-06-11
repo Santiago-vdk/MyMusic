@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Configuration;
-using Newtonsoft.Json;
 using DTO;
 using MyFan_Webapp.Models;
 using Utility;
+using Newtonsoft.Json;
 
 namespace MyFan_Webapp.Requests.Register
 {
@@ -49,7 +49,8 @@ namespace MyFan_Webapp.Requests.Register
                 string RequestBody = Serializer.Serialize(form);
 
                 clsRequest RequestObject = new clsRequest("-1",-1,RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", JsonConvert.SerializeObject(RequestObject));
+
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;
@@ -98,7 +99,7 @@ namespace MyFan_Webapp.Requests.Register
                 Serializer Serializer = new Serializer();
                 string RequestBody = Serializer.Serialize(form);
                 clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", JsonConvert.SerializeObject(RequestObject));
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;

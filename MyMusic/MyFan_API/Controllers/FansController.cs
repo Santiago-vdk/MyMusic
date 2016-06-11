@@ -1,5 +1,6 @@
-﻿using System;
-using System.Net.Http;
+﻿using DTO;
+using Newtonsoft.Json;
+using System;
 using System.Web.Http;
 
 namespace MyFan_API.Controllers

@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace MyFan_Webapp
 {
-    public class ErrorParser
+    public static class ErrorParser
     {
-        internal string parse(string pStringJson)
+        public static string parse(string pStringJson)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(pStringJson);
             if (Response.Success)
@@ -20,7 +20,7 @@ namespace MyFan_Webapp
 
         }
 
-        private string HandleError(int pIntCode, string pStringMessage)
+        private static string HandleError(int pIntCode, string pStringMessage)
         {
             if(pIntCode == 1)
             {
