@@ -24,7 +24,8 @@ namespace MyFan_Webapp.Controllers
                 string RequestBody = serializer.Serialize(form);
 
                 clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", RequestObject);
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/login", RequestObject);
+                System.Diagnostics.Debug.WriteLine(request);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;

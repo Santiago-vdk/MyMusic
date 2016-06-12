@@ -166,6 +166,7 @@
     <Compile Include="Models\Views\Genre.cs" />
     <Compile Include="Models\Views\Gender.cs" />
     <Compile Include="Models\Views\Location.cs" />
+    <Compile Include="Models\Views\UserSession.cs" />
     <Compile Include="Requests\clsLoginRequests.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Models\PostLoginUserForm.cs" />

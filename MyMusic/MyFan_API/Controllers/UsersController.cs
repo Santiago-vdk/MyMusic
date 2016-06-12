@@ -15,7 +15,7 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-        [Route("users/login"), HttpGet]
+        [Route("users/login"), HttpPost]
         public IHttpActionResult Login()
         {
             return new UserControllerCallsLoginUser(Request);

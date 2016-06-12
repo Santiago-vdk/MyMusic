@@ -11,7 +11,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
         // GET: Fans/Fans
         public ActionResult Index(int userId)
         {
-            System.Diagnostics.Debug.WriteLine(userId);
+            System.Diagnostics.Debug.WriteLine("viedno perfil de " + (userId));
 
 
             return View();

@@ -23,9 +23,9 @@ namespace MyFan_API.ControllerCalls
             }
             public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
             {
-                var response = new HttpResponseMessage()
-                {
-                   //Content = new StringContent(_facade.getFanForm()),
+            var response = new HttpResponseMessage()
+            {
+                    Content = new StringContent(_facade.login(_request.Content.ReadAsStringAsync().Result)),
                     RequestMessage = _request
                 };
                 return Task.FromResult(response);

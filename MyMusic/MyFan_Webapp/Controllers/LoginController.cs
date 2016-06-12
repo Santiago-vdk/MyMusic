@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFan_Webapp.Models.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,6 +48,7 @@ namespace MyFan_Webapp.Controllers
 
             string response = await clsLoginRequests.PostLoginUserForm(form);
 
+            System.Diagnostics.Debug.WriteLine(response);
   
             string ParsedMessage = ErrorParser.parse(response);
             //Hubo error
@@ -55,19 +57,15 @@ namespace MyFan_Webapp.Controllers
                 ViewBag.Message = ParsedMessage;
                 return View("~/Views/Login/Index.cshtml");
             }
-
-
-            int id = DataParser.parseUserForm(response);
+            UserSession session = DataParser.parseUserForm(response);
 
             string token = Guid.NewGuid().ToString();
             Session["token"] = token;
-            Session["username"] = form.Username;
-            Session["id"] = id;
+            Session["username"] = session.Username;
+            Session["id"] = session.Id;
             Session.Timeout = 1;
 
-            ViewBag.Message = "good to have you on board";
-
-            return View();
+            return RedirectToAction("Index", "Fans", new { area = "Fans", userId = session.Id });
         }
     }
 }

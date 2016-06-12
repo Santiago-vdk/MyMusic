@@ -98,15 +98,21 @@ namespace MyFan_Webapp
             return form;
         }
 
-        public static int parseUserForm(string json)
+        public static UserSession parseUserForm(string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
 
             dynamic data = JObject.Parse(Response.Data);
 
-            int id = JsonConvert.DeserializeObject<int>(Convert.ToInt32(data.id));
+            int id = (int) JsonConvert.DeserializeObject<int>(Convert.ToString(data.Id));
+            string username= JsonConvert.DeserializeObject<string>(Convert.ToString(data.Username));
 
-            return id;
+            UserSession session = new UserSession();
+            session.Id = id;
+            session.Username = username;
+
+            return session;
+            
         }
     }
 }
