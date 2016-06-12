@@ -156,13 +156,13 @@ namespace DataAccess.UserDataAccess
             {
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetSaltCredentials", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@strUserName", System.Data.SqlDbType.VarChar).Value = pclsInfoUser.Username;
+                cmd.Parameters.Add("@User", System.Data.SqlDbType.VarChar).Value = pclsInfoUser.Username;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 result.Read();
                 pclsInfoUser.SaltHashed = result["HashPassword"].ToString();
                 pclsInfoUser.Salt = result["Salt"].ToString();
-                pclsInfoUser.Id = Convert.ToInt32(result["Salt"].ToString());
+                pclsInfoUser.Id = Convert.ToInt32(result["UserCode"].ToString());
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
@@ -195,9 +195,12 @@ namespace DataAccess.UserDataAccess
         {
             clsUserRead a = new clsUserRead();
             clsResponse b = new clsResponse();
-            clsForm c = new clsForm();
+            clsInfoUser c = new clsInfoUser();
             Serializer d = new Serializer();
-            //Console.WriteLine(a.validateUser("Panocho37", ref b));
+            c.Username = "mamador";
+
+            Console.WriteLine(d.Serialize(a.getSaltPass(c,ref b)));
+            Console.WriteLine(b.Message);
             Console.ReadKey();
         }
     }
