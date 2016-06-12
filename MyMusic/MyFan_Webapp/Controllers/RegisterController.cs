@@ -53,7 +53,7 @@ namespace MyFan_Webapp.Controllers
                 ms.Write(imageBytes, 0, imageBytes.Length);
                 Image image = Image.FromStream(ms, true);
 
-                image.Save(@"c:\i1.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/i1.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             if (profilePicture.Contains(FileTypePrefixPng))
             {
@@ -66,7 +66,7 @@ namespace MyFan_Webapp.Controllers
                 ms.Write(imageBytes, 0, imageBytes.Length);
                 Image image = Image.FromStream(ms, true);
 
-                image.Save(@"c:\i1.png", System.Drawing.Imaging.ImageFormat.Png);
+                image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/i1.png", System.Drawing.Imaging.ImageFormat.Png);
             }
             if (profilePicture.Contains(FileTypePrefixGif))
             {
@@ -79,7 +79,7 @@ namespace MyFan_Webapp.Controllers
                 ms.Write(imageBytes, 0, imageBytes.Length);
                 Image image = Image.FromStream(ms, true);
 
-                image.Save(@"c:\i1.gif", System.Drawing.Imaging.ImageFormat.Gif);
+                image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/i1.gif", System.Drawing.Imaging.ImageFormat.Gif);
             }
 
             
