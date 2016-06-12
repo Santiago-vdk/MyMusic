@@ -132,6 +132,7 @@
     <Content Include="assets\common\css\registerStyle.css" />
     <Content Include="assets\common\img\Acetato-rare.png" />
     <Content Include="assets\common\img\album.jpg" />
+    <Content Include="assets\common\img\avatar.png" />
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
     <Content Include="assets\lib\bootstrap\css\bootstrap.min.css" />
@@ -247,7 +248,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53702</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53702/</IISUrl>
+          <IISUrl>http://127.0.0.1:53702/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

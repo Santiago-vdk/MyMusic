@@ -243,3 +243,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Default Data Directories
+/MyMusic/MyFan_Webapp/Data/*

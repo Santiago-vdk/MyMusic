@@ -101,11 +101,11 @@ namespace MyFan_Webapp
         public static UserSession parseUserForm(string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
-
+            System.Diagnostics.Debug.WriteLine(Response.Data);
             dynamic data = JObject.Parse(Response.Data);
 
-            int id = (int) JsonConvert.DeserializeObject<int>(Convert.ToString(data.Id));
-            string username= JsonConvert.DeserializeObject<string>(Convert.ToString(data.Username));
+            int id = Convert.ToInt32(data.Id);
+            string username= Convert.ToString(data.Username);
 
             UserSession session = new UserSession();
             session.Id = id;

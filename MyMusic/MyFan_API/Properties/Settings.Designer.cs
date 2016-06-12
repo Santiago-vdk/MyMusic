@@ -22,5 +22,14 @@ namespace MyFan_API.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string cxczxc {
+            get {
+                return ((string)(this["cxczxc"]));
+            }
+        }
     }
 }
