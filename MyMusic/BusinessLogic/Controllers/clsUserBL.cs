@@ -25,24 +25,27 @@ namespace BusinessLogic.Controllers
             clsResponse response = new clsResponse();
 
             FacadeDA.validateUser(InfoUser,ref response);
-
-            if (response.Success)//validar username
+            if (response.Success)//existing username
             {
                 InfoUser = FacadeDA.getSaltPass(InfoUser, ref response);//get salt and password from DA
                 string HashedPassword = clsHasher.hashPassword(InfoUser.Password, InfoUser.Salt);// hash the incoming password with salt from DA
-                if ((clsHasher.compare(HashedPassword, InfoUser.SaltHashed))) //incorrect password
+                if (clsHasher.compare(HashedPassword, InfoUser.SaltHashed)) //compare hashed passwords
                 {
                     //successful login
                     response.Data = serializer.Serialize(InfoUser);
                     return serializer.Serialize(response);
                 }
+                else
+                {
+                    //error info
+                    response.Success = false;
+                    response.Message = "Incorrect Username or Password";
+                    response.Code = 3;
+                }
 
             }
-            //error info
-            response.Success = false;
-            response.Message = "Incorrect Username or Password";
-            response.Code = 3;
 
+            //failed login
             response.Data = serializer.Serialize(InfoUser);
             return serializer.Serialize(response);
 
