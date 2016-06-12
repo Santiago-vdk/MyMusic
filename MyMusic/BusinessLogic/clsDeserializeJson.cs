@@ -57,7 +57,7 @@ namespace BusinessLogic
             InfoUser.Password = Convert.ToString(data.Password);
             InfoUser.ConfirmPassword = Convert.ToString(data.ConfirmPassword);
             InfoUser.Active = Convert.ToBoolean(data.Active);
-           
+            InfoUser.Id = Convert.ToString(data.Id);
 
             return InfoUser;
 
