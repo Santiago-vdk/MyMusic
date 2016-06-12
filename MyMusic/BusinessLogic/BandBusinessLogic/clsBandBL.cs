@@ -39,11 +39,14 @@ namespace BusinessLogic.BandBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string checkHashtag(string pstringHashtag)
+        public string checkHashtag(string pstringRequest)
         {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data.ToString());
             clsResponse response = new clsResponse();
-            //llamar a DA a validar existencia
-            //response.Data = serializer.Serialize(user);
+
+            FacadeDA.validateHashTag(InfoBand, ref response);
+            //Data = null
             return serializer.Serialize(response);
 
         }

@@ -33,16 +33,19 @@ namespace DataAccess.UserDataAccess
                 pclsForm.codGenres = cods;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
             }
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Success = false;
             }
             finally
             {
@@ -71,16 +74,19 @@ namespace DataAccess.UserDataAccess
                 pclsForm.codLocations = cods;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
             }
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Success = false;
             }
             finally
             {
@@ -100,15 +106,27 @@ namespace DataAccess.UserDataAccess
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 result.Read();
+                if (result.HasRows == true)
+                {
                     if (result["UserLogin"].ToString().Equals("True"))
                     {
-                    pclsResponse.Code = 0;
-                    pclsResponse.Message = "Done";
-                }
+                        pclsResponse.Code = 0;
+                        pclsResponse.Message = "Done";
+                        pclsResponse.Success = true;
+                    }
                     else
                     {
+                        pclsResponse.Code = 3;
+                        pclsResponse.Message = "Incorrect Username";
+                        pclsResponse.Success = false;
+                    }
+
+                }
+                else
+                {
                     pclsResponse.Code = 3;
                     pclsResponse.Message = "Incorrect Username";
+                    pclsResponse.Success = false;
                 }             
                 
             }
@@ -116,11 +134,13 @@ namespace DataAccess.UserDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Success = false;
             }
             finally
             {
@@ -136,25 +156,28 @@ namespace DataAccess.UserDataAccess
             {
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetSaltCredentials", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@strUserName", System.Data.SqlDbType.VarChar).Value = pclsInfoUser.Username;
+                cmd.Parameters.Add("@User", System.Data.SqlDbType.VarChar).Value = pclsInfoUser.Username;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 result.Read();
                 pclsInfoUser.SaltHashed = result["HashPassword"].ToString();
                 pclsInfoUser.Salt = result["Salt"].ToString();
-
+                pclsInfoUser.Id = Convert.ToInt32(result["UserCode"].ToString());
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
             }
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Success = false;
             }
             finally
             {
@@ -163,13 +186,21 @@ namespace DataAccess.UserDataAccess
 
             return pclsInfoUser;
         }
+
+
+
+
+
         public static void Main()
         {
             clsUserRead a = new clsUserRead();
             clsResponse b = new clsResponse();
-            clsForm c = new clsForm();
+            clsInfoUser c = new clsInfoUser();
             Serializer d = new Serializer();
-            //Console.WriteLine(a.validateUser("Panocho37", ref b));
+            c.Username = "mamador";
+
+            Console.WriteLine(d.Serialize(a.getSaltPass(c,ref b)));
+            Console.WriteLine(b.Message);
             Console.ReadKey();
         }
     }

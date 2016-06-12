@@ -41,6 +41,35 @@ namespace DataAccess.UserDataAccess
             }
 
         }
+        public void validateUser(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+            try
+            {
+                FanRead.validateUser(pclsInfoUser, ref pclsResponse);
+            }
+            catch
+            {
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";                   
+            }
+
+        }
+        public clsInfoUser getSaltPass(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+            try
+            {
+                return FanRead.getSaltPass(pclsInfoUser, ref pclsResponse);
+            }
+            catch
+            {
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";
+                return pclsInfoUser;
+            }
+
+        }
 
     }
 }

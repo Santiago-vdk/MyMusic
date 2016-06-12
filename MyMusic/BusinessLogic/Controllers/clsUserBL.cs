@@ -24,32 +24,41 @@ namespace BusinessLogic.Controllers
             clsInfoUser InfoUser = DeserializeJson.DeserializeInfoUser(request.Data);
             clsResponse response = new clsResponse();
 
-            IUser user = new clsInfoUser();
-            //llenar el objeto llamando al DA con el username de pIUser
-            if (false)//validar username
+            FacadeDA.validateUser(InfoUser,ref response);
+            if (response.Success)//existing username
             {
-                string password1 = clsHasher.hashPassword(InfoUser.Password, user.Salt);
-
-
-                if(clsHasher.compare(password1, user.SaltHashed))
+                InfoUser = FacadeDA.getSaltPass(InfoUser, ref response);//get salt and password from DA
+                string HashedPassword = clsHasher.hashPassword(InfoUser.Password, InfoUser.Salt);// hash the incoming password with salt from DA
+                if (clsHasher.compare(HashedPassword, InfoUser.SaltHashed)) //compare hashed passwords
                 {
-                    
+                    //successful login
+                    response.Data = serializer.Serialize(InfoUser);
+                    return serializer.Serialize(response);
+                }
+                else
+                {
+                    //error info
+                    response.Success = false;
+                    response.Message = "Incorrect Username or Password";
+                    response.Code = 3;
                 }
 
             }
 
-            response.Data = serializer.Serialize(user);
+            //failed login
+            response.Data = serializer.Serialize(InfoUser);
             return serializer.Serialize(response);
-
-            
 
         }
 
-        public string checkUsername(string pstringUsername)
+        public string checkUsername(string pstringRequest)
         {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsInfoUser InfoUser = DeserializeJson.DeserializeInfoUser(request.Data.ToString());
             clsResponse response = new clsResponse();
-            //llamar a DA a validar existencia
-            //response.Data = serializer.Serialize(user);
+            
+            FacadeDA.validateUser(InfoUser,ref response);
+            //Data = null
             return serializer.Serialize(response);
         }
 

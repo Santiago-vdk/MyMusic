@@ -42,8 +42,18 @@ namespace DataAccess
         {
             return FanDA.updateFan(pclsInfoFan, ref pclsResponse);
         }
-
-
+        public void validateUser(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+           UserDA.validateUser(pclsInfoUser, ref pclsResponse);
+        }
+        public clsInfoUser getSaltPass(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+            return UserDA.getSaltPass(pclsInfoUser, ref pclsResponse);
+        }
+        public void validateHashTag(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            BandDA.validateHashTag(pclsInfoBand, ref pclsResponse);
+        }
 
 
         public static void Main()
