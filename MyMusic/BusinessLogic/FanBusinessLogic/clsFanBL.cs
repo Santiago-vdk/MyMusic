@@ -40,7 +40,7 @@ namespace BusinessLogic.FanBusinessLogic
             InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
 
 
-            InfoFan = FacadeDA.sendForm(InfoFan,ref response);
+            InfoFan = FacadeDA.createFan(InfoFan,ref response);
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }
