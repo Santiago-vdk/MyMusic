@@ -55,7 +55,8 @@
     <Compile Include="Controllers\clsEventBL.cs" />
     <Compile Include="FanBusinessLogic\clsFanBL.cs" />
     <Compile Include="Controllers\clsNewBL.cs" />
-    <Compile Include="Controllers\clsUserBL.cs" />
+    <Compile Include="clsArchiveManager.cs" />
+    <Compile Include="UserBusinessLogic\clsUserBL.cs" />
     <Compile Include="FacadeBL.cs" />
     <Compile Include="clsDeserializeJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
