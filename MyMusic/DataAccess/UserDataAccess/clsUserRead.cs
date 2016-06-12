@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace DataAccess.UserDataAccess
 {
@@ -63,8 +64,8 @@ namespace DataAccess.UserDataAccess
                 List<int> cods = new List<int>();
                 while (result.Read())
                 {
-                    values.Add(result["strDescripcion"].ToString());
-                    cods.Add(Convert.ToInt32(result["intCodGenero"]));
+                    values.Add(result["Country"].ToString());
+                    cods.Add(Convert.ToInt32(result["Locationcode"]));
                 }
                 pclsForm.locations = values;
                 pclsForm.codLocations = cods;
@@ -94,7 +95,10 @@ namespace DataAccess.UserDataAccess
         public static void Main()
         {
             clsUserRead a = new clsUserRead();
-            //Console.WriteLine(a.getAllgenres(new clsForm()).genres[1].intCodigo);
+            clsResponse b = new clsResponse();
+            clsForm c = new clsForm();
+            Serializer d = new Serializer();
+            Console.WriteLine(d.Serialize(a.getAllLocations(c, ref b)));
             Console.ReadKey();
         }
     }

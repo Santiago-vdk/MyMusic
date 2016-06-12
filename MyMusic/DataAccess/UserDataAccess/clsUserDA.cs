@@ -26,5 +26,21 @@ namespace DataAccess.UserDataAccess
             }
 
         }
+        public clsForm getAllLocations(clsForm pclsForm, ref clsResponse pclsResponse)
+        {
+            try
+            {
+                return FanRead.getAllLocations(pclsForm, ref pclsResponse);
+            }
+            catch
+            {
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";
+                return pclsForm;//cambiar por error
+            }
+
+        }
+
     }
 }

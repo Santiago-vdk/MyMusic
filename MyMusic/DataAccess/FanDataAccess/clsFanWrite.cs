@@ -18,8 +18,7 @@ namespace DataAccess.FanDataAccess
          {
            
              try
-             {
-                 
+             {                   
                  SqlCommand cmd = new SqlCommand("myFan.SP_CrearFanatico", conn);
                  cmd.CommandType = System.Data.CommandType.StoredProcedure;
                  cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Username;
@@ -27,7 +26,7 @@ namespace DataAccess.FanDataAccess
                  cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
                  cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",",pclsInfoFan.Genres);
                  cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;
-                 cmd.Parameters.Add("@strPais", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Country;
+                 cmd.Parameters.Add("@intPais", System.Data.SqlDbType.Int).Value = pclsInfoFan.Country;
                  cmd.Parameters.Add("@intSexo", System.Data.SqlDbType.Int).Value = pclsInfoFan.Gender;
                  cmd.Parameters.Add("@strSalt", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Salt;
                  cmd.Parameters.Add("@strSaltHashedPassword", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.SaltHashed;
@@ -72,7 +71,7 @@ namespace DataAccess.FanDataAccess
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoFan.Genres);
                 cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;
-                cmd.Parameters.Add("@strPais", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Country;
+                cmd.Parameters.Add("@intPais", System.Data.SqlDbType.Int).Value = pclsInfoFan.Country;
                 cmd.Parameters.Add("@intSexo", System.Data.SqlDbType.Int).Value = pclsInfoFan.Gender;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
@@ -109,15 +108,18 @@ namespace DataAccess.FanDataAccess
         {
             clsFanWrite a = new clsFanWrite();
             clsInfoFan b = new clsInfoFan();
-            b.Username = "panocho37";
+            b.Username = "StivenBanano2";
+            b.Password = "aadfadsda";
             b.Name = "panochonocho";
-            b.Genres = new List<string>(new string[] { "Rock","Metal" });
+            b.Genres = new List<string>(new string[] { "1","3","4" });
             b.Birthday = "1-2-2016";
-            b.Country = "Panocho2";
+            b.Country = "10";
             b.Gender = "1";
+            b.Salt = "oo12o";
+            b.SaltHashed = "jkjkj";
             clsFanWrite d = new clsFanWrite();
             clsResponse f = new clsResponse();
-            d.updateFan(b,ref f);
+            d.createFan(b,ref f);
             Console.WriteLine(f.Message);
             Console.ReadKey();
         }

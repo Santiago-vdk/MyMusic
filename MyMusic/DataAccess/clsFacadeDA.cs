@@ -22,22 +22,22 @@ namespace DataAccess
         {
             return UserDA.getAllGenres(pclsForm,ref pclsResponse);
         }
-
+        public clsForm getAllLocations(clsForm pclsForm, ref clsResponse pclsResponse)
+        {
+            return UserDA.getAllLocations(pclsForm, ref pclsResponse);
+        }
         public clsForm getAllGenders(clsForm pclsForm,ref clsResponse pclsResponse)
         {
             return FanDA.getAllGenders(pclsForm,ref pclsResponse);
         }
-
         public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
             return FanDA.createFan(pclsInfoFan, ref pclsResponse);
         }
-
         public clsInfoBand createBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
         {
             return BandDA.createBand(pclsInfoBand, ref pclsResponse);
         }
-
         public clsInfoFan updateFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
             return FanDA.updateFan(pclsInfoFan, ref pclsResponse);
