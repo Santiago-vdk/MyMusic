@@ -1,5 +1,4 @@
 ﻿using DTO;
-using MyFan_Webapp.Controllers;
 using Newtonsoft.Json;
 using System;
 using System.Configuration;
@@ -8,11 +7,11 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Utility;
 
-namespace MyFan_Webapp.Requests
+namespace MyFan_Webapp.Controllers
 {
     public class clsLoginRequests
     {
-         public static async Task<string> PostLoginForm(PostLoginForm form)
+        public static async Task<string> PostLoginUserForm(PostLoginUserForm form)
         {
             using (var client = new HttpClient())
             {
@@ -21,11 +20,11 @@ namespace MyFan_Webapp.Requests
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // HTTP POST
-                Serializer Serializer = new Serializer();
-                string RequestBody = JsonConvert.SerializeObject(form);
+                Serializer serializer = new Serializer();
+                string RequestBody = serializer.Serialize(form);
 
-                clsRequest RequestObject = new clsRequest("-1",-1,RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/login", JsonConvert.SerializeObject(RequestObject));
+                clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;
@@ -35,7 +34,8 @@ namespace MyFan_Webapp.Requests
                 {
                     return await Task.FromResult("Unexpected error ocurred");
                 }
-           }
+            }
         }
+
     }
 }

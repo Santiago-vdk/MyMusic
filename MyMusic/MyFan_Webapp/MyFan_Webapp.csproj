@@ -157,7 +157,7 @@
     <Compile Include="Areas\Fans\Controllers\FansController.cs" />
     <Compile Include="Areas\Fans\Controllers\NewsController.cs" />
     <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
-    <Compile Include="Controllers\clsLoginRequests.cs" />
+    <Compile Include="Requests\clsLoginRequests.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Models\PostLoginUserForm.cs" />
     <Compile Include="Controllers\RegisterController.cs" />

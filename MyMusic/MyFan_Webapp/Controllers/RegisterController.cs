@@ -46,7 +46,7 @@ namespace MyFan_Webapp.Controllers
             form.Genres = selectGenres;
 
             string response = await clsRegisterRequests.PostRegisterFanForm(form);
-            
+            System.Diagnostics.Debug.WriteLine(response);
             string ParsedMessage = ErrorParser.parse(response);
             if (!ParsedMessage.Equals(""))
             {

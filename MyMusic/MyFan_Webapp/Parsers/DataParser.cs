@@ -39,7 +39,7 @@ namespace MyFan_Webapp
             return form;
         }
 
-        internal Pint parseUserForm(string json)
+        public static int parseUserForm(string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
 
