@@ -44,8 +44,10 @@ namespace BusinessLogic.BandBusinessLogic
 
         public string checkHashtag(string pstringHashtag)
         {
+            clsResponse response = new clsResponse();
             //llamar a DA a validar existencia
-            return "";
+            //response.Data = serializer.Serialize(user);
+            return serializer.Serialize(response);
 
         }
     }
