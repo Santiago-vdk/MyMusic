@@ -2,7 +2,11 @@
 using MyFan_Webapp.Models;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests.Register;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -31,8 +35,61 @@ namespace MyFan_Webapp.Controllers
 
         [HttpPost]
         public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputConfirmPassword, 
-            string inputName, string inputBirthday, int selectGender, int selectCountry, List<int> selectGenres)
+            string inputName, string inputBirthday, int selectGender, int selectCountry, List<int> selectGenres, string profilePicture)
         {
+
+            const string FileTypePrefixJpg = "data:image/jpg;base64,";
+            const string FileTypePrefixPng = "data:image/png;base64,";
+            const string FileTypePrefixGif = "data:image/gif;base64,";
+
+            if (profilePicture.Contains(FileTypePrefixJpg))
+            {
+                string c = profilePicture.Substring(FileTypePrefixJpg.Length);
+                byte[] imageBytes = Convert.FromBase64String(c);
+                MemoryStream ms = new MemoryStream(imageBytes, 0,
+                  imageBytes.Length);
+
+                // Convert byte[] to Image
+                ms.Write(imageBytes, 0, imageBytes.Length);
+                Image image = Image.FromStream(ms, true);
+
+                image.Save(@"c:\i1.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            if (profilePicture.Contains(FileTypePrefixPng))
+            {
+                string c = profilePicture.Substring(FileTypePrefixPng.Length);
+                byte[] imageBytes = Convert.FromBase64String(c);
+                MemoryStream ms = new MemoryStream(imageBytes, 0,
+                  imageBytes.Length);
+
+                // Convert byte[] to Image
+                ms.Write(imageBytes, 0, imageBytes.Length);
+                Image image = Image.FromStream(ms, true);
+
+                image.Save(@"c:\i1.png", System.Drawing.Imaging.ImageFormat.Png);
+            }
+            if (profilePicture.Contains(FileTypePrefixGif))
+            {
+                string c = profilePicture.Substring(FileTypePrefixGif.Length);
+                byte[] imageBytes = Convert.FromBase64String(c);
+                MemoryStream ms = new MemoryStream(imageBytes, 0,
+                  imageBytes.Length);
+
+                // Convert byte[] to Image
+                ms.Write(imageBytes, 0, imageBytes.Length);
+                Image image = Image.FromStream(ms, true);
+
+                image.Save(@"c:\i1.gif", System.Drawing.Imaging.ImageFormat.Gif);
+            }
+
+            
+
+
+           
+
+            
+
+
             PostRegisterFanForm form = new PostRegisterFanForm();
             form.Username = inputUsername;
             form.Password = inputPassword;
