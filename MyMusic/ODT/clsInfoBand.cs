@@ -15,6 +15,7 @@ namespace DTO
         public string Hashtag { get; set; }
         public List<string> Members { get; set; }
         public String Biography { get; set; }
+        public string image { get; set; }
 
         //interface atributes
         public string Username { get; set; }
@@ -23,6 +24,7 @@ namespace DTO
         public int Rol { get; set; }
         public bool Active { get; set; }
         public string SaltHashed { get; set; }
+        
 
     }
 }
