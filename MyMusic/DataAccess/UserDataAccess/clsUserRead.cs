@@ -90,15 +90,86 @@ namespace DataAccess.UserDataAccess
             return pclsForm;
         }
 
+        public void validateUser(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_ExistUserName", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@strUserName", System.Data.SqlDbType.VarChar).Value = pclsInfoUser.Username;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                result.Read();
+                    if (result["UserLogin"].ToString().Equals("True"))
+                    {
+                    pclsResponse.Code = 0;
+                    pclsResponse.Message = "Done";
+                }
+                    else
+                    {
+                    pclsResponse.Code = 3;
+                    pclsResponse.Message = "Incorrect Username";
+                }             
+                
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
 
+        }
 
+        public clsInfoUser getSaltPass(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+            
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetSaltCredentials", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@strUserName", System.Data.SqlDbType.VarChar).Value = pclsInfoUser.Username;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                result.Read();
+                pclsInfoUser.SaltHashed = result["HashPassword"].ToString();
+                pclsInfoUser.Salt = result["Salt"].ToString();
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return pclsInfoUser;
+        }
         public static void Main()
         {
             clsUserRead a = new clsUserRead();
             clsResponse b = new clsResponse();
             clsForm c = new clsForm();
             Serializer d = new Serializer();
-            Console.WriteLine(d.Serialize(a.getAllLocations(c, ref b)));
+            //Console.WriteLine(a.validateUser("Panocho37", ref b));
             Console.ReadKey();
         }
     }

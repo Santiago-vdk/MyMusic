@@ -23,6 +23,7 @@ namespace BusinessLogic.FanBusinessLogic
             clsResponse response = new clsResponse();
             form = FacadeDA.getAllGenres(form,ref response);
             form = FacadeDA.getAllGenders(form,ref response);
+            form = FacadeDA.getAllLocations(form, ref response);
             response.Data = serializer.Serialize(form);
             return serializer.Serialize(response);
 
@@ -44,7 +45,12 @@ namespace BusinessLogic.FanBusinessLogic
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }
-
+         public static void Main()
+        {
+            clsFanBL l = new clsFanBL();
+            Console.Write(l.getForm());
+            Console.ReadKey();
+        }
      
     }
 }

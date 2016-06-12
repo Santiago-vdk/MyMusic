@@ -26,21 +26,31 @@ namespace BusinessLogic.Controllers
 
             IUser user = new clsInfoUser();
             //llenar el objeto llamando al DA con el username de pIUser
+            if (false)//validar username
+            {
+                string password1 = clsHasher.hashPassword(InfoUser.Password, user.Salt);
 
-            string password1 = clsHasher.hashPassword(InfoUser.Password, user.Salt);
 
+                if(clsHasher.compare(password1, user.SaltHashed))
+                {
+                    
+                }
 
-            bool match = clsHasher.compare(password1, user.SaltHashed);
+            }
 
-            return "";
+            response.Data = serializer.Serialize(user);
+            return serializer.Serialize(response);
+
+            
 
         }
 
         public string checkUsername(string pstringUsername)
         {
+            clsResponse response = new clsResponse();
             //llamar a DA a validar existencia
-            return "";
-
+            //response.Data = serializer.Serialize(user);
+            return serializer.Serialize(response);
         }
 
 

@@ -21,6 +21,7 @@ namespace BusinessLogic.BandBusinessLogic
             clsForm form = new clsForm();
             clsResponse response = new clsResponse();
             form = FacadeDA.getAllGenres(form, ref response);
+            form = FacadeDA.getAllLocations(form, ref response);
             response.Data = serializer.Serialize(form);
             return serializer.Serialize(response);
 
@@ -36,15 +37,17 @@ namespace BusinessLogic.BandBusinessLogic
             InfoBand.Salt = clsHasher.genSalt();
             InfoBand.SaltHashed = clsHasher.hashPassword(InfoBand.Password, InfoBand.Salt);
 
-            //InfoBand = FacadeDA.sendForm(InfoBand, ref response);
+            InfoBand = FacadeDA.createBand(InfoBand, ref response);
             response.Data = serializer.Serialize(InfoBand);
             return serializer.Serialize(response);
         }
 
         public string checkHashtag(string pstringHashtag)
         {
+            clsResponse response = new clsResponse();
             //llamar a DA a validar existencia
-            return "";
+            //response.Data = serializer.Serialize(user);
+            return serializer.Serialize(response);
 
         }
     }
