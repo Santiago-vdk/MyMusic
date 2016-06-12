@@ -15,7 +15,7 @@ namespace DTO
         public string Hashtag { get; set; }
         public List<string> Members { get; set; }
         public string Biography { get; set; }
-        public string Image { get; set; }
+        public string Picture { get; set; }
 
         //interface atributes
         public string Username { get; set; }
