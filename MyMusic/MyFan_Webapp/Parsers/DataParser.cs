@@ -61,15 +61,39 @@ namespace MyFan_Webapp
             return form;
         }
 
-        public static GetRegisterBandForm parseBandForm(GetRegisterBandForm form, string json)
+        public static Form parseBandForm(string json)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
 
             dynamic data = JObject.Parse(Response.Data);
 
             List<string> genres = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.genres));
+            List<string> locations = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.locations));
+            List<int> genresIds = JsonConvert.DeserializeObject<List<int>>(Convert.ToString(data.codGenres));
+            List<int> locationsIds = JsonConvert.DeserializeObject<List<int>>(Convert.ToString(data.codLocations));
 
-            form.genres = genres;
+            Form form = new Form();
+            List<Genre> listGenres = new List<Genre>();
+            List<Location> listLocations = new List<Location>();
+
+            int i;
+            for (i = 0; i < genres.Count; i++)
+            {
+                Genre genre = new Genre();
+                genre.Id = genresIds[i];
+                genre.Name = genres[i];
+                listGenres.Add(genre);
+            }
+            for (i = 0; i < locations.Count; i++)
+            {
+                Location location = new Location();
+                location.Id = locationsIds[i];
+                location.Name = locations[i];
+                listLocations.Add(location);
+            }
+
+            form.genres = listGenres;
+            form.locations = listLocations;
 
             return form;
         }

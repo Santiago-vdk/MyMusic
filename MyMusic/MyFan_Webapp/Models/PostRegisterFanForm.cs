@@ -13,9 +13,9 @@ namespace MyFan_Webapp
         public string ConfirmPassword { get; set; }
         public string Name { get; set; }
         public string Birthday { get; set; }
-        public string Gender { get; set; }
-        public string Country { get; set; }
-        public List<string> Genres { get; set; }
+        public int Gender { get; set; }
+        public int Country { get; set; }
+        public List<int> Genres { get; set; }
         public string accept { get; set; }
 
     }

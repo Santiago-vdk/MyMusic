@@ -13,8 +13,8 @@ namespace MyFan_Webapp.Models
         public string Name { get; set; }
         public string Hashtag { get; set; }
         public string DateCreation { get; set; }
-        public string Country { get; set; }
-        public List<string> Genres { get; set; }
+        public int Country { get; set; }
+        public List<int> Genres { get; set; }
         public string Biography { get; set; }
         public string accept { get; set; }
     }

@@ -2,10 +2,6 @@
 using DTO;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utility;
 
 namespace BusinessLogic.BandBusinessLogic
@@ -23,6 +19,7 @@ namespace BusinessLogic.BandBusinessLogic
             form = FacadeDA.getAllGenres(form, ref response);
             form = FacadeDA.getAllLocations(form, ref response);
             response.Data = serializer.Serialize(form);
+            System.Diagnostics.Debug.WriteLine(serializer.Serialize(response));
             return serializer.Serialize(response);
 
         }

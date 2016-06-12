@@ -26,15 +26,12 @@ namespace MyFan_Webapp.Controllers
             }
             Form formModel = DataParser.parseFanForm(response);
 
-            /*ViewBag.Genres = form.genres;
-            ViewBag.Genders = form.genders;*/
-
             return View(formModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputConfirmPassword, 
-            string inputName, string inputBirthday, string selectGender, string selectCountry, List<string> selectGenres)
+            string inputName, string inputBirthday, int selectGender, int selectCountry, List<int> selectGenres)
         {
             PostRegisterFanForm form = new PostRegisterFanForm();
             form.Username = inputUsername;
@@ -64,7 +61,6 @@ namespace MyFan_Webapp.Controllers
         {
             string response = await clsRegisterRequests.GetRegisterBandForm();
 
-            GetRegisterBandForm form = new GetRegisterBandForm();
             string ParsedMessage = ErrorParser.parse(response);
             
             //Hubo error
@@ -74,16 +70,14 @@ namespace MyFan_Webapp.Controllers
                 return View("~/Views/Login/Index.cshtml");
             }
 
-            form = DataParser.parseBandForm(form, response);
+            Form form = DataParser.parseBandForm(response);
 
-            ViewBag.Genres = form.genres;
-
-            return View();
+            return View(form);
         }
 
         [HttpPost]
         public async Task<ActionResult> RegisterBand(string inputUsername, string inputPassword, string inputConfirmPassword,
-            string inputName, string inputHashtag, string inputDateCreation, string selectCountry, List<string> selectGenres,
+            string inputName, string inputHashtag, string inputDateCreation, int selectCountry, List<int> selectGenres,
             string inputBiography)
         {
             PostRegisterBandForm form = new PostRegisterBandForm();

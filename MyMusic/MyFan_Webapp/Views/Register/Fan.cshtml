@@ -24,16 +24,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
     <title>MyFan</title>
+
+    <script>
+        function FormModel() {
+            var self = this;
+            self.inputUsername = $("#inputUsername").val();
+            self.inputPassword = $("#inputPassword").val();
+            self.inputConfirmPassword = $("#inputConfirmPassword").val();
+            self.inputName = $("#inputName").val();
+            self.inputBirthday = $("#inputBirthday").val();
+            self.selectGender = parseInt($("#selectGender :selected").attr('id'));
+            self.selectCountry = parseInt($("#selectCountry :selected").attr('id'));
+
+            var selectedGenres = [];
+            $('#selectGenres :selected').each(function (i, selected) {
+                selectedGenres[i] = parseInt($(selected).attr('id'));
+            });
+
+            self.selectGenres = selectedGenres;
+
+        }
+
+        $(document).ready(function () {
+            $('#submit').click(function () {
+
+                var request = new FormModel();
+                alert(request);
+                $.ajax({
+                    url: "RegisterFan",
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    type: "POST",
+                    data: JSON.stringify(request),
+                    success: function (response) {
+                        alert("sirvio");
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="col-xs-6 col-xs-offset-3">
 
-            @using (Html.BeginForm("RegisterFan", "Register", FormMethod.Post, new { @class = "form-horizontal" }))
-            {
-
-          <!--  <form action="RegisterFan" method="post" role="form" class='form-horizontal'>-->
+             <form action="" method="post" role="form" class='form-horizontal'>
                 <h1>Register Fan</h1>
                 <br>
                 <div class="form-group">
@@ -41,7 +80,7 @@
                         <label for="inputUsername">Username</label>
                     </div>
                     <div class="col-xs-9">
-                        <input type="text" class="form-control" placeholder="Username" name="inputUsername" required/>
+                        <input type="text" class="form-control" placeholder="Username" id="inputUsername" required/>
                     </div>
                 </div>
 
@@ -50,7 +89,7 @@
                         <label for="inputPassword">Password</label>
                     </div>
                     <div class="col-xs-9">
-                        <input type="password" class="form-control" placeholder="Password" name="inputPassword" />
+                        <input type="password" class="form-control" placeholder="Password" id="inputPassword" />
                     </div>
                 </div>
 
@@ -59,7 +98,7 @@
                         <label for="inputConfirmPassword">Confirm Password</label>
                     </div>
                     <div class="col-xs-9">
-                        <input type="password" class="form-control" placeholder="Confirm Password" name="inputConfirmPassword" />
+                        <input type="password" class="form-control" placeholder="Confirm Password" id="inputConfirmPassword" />
                     </div>
                 </div>
 
@@ -68,7 +107,7 @@
                         <label for="inputName">Name</label>
                     </div>
                     <div class="col-xs-9">
-                        <input type="text" class="form-control" placeholder="Name" name="inputName" />
+                        <input type="text" class="form-control" placeholder="Name" id="inputName" />
                     </div>
                 </div>
 
@@ -77,7 +116,7 @@
                         <label for="inputBirthday">Birthday</label>
                     </div>
                     <div class="col-xs-9">
-                        <input type="date" name="inputBirthday">
+                        <input type="date" id="inputBirthday">
                     </div>
                 </div>
 
@@ -86,7 +125,7 @@
                         <label for="selectGenre">Gender</label>
                     </div>
                     <div class="col-xs-9">
-                        <select class="selectpicker" name="selectGender" data-width="100%">
+                        <select class="selectpicker" id="selectGender" data-width="100%">
         
                             @foreach (var gender in Model.genders)
                             {
@@ -101,7 +140,7 @@
                         <label for="selectCountry">Country</label>
                     </div>
                     <div class="col-xs-9">
-                        <select class="selectpicker" data-live-search="true" name="selectCountry" data-width="100%">
+                        <select class="selectpicker" data-live-search="true" id="selectCountry" data-width="100%">
                             @foreach (var country in Model.locations)
                             {
                                 <option id="@country.Id" data-tokens="@country.Name">@country.Name</option>
@@ -115,7 +154,7 @@
                         <label for="selectMusicalGenre">Musical Genres</label>
                     </div>
                     <div class="col-xs-9">
-                        <select class="selectpicker" data-live-search="true" name="selectGenres[]" id="genres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
+                        <select class="selectpicker" data-live-search="true" id="selectGenres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
                             @foreach (var genre in Model.genres)
                             {
                                 <option id="@genre.Id" data-tokens="@genre.Name">@genre.Name</option>
@@ -129,23 +168,23 @@
                         <label for="selectTerms">Accept terms</label>
                     </div>
                     <div class="col-xs-9">
-                        <input type="checkbox" name="accept" value="Accept"> I accept the terms and conditions
+                        <input type="checkbox" id="accept" value="Accept"> I accept the terms and conditions
                         <br>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-offset-4 col-xs-3">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button id="submit" class="btn btn-success">Submit</button>
                         </div>
                         <div class="col-xs-3">
                             <a href="~/" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                 </div>
-            <!--</form>-->
+            </form>
 
-            }
+            
         </div>
     </div>
     <!-- /container -->
