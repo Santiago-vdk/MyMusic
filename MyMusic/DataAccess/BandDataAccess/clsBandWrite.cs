@@ -27,7 +27,7 @@ namespace DataAccess.BandDataAccess
                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Genres);
                 cmd.Parameters.Add("@strBiografia", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Biography;
                 cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
-                cmd.Parameters.Add("@strPais", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Country;
+                cmd.Parameters.Add("@intPais", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Country;
                 cmd.Parameters.Add("@strIntegrantes", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Members);
                 cmd.Parameters.Add("@strHashTag", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Hashtag;
                 cmd.Parameters.Add("@strSalt", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Salt;
@@ -65,17 +65,17 @@ namespace DataAccess.BandDataAccess
         {
             
             clsInfoBand b = new clsInfoBand();
-            b.Username = "panocho3722328";
+            b.Username = "yepene";
             b.Password = "panocho";
             b.Name = "panocho";
             b.Genres = new List<string>(new string[] { "Rock", "Metal" });
-            b.Members = new List<string>(new string[] { "Panochon", "PAnochote" });
+            b.Members = new List<string>(new string[] { "Panochon69", "PAnochote69" });
             b.DateCreation = "1-2-2016";
             b.Biography = "Listo";
-            b.Country = "Panocho";
-            b.Hashtag = "@Panochon";
-            b.Salt = "dhjsdhjss37asaasr22ddsds";
-            b.SaltHashed = "dsdssdsd";
+            b.Country = "9";
+            b.Hashtag = "@PanochonPene";
+            b.Salt = "dhjsdhjss37aweweesaasr22ddsds";
+            b.SaltHashed = "dsdswewwesdsd";
             clsBandWrite d = new clsBandWrite();
             clsResponse f = new clsResponse();
             d.createBand(b, ref f);
