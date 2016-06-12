@@ -17,5 +17,6 @@ namespace MyFan_Webapp.Models
         public List<int> Genres { get; set; }
         public string Biography { get; set; }
         public string accept { get; set; }
+        public List<string> Members { get; internal set; }
     }
 }

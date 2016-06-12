@@ -22,7 +22,7 @@ namespace MyFan_Webapp.Controllers
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return RedirectToAction("Index");
             }
             Form formModel = DataParser.parseFanForm(response);
 
@@ -49,10 +49,11 @@ namespace MyFan_Webapp.Controllers
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return View("Index");
             }
             ViewBag.Message = "We are glad to have you onboard!";
-            return View("~/Views/Login/Index.cshtml");
+
+            return RedirectToAction("Index","Login");
         }
 
 
@@ -67,7 +68,7 @@ namespace MyFan_Webapp.Controllers
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return RedirectToAction("Index");
             }
 
             Form form = DataParser.parseBandForm(response);
@@ -77,8 +78,8 @@ namespace MyFan_Webapp.Controllers
 
         [HttpPost]
         public async Task<ActionResult> RegisterBand(string inputUsername, string inputPassword, string inputConfirmPassword,
-            string inputName, string inputHashtag, string inputDateCreation, int selectCountry, List<int> selectGenres,
-            string inputBiography)
+            string inputName, string inputHashtag, string inputDateCreation, int selectCountry, List<int> selectGenres, 
+            List<string> inputMembers, string inputBiography)
         {
             PostRegisterBandForm form = new PostRegisterBandForm();
             form.Username = inputUsername;
@@ -89,6 +90,7 @@ namespace MyFan_Webapp.Controllers
             form.DateCreation = inputDateCreation;
             form.Country = selectCountry;
             form.Genres = selectGenres;
+            form.Members = inputMembers;
             form.Biography = inputBiography;
 
             string response = await clsRegisterRequests.PostRegisterBandForm(form);
@@ -97,10 +99,10 @@ namespace MyFan_Webapp.Controllers
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return RedirectToAction("Index");
             }
             ViewBag.Message = "We are glad to have you onboard!";
-            return View("~/Views/Login/Index.cshtml");
+            return RedirectToAction("Index");
         }
     }
 }
