@@ -15,7 +15,7 @@ namespace MyFan_Webapp.Controllers
         // GET: Login
         public ActionResult Index()
         {
-
+/*
             if (Session["token"] != null)
             {
                 if (Session.IsNewSession)
@@ -34,7 +34,7 @@ namespace MyFan_Webapp.Controllers
                     return View();
 
                 }
-            }
+            }*/
             ViewBag.Message = "You are in";
             return View();
         }
@@ -47,7 +47,7 @@ namespace MyFan_Webapp.Controllers
 
             string response = await clsLoginRequests.PostLoginUserForm(form);
 
-            ErrorParser ErrorParser = new ErrorParser();
+  
             string ParsedMessage = ErrorParser.parse(response);
             //Hubo error
             if (!ParsedMessage.Equals(""))
@@ -56,7 +56,7 @@ namespace MyFan_Webapp.Controllers
                 return View("~/Views/Login/Index.cshtml");
             }
 
-            DataParser DataParser = new DataParser();
+
             int id = DataParser.parseUserForm(response);
 
             string token = Guid.NewGuid().ToString();
