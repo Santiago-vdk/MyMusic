@@ -2,7 +2,7 @@
 using DTO;
 using BusinessLogic.FanBusinessLogic;
 using BusinessLogic.BandBusinessLogic;
-using BusinessLogic.UserBusinessLogic
+using BusinessLogic.UserBusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;

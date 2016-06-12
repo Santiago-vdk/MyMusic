@@ -50,7 +50,7 @@ namespace BusinessLogic.FanBusinessLogic
                 InfoFan = FacadeDA.createFan(InfoFan, ref response);
 
                 //save image here!
-                ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Image);
+                ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
                
 
             }

@@ -11,6 +11,7 @@ namespace BusinessLogic.BandBusinessLogic
         clsFacadeDA FacadeDA = new clsFacadeDA();
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
+        clsArchiveManager ArchiveManager = new clsArchiveManager();
 
         public String getForm()
         {
@@ -30,11 +31,30 @@ namespace BusinessLogic.BandBusinessLogic
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data.ToString());
             clsResponse response = new clsResponse();
+            
 
-            InfoBand.Salt = clsHasher.genSalt();
-            InfoBand.SaltHashed = clsHasher.hashPassword(InfoBand.Password, InfoBand.Salt);
+            clsInfoUser InfoUser = new clsInfoUser();
+            InfoUser.Username = InfoBand.Username;
+            FacadeDA.validateUser(InfoUser, ref response);
+            if (!response.Success)//not existing username
+            {
+                response = new clsResponse();//clear the response
+                InfoBand.Salt = clsHasher.genSalt();
+                InfoBand.SaltHashed = clsHasher.hashPassword(InfoBand.Password, InfoBand.Salt);
+                InfoBand = FacadeDA.createBand(InfoBand, ref response);
 
-            InfoBand = FacadeDA.createBand(InfoBand, ref response);
+                //save image here!
+                ArchiveManager.saveUserImage(InfoBand.Username, InfoBand.Picture, ref response);
+                
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Existing Username";
+                response.Code = 3;
+            }
+
             response.Data = serializer.Serialize(InfoBand);
             return serializer.Serialize(response);
         }
