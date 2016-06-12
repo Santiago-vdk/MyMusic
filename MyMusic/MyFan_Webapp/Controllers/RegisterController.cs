@@ -1,4 +1,6 @@
-﻿using MyFan_Webapp.Models;
+﻿using DTO;
+using MyFan_Webapp.Models;
+using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests.Register;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,7 +16,6 @@ namespace MyFan_Webapp.Controllers
         {
             string response = await clsRegisterRequests.GetRegisterFanForm();
 
-            GetRegisterFanForm form = new GetRegisterFanForm();
             string ParsedMessage = ErrorParser.parse(response);
 
             //Hubo error
@@ -23,12 +24,12 @@ namespace MyFan_Webapp.Controllers
                 ViewBag.Message = ParsedMessage;
                 return View("~/Views/Login/Index.cshtml");
             }
-            form = DataParser.parseFanForm(form, response);
+            Form formModel = DataParser.parseFanForm(response);
 
-            ViewBag.Genres = form.genres;
-            ViewBag.Genders = form.genders;
+            /*ViewBag.Genres = form.genres;
+            ViewBag.Genders = form.genders;*/
 
-            return View();
+            return View(formModel);
         }
 
         [HttpPost]

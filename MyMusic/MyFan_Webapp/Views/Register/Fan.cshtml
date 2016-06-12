@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MyFan_Webapp.Models.Views.Form
+@{
     Layout = null;
 }
 
@@ -86,11 +87,10 @@
                     </div>
                     <div class="col-xs-9">
                         <select class="selectpicker" name="selectGender" data-width="100%">
-
-
-                            @foreach (string gender in ViewBag.Genders)
+        
+                            @foreach (var gender in Model.genders)
                             {
-                                <option>@gender</option>
+                                <option id="@gender.Id">@gender.Name</option>
                             }
                         </select>
                     </div>
@@ -102,9 +102,10 @@
                     </div>
                     <div class="col-xs-9">
                         <select class="selectpicker" data-live-search="true" name="selectCountry" data-width="100%">
-                            <option data-tokens="Costa Rica">Costa Rica</option>
-                            <option data-tokens="United States">United States</option>
-                            <option data-tokens="Brazil">Brazil</option>
+                            @foreach (var country in Model.locations)
+                            {
+                                <option id="@country.Id" data-tokens="@country.Name">@country.Name</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -115,9 +116,9 @@
                     </div>
                     <div class="col-xs-9">
                         <select class="selectpicker" data-live-search="true" name="selectGenres[]" id="genres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
-                            @foreach (string genre in ViewBag.Genres)
+                            @foreach (var genre in Model.genres)
                             {
-                                <option data-tokens="@genre">@genre</option>
+                                <option id="@genre.Id" data-tokens="@genre.Name">@genre.Name</option>
                             }
                         </select>
                     </div>
