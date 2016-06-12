@@ -13,14 +13,14 @@ namespace BusinessLogic
 {
    public class FacadeBL
     {
-        public clsAlbumBL AlbumBL { get; set; }
-        public clsDiskBL DiskBL { get; set; }
-        public clsEventBL EventBL { get; set; }
+
+        clsEventBL EventBL = new clsEventBL();
         clsFanBL FanBL = new clsFanBL();
         clsBandBL BandBL = new clsBandBL();
-        public clsNewBL NewBL { get; set; }
-        public clsUserBL UserBL { get; set; }
-
+        clsUserBL UserBL = new clsUserBL();
+        clsNewBL NewBL = new clsNewBL();
+        clsDiskBL DiskBL = new clsDiskBL();
+        clsAlbumBL AlbumBL = new clsAlbumBL();
 
         public string getFanForm()
         {
