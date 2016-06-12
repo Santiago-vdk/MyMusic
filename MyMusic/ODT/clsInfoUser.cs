@@ -8,6 +8,8 @@ namespace DTO
 {
     public class clsInfoUser : IUser
     {
+        public int Id { get; set; }
+
         //interface atributes
         public string Username { get; set; }
         public string Password { get; set; }
