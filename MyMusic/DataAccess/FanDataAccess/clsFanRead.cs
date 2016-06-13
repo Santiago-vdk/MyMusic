@@ -1,10 +1,12 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace DataAccess.FanDataAccess
 {
@@ -55,24 +57,44 @@ namespace DataAccess.FanDataAccess
             return pclsForm;
         }
 
-        public void getBands(ref clsResponse pclsResponse)
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
         {
             try
             {
+
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetBandasPorFanatico", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pclsBandsBlock.Offset;
+                cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pclsBandsBlock.Chunks;
+                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pclsBandsBlock.FanCod;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
+
                 List<String> values = new List<String>();
-                List<int> cods = new List<int>();
+                List<String> cods = new List<String>();
+
+                pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
-                    values.Add(result["strDescripcion"].ToString());
-                    cods.Add(Convert.ToInt32(result["intCodSexo"]));
+                    values.Add(result["strNombre"].ToString());
+                    cods.Add(result["intCodBanda"].ToString());
                 }
 
+               
+                
+                if (cods.Count < pclsBandsBlock.Chunks)
+                {
+                    pclsBandsBlock.Limit = true;
+                }
+                pclsBandsBlock.BandsId = cods;
+                pclsBandsBlock.BandsName = values;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
             }
             catch (SqlException ex)
             {
@@ -92,12 +114,19 @@ namespace DataAccess.FanDataAccess
             }
 
 
-            return pclsForm;
+            return pclsBandsBlock;
         }
         public static void Main()
         {
             clsFanRead a = new clsFanRead();
-            //Console.WriteLine(a.getAllgenders(new clsForm()).genres[1].strDescripcion);
+            Serializer b = new Serializer();
+            clsBandsBlock c = new clsBandsBlock();
+            clsResponse d= new clsResponse();
+            c.FanCod = 98;
+            c.Chunks = 10;
+            c.Offset = 10;
+            Console.WriteLine(b.Serialize(a.getBands(c,ref d)));
+            Console.WriteLine(d.Message);
             Console.ReadKey();
         }
     }

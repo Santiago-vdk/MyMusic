@@ -57,5 +57,10 @@ namespace DataAccess.FanDataAccess
                 return pclsInfoFan;// cambiar x error
             }
         }
+
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
+        {
+            return FanRead.getBands(pclsBandsBlock, ref pclsResponse);
+        }
     }
 }
