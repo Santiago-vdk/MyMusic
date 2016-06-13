@@ -61,10 +61,10 @@ namespace BusinessLogic.BandBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string checkHashtag(string pstringRequest)
+        public string checkHashtag(string pstringHashtag)
         {
-            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
-            clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data.ToString());
+            clsInfoBand InfoBand = new clsInfoBand();
+            InfoBand.Hashtag = pstringHashtag;
             clsResponse response = new clsResponse();
 
             FacadeDA.validateHashTag(InfoBand, ref response);

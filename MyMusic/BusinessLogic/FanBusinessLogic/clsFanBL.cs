@@ -33,7 +33,6 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string createFan(string pstringRequest)
         {
-            System.Diagnostics.Debug.WriteLine("REQUEST: "+ pstringRequest);
 
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
@@ -69,6 +68,24 @@ namespace BusinessLogic.FanBusinessLogic
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }
+
+        public string loadBands(string pstringRequest)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);
+            clsResponse response = new clsResponse();
+
+            //llamada FacadeDA
+
+            response.Data = serializer.Serialize(BandsBlock);
+            return serializer.Serialize(response);
+        }
+
+
+
+
+
+
          public static void Main()
         {
             clsFanBL l = new clsFanBL();
