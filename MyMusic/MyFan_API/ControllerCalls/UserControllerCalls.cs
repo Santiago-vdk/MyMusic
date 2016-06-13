@@ -31,5 +31,30 @@ namespace MyFan_API.ControllerCalls
                 return Task.FromResult(response);
             }
         }
-    
-}
+
+    public class UserControllerCallsValidateUsername : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        string _value;
+
+        public UserControllerCallsValidateUsername(HttpRequestMessage request, string value)
+        {
+            _value = value;
+            _request = request;
+            _facade = new FacadeBL();
+        }
+
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.checkUsername(_value)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+    }
+
+

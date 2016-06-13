@@ -8,9 +8,12 @@ namespace MyFan_API.Controllers
     public class UsersController : ApiController
     {
         [Route("users"), HttpGet]
-        public IHttpActionResult GetUsers()
+        public IHttpActionResult GetUsers(string q, string action, string value)
         {
-
+            if(String.Equals(q, "username") && String.Equals(action, "validate") && value != null)
+            {
+                return new UserControllerCallsValidateUsername(Request, value);
+            }
             //Endpoint for retrieving all users
             throw new NotImplementedException();
         }

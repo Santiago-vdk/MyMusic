@@ -37,59 +37,6 @@ namespace MyFan_Webapp.Controllers
         public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputConfirmPassword, 
             string inputName, string inputBirthday, int selectGender, int selectCountry, List<int> selectGenres, string profilePicture)
         {
-
-            const string FileTypePrefixJpg = "data:image/jpg;base64,";
-            const string FileTypePrefixPng = "data:image/png;base64,";
-            const string FileTypePrefixGif = "data:image/gif;base64,";
-
-            if (profilePicture.Contains(FileTypePrefixJpg))
-            {
-                string c = profilePicture.Substring(FileTypePrefixJpg.Length);
-                byte[] imageBytes = Convert.FromBase64String(c);
-                MemoryStream ms = new MemoryStream(imageBytes, 0,
-                  imageBytes.Length);
-
-                // Convert byte[] to Image
-                ms.Write(imageBytes, 0, imageBytes.Length);
-                Image image = Image.FromStream(ms, true);
-
-                image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/i1.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
-            if (profilePicture.Contains(FileTypePrefixPng))
-            {
-                string c = profilePicture.Substring(FileTypePrefixPng.Length);
-                byte[] imageBytes = Convert.FromBase64String(c);
-                MemoryStream ms = new MemoryStream(imageBytes, 0,
-                  imageBytes.Length);
-
-                // Convert byte[] to Image
-                ms.Write(imageBytes, 0, imageBytes.Length);
-                Image image = Image.FromStream(ms, true);
-
-                image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/i1.png", System.Drawing.Imaging.ImageFormat.Png);
-            }
-            if (profilePicture.Contains(FileTypePrefixGif))
-            {
-                string c = profilePicture.Substring(FileTypePrefixGif.Length);
-                byte[] imageBytes = Convert.FromBase64String(c);
-                MemoryStream ms = new MemoryStream(imageBytes, 0,
-                  imageBytes.Length);
-
-                // Convert byte[] to Image
-                ms.Write(imageBytes, 0, imageBytes.Length);
-                Image image = Image.FromStream(ms, true);
-
-                image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/i1.gif", System.Drawing.Imaging.ImageFormat.Gif);
-            }
-
-            
-
-
-           
-
-            
-
-
             PostRegisterFanForm form = new PostRegisterFanForm();
             form.Username = inputUsername;
             form.Password = inputPassword;
@@ -99,6 +46,7 @@ namespace MyFan_Webapp.Controllers
             form.Gender= selectGender;
             form.Country = selectCountry;
             form.Genres = selectGenres;
+            form.Picture = profilePicture;
 
             string response = await clsRegisterRequests.PostRegisterFanForm(form);
             System.Diagnostics.Debug.WriteLine(response);
@@ -113,6 +61,27 @@ namespace MyFan_Webapp.Controllers
             return RedirectToAction("Index","Login");
         }
 
+        [HttpPost]
+        public async Task<ActionResult> ValidateUsername(string Username)
+        {
+            System.Diagnostics.Debug.WriteLine(Username);
+            string response = await clsRegisterRequests.ValidateUsername(Username);
+
+            string ParsedMessage = ErrorParser.parse(response);
+
+            //Hubo error
+            if (!ParsedMessage.Equals(""))
+            {
+                System.Diagnostics.Debug.WriteLine("Already exists");
+                return Json(true);
+                
+            }
+            else
+            {
+                return Json(false);
+            }
+
+        }
 
 
         public async Task<ActionResult> Band()

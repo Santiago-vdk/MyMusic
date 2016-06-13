@@ -5,6 +5,19 @@ namespace MyFan_Webapp
 {
     public static class ErrorParser
     {
+        public static string parseUsernameOrHashtag(string pStringJson)
+        {
+            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(pStringJson);
+            if (Response.Success)
+            {
+                return ""; //El usuario si existe
+            }
+            else
+            {
+                return "-1";
+            }
+        }
+
         public static string parse(string pStringJson)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(pStringJson);

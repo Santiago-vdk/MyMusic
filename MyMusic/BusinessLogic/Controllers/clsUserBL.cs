@@ -51,10 +51,11 @@ namespace BusinessLogic.Controllers
 
         }
 
-        public string checkUsername(string pstringRequest)
+        public string checkUsername(string pstringUsername)
         {
-            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
-            clsInfoUser InfoUser = DeserializeJson.DeserializeInfoUser(request.Data.ToString());
+
+            clsInfoUser InfoUser = new clsInfoUser();
+            InfoUser.Username = pstringUsername;
             clsResponse response = new clsResponse();
             
             FacadeDA.validateUser(InfoUser,ref response);
