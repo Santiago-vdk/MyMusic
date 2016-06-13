@@ -3,6 +3,7 @@ using DTO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace BusinessLogic.FanBusinessLogic
         clsFacadeDA FacadeDA = new clsFacadeDA();
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
+        clsArchiveManager ArchiveManager = new clsArchiveManager();
 
         public String getForm()
         {
@@ -36,12 +38,30 @@ namespace BusinessLogic.FanBusinessLogic
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
             clsResponse response = new clsResponse();
+            
+            clsInfoUser InfoUser = new clsInfoUser();
+            InfoUser.Username = InfoFan.Username;
+            FacadeDA.validateUser(InfoUser, ref response);
+            if (!response.Success)//not existing username
+            {
+                response = new clsResponse();//clear the response
+                InfoFan.Salt = clsHasher.genSalt();
+                InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
+                InfoFan = FacadeDA.createFan(InfoFan, ref response);
 
-            InfoFan.Salt = clsHasher.genSalt();
-            InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
+                //save image here!
+                ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
+               
 
+            }
+            else
+            {
+                //error info
+                    response.Success = false;
+                    response.Message = "Existing Username";
+                    response.Code = 3;
+            }
 
-            InfoFan = FacadeDA.createFan(InfoFan,ref response);
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }

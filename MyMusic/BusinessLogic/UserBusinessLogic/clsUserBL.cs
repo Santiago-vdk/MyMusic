@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utility;
 
-namespace BusinessLogic.Controllers
+namespace BusinessLogic.UserBusinessLogic
 {
     public class clsUserBL
     {
@@ -29,23 +29,21 @@ namespace BusinessLogic.Controllers
             {
                 InfoUser = FacadeDA.getSaltPass(InfoUser, ref response);//get salt and password from DA
                 string HashedPassword = clsHasher.hashPassword(InfoUser.Password, InfoUser.Salt);// hash the incoming password with salt from DA
-                if (clsHasher.compare(HashedPassword, InfoUser.SaltHashed)) //compare hashed passwords
+                if (!(clsHasher.compare(HashedPassword, InfoUser.SaltHashed))) //compare hashed passwords
                 {
-                    //successful login
-                    response.Data = serializer.Serialize(InfoUser);
-                    return serializer.Serialize(response);
-                }
-                else
-                {
+                    //not match
+
                     //error info
                     response.Success = false;
                     response.Message = "Incorrect Username or Password";
                     response.Code = 3;
                 }
 
-            }
+                InfoUser.Salt = null; // clear the object before sending
+                InfoUser.SaltHashed = null; // clear the object before sending
 
-            //failed login
+            }
+            
             response.Data = serializer.Serialize(InfoUser);
             return serializer.Serialize(response);
 
