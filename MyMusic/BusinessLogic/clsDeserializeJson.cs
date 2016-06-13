@@ -70,7 +70,8 @@ namespace BusinessLogic
             dynamic data = JObject.Parse(pstringData);
 
             BandsBlock.Offset = Convert.ToInt32(data.Offset);
-            BandsBlock.Limit = Convert.ToInt32(data.Limit);
+            BandsBlock.Chunks = Convert.ToInt32(data.Chunks);
+            BandsBlock.FanCod = Convert.ToInt32(data.FanCod);
 
             return BandsBlock;
         }
