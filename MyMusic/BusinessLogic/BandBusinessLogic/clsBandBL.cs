@@ -45,7 +45,9 @@ namespace BusinessLogic.BandBusinessLogic
 
                 //save image here!
                 ArchiveManager.saveUserImage(InfoBand.Username, InfoBand.Picture, ref response);
-                
+                InfoUser.Salt = null; // clear the object before sending
+                InfoUser.SaltHashed = null; // clear the object before sending
+
             }
             else
             {

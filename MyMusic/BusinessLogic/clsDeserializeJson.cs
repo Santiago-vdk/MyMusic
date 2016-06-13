@@ -24,6 +24,7 @@ namespace BusinessLogic
             InfoFan.Name = Convert.ToString(data.Name);
             InfoFan.Password = Convert.ToString(data.Password);
             InfoFan.Username = Convert.ToString(data.Username);
+            InfoFan.Picture = Convert.ToString(data.Picture);
 
             return InfoFan;
         }

@@ -23,6 +23,9 @@ namespace BusinessLogic
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/");
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/");
                 }
+                System.Diagnostics.Debug.WriteLine("Path: " + AppDomain.CurrentDomain.BaseDirectory);
+
+                System.Diagnostics.Debug.WriteLine("IMAGE: "+pstringImage);
 
                 const string FileTypePrefixJpg = "data:image/jpg;base64,";
                 const string FileTypePrefixPng = "data:image/png;base64,";
@@ -39,6 +42,7 @@ namespace BusinessLogic
                 //type validations
                 if (pstringImage.Contains(FileTypePrefixJpg))
                 {
+                    
                     image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 if (pstringImage.Contains(FileTypePrefixPng))

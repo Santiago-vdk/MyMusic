@@ -89,6 +89,9 @@
             $("#form").validate({
         
                 rules: {
+                    imgInp: {
+                        required: false
+                    },
                     Username: {
                         required: true,
                         rangelength: [3, 24],
@@ -161,8 +164,6 @@
                         error: function () {
                             alert('Something goes wrong!');
                         }
-                    }).ajaxComplete(function () {
-                        $('#submit').prop('disabled', false);
                     });
 
                     return false;
@@ -242,7 +243,7 @@
                      <div class="col-xs-9">
 
                          <label class="btn btn-success btn-file">
-                             Browse... <input id="imgInp" type="file" accept="image/x-png, image/gif, image/jpg" style="display: none;">
+                             Browse... <input id="imgInp" name="imgInp" type="file" style="display: none;">
                          </label>
 
                      </div>

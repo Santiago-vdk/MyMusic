@@ -16,6 +16,6 @@ namespace MyFan_Webapp
         public int Gender { get; set; }
         public int Country { get; set; }
         public List<int> Genres { get; set; }
-        public string Picture { get; internal set; }
+        public string Picture { get; set; }
     }
 }

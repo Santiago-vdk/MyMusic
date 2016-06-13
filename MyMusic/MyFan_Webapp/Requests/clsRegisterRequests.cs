@@ -48,7 +48,7 @@ namespace MyFan_Webapp.Requests.Register
                 Serializer Serializer = new Serializer();
                 string RequestBody = Serializer.Serialize(form);
                 clsRequest RequestObject = new clsRequest("-1",-1,RequestBody);
-
+                System.Diagnostics.Debug.WriteLine(RequestBody);
                 HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {

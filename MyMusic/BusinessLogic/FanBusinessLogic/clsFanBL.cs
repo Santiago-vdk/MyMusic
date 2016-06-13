@@ -33,7 +33,7 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string createFan(string pstringRequest)
         {
-
+            System.Diagnostics.Debug.WriteLine("REQUEST: "+ pstringRequest);
 
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
@@ -51,7 +51,10 @@ namespace BusinessLogic.FanBusinessLogic
 
                 //save image here!
                 ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
-               
+
+                InfoUser.Salt = null; // clear the object before sending
+                InfoUser.SaltHashed = null; // clear the object before sending
+
 
             }
             else
@@ -61,6 +64,7 @@ namespace BusinessLogic.FanBusinessLogic
                     response.Message = "Existing Username";
                     response.Code = 3;
             }
+
 
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
