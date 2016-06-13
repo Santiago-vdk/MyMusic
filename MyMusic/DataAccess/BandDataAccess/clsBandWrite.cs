@@ -22,7 +22,6 @@ namespace DataAccess.BandDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_CrearBanda", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Username;
-                cmd.Parameters.Add("@strContrasena", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Password;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Name;
                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Genres);
                 cmd.Parameters.Add("@strBiografia", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Biography;
