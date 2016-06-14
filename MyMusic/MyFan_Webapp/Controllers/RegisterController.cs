@@ -105,7 +105,7 @@ namespace MyFan_Webapp.Controllers
         [HttpPost]
         public async Task<ActionResult> RegisterBand(string inputUsername, string inputPassword, string inputConfirmPassword,
             string inputName, string inputHashtag, string inputDateCreation, int selectCountry, List<int> selectGenres, 
-            List<string> inputMembers, string inputBiography)
+            List<string> inputMembers, string inputBiography, string profilePicture)
         {
             PostRegisterBandForm form = new PostRegisterBandForm();
             form.Username = inputUsername;
@@ -118,6 +118,7 @@ namespace MyFan_Webapp.Controllers
             form.Genres = selectGenres;
             form.Members = inputMembers;
             form.Biography = inputBiography;
+            form.Picture = profilePicture;
 
             string response = await clsRegisterRequests.PostRegisterBandForm(form);
 
@@ -128,7 +129,8 @@ namespace MyFan_Webapp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Message = "We are glad to have you onboard!";
-            return RedirectToAction("Index");
+
+            return RedirectToAction("Index", "Login");
         }
     }
 }

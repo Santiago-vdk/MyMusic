@@ -8,7 +8,31 @@ html, body {
 .margin-bottom {
     margin-bottom: 15px;
 }
+//Fan Register Page
 #profile-pic{
             height:150px;
             width:150px;
  }
+#imgInp{
+    display: none;
+}
+//Band Register Page
+#field {
+    margin-bottom:10px;
+}
+.input{
+          width:90%;
+          float:left;
+              margin-top: 5px;
+      }
+      .controls{
+          width:72%;
+          float: right;
+          
+      }
+.remove-me{
+    margin-top: 5px;
+}
+.add-more{
+    margin-top:5px;
+}

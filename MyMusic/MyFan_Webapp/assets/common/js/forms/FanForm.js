@@ -97,6 +97,37 @@ jQuery(function ($) {
         }
     });
 
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            if (input.files[0].size < 2097152) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    image.onload = function () {
+                        // access image size here 		
+                        var fileType = this.src.substring(0, 16);
+                        if (fileType.includes("jpg") || fileType.includes("png") || fileType.includes("gif")) {
+                            if ((this.width > 400) || (this.height > 400)) {
+                                alert("Only 400 x 400 images accepted");
+                            }
+                            else {
+                                $('#profile-pic').attr('src', e.target.result);
+                            }
+                        }
+                        else {
+                            alert("Invalid file type");
+                        }
+                    };
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                alert("Your file is too big, 2MB max");
+            }
+        }
+    }
+
     $("#imgInp").change(function (e) {
         readURL(this);
     });

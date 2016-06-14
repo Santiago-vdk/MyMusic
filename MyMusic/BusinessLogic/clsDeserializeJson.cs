@@ -45,6 +45,7 @@ namespace BusinessLogic
             InfoBand.Biography = Convert.ToString(data.Biography);
             InfoBand.Password = Convert.ToString(data.Password);
             InfoBand.Username = Convert.ToString(data.Username);
+            InfoBand.Picture = Convert.ToString(data.Picture);
 
             return InfoBand;
         }
