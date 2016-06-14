@@ -6,6 +6,7 @@ using DTO;
 using MyFan_Webapp.Models;
 using MyFan_Webapp.Controllers;
 using MyFan_Webapp.Models.Views;
+using MyFan_Webapp.Areas.Fans.Models;
 
 namespace MyFan_Webapp
 {
@@ -59,6 +60,36 @@ namespace MyFan_Webapp
             form.locations = listLocations;
 
             return form;
+        }
+
+        public static VMFanProfile parseFanProfile(List<string> json)
+        {
+            VMFanProfile profile = new VMFanProfile();
+
+            profile.Bands = parseBands(json[0], profile);
+            //parseNews(json[1], profile);
+           // parseEvents(json[2], profile);
+
+            
+            
+            
+           
+
+            return profile;
+
+        }
+
+        private static List<Bands> parseBands(string json, object model)
+        {
+            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
+            System.Diagnostics.Debug.WriteLine(json);
+            //dynamic data = JObject.Parse();
+
+            List<Bands> bands = JsonConvert.DeserializeObject<List<Bands>>(Convert.ToString(Response.Data));
+            System.Diagnostics.Debug.WriteLine(bands[0]);
+
+            return bands;
+            
         }
 
         public static Form parseBandForm(string json)

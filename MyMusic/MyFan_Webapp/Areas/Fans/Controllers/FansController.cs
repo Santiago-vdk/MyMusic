@@ -1,20 +1,29 @@
-﻿using System;
+﻿using MyFan_Webapp.Areas.Fans.Models;
+using MyFan_Webapp.Areas.Fans.Requests;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace MyFan_Webapp.Areas.Fans.Controllers
 {
     public class FansController : Controller
     {
-        // GET: Fans/Fans
-        public ActionResult Index(int userId)
+        public async Task<ActionResult> Index(int userId)
         {
-            System.Diagnostics.Debug.WriteLine("viedno perfil de " + (userId));
+            //[Bandas,Noticias,Eventos]
+            List<string> response = await clsFanRequests.GetFanProfile(userId);
+      
+            //Hubo error
+            if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals("") 
+                || !ErrorParser.parse(response[2]).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life...";
+                return View();
+            }
+            VMFanProfile profile = DataParser.parseFanProfile(response);
+            
 
-
-            return View();
+            return View(profile);
         }
 
         public new ActionResult Profile(int userId)
