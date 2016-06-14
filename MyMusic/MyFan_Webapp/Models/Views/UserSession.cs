@@ -9,5 +9,6 @@ namespace MyFan_Webapp.Models.Views
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public int Rol { get; set; }
     }
 }

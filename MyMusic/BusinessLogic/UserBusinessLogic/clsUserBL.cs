@@ -40,11 +40,13 @@ namespace BusinessLogic.UserBusinessLogic
                     response.Code = 3;
                 }
 
+                InfoUser.Password = null;
                 InfoUser.Salt = null; // clear the object before sending
                 InfoUser.SaltHashed = null; // clear the object before sending
 
             }
             
+
             response.Data = serializer.Serialize(InfoUser);
             return serializer.Serialize(response);
 

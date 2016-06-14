@@ -1,4 +1,5 @@
-﻿using MyFan_Webapp.Models.Views;
+﻿using MyFan_Webapp.Logic;
+using MyFan_Webapp.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,38 +11,39 @@ namespace MyFan_Webapp.Controllers
 {
     public class LoginController : Controller
     {
-
-
-       
         // GET: Login
         public ActionResult Index()
         {
-/*
-            if (Session["token"] != null)
+            if (Sessions.isAuthenticated(Request, Session))
             {
-                if (Session.IsNewSession)
+
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (Sessions.isBand(sessionRol))
                 {
-                    string CookieHeaders = Request.Headers["Cookie"];
-
-                    if ((null != CookieHeaders) && (CookieHeaders.IndexOf("ASP.NET_SessionId") >= 0))
-                    {
-                        // IsNewSession is true, but session cookie exists,
-                        // so, ASP.NET session is expired
-                        Session["token"] = null;
-                        ViewBag.Message = "logged out";
-                        return View();
-                    }
-                    ViewBag.Message = "you just loggued in";
-                    return View();
-
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
                 }
-            }*/
-            ViewBag.Message = "You are in";
-            return View();
+                else if (Sessions.isFan(sessionRol))
+                {
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                ViewBag.Message = "";
+                return View();
+            }
         }
 
         public async Task<ActionResult> Login(string inputUsername, string inputPassword)
         {
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
+            }
             PostLoginUserForm form = new PostLoginUserForm();
             form.Username = inputUsername;
             form.Password = inputPassword;
@@ -63,9 +65,24 @@ namespace MyFan_Webapp.Controllers
             Session["token"] = token;
             Session["username"] = session.Username;
             Session["id"] = session.Id;
-            Session.Timeout = 1;
+            Session["rol"] = session.Rol;
+            Session.Timeout = 10;
 
-            return RedirectToAction("Index", "Fans", new { area = "Fans", userId = session.Id });
+
+            System.Diagnostics.Debug.WriteLine(session.Rol);
+
+            if (Sessions.isBand(session.Rol))
+            {
+                return RedirectToAction("Index", "Bands", new { area = "Bands", userId = session.Id });
+            }
+            else if(Sessions.isFan(session.Rol))
+            {
+                return RedirectToAction("Index", "Fans", new { area = "Fans", userId = session.Id });
+            }
+            else {
+                return HttpNotFound();
+            }
+            
         }
     }
 }
