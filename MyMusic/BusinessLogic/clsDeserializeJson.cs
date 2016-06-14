@@ -60,6 +60,7 @@ namespace BusinessLogic
             InfoUser.ConfirmPassword = Convert.ToString(data.ConfirmPassword);
             InfoUser.Active = Convert.ToBoolean(data.Active);
             InfoUser.Id = Convert.ToInt32(data.Id);
+            InfoUser.Rol = Convert.ToInt32(data.Rol);
 
             return InfoUser;
 
