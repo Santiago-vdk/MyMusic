@@ -246,4 +246,5 @@ ModelManifest.xml
 
 # Default Data Directories
 /MyMusic/MyFan_Webapp/Data/*
-*.png
+/MyMusic/MyFan_API/Data/*
+
