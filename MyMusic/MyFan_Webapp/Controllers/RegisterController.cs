@@ -1,6 +1,12 @@
-﻿using MyFan_Webapp.Models;
+﻿using DTO;
+using MyFan_Webapp.Models;
+using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests.Register;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -14,28 +20,22 @@ namespace MyFan_Webapp.Controllers
         {
             string response = await clsRegisterRequests.GetRegisterFanForm();
 
-            GetRegisterFanForm form = new GetRegisterFanForm();
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
 
             //Hubo error
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return RedirectToAction("Index");
             }
-            DataParser DataParser = new DataParser();
-            form = DataParser.parseFanForm(form, response);
+            Form formModel = DataParser.parseFanForm(response);
 
-            ViewBag.Genres = form.genres;
-            ViewBag.Genders = form.genders;
-
-            return View();
+            return View(formModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputConfirmPassword, 
-            string inputName, string inputBirthday, string selectGender, string selectCountry, List<string> selectGenres)
+            string inputName, string inputBirthday, int selectGender, int selectCountry, List<int> selectGenres, string profilePicture)
         {
             PostRegisterFanForm form = new PostRegisterFanForm();
             form.Username = inputUsername;
@@ -46,49 +46,66 @@ namespace MyFan_Webapp.Controllers
             form.Gender= selectGender;
             form.Country = selectCountry;
             form.Genres = selectGenres;
+            form.Picture = profilePicture;
 
             string response = await clsRegisterRequests.PostRegisterFanForm(form);
-            
-            ErrorParser ErrorParser = new ErrorParser();
+            System.Diagnostics.Debug.WriteLine(response);
             string ParsedMessage = ErrorParser.parse(response);
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return View("Index");
             }
             ViewBag.Message = "We are glad to have you onboard!";
-            return View("~/Views/Login/Index.cshtml");
+
+            return RedirectToAction("Index","Login");
         }
 
+        [HttpPost]
+        public async Task<ActionResult> ValidateUsername(string Username)
+        {
+            System.Diagnostics.Debug.WriteLine(Username);
+            string response = await clsRegisterRequests.ValidateUsername(Username);
+
+            string ParsedMessage = ErrorParser.parse(response);
+
+            //Hubo error
+            if (!ParsedMessage.Equals(""))
+            {
+                System.Diagnostics.Debug.WriteLine("Already exists");
+                return Json(true);
+                
+            }
+            else
+            {
+                return Json(false);
+            }
+
+        }
 
 
         public async Task<ActionResult> Band()
         {
             string response = await clsRegisterRequests.GetRegisterBandForm();
 
-            GetRegisterBandForm form = new GetRegisterBandForm();
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
             
             //Hubo error
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return RedirectToAction("Index");
             }
 
-            DataParser DataParser = new DataParser();
-            form = DataParser.parseBandForm(form, response);
+            Form form = DataParser.parseBandForm(response);
 
-            ViewBag.Genres = form.genres;
-
-            return View();
+            return View(form);
         }
 
         [HttpPost]
         public async Task<ActionResult> RegisterBand(string inputUsername, string inputPassword, string inputConfirmPassword,
-            string inputName, string inputHashtag, string inputDateCreation, string selectCountry, List<string> selectGenres,
-            string inputBiography)
+            string inputName, string inputHashtag, string inputDateCreation, int selectCountry, List<int> selectGenres, 
+            List<string> inputMembers, string inputBiography, string profilePicture)
         {
             PostRegisterBandForm form = new PostRegisterBandForm();
             form.Username = inputUsername;
@@ -99,19 +116,21 @@ namespace MyFan_Webapp.Controllers
             form.DateCreation = inputDateCreation;
             form.Country = selectCountry;
             form.Genres = selectGenres;
+            form.Members = inputMembers;
             form.Biography = inputBiography;
+            form.Picture = profilePicture;
 
             string response = await clsRegisterRequests.PostRegisterBandForm(form);
 
-            ErrorParser ErrorParser = new ErrorParser();
             string ParsedMessage = ErrorParser.parse(response);
             if (!ParsedMessage.Equals(""))
             {
                 ViewBag.Message = ParsedMessage;
-                return View("~/Views/Login/Index.cshtml");
+                return RedirectToAction("Index");
             }
             ViewBag.Message = "We are glad to have you onboard!";
-            return View("~/Views/Login/Index.cshtml");
+
+            return RedirectToAction("Index", "Login");
         }
     }
 }

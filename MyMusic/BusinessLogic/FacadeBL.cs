@@ -2,6 +2,7 @@
 using DTO;
 using BusinessLogic.FanBusinessLogic;
 using BusinessLogic.BandBusinessLogic;
+using BusinessLogic.UserBusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,14 @@ namespace BusinessLogic
 {
    public class FacadeBL
     {
-        public clsAlbumBL AlbumBL { get; set; }
-        public clsBandBL BandBL { get; set; }
-        public clsDiskBL DiskBL { get; set; }
-        public clsEventBL EventBL { get; set; }
-        clsFanBL FanBL = new clsFanBL();
-        public clsNewBL NewBL { get; set; }
-        public clsUserBL UserBL { get; set; }
 
+        clsEventBL EventBL = new clsEventBL();
+        clsFanBL FanBL = new clsFanBL();
+        clsBandBL BandBL = new clsBandBL();
+        clsUserBL UserBL = new clsUserBL();
+        clsNewBL NewBL = new clsNewBL();
+        clsDiskBL DiskBL = new clsDiskBL();
+        clsAlbumBL AlbumBL = new clsAlbumBL();
 
         public string getFanForm()
         {
@@ -30,8 +31,7 @@ namespace BusinessLogic
         {
             return BandBL.getForm();
         }
-
-
+        
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);
@@ -39,6 +39,30 @@ namespace BusinessLogic
         public string createBand(string pstringRequest)
         {
             return BandBL.createBand(pstringRequest);
+        }
+
+        public string login(string pstringRequest)
+        {
+            return UserBL.login(pstringRequest);
+        }
+
+        public string checkUsername(string pstringUsername)
+        {
+            return UserBL.checkUsername(pstringUsername);
+        }
+        public string checkHashtag(string pstringHashtag)
+        {
+            return BandBL.checkHashtag(pstringHashtag);
+        }
+
+        public string loadBands(string pstringRequest)
+        {
+            return FanBL.loadBands(pstringRequest);
+        }
+
+        public string getUserPicture(string pstringUsername)
+        {
+            return UserBL.getPicture(pstringUsername);
         }
 
     }

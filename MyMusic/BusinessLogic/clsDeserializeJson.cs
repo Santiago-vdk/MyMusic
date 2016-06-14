@@ -24,6 +24,7 @@ namespace BusinessLogic
             InfoFan.Name = Convert.ToString(data.Name);
             InfoFan.Password = Convert.ToString(data.Password);
             InfoFan.Username = Convert.ToString(data.Username);
+            InfoFan.Picture = Convert.ToString(data.Picture);
 
             return InfoFan;
         }
@@ -44,8 +45,36 @@ namespace BusinessLogic
             InfoBand.Biography = Convert.ToString(data.Biography);
             InfoBand.Password = Convert.ToString(data.Password);
             InfoBand.Username = Convert.ToString(data.Username);
+            InfoBand.Picture = Convert.ToString(data.Picture);
 
             return InfoBand;
+        }
+
+        public clsInfoUser DeserializeInfoUser(string pstringData)
+        {
+            clsInfoUser InfoUser = new clsInfoUser();
+            dynamic data = JObject.Parse(pstringData);
+
+            InfoUser.Username = Convert.ToString(data.Username);
+            InfoUser.Password = Convert.ToString(data.Password);
+            InfoUser.ConfirmPassword = Convert.ToString(data.ConfirmPassword);
+            InfoUser.Active = Convert.ToBoolean(data.Active);
+            InfoUser.Id = Convert.ToInt32(data.Id);
+
+            return InfoUser;
+
+        }
+
+        public clsBandsBlock DeserializeBandsBlock(string pstringData)
+        {
+            clsBandsBlock BandsBlock = new clsBandsBlock();
+            dynamic data = JObject.Parse(pstringData);
+
+            BandsBlock.Offset = Convert.ToInt32(data.Offset);
+            BandsBlock.Chunks = Convert.ToInt32(data.Chunks);
+            BandsBlock.FanCod = Convert.ToInt32(data.FanCod);
+
+            return BandsBlock;
         }
     }
 }

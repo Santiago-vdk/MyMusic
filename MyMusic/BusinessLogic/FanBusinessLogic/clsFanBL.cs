@@ -3,6 +3,7 @@ using DTO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace BusinessLogic.FanBusinessLogic
         clsFacadeDA FacadeDA = new clsFacadeDA();
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
+        clsArchiveManager ArchiveManager = new clsArchiveManager();
 
         public String getForm()
         {
@@ -23,6 +25,7 @@ namespace BusinessLogic.FanBusinessLogic
             clsResponse response = new clsResponse();
             form = FacadeDA.getAllGenres(form,ref response);
             form = FacadeDA.getAllGenders(form,ref response);
+            form = FacadeDA.getAllLocations(form, ref response);
             response.Data = serializer.Serialize(form);
             return serializer.Serialize(response);
 
@@ -34,11 +37,61 @@ namespace BusinessLogic.FanBusinessLogic
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
             clsResponse response = new clsResponse();
-            InfoFan = FacadeDA.sendForm(InfoFan,ref response);
+            
+            clsInfoUser InfoUser = new clsInfoUser();
+            InfoUser.Username = InfoFan.Username;
+            FacadeDA.validateUser(InfoUser, ref response);
+            if (!response.Success)//not existing username
+            {
+                response = new clsResponse();//clear the response
+                InfoFan.Salt = clsHasher.genSalt();
+                InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
+                InfoFan = FacadeDA.createFan(InfoFan, ref response);
+
+                //save image here!
+                ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
+
+                InfoUser.Salt = null; // clear the object before sending
+                InfoUser.SaltHashed = null; // clear the object before sending
+
+
+            }
+            else
+            {
+                //error info
+                    response.Success = false;
+                    response.Message = "Existing Username";
+                    response.Code = 3;
+            }
+
+
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }
 
+        public string loadBands(string pstringRequest)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);
+            clsResponse response = new clsResponse();
+
+            //llamada FacadeDA
+
+            response.Data = serializer.Serialize(BandsBlock);
+            return serializer.Serialize(response);
+        }
+
+
+
+
+
+
+         public static void Main()
+        {
+            clsFanBL l = new clsFanBL();
+            Console.Write(l.getForm());
+            Console.ReadKey();
+        }
      
     }
 }

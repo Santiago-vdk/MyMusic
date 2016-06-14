@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{228555EC-837E-46B7-9CEA-5D3585CE2ECD}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BusinessLogic</RootNamespace>
     <AssemblyName>BusinessLogic</AssemblyName>
@@ -30,8 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>BusinessLogic.FanBusinessLogic.clsFanBL</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -40,6 +39,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,13 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsSecurityManager.cs" />
     <Compile Include="Controllers\clsAlbumBL.cs" />
     <Compile Include="BandBusinessLogic\clsBandBL.cs" />
     <Compile Include="Controllers\clsDiskBL.cs" />
     <Compile Include="Controllers\clsEventBL.cs" />
     <Compile Include="FanBusinessLogic\clsFanBL.cs" />
     <Compile Include="Controllers\clsNewBL.cs" />
-    <Compile Include="Controllers\clsUserBL.cs" />
+    <Compile Include="clsArchiveManager.cs" />
+    <Compile Include="UserBusinessLogic\clsUserBL.cs" />
     <Compile Include="FacadeBL.cs" />
     <Compile Include="clsDeserializeJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

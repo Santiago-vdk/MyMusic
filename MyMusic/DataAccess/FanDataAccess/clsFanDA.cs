@@ -11,6 +11,8 @@ namespace DataAccess.FanDataAccess
     {
         clsFanRead FanRead = new clsFanRead();
         clsFanWrite FanWrite = new clsFanWrite();
+
+
         public clsForm getAllGenders(clsForm pclsForm,ref clsResponse pclsResponse)
         {
             try
@@ -26,11 +28,11 @@ namespace DataAccess.FanDataAccess
             }
         }
 
-        public clsInfoFan sendForm(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
             try
             {
-                return FanWrite.crearFanatico(pclsInfoFan, ref pclsResponse);
+                return FanWrite.createFan(pclsInfoFan, ref pclsResponse);
             }
             catch
             {
@@ -39,6 +41,26 @@ namespace DataAccess.FanDataAccess
                 pclsResponse.Message = "Internal Error";
                 return pclsInfoFan;// cambiar x error
             }
+        }
+
+        public clsInfoFan updateFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        {
+            try
+            {
+                return FanWrite.updateFan(pclsInfoFan, ref pclsResponse);
+            }
+            catch
+            {
+                pclsResponse.Code = 007;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Internal Error";
+                return pclsInfoFan;// cambiar x error
+            }
+        }
+
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
+        {
+            return FanRead.getBands(pclsBandsBlock, ref pclsResponse);
         }
     }
 }

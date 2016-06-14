@@ -10,7 +10,7 @@ namespace MyFan_API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -29,6 +29,7 @@ namespace MyFan_API
             );*/
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataAccess.FanDataAccess;
+﻿using DataAccess.BandDataAccess;
+using DataAccess.FanDataAccess;
 using DataAccess.UserDataAccess;
 using DTO;
 using System;
@@ -15,23 +16,48 @@ namespace DataAccess
     {
         clsUserDA UserDA = new clsUserDA();
         clsFanDA FanDA = new clsFanDA();
+        clsBandDA BandDA = new clsBandDA();
 
         public clsForm getAllGenres(clsForm pclsForm,ref clsResponse pclsResponse)
         {
             return UserDA.getAllGenres(pclsForm,ref pclsResponse);
         }
-
+        public clsForm getAllLocations(clsForm pclsForm, ref clsResponse pclsResponse)
+        {
+            return UserDA.getAllLocations(pclsForm, ref pclsResponse);
+        }
         public clsForm getAllGenders(clsForm pclsForm,ref clsResponse pclsResponse)
         {
             return FanDA.getAllGenders(pclsForm,ref pclsResponse);
         }
-
-        public clsInfoFan sendForm(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
-            return FanDA.sendForm(pclsInfoFan, ref pclsResponse);
+            return FanDA.createFan(pclsInfoFan, ref pclsResponse);
         }
-
-
+        public clsInfoBand createBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            return BandDA.createBand(pclsInfoBand, ref pclsResponse);
+        }
+        public clsInfoFan updateFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
+        {
+            return FanDA.updateFan(pclsInfoFan, ref pclsResponse);
+        }
+        public void validateUser(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+           UserDA.validateUser(pclsInfoUser, ref pclsResponse);
+        }
+        public clsInfoUser getSaltPass(clsInfoUser pclsInfoUser, ref clsResponse pclsResponse)
+        {
+            return UserDA.getSaltPass(pclsInfoUser, ref pclsResponse);
+        }
+        public void validateHashTag(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            BandDA.validateHashTag(pclsInfoBand, ref pclsResponse);
+        }
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
+        {
+            return FanDA.getBands(pclsBandsBlock, ref pclsResponse);
+        }
 
         public static void Main()
         {

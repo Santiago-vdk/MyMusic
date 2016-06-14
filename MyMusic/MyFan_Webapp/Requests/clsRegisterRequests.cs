@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Configuration;
-using Newtonsoft.Json;
 using DTO;
 using MyFan_Webapp.Models;
 using Utility;
+using Newtonsoft.Json;
 
 namespace MyFan_Webapp.Requests.Register
 {
@@ -47,9 +47,9 @@ namespace MyFan_Webapp.Requests.Register
                 // HTTP POST
                 Serializer Serializer = new Serializer();
                 string RequestBody = Serializer.Serialize(form);
-
                 clsRequest RequestObject = new clsRequest("-1",-1,RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", JsonConvert.SerializeObject(RequestObject));
+                System.Diagnostics.Debug.WriteLine(RequestBody);
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/fans", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;
@@ -62,6 +62,28 @@ namespace MyFan_Webapp.Requests.Register
            }
         }
 
+        public static async Task<string> ValidateUsername(string Username)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiEndpoint"]);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // HTTP POST
+                HttpResponseMessage request = await client.GetAsync("users?q=username&action=validate&value=" + Username);
+
+                if (request.IsSuccessStatusCode)
+                {
+                    string response = request.Content.ReadAsStringAsync().Result;
+                    return await Task.FromResult(response);
+                }
+                else
+                {
+                    return await Task.FromResult("Unexpected error ocurred");
+                }
+            }
+        }
 
         public static async Task<string> GetRegisterBandForm()
         {
@@ -97,8 +119,9 @@ namespace MyFan_Webapp.Requests.Register
                 // HTTP POST
                 Serializer Serializer = new Serializer();
                 string RequestBody = Serializer.Serialize(form);
+                System.Diagnostics.Debug.WriteLine("Body " + RequestBody);
                 clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
-                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", JsonConvert.SerializeObject(RequestObject));
+                HttpResponseMessage request = await client.PostAsJsonAsync("users/bands", RequestObject);
                 if (request.IsSuccessStatusCode)
                 {
                     string response = request.Content.ReadAsStringAsync().Result;
