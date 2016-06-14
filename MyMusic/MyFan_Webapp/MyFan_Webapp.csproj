@@ -129,12 +129,15 @@
     <Content Include="assets\common\css\BandForFanStyle.css" />
     <Content Include="assets\common\css\Login.css" />
     <Content Include="assets\common\css\MainStyle.css" />
-    <Content Include="assets\common\css\registerStyle.css" />
+    <Content Include="assets\common\css\foms\Register.css" />
     <Content Include="assets\common\img\Acetato-rare.png" />
     <Content Include="assets\common\img\album.jpg" />
     <Content Include="assets\common\img\avatar.png" />
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
+    <Content Include="assets\common\js\forms\BandForm.js" />
+    <Content Include="assets\common\js\forms\FanForm.js" />
+    <Content Include="assets\common\js\Processing.js" />
     <Content Include="assets\lib\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\lib\bootstrap\js\bootstrap.min.js" />

@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Web.Http;
 using MyFan_API.ControllerCalls;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace MyFan_API.Controllers
 {
@@ -10,11 +16,34 @@ namespace MyFan_API.Controllers
         [Route("users"), HttpGet]
         public IHttpActionResult GetUsers(string q, string action, string value)
         {
-            if(String.Equals(q, "username") && String.Equals(action, "validate") && value != null)
+            if(String.Equals(q.ToLower(), "username") && String.Equals(action.ToLower(), "validate") && (value.ToLower() != null))
             {
                 return new UserControllerCallsValidateUsername(Request, value);
             }
-            //Endpoint for retrieving all users
+            if (String.Equals(q.ToLower(), "image") && String.Equals(action.ToLower(), "read") && (value.ToLower() != null))
+            {
+
+                /*
+
+                String filePath = @"C:/Users/svk19/Source/Repos/MyMusic/MyMusic/MyFan_API/Data/Profiles/Images/stiven.png";
+
+
+                var result = new HttpResponseMessage(HttpStatusCode.OK);
+
+                FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                Image image = Image.FromStream(fileStream);
+                MemoryStream memoryStream = new MemoryStream();
+                image.Save(memoryStream, ImageFormat.Jpeg);
+                var byteArrayContent = new ByteArrayContent(memoryStream.ToArray());
+                byteArrayContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+                result.Content = byteArrayContent;
+                return result;
+                */
+
+
+            }
+        
+            
             throw new NotImplementedException();
         }
 
