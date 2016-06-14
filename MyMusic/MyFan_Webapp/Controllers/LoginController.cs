@@ -17,14 +17,14 @@ namespace MyFan_Webapp.Controllers
             if (Sessions.isAuthenticated(Request, Session))
             {
 
-                int sessionId = Int32.Parse(Session["id"].ToString());
-                if (Sessions.isBand(sessionId))
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (Sessions.isBand(sessionRol))
                 {
-                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = sessionId });
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
                 }
-                else if (Sessions.isFan(sessionId))
+                else if (Sessions.isFan(sessionRol))
                 {
-                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = sessionId });
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
                 }
                 else
                 {
@@ -66,14 +66,20 @@ namespace MyFan_Webapp.Controllers
             Session["username"] = session.Username;
             Session["id"] = session.Id;
             Session["rol"] = session.Rol;
-            Session.Timeout = 1;
+            Session.Timeout = 10;
 
-            
-            if (Sessions.isBand(session.Id))
-            { return RedirectToAction("Index", "Bands", new { area = "Bands", userId = session.Id });
-            } else if(Sessions.isFan(session.Id)) {
+
+            System.Diagnostics.Debug.WriteLine(session.Rol);
+
+            if (Sessions.isBand(session.Rol))
+            {
+                return RedirectToAction("Index", "Bands", new { area = "Bands", userId = session.Id });
+            }
+            else if(Sessions.isFan(session.Rol))
+            {
                 return RedirectToAction("Index", "Fans", new { area = "Fans", userId = session.Id });
-            } else {
+            }
+            else {
                 return HttpNotFound();
             }
             

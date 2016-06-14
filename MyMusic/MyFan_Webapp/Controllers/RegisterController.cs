@@ -19,16 +19,17 @@ namespace MyFan_Webapp.Controllers
         // GET: Register
         public async Task<ActionResult> Fan()
         {
-            if(Sessions.isAuthenticated(Request, Session))
+            if (Sessions.isAuthenticated(Request, Session))
             {
-                int userId = Int32.Parse(Session["id"].ToString());
-                if (Sessions.isBand(userId))
+
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (Sessions.isBand(sessionRol))
                 {
-                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
                 }
-                else if (Sessions.isFan(userId))
+                else if (Sessions.isFan(sessionRol))
                 {
-                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
                 }
                 else
                 {
@@ -58,14 +59,15 @@ namespace MyFan_Webapp.Controllers
         {
             if (Sessions.isAuthenticated(Request, Session))
             {
-                int userId = Int32.Parse(Session["id"].ToString());
-                if (Sessions.isBand(userId))
+
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (Sessions.isBand(sessionRol))
                 {
-                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
                 }
-                else if (Sessions.isFan(userId))
+                else if (Sessions.isFan(sessionRol))
                 {
-                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
                 }
                 else
                 {
@@ -123,14 +125,15 @@ namespace MyFan_Webapp.Controllers
         {
             if (Sessions.isAuthenticated(Request, Session))
             {
-                int userId = Int32.Parse(Session["id"].ToString());
-                if (Sessions.isBand(userId))
+
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (Sessions.isBand(sessionRol))
                 {
-                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
                 }
-                else if (Sessions.isFan(userId))
+                else if (Sessions.isFan(sessionRol))
                 {
-                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
                 }
                 else
                 {
@@ -160,14 +163,15 @@ namespace MyFan_Webapp.Controllers
         {
             if (Sessions.isAuthenticated(Request, Session))
             {
-                int userId = Int32.Parse(Session["id"].ToString());
-                if (Sessions.isBand(userId))
+
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (Sessions.isBand(sessionRol))
                 {
-                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
                 }
-                else if (Sessions.isFan(userId))
+                else if (Sessions.isFan(sessionRol))
                 {
-                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
                 }
                 else
                 {

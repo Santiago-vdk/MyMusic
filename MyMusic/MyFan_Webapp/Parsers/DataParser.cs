@@ -106,10 +106,12 @@ namespace MyFan_Webapp
 
             int id = Convert.ToInt32(data.Id);
             string username= Convert.ToString(data.Username);
+            int rol = Convert.ToInt32(data.Rol);
 
             UserSession session = new UserSession();
             session.Id = id;
             session.Username = username;
+            session.Rol = rol;
 
             return session;
             
