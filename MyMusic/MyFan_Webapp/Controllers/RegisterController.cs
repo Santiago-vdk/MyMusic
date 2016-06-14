@@ -1,4 +1,5 @@
 ﻿using DTO;
+using MyFan_Webapp.Logic;
 using MyFan_Webapp.Models;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests.Register;
@@ -18,6 +19,24 @@ namespace MyFan_Webapp.Controllers
         // GET: Register
         public async Task<ActionResult> Fan()
         {
+            if(Sessions.isAuthenticated(Request, Session))
+            {
+                int userId = Int32.Parse(Session["id"].ToString());
+                if (Sessions.isBand(userId))
+                {
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                }
+                else if (Sessions.isFan(userId))
+                {
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+
+
             string response = await clsRegisterRequests.GetRegisterFanForm();
 
             string ParsedMessage = ErrorParser.parse(response);
@@ -37,6 +56,22 @@ namespace MyFan_Webapp.Controllers
         public async Task<ActionResult> RegisterFan(string inputUsername, string inputPassword, string inputConfirmPassword, 
             string inputName, string inputBirthday, int selectGender, int selectCountry, List<int> selectGenres, string profilePicture)
         {
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                int userId = Int32.Parse(Session["id"].ToString());
+                if (Sessions.isBand(userId))
+                {
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                }
+                else if (Sessions.isFan(userId))
+                {
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
             PostRegisterFanForm form = new PostRegisterFanForm();
             form.Username = inputUsername;
             form.Password = inputPassword;
@@ -86,6 +121,22 @@ namespace MyFan_Webapp.Controllers
 
         public async Task<ActionResult> Band()
         {
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                int userId = Int32.Parse(Session["id"].ToString());
+                if (Sessions.isBand(userId))
+                {
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                }
+                else if (Sessions.isFan(userId))
+                {
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
             string response = await clsRegisterRequests.GetRegisterBandForm();
 
             string ParsedMessage = ErrorParser.parse(response);
@@ -107,6 +158,22 @@ namespace MyFan_Webapp.Controllers
             string inputName, string inputHashtag, string inputDateCreation, int selectCountry, List<int> selectGenres, 
             List<string> inputMembers, string inputBiography, string profilePicture)
         {
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                int userId = Int32.Parse(Session["id"].ToString());
+                if (Sessions.isBand(userId))
+                {
+                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = userId });
+                }
+                else if (Sessions.isFan(userId))
+                {
+                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = userId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
             PostRegisterBandForm form = new PostRegisterBandForm();
             form.Username = inputUsername;
             form.Password = inputPassword;
