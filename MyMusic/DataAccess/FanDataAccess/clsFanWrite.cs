@@ -22,7 +22,6 @@ namespace DataAccess.FanDataAccess
                  SqlCommand cmd = new SqlCommand("myFan.SP_CrearFanatico", conn);
                  cmd.CommandType = System.Data.CommandType.StoredProcedure;
                  cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Username;
-                 cmd.Parameters.Add("@strContrasena", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Password;
                  cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
                  cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",",pclsInfoFan.Genres);
                  cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;

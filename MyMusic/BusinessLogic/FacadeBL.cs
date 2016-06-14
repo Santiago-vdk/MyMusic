@@ -31,8 +31,7 @@ namespace BusinessLogic
         {
             return BandBL.getForm();
         }
-
-
+        
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);
@@ -46,18 +45,25 @@ namespace BusinessLogic
         {
             return UserBL.login(pstringRequest);
         }
+
         public string checkUsername(string pstringUsername)
         {
             return UserBL.checkUsername(pstringUsername);
         }
-
         public string checkHashtag(string pstringHashtag)
         {
             return BandBL.checkHashtag(pstringHashtag);
         }
 
+        public string loadBands(string pstringRequest)
+        {
+            return FanBL.loadBands(pstringRequest);
+        }
 
-
+        public string getUserPicture(string pstringUsername)
+        {
+            return UserBL.getPicture(pstringUsername);
+        }
 
     }
 }
