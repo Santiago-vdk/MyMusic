@@ -184,6 +184,10 @@
       <Project>{228555ec-837e-46b7-9cea-5d3585ce2ecd}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyFan_Webapp\MyFan_Webapp.csproj">
+      <Project>{A1C655A1-4E3C-4B7B-ABE0-94739CEF665B}</Project>
+      <Name>MyFan_Webapp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ODT\DTO.csproj">
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
       <Name>DTO</Name>

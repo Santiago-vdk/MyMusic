@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Script.Serialization;
 
-namespace DTO
+namespace MyFan_Webapp.Areas.Fans.Models
 {
-    public class clsNew
+    public class News
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string Date { get; set; }
+        public string Date  { get; set; }
     }
 }

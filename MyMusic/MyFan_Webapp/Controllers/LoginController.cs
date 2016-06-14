@@ -69,7 +69,7 @@ namespace MyFan_Webapp.Controllers
             Session.Timeout = 10;
 
 
-            System.Diagnostics.Debug.WriteLine(session.Rol);
+       
 
             if (Sessions.isBand(session.Rol))
             {
