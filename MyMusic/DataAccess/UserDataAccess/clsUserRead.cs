@@ -163,6 +163,7 @@ namespace DataAccess.UserDataAccess
                 pclsInfoUser.SaltHashed = result["HashPassword"].ToString();
                 pclsInfoUser.Salt = result["Salt"].ToString();
                 pclsInfoUser.Id = Convert.ToInt32(result["UserCode"].ToString());
+                pclsInfoUser.Rol = Convert.ToInt32(result["CodeRol"].ToString());
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
