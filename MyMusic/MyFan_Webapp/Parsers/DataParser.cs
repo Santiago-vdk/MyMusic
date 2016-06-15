@@ -79,7 +79,8 @@ namespace MyFan_Webapp
         }
         private static List<clsPublication> parsePosts(string json)
         {
-            return JsonConvert.DeserializeObject<List<clsPublication>>(json);
+            clsResponse Response = parseResponse(json);
+            return JsonConvert.DeserializeObject<List<clsPublication>>(Response.Data);
         }
 
         private static List<Bands> parseBands(string json)
