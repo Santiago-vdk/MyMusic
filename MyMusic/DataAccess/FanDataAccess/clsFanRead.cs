@@ -80,8 +80,11 @@ namespace DataAccess.FanDataAccess
                 pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
-                    values.Add(result["strNombre"].ToString());
-                    cods.Add(result["intCodBanda"].ToString());
+                    clsInfoBandSimple tmp = new clsInfoBandSimple();
+                    tmp.Name = result["strNombre"].ToString();
+                    tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());
+                    tmp.DateCreation = result["dtAnoCreacion"].ToString();
+                    pclsBandsBlock.Bands.Add(tmp);
                 }
 
                
@@ -90,8 +93,6 @@ namespace DataAccess.FanDataAccess
                 {
                     pclsBandsBlock.Limit = true;
                 }
-                pclsBandsBlock.BandsId = cods;
-                pclsBandsBlock.BandsName = values;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
