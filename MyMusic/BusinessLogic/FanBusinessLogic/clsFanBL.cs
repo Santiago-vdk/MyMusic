@@ -49,7 +49,7 @@ namespace BusinessLogic.FanBusinessLogic
                 InfoFan = FacadeDA.createFan(InfoFan, ref response);
 
                 //save image 
-                ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
+                ArchiveManager.saveUserImage(InfoFan.Id,InfoFan.Picture,ref response);
 
                 InfoUser.Salt = null; // clear the object before sending
                 InfoUser.SaltHashed = null; // clear the object before sending

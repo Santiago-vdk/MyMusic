@@ -16,6 +16,7 @@ namespace DTO
         public List<string> Members { get; set; }
         public string Biography { get; set; }
         public string Picture { get; set; }
+        public int Id { get; set; }
 
         //interface atributes
         public string Username { get; set; }

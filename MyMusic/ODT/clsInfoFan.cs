@@ -15,6 +15,7 @@ namespace DTO
         public string Country { get; set; }
         public List<string> Genres { get; set; }
         public string Picture { get; set; }
+        public int Id { get; set; }
 
         //interface atributes
         public string Username { get; set; }
