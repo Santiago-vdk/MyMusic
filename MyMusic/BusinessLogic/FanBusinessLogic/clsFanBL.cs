@@ -69,7 +69,7 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string loadBands(int pintUserId, int pintOffset, int pintLimit)
+        public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
             //clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             //clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);

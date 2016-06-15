@@ -85,7 +85,7 @@ namespace BusinessLogic.UserBusinessLogic
                 return serializer.Serialize(response);
         }
 
-        public string loadPublications(int pintUserId, int pintOffset,int pintLimit)
+        public string getPublications(int pintUserId, int pintOffset,int pintLimit)
         {
             clsResponse response = new clsResponse();
             List<clsPublication> publications = null;

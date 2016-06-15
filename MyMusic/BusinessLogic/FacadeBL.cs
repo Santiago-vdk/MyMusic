@@ -68,13 +68,13 @@ namespace BusinessLogic
             return BandBL.checkHashtag(pstringHashtag);
         }
 
-        public string loadPublications(int pintUserId,int pintOffset, int pintLimit)
+        public string getPublications(int pintUserId,int pintOffset, int pintLimit)
         {
-            return UserBL.loadPublications(pintUserId,pintOffset,pintLimit);
+            return UserBL.getPublications(pintUserId,pintOffset,pintLimit);
         }
-        public string loadBands(int pintUserId, int pintOffset, int pintLimit)
+        public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
-            return FanBL.loadBands(pintUserId,pintOffset,pintLimit);
+            return FanBL.getBands(pintUserId,pintOffset,pintLimit);
         }
 
         
