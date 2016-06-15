@@ -31,9 +31,9 @@ namespace BusinessLogic
         {
             return BandBL.getForm();
         }
-        public string getUserPicture(int pintUserId)
+        public string getUserPicture(string pstringUserId)
         {
-            return UserBL.getPicture(pintUserId);
+            return UserBL.getPicture(Int32.Parse(pstringUserId));
         }
         public string getNew(string pstringId)
         {
