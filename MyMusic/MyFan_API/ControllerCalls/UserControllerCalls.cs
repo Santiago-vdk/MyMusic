@@ -10,27 +10,27 @@ using System.Web.Http;
 
 namespace MyFan_API.ControllerCalls
 {
-    
-        public class UserControllerCallsLoginUser : IHttpActionResult
-        {
-            HttpRequestMessage _request;
-            FacadeBL _facade;
 
-            public UserControllerCallsLoginUser(HttpRequestMessage request)
-            {
-                _request = request;
-                _facade = new FacadeBL();
-            }
-            public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
-            {
+    public class UserControllerCallsLoginUser : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+
+        public UserControllerCallsLoginUser(HttpRequestMessage request)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
             var response = new HttpResponseMessage()
             {
-                    Content = new StringContent(_facade.login(_request.Content.ReadAsStringAsync().Result)),
-                    RequestMessage = _request
-                };
-                return Task.FromResult(response);
-            }
+                Content = new StringContent(_facade.login(_request.Content.ReadAsStringAsync().Result)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
         }
+    }
 
     public class UserControllerCallsValidateUsername : IHttpActionResult
     {
@@ -55,6 +55,30 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+
+    public class UserControllerCallsGetPicture : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        string _value;
+
+        public UserControllerCallsGetPicture(HttpRequestMessage request, string value)
+        {
+            _value = value;
+            _request = request;
+            _facade = new FacadeBL();
+        }
+
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getUserPicture(_value)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
     }
+}
 
 

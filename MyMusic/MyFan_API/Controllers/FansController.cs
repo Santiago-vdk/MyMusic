@@ -39,14 +39,14 @@ namespace MyFan_API.Controllers
         {
             if (String.Equals(q, "bands"))
             {
-                return Ok();
+                //return Ok();
+                return new FanControllerCallsGetBands(Request, fanId, offset, limit);
+
             }
             if (String.Equals(q, "posts"))
             {
                 return new FanControllerCallsGetPosts(Request, fanId, offset, limit);
             }
-          
-
             //Endpoint for retrieving one fan
             throw new NotImplementedException();
         }

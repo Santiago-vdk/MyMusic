@@ -17,44 +17,36 @@ namespace MyFan_Webapp
 
         public static string parseUsernameOrHashtag(string pStringJson)
         {
-            if (hasContent(pStringJson))
+
+            clsResponse Response = DataParser.parseResponse(pStringJson);
+            if (Response.Success)
             {
-                clsResponse Response = DataParser.parseResponse(pStringJson);
-                if (Response.Success)
-                {
-                    return ""; //El usuario si existe
-                }
-                else
-                {
-                    return "-1";
-                }
+                return ""; //El usuario si existe
             }
-            return null;
+            else
+            {
+                return "-1";
+            }
+
         }
 
         public static string parse(string pStringJson)
         {
-            if (hasContent(pStringJson))
+
+            clsResponse Response = DataParser.parseResponse(pStringJson);
+            if (Response.Success)
             {
-                clsResponse Response = DataParser.parseResponse(pStringJson);
-                if (Response.Success)
-                {
-                    return "";
-                }
-                else
-                {
-                    return HandleError(Response.Code, Response.Message);
-                }
+                return "";
             }
-            return null;
-
-
-
+            else
+            {
+                return HandleError(Response.Code, Response.Message);
+            }
         }
 
         private static string HandleError(int pIntCode, string pStringMessage)
         {
-            if(pIntCode == 1)
+            if (pIntCode == 1)
             {
                 return "Unable to retrieve information...";
             }
@@ -62,7 +54,7 @@ namespace MyFan_Webapp
             {
                 return "The monkeys took a break... Please try again later :/";
             }
-           
+
             return pStringMessage;
         }
     }

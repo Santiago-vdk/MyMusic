@@ -72,10 +72,8 @@ namespace MyFan_Webapp
             VMFanProfile profile = new VMFanProfile();
 
             profile.Bands = parseBands(json[0]);
-            profile.Posts = parsePosts(json[1]);
-            //profile.News = parseNews(json[1], profile);
-            //profile.Events = parseEvents(json[2], profile);
-
+            //profile.Posts = parsePosts(json[1]);
+            
             return profile;
 
         }
@@ -84,32 +82,13 @@ namespace MyFan_Webapp
             return JsonConvert.DeserializeObject<List<clsPublication>>(json);
         }
 
-
-       /* private static List<Events> parseEvents(string json, object model)
-        {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
-            List<clsPublication> posts = parsePosts(json);
-            List<Events> Events = JsonConvert.DeserializeObject<List<Events>>();
-            return Events;
-        }
-
-        private static List<News> parseNews(string json, object model)
-        {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
-            List<News> news = JsonConvert.DeserializeObject<List<News>>(Convert.ToString(Response.Data));
-           
-            return news;
-        }*/
-
         private static List<Bands> parseBands(string json)
         {
             clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
             System.Diagnostics.Debug.WriteLine(json);
             //dynamic data = JObject.Parse();
-
-            List<Bands> bands = JsonConvert.DeserializeObject<List<Bands>>(Convert.ToString(Response.Data));
-
-
+            List<Bands> bands = JsonConvert.DeserializeObject<List<Bands>>(Convert.ToString(data.Bands));
             return bands;
             
         }

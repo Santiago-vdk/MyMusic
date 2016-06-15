@@ -130,11 +130,11 @@
                     </button>
                 </div>
                 <div class="col-md-10">
-
+                   
                     @foreach (var band in Model.Bands)
                     {
                         <div class="inline">
-                            <img class="img-responsive" src="~/assets/common/img/album.jpg">
+                            <img class="img-responsive" src="http://127.0.0.1:53702/fans/89/picture">
                             <p class="artwork-name">@band.Name</p>
                             <small class="artwork-date">@band.DateCreation</small>
                         </div>
@@ -157,7 +157,7 @@
             <h2 class="post-header">News & Events</h2>
 
             <!-- Post -->
-            @foreach (var Post in Model.Posts)
+            @*@foreach (var Post in Model.Posts)
             {
                 <div class="col-lg-8 center-block no-float">
                     <div class="post-box">
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-            }
+            }*@
         </div>
     </div>
 </body>
