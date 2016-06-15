@@ -61,7 +61,7 @@ namespace DataAccess.FanDataAccess
         {
             try
             {
-
+                
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetBandasPorFanatico", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
@@ -76,15 +76,16 @@ namespace DataAccess.FanDataAccess
 
                 List<String> values = new List<String>();
                 List<String> cods = new List<String>();
-
+                List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
                 pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
                     clsInfoBandSimple tmp = new clsInfoBandSimple();
                     tmp.Name = result["strNombre"].ToString();
-                    tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());
-                    tmp.DateCreation = result["dtAnoCreacion"].ToString();
-                    pclsBandsBlock.Bands.Add(tmp);
+                    tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());                  
+                    DateTime dat = Convert.ToDateTime(result["dtAnoCreacion"].ToString());
+                    tmp.DateCreation = dat.ToString("yyyy-MM-dd");
+                    bands.Add(tmp);
                 }
 
                
@@ -93,6 +94,7 @@ namespace DataAccess.FanDataAccess
                 {
                     pclsBandsBlock.Limit = true;
                 }
+                pclsBandsBlock.Bands = bands;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
@@ -126,7 +128,7 @@ namespace DataAccess.FanDataAccess
             //c.FanCod = 98;
             //c.Chunks = 10;
             //c.Offset = 10;
-            //Console.WriteLine(b.Serialize(a.getBands(c,ref d)));
+            Console.WriteLine(b.Serialize(a.getBands(c,ref d,89,0,5)));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }
