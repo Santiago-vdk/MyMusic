@@ -71,13 +71,12 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
-            //clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
-            //clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);
+            clsBandsBlock BandsBlock = new clsBandsBlock();
             clsResponse response = new clsResponse();
 
             //llamada FacadeDA
 
-            //response.Data = serializer.Serialize(BandsBlock);
+            response.Data = serializer.Serialize(BandsBlock);
             return serializer.Serialize(response);
         }
 
