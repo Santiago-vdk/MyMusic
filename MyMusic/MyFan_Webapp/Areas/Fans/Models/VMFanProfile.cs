@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,8 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public string Username { get; set; }
         public List<Bands> Bands { get; set; }
         public List<News> News { get; set; }
-        public List<Eventos> Eventos { get; set; }
+        public List<Events> Events { get; set; }
+        public List<clsPublication> Posts { get; set; }
+
     }
 }

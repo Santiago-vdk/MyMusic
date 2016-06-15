@@ -157,48 +157,27 @@
             <h2 class="post-header">News & Events</h2>
 
             <!-- Post -->
-            @foreach (var New in Model.News)
+            @foreach (var Post in Model.Posts)
             {
                 <div class="col-lg-8 center-block no-float">
                     <div class="post-box">
                         <div class="row">
                             <div class="col-xs-10 post-title">
-                                <h2><u>@New.Title</u></h2>
+                                <h2><u>@Post.Title</u></h2>
                             </div>
                             <div class="col-xs-2 post-date">
-                                <h5>@New.Date</h5>
+                                <h5>@Post.Date</h5>
                             </div>
                         </div>
                         <div class="row post-content">
-                            <div class="post-text">@New.Content</div>
+                            <div class="post-text">@Post.Content</div>
+                        </div>
+                        <div class="row post-content">
+                            <a href="/@Post.Id"><small>Read more...</small></a>
                         </div>
                     </div>
                 </div>
             }
-
-            @foreach (var Evento in Model.Eventos)
-            {
-                <div class="col-lg-8 center-block no-float">
-                    <div class="post-box">
-                        <div class="row">
-                            <div class="col-xs-10 post-title">
-                                <h2><u>@Evento.Title</u></h2>
-                            </div>
-                            <div class="col-xs-2 post-date">
-                                <h5>@Evento.Date</h5>
-                            </div>
-                        </div>
-                        <div class="row post-content">
-                            <div class="post-text">@Evento.Content</div>
-                        </div>
-                    </div>
-                </div>
-            }
-
-
-            
-
-
         </div>
     </div>
 </body>
