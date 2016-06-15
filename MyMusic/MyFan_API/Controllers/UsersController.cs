@@ -22,14 +22,12 @@ namespace MyFan_API.Controllers
             }
             if (String.Equals(q.ToLower(), "image") && String.Equals(action.ToLower(), "read") && (value.ToLower() != null))
             {
-                /*
-                
-                */
-
-
+                return new UserControllerCallsGetPicture(Request, value);
             }
             throw new NotImplementedException();
         }
+
+        
 
         [Route("users/login"), HttpPost]
         public IHttpActionResult Login()
