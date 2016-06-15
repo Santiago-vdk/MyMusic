@@ -71,10 +71,10 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
-            clsBandsBlock BandsBlock = new clsBandsBlock();
+            
             clsResponse response = new clsResponse();
-
-            //llamada FacadeDA
+            clsBandsBlock BandsBlock = new clsBandsBlock();
+            BandsBlock = FacadeDA.getBands(BandsBlock,ref response,pintUserId,pintOffset,pintLimit);
 
             response.Data = serializer.Serialize(BandsBlock);
             return serializer.Serialize(response);
