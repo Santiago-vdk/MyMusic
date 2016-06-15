@@ -31,7 +31,20 @@ namespace BusinessLogic
         {
             return BandBL.getForm();
         }
-        
+        public string getUserPicture(string pstringUsername)
+        {
+            return UserBL.getPicture(pstringUsername);
+        }
+        public string getNew(string pstringId)
+        {
+            return NewBL.getNew(pstringId);
+        }
+        public string getEvent(string pstringId)
+        {
+            return EventBL.getEvent(pstringId);
+        }
+
+
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);
@@ -55,15 +68,17 @@ namespace BusinessLogic
             return BandBL.checkHashtag(pstringHashtag);
         }
 
+        public string loadPublications(string pstringRequest)
+        {
+            return UserBL.loadPublications(pstringRequest);
+        }
         public string loadBands(string pstringRequest)
         {
             return FanBL.loadBands(pstringRequest);
         }
 
-        public string getUserPicture(string pstringUsername)
-        {
-            return UserBL.getPicture(pstringUsername);
-        }
+        
+        
 
     }
 }

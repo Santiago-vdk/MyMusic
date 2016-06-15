@@ -84,5 +84,16 @@ namespace BusinessLogic.UserBusinessLogic
             }
                 return serializer.Serialize(response);
         }
+
+        public string loadPublications(string pstringRequest)
+        {
+            clsResponse response = new clsResponse();
+            List<clsPublication> publications = null;
+
+            //llamada a DA
+
+            response.Data = serializer.Serialize(publications);
+            return serializer.Serialize(response);
+        }
     }
 }
