@@ -66,23 +66,8 @@ namespace BusinessLogic.UserBusinessLogic
 
         public string getPicture(string pstringUsername)
         {
-            clsResponse response = new clsResponse();
-            clsInfoUser InfoUser = new clsInfoUser();
-            InfoUser.Username = pstringUsername;
-
-            FacadeDA.validateUser(InfoUser, ref response);
-            if (response.Success)//existing username
-            {
-                //response.Data = imagen;
-            }
-            else
-            {
-                //error info
-                response.Success = false;
-                response.Message = "Invalid Username";
-                response.Code = 4;
-            }
-                return serializer.Serialize(response);
+            return "";
+            
         }
 
         public string getPublications(int pintUserId, int pintOffset,int pintLimit)

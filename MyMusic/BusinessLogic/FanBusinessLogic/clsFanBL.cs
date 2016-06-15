@@ -48,7 +48,7 @@ namespace BusinessLogic.FanBusinessLogic
                 InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
                 InfoFan = FacadeDA.createFan(InfoFan, ref response);
 
-                //save image here!
+                //save image 
                 ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
 
                 InfoUser.Salt = null; // clear the object before sending

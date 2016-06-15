@@ -43,6 +43,14 @@ namespace BusinessLogic
         {
             return EventBL.getEvent(pstringId);
         }
+        public string getPublications(int pintUserId, int pintOffset, int pintLimit)
+        {
+            return UserBL.getPublications(pintUserId, pintOffset, pintLimit);
+        }
+        public string getBands(int pintUserId, int pintOffset, int pintLimit)
+        {
+            return FanBL.getBands(pintUserId, pintOffset, pintLimit);
+        }
 
 
         public string createFan(string pstringRequest)
@@ -68,14 +76,7 @@ namespace BusinessLogic
             return BandBL.checkHashtag(pstringHashtag);
         }
 
-        public string getPublications(int pintUserId,int pintOffset, int pintLimit)
-        {
-            return UserBL.getPublications(pintUserId,pintOffset,pintLimit);
-        }
-        public string getBands(int pintUserId, int pintOffset, int pintLimit)
-        {
-            return FanBL.getBands(pintUserId,pintOffset,pintLimit);
-        }
+        
 
         
         

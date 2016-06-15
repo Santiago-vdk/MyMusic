@@ -66,16 +66,6 @@ namespace BusinessLogic
 
         }
 
-        public clsBandsBlock DeserializeBandsBlock(string pstringData)
-        {
-            clsBandsBlock BandsBlock = new clsBandsBlock();
-            dynamic data = JObject.Parse(pstringData);
-
-            BandsBlock.Offset = Convert.ToInt32(data.Offset);
-            BandsBlock.Chunks = Convert.ToInt32(data.Chunks);
-            BandsBlock.FanCod = Convert.ToInt32(data.FanCod);
-
-            return BandsBlock;
-        }
+        
     }
 }

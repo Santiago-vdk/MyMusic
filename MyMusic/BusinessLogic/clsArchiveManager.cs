@@ -63,21 +63,13 @@ namespace BusinessLogic
                
         }
 
-        public string getUserImage(string pstringUsername,  ref clsResponse pclsResponse)
+        public string getUserImage(string pstringUsername, ref clsResponse pclsResponse)
         {
-            /*
-            String filePath = @"C:/Users/svk19/Source/Repos/MyMusic/MyMusic/MyFan_API/Data/Profiles/Images/stiven.png";
-            var result = new HttpResponseMessage(HttpStatusCode.OK);
 
-            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            Image image = Image.FromStream(fileStream);
-            MemoryStream memoryStream = new MemoryStream();
-            image.Save(memoryStream, ImageFormat.Jpeg);
-            var byteArrayContent = new ByteArrayContent(memoryStream.ToArray());
-            byteArrayContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            result.Content = byteArrayContent;
-            return result;
-            */
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername)) //directory does not exist
+            {
+
+            }
             return "";
         }
     }
