@@ -58,9 +58,9 @@ namespace DataAccess.FanDataAccess
             }
         }
 
-        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
         {
-            return FanRead.getBands(pclsBandsBlock, ref pclsResponse);
+            return FanRead.getBands(pclsBandsBlock, ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
     }
 }

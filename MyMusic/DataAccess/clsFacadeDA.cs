@@ -54,9 +54,9 @@ namespace DataAccess
         {
             BandDA.validateHashTag(pclsInfoBand, ref pclsResponse);
         }
-        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
         {
-            return FanDA.getBands(pclsBandsBlock, ref pclsResponse);
+            return FanDA.getBands(pclsBandsBlock, ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
 
         public static void Main()
