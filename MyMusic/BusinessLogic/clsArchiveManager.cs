@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using DTO;
+using System.Drawing.Imaging;
 
 namespace BusinessLogic
 {
@@ -92,7 +93,7 @@ namespace BusinessLogic
                     path = path3;
                     FileTypePrefix = FileTypePrefixGif;
                 }
-
+                /*
                 FileInfo fileInfo = new FileInfo(path);
 
                 // The byte[] to save the data in
@@ -104,9 +105,15 @@ namespace BusinessLogic
                     fs.Read(data, 0, data.Length);
                 }
                 // Delete the temporary file
-                fileInfo.Delete();
+                fileInfo.Delete();*/
 
-                return FileTypePrefix + Convert.ToBase64String(data);
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                Image image = Image.FromStream(fileStream);
+                MemoryStream memoryStream = new MemoryStream();
+                image.Save(memoryStream, ImageFormat.Png);
+         
+
+                return Convert.ToBase64String(memoryStream.ToArray());
             }
             catch
             {
