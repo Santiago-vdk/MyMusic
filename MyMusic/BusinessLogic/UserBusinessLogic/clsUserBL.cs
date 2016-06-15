@@ -64,18 +64,18 @@ namespace BusinessLogic.UserBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getPicture(string pstringUsername)
+        public string getPicture(int pintUserId)
         {
-            return ArchiveManager.getUserImage(pstringUsername);
+            return ArchiveManager.getUserImage(pintUserId);
             
         }
 
         public string getPublications(int pintUserId, int pintOffset,int pintLimit)
         {
             clsResponse response = new clsResponse();
-            List<clsPublication> publications = null;
+            List<clsPublication> publications = FacadeDA.getWall(ref response,pintUserId,pintOffset,pintLimit);
 
-            //llamada a DA
+            
 
             response.Data = serializer.Serialize(publications);
             return serializer.Serialize(response);

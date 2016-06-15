@@ -33,7 +33,7 @@ namespace BusinessLogic
         }
         public string getUserPicture(int pintUserId)
         {
-            return UserBL.getPicture(pstringUsername);
+            return UserBL.getPicture(pintUserId);
         }
         public string getNew(string pstringId)
         {
