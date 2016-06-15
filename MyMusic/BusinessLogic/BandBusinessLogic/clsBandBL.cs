@@ -44,7 +44,7 @@ namespace BusinessLogic.BandBusinessLogic
                 InfoBand = FacadeDA.createBand(InfoBand, ref response);
 
                 //save image here!
-                ArchiveManager.saveUserImage(InfoBand.Username, InfoBand.Picture, ref response);
+                ArchiveManager.saveUserImage(InfoBand.Id, InfoBand.Picture, ref response);
                 InfoUser.Salt = null; // clear the object before sending
                 InfoUser.SaltHashed = null; // clear the object before sending
 
