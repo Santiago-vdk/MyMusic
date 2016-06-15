@@ -170,10 +170,11 @@
     <Compile Include="Areas\Fans\Controllers\NewsController.cs" />
     <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
     <Compile Include="Areas\Fans\Models\Bands.cs" />
-    <Compile Include="Areas\Fans\Models\Events.cs" />
+    <Compile Include="Areas\Fans\Models\Eventos.cs" />
     <Compile Include="Areas\Fans\Models\News.cs" />
     <Compile Include="Areas\Fans\Models\VMFanProfile.cs" />
     <Compile Include="Areas\Fans\Requests\clsFanRequests.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Logic\Sessions.cs" />
     <Compile Include="Models\Views\Form.cs" />
     <Compile Include="Models\Views\Genre.cs" />
@@ -232,6 +233,7 @@
     <Folder Include="Areas\Fans\Views\Albums\" />
     <Folder Include="Areas\Fans\Views\Bands\" />
     <Folder Include="Areas\Fans\Views\News\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ODT\DTO.csproj">

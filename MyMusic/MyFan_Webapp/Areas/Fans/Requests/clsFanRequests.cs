@@ -32,7 +32,7 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             }
             else
             {
-                response.Add("Unexpected error ocurred");
+                response.Add("Unexpected error ocurred with favorite bands");
             }
 
             if (requestNews.Result.IsSuccessStatusCode)
@@ -41,7 +41,7 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             }
             else
             {
-                response.Add("Unexpected error ocurred");
+                response.Add("Unexpected error ocurred with news");
             }
 
             if (requestEvents.Result.IsSuccessStatusCode)
@@ -51,7 +51,7 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             }
             else
             {
-                response.Add("Unexpected error ocurred");
+                response.Add("Unexpected error ocurred with events");
             }
 
             return response;

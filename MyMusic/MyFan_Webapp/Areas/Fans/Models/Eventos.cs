@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyFan_Webapp.Areas.Fans.Models
 {
-    public class Events
+    public class Eventos
     {
         public int Id { get; set; }
         public string Title { get; set; }

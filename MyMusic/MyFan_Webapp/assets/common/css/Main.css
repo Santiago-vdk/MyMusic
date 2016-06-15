@@ -35,14 +35,19 @@ h5 {
 }
 p {}
 .artwork-name {
-    overflow: hidden;
+  
+overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 0px;
     color: #FFFFFF;
     line-height: 20px;
-    height: 40px;
+    display: block;
+    width:125px;
+  
+    
 }
+
 .artwork-date {
     color: #999;
 }
@@ -110,6 +115,16 @@ p {}
     width: 16.7%;
     padding-left: 4%;
     padding-right: 4%;
+}
+#artwork-section img {
+  height: 125px;
+  width: 125px;
+}
+.inline {
+  float:left;
+  margin-top:10px;
+  margin-right:50px;
+  margin-left:45px;
 }
 #previous .half-circle {
     width: 80px;
