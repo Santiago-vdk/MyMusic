@@ -62,5 +62,15 @@ namespace BusinessLogic
             }
                
         }
+
+        public string getUserImage(string pstringUsername, ref clsResponse pclsResponse)
+        {
+
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername)) //directory does not exist
+            {
+
+            }
+            return "";
+        }
     }
 }

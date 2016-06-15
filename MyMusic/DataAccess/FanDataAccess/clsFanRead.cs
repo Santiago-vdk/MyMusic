@@ -57,16 +57,16 @@ namespace DataAccess.FanDataAccess
             return pclsForm;
         }
 
-        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse)
+        public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, int pintUserID, int pintOffset,int pintLimit )
         {
             try
             {
 
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetBandasPorFanatico", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pclsBandsBlock.Offset;
-                cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pclsBandsBlock.Chunks;
-                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pclsBandsBlock.FanCod;
+                cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
+                cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
+                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
@@ -80,18 +80,19 @@ namespace DataAccess.FanDataAccess
                 pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
-                    values.Add(result["strNombre"].ToString());
-                    cods.Add(result["intCodBanda"].ToString());
+                    clsInfoBandSimple tmp = new clsInfoBandSimple();
+                    tmp.Name = result["strNombre"].ToString();
+                    tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());
+                    tmp.DateCreation = result["dtAnoCreacion"].ToString();
+                    pclsBandsBlock.Bands.Add(tmp);
                 }
 
                
                 
-                if (cods.Count < pclsBandsBlock.Chunks)
+                if (cods.Count < pintLimit)
                 {
                     pclsBandsBlock.Limit = true;
                 }
-                pclsBandsBlock.BandsId = cods;
-                pclsBandsBlock.BandsName = values;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
@@ -122,10 +123,10 @@ namespace DataAccess.FanDataAccess
             Serializer b = new Serializer();
             clsBandsBlock c = new clsBandsBlock();
             clsResponse d= new clsResponse();
-            c.FanCod = 98;
-            c.Chunks = 10;
-            c.Offset = 10;
-            Console.WriteLine(b.Serialize(a.getBands(c,ref d)));
+            //c.FanCod = 98;
+            //c.Chunks = 10;
+            //c.Offset = 10;
+            //Console.WriteLine(b.Serialize(a.getBands(c,ref d)));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }

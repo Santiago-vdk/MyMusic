@@ -48,7 +48,7 @@ namespace BusinessLogic.FanBusinessLogic
                 InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);
                 InfoFan = FacadeDA.createFan(InfoFan, ref response);
 
-                //save image here!
+                //save image 
                 ArchiveManager.saveUserImage(InfoFan.Username,InfoFan.Picture,ref response);
 
                 InfoUser.Salt = null; // clear the object before sending
@@ -71,13 +71,12 @@ namespace BusinessLogic.FanBusinessLogic
 
         public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
-            //clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
-            //clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);
+            
             clsResponse response = new clsResponse();
+            clsBandsBlock BandsBlock = new clsBandsBlock();
+            BandsBlock = FacadeDA.getBands(BandsBlock,ref response,pintUserId,pintOffset,pintLimit);
 
-            //llamada FacadeDA
-
-            //response.Data = serializer.Serialize(BandsBlock);
+            response.Data = serializer.Serialize(BandsBlock);
             return serializer.Serialize(response);
         }
 
