@@ -14,7 +14,7 @@ namespace MyFan_Webapp
     {
         public static Form parseFanForm(string json)
         {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
+            clsResponse Response = parseResponse(json);
             System.Diagnostics.Debug.WriteLine(json);
             dynamic data = JObject.Parse(Response.Data);
 
@@ -62,23 +62,34 @@ namespace MyFan_Webapp
             return form;
         }
 
+        public static bool hasContent(string json)
+        {
+            throw new NotImplementedException();
+        }
+
         public static VMFanProfile parseFanProfile(List<string> json)
         {
             VMFanProfile profile = new VMFanProfile();
 
-            profile.Bands = parseBands(json[0], profile);
-            profile.News = parseNews(json[1], profile);
-            profile.Eventos = parseEvents(json[2], profile);
+            profile.Bands = parseBands(json[0]);
+            profile.Posts = parsePosts(json[1]);
+            //profile.News = parseNews(json[1], profile);
+            //profile.Events = parseEvents(json[2], profile);
 
             return profile;
 
         }
+        private static List<clsPublication> parsePosts(string json)
+        {
+            return JsonConvert.DeserializeObject<List<clsPublication>>(json);
+        }
 
-        private static List<Eventos> parseEvents(string json, object model)
+
+       /* private static List<Events> parseEvents(string json, object model)
         {
             clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
-            List<Eventos> Events = JsonConvert.DeserializeObject<List<Eventos>>(Convert.ToString(Response.Data));
-            System.Diagnostics.Debug.WriteLine(Events[0].Title);
+            List<clsPublication> posts = parsePosts(json);
+            List<Events> Events = JsonConvert.DeserializeObject<List<Events>>();
             return Events;
         }
 
@@ -88,11 +99,11 @@ namespace MyFan_Webapp
             List<News> news = JsonConvert.DeserializeObject<List<News>>(Convert.ToString(Response.Data));
            
             return news;
-        }
+        }*/
 
-        private static List<Bands> parseBands(string json, object model)
+        private static List<Bands> parseBands(string json)
         {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
+            clsResponse Response = parseResponse(json);
             System.Diagnostics.Debug.WriteLine(json);
             //dynamic data = JObject.Parse();
 
@@ -103,9 +114,14 @@ namespace MyFan_Webapp
             
         }
 
+        public static clsResponse parseResponse(string json)
+        {
+            return JsonConvert.DeserializeObject<clsResponse>(json);
+        }
+
         public static Form parseBandForm(string json)
         {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
+            clsResponse Response = parseResponse(json);
 
             dynamic data = JObject.Parse(Response.Data);
 
@@ -142,7 +158,7 @@ namespace MyFan_Webapp
 
         public static UserSession parseUserForm(string json)
         {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(json);
+            clsResponse Response = parseResponse(json);
             System.Diagnostics.Debug.WriteLine(Response.Data);
             dynamic data = JObject.Parse(Response.Data);
 

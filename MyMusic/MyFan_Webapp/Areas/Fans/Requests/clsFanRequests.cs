@@ -16,42 +16,37 @@ namespace MyFan_Webapp.Areas.Fans.Requests
         {
 
             var requestBands = Client.getClient().GetAsync("users/fans/" + userId + "/?q=bands");
-            var requestNews = Client.getClient().GetAsync("users/fans/" + userId + "/?q=news");
-            var requestEvents = Client.getClient().GetAsync("users/fans/" + userId + "/?q=events");
-
-            await Task.WhenAll(requestBands, requestNews, requestEvents);
+            var requestPosts = Client.getClient().GetAsync("users/fans/" + userId + "/?q=posts");
+    
+            await Task.WhenAll(requestBands, requestPosts);
 
             System.Diagnostics.Debug.WriteLine("bands " + requestBands.Result.Content.ReadAsStringAsync().Result);
-            System.Diagnostics.Debug.WriteLine("news " + requestNews.Result.Content.ReadAsStringAsync().Result);
-            System.Diagnostics.Debug.WriteLine("events " + requestEvents.Result.Content.ReadAsStringAsync().Result);
+            System.Diagnostics.Debug.WriteLine("posts " + requestPosts.Result.Content.ReadAsStringAsync().Result);        
 
             List<string> response = new List<string>();
             if (requestBands.Result.IsSuccessStatusCode)
             {
-                response.Add(requestBands.Result.Content.ReadAsStringAsync().Result);
+                if(requestBands.Result.Content.ReadAsStringAsync().Result.Length > 0)
+                {
+                    response.Add(requestBands.Result.Content.ReadAsStringAsync().Result);
+                }
+                else
+                {
+                    response.Add("no-content");
+                }
             }
             else
             {
                 response.Add("Unexpected error ocurred with favorite bands");
             }
 
-            if (requestNews.Result.IsSuccessStatusCode)
+            if (requestPosts.Result.IsSuccessStatusCode)
             {
-                response.Add(requestNews.Result.Content.ReadAsStringAsync().Result);
+                response.Add(requestPosts.Result.Content.ReadAsStringAsync().Result);
             }
             else
             {
-                response.Add("Unexpected error ocurred with news");
-            }
-
-            if (requestEvents.Result.IsSuccessStatusCode)
-            {
-                response.Add(requestEvents.Result.Content.ReadAsStringAsync().Result);
-
-            }
-            else
-            {
-                response.Add("Unexpected error ocurred with events");
+                response.Add("Unexpected error ocurred with posts");
             }
 
             return response;

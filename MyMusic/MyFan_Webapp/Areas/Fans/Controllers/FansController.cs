@@ -20,17 +20,19 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                     return View("~/Views/Login/Index.cshtml");
                 }
             }
-            //[Bandas,Noticias,Eventos]
+            //[Bandas,Posts]
             List<string> response = await clsFanRequests.GetFanProfile(userId);
-      
+            VMFanProfile profile = new VMFanProfile();
+
             //Hubo error
-            if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals("") 
-                || !ErrorParser.parse(response[2]).Equals(""))
+            if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals(""))
             {
                 ViewBag.Message = "Fuck my life...";
             }
-            VMFanProfile profile = DataParser.parseFanProfile(response);
-            
+            if (ErrorParser.hasContent(response[0]) || ErrorParser.hasContent(response[1]))
+            {
+                profile = DataParser.parseFanProfile(response);
+            }
 
             return View(profile);
 

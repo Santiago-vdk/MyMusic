@@ -1,34 +1,53 @@
-﻿using DTO;
+﻿using System;
+using DTO;
 using Newtonsoft.Json;
 
 namespace MyFan_Webapp
 {
     public static class ErrorParser
     {
+        public static bool hasContent(string pStringJson)
+        {
+            if (pStringJson.Equals("no-content"))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static string parseUsernameOrHashtag(string pStringJson)
         {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(pStringJson);
-            if (Response.Success)
+            if (hasContent(pStringJson))
             {
-                return ""; //El usuario si existe
+                clsResponse Response = DataParser.parseResponse(pStringJson);
+                if (Response.Success)
+                {
+                    return ""; //El usuario si existe
+                }
+                else
+                {
+                    return "-1";
+                }
             }
-            else
-            {
-                return "-1";
-            }
+            return null;
         }
 
         public static string parse(string pStringJson)
         {
-            clsResponse Response = JsonConvert.DeserializeObject<clsResponse>(pStringJson);
-            if (Response.Success)
+            if (hasContent(pStringJson))
             {
-                return "";
+                clsResponse Response = DataParser.parseResponse(pStringJson);
+                if (Response.Success)
+                {
+                    return "";
+                }
+                else
+                {
+                    return HandleError(Response.Code, Response.Message);
+                }
             }
-            else
-            {
-                return HandleError(Response.Code,Response.Message);
-            }
+            return null;
+
 
 
         }
