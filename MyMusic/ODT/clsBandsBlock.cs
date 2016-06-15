@@ -10,6 +10,7 @@ namespace DTO
     {
         public List<string> BandsId { get; set; }
         public List<string> BandsName { get; set; }
+        public List<String> Dates { get; set; }
         public Boolean Limit { get; set; }
     }
 }
