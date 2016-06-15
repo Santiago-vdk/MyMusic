@@ -66,7 +66,7 @@ namespace BusinessLogic.UserBusinessLogic
 
         public string getPicture(string pstringUsername)
         {
-            return "";
+            return ArchiveManager.getUserImage(pstringUsername);
             
         }
 
