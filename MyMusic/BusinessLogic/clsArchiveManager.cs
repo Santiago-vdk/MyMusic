@@ -13,7 +13,7 @@ namespace BusinessLogic
     class clsArchiveManager
     {
                
-        public void saveUserImage(string pstringUsername, string pstringImage,ref clsResponse pclsResponse)
+        public void saveUserImage(int pintUserId, string pstringImage,ref clsResponse pclsResponse)
         {
             try
             {
@@ -43,15 +43,15 @@ namespace BusinessLogic
                 //type validations
                 if (pstringImage.Contains(FileTypePrefixJpg))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 if (pstringImage.Contains(FileTypePrefixPng))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
                 if (pstringImage.Contains(FileTypePrefixGif))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
                 }
             }
             catch
@@ -63,15 +63,15 @@ namespace BusinessLogic
                
         }
 
-        public string getUserImage(string pstringUsername)
+        public string getUserImage(int pintUserId)
         {
             try
             {
                 // Load file meta data with FileInfo
                 string path = "";
-                string path1 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".jpeg";
-                string path2 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".png";
-                string path3 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".gif";
+                string path1 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg";
+                string path2 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png";
+                string path3 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif";
 
                 string FileTypePrefix = "";
                 const string FileTypePrefixJpg = "data:image/jpg;base64,";
@@ -120,7 +120,7 @@ namespace BusinessLogic
                 return "-1";
             }
         }
-        public void updateUserImage(string pstringUsername, string pstringImage, ref clsResponse pclsResponse)
+        public void updateUserImage(int pintUserId, string pstringImage, ref clsResponse pclsResponse)
         {
             try
             {
@@ -132,17 +132,17 @@ namespace BusinessLogic
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/");
                 }
 
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/"+pstringUsername+".jpeg")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/"+ pintUserId.ToString() + ".jpeg")) //directory does not exist
                 {
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".jpeg");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg");
                 }
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".png")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png")) //directory does not exist
                 {
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".png");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png");
                 }
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".gif")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif")) //directory does not exist
                 {
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".gif");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif");
                 }
 
                 const string FileTypePrefixJpg = "data:image/jpg;base64,";
@@ -160,15 +160,15 @@ namespace BusinessLogic
                 //type validations
                 if (pstringImage.Contains(FileTypePrefixJpg))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 if (pstringImage.Contains(FileTypePrefixPng))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
                 if (pstringImage.Contains(FileTypePrefixGif))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pstringUsername + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
                 }
             }
             catch
