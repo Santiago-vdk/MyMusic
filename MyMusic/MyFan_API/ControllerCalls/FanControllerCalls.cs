@@ -71,7 +71,35 @@ namespace MyFan_API
 
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(_facade.loadPublications(_userId, _offset, _limit)),
+                Content = new StringContent(_facade.getPublications(_userId, _offset, _limit)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    public class FanControllerCallsGetBands : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+        int _offset;
+        int _limit;
+
+        public FanControllerCallsGetBands(HttpRequestMessage request, int userId, int offset, int limit)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+            _offset = offset;
+            _limit = limit;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getBands(_userId, _offset, _limit)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);

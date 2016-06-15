@@ -17,23 +17,16 @@ namespace MyFan_Webapp.Areas.Fans.Requests
 
             var requestBands = Client.getClient().GetAsync("users/fans/" + userId + "/?q=bands");
             var requestPosts = Client.getClient().GetAsync("users/fans/" + userId + "/?q=posts");
-    
+
             await Task.WhenAll(requestBands, requestPosts);
 
             System.Diagnostics.Debug.WriteLine("bands " + requestBands.Result.Content.ReadAsStringAsync().Result);
-            System.Diagnostics.Debug.WriteLine("posts " + requestPosts.Result.Content.ReadAsStringAsync().Result);        
+            System.Diagnostics.Debug.WriteLine("posts " + requestPosts.Result.Content.ReadAsStringAsync().Result);
 
             List<string> response = new List<string>();
             if (requestBands.Result.IsSuccessStatusCode)
             {
-                if(requestBands.Result.Content.ReadAsStringAsync().Result.Length > 0)
-                {
-                    response.Add(requestBands.Result.Content.ReadAsStringAsync().Result);
-                }
-                else
-                {
-                    response.Add("no-content");
-                }
+                response.Add(requestBands.Result.Content.ReadAsStringAsync().Result);
             }
             else
             {

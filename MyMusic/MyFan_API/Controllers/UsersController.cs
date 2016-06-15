@@ -22,28 +22,12 @@ namespace MyFan_API.Controllers
             }
             if (String.Equals(q.ToLower(), "image") && String.Equals(action.ToLower(), "read") && (value.ToLower() != null))
             {
-
                 /*
-
-                String filePath = @"C:/Users/svk19/Source/Repos/MyMusic/MyMusic/MyFan_API/Data/Profiles/Images/stiven.png";
-
-
-                var result = new HttpResponseMessage(HttpStatusCode.OK);
-
-                FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                Image image = Image.FromStream(fileStream);
-                MemoryStream memoryStream = new MemoryStream();
-                image.Save(memoryStream, ImageFormat.Jpeg);
-                var byteArrayContent = new ByteArrayContent(memoryStream.ToArray());
-                byteArrayContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-                result.Content = byteArrayContent;
-                return result;
+                
                 */
 
 
             }
-        
-            
             throw new NotImplementedException();
         }
 
@@ -56,17 +40,5 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-      /*  private void register(string v)
-        {
-            string hashedForSending = BCrypt.Net.BCrypt.HashPassword(v);
-            System.Diagnostics.Debug.WriteLine("Hash when sended " + hashedForSending);
-            //Generate salt for user
-            string mySalt = BCrypt.Net.BCrypt.GenerateSalt(13);
-            System.Diagnostics.Debug.WriteLine("unique salt for user " + mySalt);
-            //Rehash password
-            string password = BCrypt.Net.BCrypt.HashPassword(hashedForSending, mySalt);
-            System.Diagnostics.Debug.WriteLine("Final password " + password);
-            System.Diagnostics.Debug.WriteLine("\n");
-        }*/
     }
 }
