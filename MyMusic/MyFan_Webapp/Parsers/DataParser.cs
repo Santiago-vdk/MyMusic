@@ -72,7 +72,7 @@ namespace MyFan_Webapp
             VMFanProfile profile = new VMFanProfile();
 
             profile.Bands = parseBands(json[0]);
-            //profile.Posts = parsePosts(json[1]);
+            profile.Posts = parsePosts(json[1]);
             
             return profile;
 
