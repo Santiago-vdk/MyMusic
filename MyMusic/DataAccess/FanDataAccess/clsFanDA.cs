@@ -13,11 +13,11 @@ namespace DataAccess.FanDataAccess
         clsFanWrite FanWrite = new clsFanWrite();
 
 
-        public clsForm getAllGenders(clsForm pclsForm,ref clsResponse pclsResponse)
+        public clsForm getAllGenders(clsForm pclsForm, ref clsResponse pclsResponse)
         {
             try
             {
-                return FanRead.getAllgenders(pclsForm,ref pclsResponse);
+                return FanRead.getAllgenders(pclsForm, ref pclsResponse);
             }
             catch
             {
@@ -61,6 +61,11 @@ namespace DataAccess.FanDataAccess
         public clsBandsBlock getBands(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
         {
             return FanRead.getBands(pclsBandsBlock, ref pclsResponse, pintUserID, pintOffset, pintLimit);
+        }
+
+        public List<clsPublication> getWall(ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            return FanRead.getWall(ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
     }
 }

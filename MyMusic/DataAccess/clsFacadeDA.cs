@@ -58,7 +58,10 @@ namespace DataAccess
         {
             return FanDA.getBands(pclsBandsBlock, ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
-
+        public List<clsPublication> getWall(ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            return FanDA.getWall(ref pclsResponse, pintUserID, pintOffset, pintLimit);
+        }
         public static void Main()
         {
             System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();

@@ -120,7 +120,60 @@ namespace DataAccess.FanDataAccess
             return pclsBandsBlock;
         }
 
- 
+        public List<clsPublication> getWall(ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            List<clsPublication> Wall = new List<clsPublication>();
+            try
+            {    
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetNewsEventsWall", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
+                cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
+                cmd.Parameters.Add("@inCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+
+
+
+                while (result.Read())
+                {
+                    clsPublication tmp = new clsPublication();
+                    tmp.Title = result["Nombre"].ToString();
+                    tmp.Content = result["Descripcion"].ToString();
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
+                    tmp.Date = dat.ToString("yyyy-MM-dd");
+                    tmp.Type = Convert.ToInt32(result["Tipo"].ToString());
+                    tmp.Id = Convert.ToInt32(result["Codigo"].ToString());
+                    Wall.Add(tmp);
+                }
+
+
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return Wall;
+        }
         public static void Main()
         {
             clsFanRead a = new clsFanRead();
@@ -130,7 +183,7 @@ namespace DataAccess.FanDataAccess
             //c.FanCod = 98;
             //c.Chunks = 10;
             //c.Offset = 10;
-            Console.WriteLine(b.Serialize(a.getBands(c,ref d,89,0,5)));
+            Console.WriteLine(b.Serialize(a.getWall(ref d,89,0,50)));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }
