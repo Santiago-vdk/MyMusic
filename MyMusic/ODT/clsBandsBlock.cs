@@ -8,9 +8,7 @@ namespace DTO
 {
     public class clsBandsBlock
     {
-        public List<string> BandsId { get; set; }
-        public List<string> BandsName { get; set; }
-        public List<String> Dates { get; set; }
+        public List<clsInfoBandSimple> Bands { get; set; }
         public Boolean Limit { get; set; }
     }
 }
