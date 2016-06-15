@@ -64,19 +64,51 @@ namespace MyFan_API.Controllers
             if(String.Equals(q, "news"))
             {
                 System.Diagnostics.Debug.WriteLine("Getting news for user " + fanId);
+                List<News> news = new List<News>();
+                News New = new News();
+                New.Title = "Jesus vuelve a la tierra";
+                New.Id = 1;
+                New.Date = "29/10/1995BC";
+                New.Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, ";
+                news.Add(New);
+
+
+                News New2 = new News();
+                New2.Title = "David se pone tetas";
+                New2.Id = 2;
+                New2.Date = "31/10/1995BC";
+                New2.Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, ";
+                news.Add(New2);
+
                 clsResponse response = new clsResponse();
                 response.Success = true;
-                response.Message = "mamo2";
-           
+                response.Message = "mamo";
+                response.Data = JsonConvert.SerializeObject(news);
                 return Ok(response);
             }
             if (String.Equals(q, "events"))
             {
                 System.Diagnostics.Debug.WriteLine("Getting events for user " + fanId);
+                List<Eventos> events = new List<Eventos>();
+                Eventos Event = new Eventos();
+                Event.Title = "Tatuado de nepes";
+                Event.Id = 1;
+                Event.Date = "31/10/1995BC";
+                Event.Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, ";
+                events.Add(Event);
+
+                Eventos Event2 = new Eventos();
+                Event2.Title = "Rasurado de Gorros";
+                Event2.Id = 2;
+                Event2.Date = "31/10/1995BC";
+                Event2.Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt libero pharetra nisi dapibus iaculis. Duis leo mi, semper a lorem et, ";
+                events.Add(Event2);
+
+
                 clsResponse response = new clsResponse();
                 response.Success = true;
-                response.Message = "mamo3";
-  
+                response.Message = "mamo";
+                response.Data = JsonConvert.SerializeObject(events);
                 return Ok(response);
             }
 

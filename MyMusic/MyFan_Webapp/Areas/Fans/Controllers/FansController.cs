@@ -1,5 +1,7 @@
 ﻿using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Fans.Requests;
+using MyFan_Webapp.Logic;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -10,6 +12,14 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
     {
         public async Task<ActionResult> Index(int userId)
         {
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                int sessionRol = Int32.Parse(Session["rol"].ToString());
+                if (!Sessions.isFan(sessionRol))
+                {
+                    return View("~/Views/Login/Index.cshtml");
+                }
+            }
             //[Bandas,Noticias,Eventos]
             List<string> response = await clsFanRequests.GetFanProfile(userId);
       
@@ -18,12 +28,12 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 || !ErrorParser.parse(response[2]).Equals(""))
             {
                 ViewBag.Message = "Fuck my life...";
-                return View();
             }
             VMFanProfile profile = DataParser.parseFanProfile(response);
             
 
             return View(profile);
+
         }
 
         public new ActionResult Profile(int userId)

@@ -68,9 +68,6 @@ namespace MyFan_Webapp.Controllers
             Session["rol"] = session.Rol;
             Session.Timeout = 10;
 
-
-       
-
             if (Sessions.isBand(session.Rol))
             {
                 return RedirectToAction("Index", "Bands", new { area = "Bands", userId = session.Id });

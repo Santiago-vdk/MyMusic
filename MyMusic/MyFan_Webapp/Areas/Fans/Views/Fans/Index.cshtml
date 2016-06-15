@@ -7,6 +7,8 @@
 <html>
 
 <head>
+
+
     <title>MyFan</title>
 </head>
 
@@ -106,8 +108,8 @@
 
                 <div id="user-button-menu" class="row">
                     <!-- Button Group -->
-                    <button class="btn btn-default btn-text" type="button">Home <i class="fa fa-home" aria-hidden="true"></i></button>
-                    <button class="btn btn-default btn-text" type="button">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+                    <a class="btn btn-default btn-text" href="~/Fans/">Home <i class="fa fa-home" aria-hidden="true"></i></a>
+                    <a class="btn btn-default btn-text" href="~/Logout" >Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -127,42 +129,17 @@
                         </div>
                     </button>
                 </div>
-                @foreach (var band in Model.Bands)
-                {
-                    <div class="col-md-2">
-                        <img class="img-responsive" src="assets/common/img/album.jpg">
-                        <p class="artwork-name">@band.Name</p>
-                        <small class="artwork-date">@band.DateCreation</small>
-                    </div>
-                }
+                <div class="col-md-10">
 
-                
-
-
-                @*<div class="col-md-2">
-                    <img class="img-responsive" src="assets/common/img/album.jpg">
-                    <p class="artwork-name">Rage Against the Machine asdf asdf asdf asdfasd asdf</p>
-                    <small class="artwork-date">1973</small>
-
+                    @foreach (var band in Model.Bands)
+                    {
+                        <div class="inline">
+                            <img class="img-responsive" src="~/assets/common/img/album.jpg">
+                            <p class="artwork-name">@band.Name</p>
+                            <small class="artwork-date">@band.DateCreation</small>
+                        </div>
+                    }
                 </div>
-                <div class="col-md-2">
-                    <img class="img-responsive" src="assets/common/img/album.jpg">
-                    <p class="artwork-name">Pink Floyd</p>
-                    <small class="artwork-date">1973</small>
-                </div>
-                <div class="col-md-2">
-                    <img class="img-responsive" src="assets/common/img/album.jpg">
-                    <p class="artwork-name">Pink Floyd</p>
-                    <small class="artwork-date">1973</small>
-                </div>
-                <div class="col-md-2">
-                    <img class="img-responsive" src="assets/common/img/album.jpg">
-                    <p class="artwork-name">Pink Floyd</p>
-                    <small class="artwork-date">1973</small>
-                </div>*@
-
-
-
                 <!-- Next -->
                 <div id="next" class="col-md-1">
                     <button class="half-circle">
@@ -180,91 +157,48 @@
             <h2 class="post-header">News & Events</h2>
 
             <!-- Post -->
-            <div class="col-lg-8 center-block no-float">
-                <div class="post-box">
-                    <div class="row">
-                        <div class="col-xs-10 post-title">
-                            <h2><u>Hi I am the title</u></h2>
+            @foreach (var New in Model.News)
+            {
+                <div class="col-lg-8 center-block no-float">
+                    <div class="post-box">
+                        <div class="row">
+                            <div class="col-xs-10 post-title">
+                                <h2><u>@New.Title</u></h2>
+                            </div>
+                            <div class="col-xs-2 post-date">
+                                <h5>@New.Date</h5>
+                            </div>
                         </div>
-                        <div class="col-xs-2 post-date">
-                            <h5>29/10/95</h5>
+                        <div class="row post-content">
+                            <div class="post-text">@New.Content</div>
                         </div>
-                    </div>
-                    <div class="row post-content">
-                        <div class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu placerat nibh. Integer malesuada vulputate imperdiet. Phasellus sit amet augue facilisis eros faucibus gravida a a justo. Nam ullamcorper id turpis lacinia elementum. Aenean sit amet turpis lobortis, egestas nibh vel, cursus ipsum. Cras ultricies a libero vel dignissim. Vestibulum ultrices bibendum facilisis. Nam cursus felis at tellus commodo, quis bibendum risus egestas. Vivamus id felis et sapien efficitur aliquam.</div>
                     </div>
                 </div>
-            </div>
+            }
 
-
-            <!-- Post -->
-            <div class="col-lg-8 center-block no-float">
-                <div class="post-box">
-                    <div class="row">
-                        <div class="col-xs-10 post-title">
-                            <h2><u>Hi I am the title</u></h2>
+            @foreach (var Evento in Model.Eventos)
+            {
+                <div class="col-lg-8 center-block no-float">
+                    <div class="post-box">
+                        <div class="row">
+                            <div class="col-xs-10 post-title">
+                                <h2><u>@Evento.Title</u></h2>
+                            </div>
+                            <div class="col-xs-2 post-date">
+                                <h5>@Evento.Date</h5>
+                            </div>
                         </div>
-                        <div class="col-xs-2 post-date">
-                            <h5>29/10/95<h5>
+                        <div class="row post-content">
+                            <div class="post-text">@Evento.Content</div>
                         </div>
-                    </div>
-                    <div class="row post-content">
-                        <div class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu placerat nibh. Integer malesuada vulputate imperdiet. Phasellus sit amet augue facilisis eros faucibus gravida a a justo. Nam ullamcorper id turpis lacinia elementum. Aenean sit amet turpis lobortis, egestas nibh vel, cursus ipsum. Cras ultricies a libero vel dignissim. Vestibulum ultrices bibendum facilisis. Nam cursus felis at tellus commodo, quis bibendum risus egestas. Vivamus id felis et sapien efficitur aliquam.</div>
                     </div>
                 </div>
-            </div>
+            }
 
 
-            <!-- Post -->
-            <div class="col-lg-8 center-block no-float">
-                <div class="post-box">
-                    <div class="row">
-                        <div class="col-xs-10 post-title">
-                            <h2><u>Hi I am the title</u></h2>
-                        </div>
-                        <div class="col-xs-2 post-date">
-                            <h5>29/10/95<h5>
-                        </div>
-                    </div>
-                    <div class="row post-content">
-                        <div class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu placerat nibh. Integer malesuada vulputate imperdiet. Phasellus sit amet augue facilisis eros faucibus gravida a a justo. Nam ullamcorper id turpis lacinia elementum. Aenean sit amet turpis lobortis, egestas nibh vel, cursus ipsum. Cras ultricies a libero vel dignissim. Vestibulum ultrices bibendum facilisis. Nam cursus felis at tellus commodo, quis bibendum risus egestas. Vivamus id felis et sapien efficitur aliquam.</div>
-                    </div>
-                </div>
-            </div>
+            
 
-            <!-- Post -->
-            <div class="col-lg-8 center-block no-float">
-                <div class="post-box">
-                    <div class="row">
-                        <div class="col-xs-10 post-title">
-                            <h2><u>Hi I am the title</u></h2>
-                        </div>
-                        <div class="col-xs-2 post-date">
-                            <h5>29/10/95<h5>
-                        </div>
-                    </div>
-                    <div class="row post-content">
-                        <div class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu placerat nibh. Integer malesuada vulputate imperdiet. Phasellus sit amet augue facilisis eros faucibus gravida a a justo. Nam ullamcorper id turpis lacinia elementum. Aenean sit amet turpis lobortis, egestas nibh vel, cursus ipsum. Cras ultricies a libero vel dignissim. Vestibulum ultrices bibendum facilisis. Nam cursus felis at tellus commodo, quis bibendum risus egestas. Vivamus id felis et sapien efficitur aliquam.</div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Post -->
-            <div class="col-lg-8 center-block no-float">
-                <div class="post-box">
-                    <div class="row">
-                        <div class="col-xs-10 post-title">
-                            <h2><u>Hi I am the title</u></h2>
-                        </div>
-                        <div class="col-xs-2 post-date">
-                            <h5>29/10/95<h5>
-                        </div>
-                    </div>
-                    <div class="row post-content">
-                        <div class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu placerat nibh. Integer malesuada vulputate imperdiet. Phasellus sit amet augue facilisis eros faucibus gravida a a justo. Nam ullamcorper id turpis lacinia elementum. Aenean sit amet turpis lobortis, egestas nibh vel, cursus ipsum. Cras ultricies a libero vel dignissim. Vestibulum ultrices bibendum facilisis. Nam cursus felis at tellus commodo, quis bibendum risus egestas. Vivamus id felis et sapien efficitur aliquam.</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </body>
