@@ -69,15 +69,15 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string loadBands(string pstringRequest)
+        public string loadBands(int pintUserId, int pintOffset, int pintLimit)
         {
-            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
-            clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);
+            //clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            //clsBandsBlock BandsBlock = DeserializeJson.DeserializeBandsBlock(request.Data);
             clsResponse response = new clsResponse();
 
             //llamada FacadeDA
 
-            response.Data = serializer.Serialize(BandsBlock);
+            //response.Data = serializer.Serialize(BandsBlock);
             return serializer.Serialize(response);
         }
 
