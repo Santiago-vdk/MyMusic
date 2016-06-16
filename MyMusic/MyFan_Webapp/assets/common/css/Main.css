@@ -195,6 +195,11 @@ overflow: hidden;
 }
 .post-box .post-title {}
 .post-box .post-date {}
+.post-box .post-read-more {
+    position:absolute;
+    bottom:10px;
+    left:87%;
+}
 .post-box .post-content {
     padding-top: 25px;
     padding-left: 70px;

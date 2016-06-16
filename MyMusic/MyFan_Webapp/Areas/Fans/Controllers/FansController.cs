@@ -37,7 +37,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             }
 
             VMFanProfile profile = DataParser.parseFanProfile(response);
-
+            profile.Id = Int32.Parse(Session["Id"].ToString());
             return View(profile);
         }
 

@@ -13,6 +13,7 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public List<News> News { get; set; }
         public List<Events> Events { get; set; }
         public List<clsPublication> Posts { get; set; }
+        public int Id { get; set; }
 
     }
 }

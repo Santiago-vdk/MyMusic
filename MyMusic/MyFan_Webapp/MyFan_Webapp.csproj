@@ -150,6 +150,8 @@
     <Content Include="Areas\Fans\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Fans\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Fans\Views\Fans\Index.cshtml" />
+    <Content Include="Areas\Fans\Views\Shared\_FanProfileLayout.cshtml" />
+    <Content Include="Areas\Fans\Views\Fans\Profile.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

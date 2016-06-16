@@ -69,7 +69,7 @@ namespace BusinessLogic
              {
             // Load file meta data with FileInfo
             string path = "";
-            string path1 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg";
+            string path1 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpg";
             string path2 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png";
             string path3 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif";
 
