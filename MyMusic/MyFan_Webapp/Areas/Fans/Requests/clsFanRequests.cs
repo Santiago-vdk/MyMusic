@@ -44,6 +44,31 @@ namespace MyFan_Webapp.Areas.Fans.Requests
 
             return response;
         }
+
+        public static async Task<string> GetFanBands(int Id)
+        {
+
+            System.Diagnostics.Debug.WriteLine(Id);
+
+
+            using (var client = new HttpClient())
+            {
+
+                // HTTP GET
+                HttpResponseMessage request = await Client.getClient().GetAsync("users/fans/" + Id + "/?q=bands");
+                if (request.IsSuccessStatusCode)
+                {
+                    string response = request.Content.ReadAsStringAsync().Result;
+                    return await Task.FromResult(response);
+                }
+                else //if ((int) response.StatusCode == 500)
+                {
+                    return await Task.FromResult("Unexpected error ocurred");
+                }
+
+            }
+
+        }
     }
 }
 

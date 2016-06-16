@@ -151,7 +151,7 @@
     <Content Include="Areas\Fans\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Fans\Views\Fans\Index.cshtml" />
     <Content Include="Areas\Fans\Views\Shared\_FanProfileLayout.cshtml" />
-    <Content Include="Areas\Fans\Views\Fans\Profile.cshtml" />
+    <Content Include="Areas\Fans\Views\Fans\Profiles.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -171,7 +171,7 @@
     <Compile Include="Areas\Fans\Controllers\FansController.cs" />
     <Compile Include="Areas\Fans\Controllers\NewsController.cs" />
     <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
-    <Compile Include="Areas\Fans\Models\Bands.cs" />
+    <Compile Include="Areas\Fans\Models\clsBands.cs" />
     <Compile Include="Areas\Fans\Models\Events.cs" />
     <Compile Include="Areas\Fans\Models\News.cs" />
     <Compile Include="Areas\Fans\Models\VMFanProfile.cs" />

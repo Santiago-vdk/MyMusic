@@ -26,7 +26,7 @@
             <div class="col-xs-3 left">
                 <div class="centerBlock">
                     <!-- Logo -->
-                    <a href="~/Login"><img class="img-responsive" src="~/assets/common/img/logo2.png"></a>
+                    <a href="~/Fans/@Model.Id"><img class="img-responsive" src="~/assets/common/img/logo2.png"></a>
                 </div>
             </div>
             <!-- Middle Section -->
@@ -96,24 +96,29 @@
                 <div class="row">
                     <!-- Profile Picture -->
                     <div id="user-profile-picture" class="col-xs-6">
-                        <a href="~/Login"><img class="img-circle" src="~/Users/image?Id=@Model.Id"></a>
+                        <a href="~/Fans/@Model.Id"><img class="img-circle" src="~/Users/image?Id=@Model.Id"></a>
                     </div>
                     <!-- Profile Info -->
                     <div id="profile-manage" class="col-xs-6">
                         <!-- Welcome Text -->
                         <div class="row">
-                            <h3 id="welcome">Hi, @Model.Username!</h3>
+                            <h3 id="welcome">Hi, @Model.Username !</h3>
                         </div>
                         <!-- My Profile  -->
                         <div class="row">
-                            <a href="~/fans/@Model.Id/profile"><h4 id="myprofile"><u>My Profile</u></h4></a>
+
+                           <a href="~/Fans/Profiles/@Model.Id"><h4 id="myprofile"><u>My Profile</u></h4></a>
+                            
+
+
+                          
                         </div>
                     </div>
                 </div>
 
                 <div id="user-button-menu" class="row">
                     <!-- Button Group -->
-                    <a class="btn btn-default btn-text" href="~/Login">Home <i class="fa fa-home" aria-hidden="true"></i></a>
+                    <a class="btn btn-default btn-text" href="~/Fans/@Model.Id">Home <i class="fa fa-home" aria-hidden="true"></i></a>
                     <a class="btn btn-default btn-text" href="~/Logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -139,9 +144,12 @@
                     @foreach (var band in Model.Bands)
                     {
                         <div class="inline">
-                            <img class="img-responsive" src="~/Users/image?Id=@band.Id">
-                            <p class="artwork-name">@band.Name</p>
-                            <small class="artwork-date">@band.DateCreation</small>
+                            <a href="~/Bands/@band.Id">
+                                <img class="img-responsive" src="~/Users/image?Id=@band.Id">
+                                <p class="artwork-name">@band.Name</p>
+                                <small class="artwork-date">@band.DateCreation</small>
+
+                            </a>
                         </div>
                     }
                 </div>
