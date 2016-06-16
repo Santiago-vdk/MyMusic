@@ -51,6 +51,10 @@ namespace BusinessLogic
         {
             return FanBL.getBands(pintUserId, pintOffset, pintLimit);
         }
+        public string getSearchParams()
+        {
+            return UserBL.getSearchParams();
+        }
 
 
         public string createFan(string pstringRequest)
