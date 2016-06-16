@@ -30,6 +30,27 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
 
         }
+        public string getBands(int pintUserId, int pintOffset, int pintLimit)
+        {
+
+            clsResponse response = new clsResponse();
+            clsBandsBlock BandsBlock = new clsBandsBlock();
+            BandsBlock = FacadeDA.getBands(BandsBlock, ref response, pintUserId, pintOffset, pintLimit);
+
+            response.Data = serializer.Serialize(BandsBlock);
+            return serializer.Serialize(response);
+        }
+        public string getFanInfo(int pintFanId)
+        {
+            clsInfoFan InfoFan = new clsInfoFan();
+            clsResponse response = new clsResponse();
+
+            FacadeDA.getFanInfo(ref InfoFan,ref response,pintFanId);
+            FacadeDA.getGenres(ref InfoFan, ref response, pintFanId);
+
+            response.Data = serializer.Serialize(InfoFan);
+            return serializer.Serialize(response);
+        }
 
         public string createFan(string pstringRequest)
         {
@@ -69,16 +90,7 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getBands(int pintUserId, int pintOffset, int pintLimit)
-        {
-            
-            clsResponse response = new clsResponse();
-            clsBandsBlock BandsBlock = new clsBandsBlock();
-            BandsBlock = FacadeDA.getBands(BandsBlock,ref response,pintUserId,pintOffset,pintLimit);
-
-            response.Data = serializer.Serialize(BandsBlock);
-            return serializer.Serialize(response);
-        }
+        
 
 
 
