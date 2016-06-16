@@ -43,7 +43,7 @@ a, a:visited, a:hover, a:active {
 p {}
 .artwork-name {
   
-overflow: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 0px;
@@ -57,6 +57,7 @@ overflow: hidden;
 
 .artwork-date {
     color: #999;
+    float:right;
 }
 .btn-text {
     font-size: 15px;

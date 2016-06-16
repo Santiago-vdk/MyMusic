@@ -1,6 +1,8 @@
 ﻿using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Fans.Requests;
 using MyFan_Webapp.Logic;
+using MyFan_Webapp.Models.Views;
+using MyFan_Webapp.Requests.Register;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -37,10 +39,10 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
 
 
-      /*  public async Task<ActionResult> Profiles(int Id)
+        public new async Task<ActionResult> Profile(int userId)
         {
-            System.Diagnostics.Debug.WriteLine(Id);
-            string response = await clsFanRequests.GetFanBands(Id);
+            System.Diagnostics.Debug.WriteLine(userId);
+            string response = await clsFanRequests.GetFanBands(userId);
 
             //Hubo error
             if (!ErrorParser.parse(response).Equals(""))
@@ -55,12 +57,29 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             return View(profile);
 
 
-        }*/
+        }
 
-        public ActionResult Edit()
+        public async Task<ActionResult> Edit(int userId)
         {
-            System.Diagnostics.Debug.WriteLine("Edit Profile");
-            return View();
+            System.Diagnostics.Debug.WriteLine(userId);
+            string response = await clsFanRequests.GetFanBands(userId);
+
+            //Hubo error
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life2...";
+            }
+            VMFanProfile profile = DataParser.parseFanBands(response);
+
+            string response2 = await clsRegisterRequests.GetRegisterFanForm();
+            string ParsedMessage = ErrorParser.parse(response2);
+            profile.EditForm = DataParser.parseFanForm(response2);
+
+            
+
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            return View(profile);
         }
     }
 }

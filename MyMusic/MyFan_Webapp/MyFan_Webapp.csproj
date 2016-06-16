@@ -130,6 +130,7 @@
     <Content Include="assets\common\css\foms\Login.css" />
     <Content Include="assets\common\css\Main.css" />
     <Content Include="assets\common\css\foms\Register.css" />
+    <Content Include="assets\common\css\Profile.css" />
     <Content Include="assets\common\img\Acetato-rare.png" />
     <Content Include="assets\common\img\album.jpg" />
     <Content Include="assets\common\img\avatar.png" />
@@ -151,7 +152,8 @@
     <Content Include="Areas\Fans\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Fans\Views\Fans\Index.cshtml" />
     <Content Include="Areas\Fans\Views\Shared\_FanProfileLayout.cshtml" />
-    <Content Include="Areas\Fans\Views\Fans\Profiles.cshtml" />
+    <Content Include="Areas\Fans\Views\Fans\Profile.cshtml" />
+    <Content Include="Areas\Fans\Views\Fans\Edit.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

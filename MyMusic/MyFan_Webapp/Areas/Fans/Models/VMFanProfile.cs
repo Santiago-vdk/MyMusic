@@ -1,8 +1,6 @@
 ﻿using DTO;
-using System;
+using MyFan_Webapp.Models.Views;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MyFan_Webapp.Areas.Fans.Models
 {
@@ -14,6 +12,7 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public List<Events> Events { get; set; }
         public List<clsPublication> Posts { get; set; }
         public int Id { get; set; }
+        public Form EditForm { get; set; }
 
     }
 }

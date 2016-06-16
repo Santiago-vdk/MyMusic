@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Areas/Fans/Views/Shared/_FanProfileLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/assets/common/css/Profile.css">
+    <title>MyFan</title>
+</head>
+
+<body>
+
+    <!-- Post-Section -->
+    <div id="post-section" class="row">
+        
+        <h2 class="post-header">My Profile</h2>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-4">
+                    <a href="~/Fans/@Model.Id"><img class="img-circle img-profile" src="~/Users/image?Id=@Model.Id"></a>
+                </div>
+                <div class="col-md-4">
+                    <h1>@Model.Username</h1>
+                    <a href="edit" class="btn btn-success">Edit Profile <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-9 col-md-offset-2 info-profile">
+                <h3>Username: @Model.Username</h3>
+                <h3>Username: @Model.Username</h3>
+                <h3>Username: @Model.Username</h3>
+                <h3>Username: @Model.Username</h3>
+                <h3>Username: @Model.Username</h3>
+                <br />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -106,12 +106,7 @@
                         </div>
                         <!-- My Profile  -->
                         <div class="row">
-
-                           <a href="~/Fans/Profiles/@Model.Id"><h4 id="myprofile"><u>My Profile</u></h4></a>
-                            
-
-
-                          
+                           <a href="~/Fans/@Model.Id/profile"><h4 id="myprofile"><u>My Profile</u></h4></a>                  
                         </div>
                     </div>
                 </div>
@@ -163,9 +158,10 @@
                 </div>
             </div>
         </div>
+        @RenderBody()
         </div>
 
-        @RenderBody()
+        
 
        
 </body>
