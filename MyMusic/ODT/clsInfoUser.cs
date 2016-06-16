@@ -18,5 +18,6 @@ namespace DTO
         public string SaltHashed { get; set; }
         public int Rol { get; set; }
         public bool Active { get; set; }
+        public string Name { get; set; }
     }
 }
