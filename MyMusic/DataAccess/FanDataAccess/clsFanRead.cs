@@ -171,16 +171,18 @@ namespace DataAccess.FanDataAccess
             return Wall;
         }
 
-        public clsBandsBlock getBandsSearch(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        public clsBandsBlock getBandsSearch(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse,ref clsSearch pclsSearch, int pintOffset, int pintLimit)
         {
             try
             {
 
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandasPorFanatico", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandFiltered", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
-                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
+                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.Int).Value = pclsSearch.Pais;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.Int).Value = String.Join(",", pclsSearch.Genres);
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.Int).Value = pclsSearch.Name;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
@@ -191,9 +193,9 @@ namespace DataAccess.FanDataAccess
                 while (result.Read())
                 {
                     clsInfoBandSimple tmp = new clsInfoBandSimple();
-                    tmp.Name = result["strNombre"].ToString();
-                    tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());
-                    DateTime dat = Convert.ToDateTime(result["dtAnoCreacion"].ToString());
+                    tmp.Name = result["NombreBanda"].ToString();
+                    tmp.Id = Convert.ToInt32(result["UserCode"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["FechaCreacion"].ToString());
                     tmp.DateCreation = dat.ToString("yyyy");
                     bands.Add(tmp);
                 }
@@ -229,6 +231,7 @@ namespace DataAccess.FanDataAccess
 
             return pclsBandsBlock;
         }
+
 
         public void getFanInfo(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserID)
         {
@@ -272,6 +275,8 @@ namespace DataAccess.FanDataAccess
                 conn.Close();
             }
         }
+
+
         public static void Main()
         {
             clsFanRead a = new clsFanRead();

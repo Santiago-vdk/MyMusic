@@ -72,5 +72,10 @@ namespace DataAccess.FanDataAccess
         {
             FanRead.getFanInfo(ref pclsInfoFan, ref pclsResponse, pintUserID);
         }
+
+        public clsBandsBlock getBandsSearch(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, ref clsSearch pclsSearch, int pintOffset, int pintLimit)
+        {
+            return FanRead.getBandsSearch(pclsBandsBlock, ref pclsResponse, ref pclsSearch, pintOffset, pintLimit);
+        }
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="clsInfoFan.cs" />
     <Compile Include="clsNew.cs" />
     <Compile Include="clsReview.cs" />
+    <Compile Include="clsSearch.cs" />
     <Compile Include="clsSong.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="clsForm.cs" />
