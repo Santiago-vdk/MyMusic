@@ -13,5 +13,8 @@ namespace DTO
         string SaltHashed { get; set; }
         int Rol { get; set; }
         bool Active { get; set; }
+
+        List<int> CodGenres { get; set; }
+        List<string> Genres { get; set; }
     }
 }

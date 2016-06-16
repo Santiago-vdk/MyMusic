@@ -170,6 +170,108 @@ namespace DataAccess.FanDataAccess
 
             return Wall;
         }
+
+        public clsBandsBlock getBandsSearch(clsBandsBlock pclsBandsBlock, ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandasPorFanatico", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
+                cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
+                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+                List<String> values = new List<String>();
+                List<String> cods = new List<String>();
+                List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
+                pclsBandsBlock.Limit = false;
+                while (result.Read())
+                {
+                    clsInfoBandSimple tmp = new clsInfoBandSimple();
+                    tmp.Name = result["strNombre"].ToString();
+                    tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["dtAnoCreacion"].ToString());
+                    tmp.DateCreation = dat.ToString("yyyy");
+                    bands.Add(tmp);
+                }
+
+
+
+                if (cods.Count < pintLimit)
+                {
+                    pclsBandsBlock.Limit = true;
+                }
+                pclsBandsBlock.Bands = bands;
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return pclsBandsBlock;
+        }
+
+        public void getFanInfo(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserID)
+        {
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetFanaticProfile", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                while (result.Read())
+                {
+                    pclsInfoFan.Username = result["LoginName"].ToString();
+                    pclsInfoFan.Name = result["NombreFanatico"].ToString();
+                    pclsInfoFan.Country = result["Pais"].ToString();
+                    pclsInfoFan.Gender = result["Sexo"].ToString();
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
+                    pclsInfoFan.Birthday = dat.ToString("yyyy-mm-dd");
+
+                }
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public static void Main()
         {
             clsFanRead a = new clsFanRead();
@@ -184,4 +286,5 @@ namespace DataAccess.FanDataAccess
             Console.ReadKey();
         }
     }
+
 }

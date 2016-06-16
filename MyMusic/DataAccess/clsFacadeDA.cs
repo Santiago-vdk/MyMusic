@@ -62,6 +62,14 @@ namespace DataAccess
         {
             return FanDA.getWall(ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
+        public void getGenres(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            UserDA.getGenres(ref pclsInfoFan, ref pclsResponse, pintUserCode);
+        }
+        public void getFanInfo(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserID)
+        {
+            FanDA.getFanInfo(ref pclsInfoFan, ref pclsResponse, pintUserID);
+        }
         public static void Main()
         {
             System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();

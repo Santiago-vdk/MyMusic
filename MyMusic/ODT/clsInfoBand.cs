@@ -10,7 +10,6 @@ namespace DTO
     {
         public string Name { get; set; }
         public string DateCreation { get; set; }
-        public List<string> Genres { get; set; }
         public string Country { get; set; }
         public string Hashtag { get; set; }
         public List<string> Members { get; set; }
@@ -26,5 +25,8 @@ namespace DTO
         public bool Active { get; set; }
         public string SaltHashed { get; set; }
 
+
+        public List<int> CodGenres { get; set; }
+        public List<string> Genres { get; set; }
     }
 }

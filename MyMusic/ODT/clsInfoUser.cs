@@ -19,5 +19,9 @@ namespace DTO
         public int Rol { get; set; }
         public bool Active { get; set; }
         public string Name { get; set; }
+
+
+        public List<int> CodGenres { get; set; }
+        public List<string> Genres { get; set; }
     }
 }

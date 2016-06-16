@@ -67,5 +67,10 @@ namespace DataAccess.FanDataAccess
         {
             return FanRead.getWall(ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
+
+        public void getFanInfo(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserID)
+        {
+            FanRead.getFanInfo(ref pclsInfoFan, ref pclsResponse, pintUserID);
+        }
     }
 }

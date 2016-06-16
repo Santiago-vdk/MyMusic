@@ -13,9 +13,10 @@ namespace DTO
         public string Gender { get; set; }
         public string Location { get; set; }
         public string Country { get; set; }
-        public List<string> Genres { get; set; }
         public string Picture { get; set; }
         public int Id { get; set; }
+
+        
 
         //interface atributes
         public string Username { get; set; }
@@ -25,5 +26,9 @@ namespace DTO
         public string SaltHashed { get; set; }
         public int Rol  {get;set;}
         public bool Active {get;set;}
+
+
+        public List<int> CodGenres { get; set; }
+        public List<string> Genres { get; set; }
     }
 }
