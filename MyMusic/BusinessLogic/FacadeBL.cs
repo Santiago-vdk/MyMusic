@@ -55,6 +55,10 @@ namespace BusinessLogic
         {
             return UserBL.getSearchParams();
         }
+        public string getFanInfo(string pstringFanId)
+        {
+            return FanBL.getFanInfo(Int32.Parse(pstringFanId));
+        }
 
 
         public string createFan(string pstringRequest)
