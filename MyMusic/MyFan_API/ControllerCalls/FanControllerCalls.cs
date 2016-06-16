@@ -29,6 +29,30 @@ namespace MyFan_API
         }
     }
 
+    public class FanControllerCallsGetSearchParams : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+
+        public FanControllerCallsGetSearchParams(HttpRequestMessage request)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+        }
+
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getSearchParams()),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+
+    }
+
     public class FanControllerCallsRegisterFan : IHttpActionResult
     {
         HttpRequestMessage _request;
@@ -100,6 +124,33 @@ namespace MyFan_API
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_facade.getBands(_userId, _offset, _limit)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    public class FanControllerCallsGetProfile : IHttpActionResult
+    {
+
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+
+        public FanControllerCallsGetProfile(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getFanInfo(_userId)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);

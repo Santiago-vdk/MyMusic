@@ -74,7 +74,7 @@ namespace MyFan_Webapp.Controllers
                     return HttpNotFound();
                 }
             }
-            PostRegisterFanForm form = new PostRegisterFanForm();
+            RegisterFanForm form = new RegisterFanForm();
             form.Username = inputUsername;
             form.Password = inputPassword;
             form.ConfirmPassword = inputConfirmPassword;

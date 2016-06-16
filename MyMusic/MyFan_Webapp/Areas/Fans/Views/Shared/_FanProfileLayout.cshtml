@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="~/assets/lib/font-awesome/css/font-awesome.min.css">
     <!-- Style -->
     <link href="~/assets/common/css/Main.css" rel="stylesheet" type="text/css">
+    <script src="~/assets/common/js/Fans.js" type="text/javascript"></script>
+  
+
 </head>
 <body>
     <!-- Container -->
@@ -40,7 +43,7 @@
                                 <div class="input-group-btn">
                                     <div class="btn-group" role="group">
                                         <div class="dropdown dropdown-lg">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                            <button type="button" id="searchButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                                             <div class="dropdown-menu dropdown-menu-right" role="menu">
                                                 <form class="form-horizontal" role="form">
 
@@ -51,23 +54,15 @@
 
                                                     <div class="form-group">
                                                         <label for="filter">Contry</label>
-                                                        <select class="form-control">
-                                                            <option value="0" selected>Any Country</option>
-                                                            <option value="1">Costa Rica</option>
-                                                            <option value="2">Canada</option>
-                                                            <option value="3">United States</option>
-                                                            <option value="4">Brazil</option>
+                                                        <select id="CountryList" class="form-control">
+                                                            
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="filter">Genres</label>
-                                                        <select class="form-control">
-                                                            <option value="0" selected>All Genres</option>
-                                                            <option value="1">Rock</option>
-                                                            <option value="2">Indie</option>
-                                                            <option value="3">Metal</option>
-                                                            <option value="4">Reggae</option>
+                                                        <select id="GenreList" class="form-control">
+                                                            
                                                         </select>
                                                     </div>
 
@@ -102,7 +97,7 @@
                     <div id="profile-manage" class="col-xs-6">
                         <!-- Welcome Text -->
                         <div class="row">
-                            <h3 id="welcome">Hi, @Model.Username !</h3>
+                            <h3 id="welcome">Hi, @Model.Name!</h3>
                         </div>
                         <!-- My Profile  -->
                         <div class="row">

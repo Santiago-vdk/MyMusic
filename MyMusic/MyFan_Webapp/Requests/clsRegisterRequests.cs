@@ -26,11 +26,9 @@ namespace MyFan_Webapp.Requests.Register
             {
                 return await Task.FromResult("Unexpected error ocurred");
             }
-
-
         }
-
-        public static async Task<string> PostRegisterFanForm(PostRegisterFanForm form)
+        
+        public static async Task<string> PostRegisterFanForm(RegisterFanForm form)
         {
             Serializer Serializer = new Serializer();
             string RequestBody = Serializer.Serialize(form);

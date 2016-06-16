@@ -59,6 +59,8 @@ namespace MyFan_Webapp.Areas.Fans.Requests
                 return await Task.FromResult("Unexpected error ocurred");
             }
         }
+
+       
     }
 }
 

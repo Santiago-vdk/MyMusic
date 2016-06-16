@@ -29,6 +29,11 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetForm(Request);
             }
+            if (String.Equals(q, "search_Values")) {
+
+                return new FanControllerCallsGetSearchParams(Request);
+            }
+            
             //Endpoint for retrieving all fans
             throw new NotImplementedException();
         }
@@ -47,6 +52,15 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetPosts(Request, fanId, offset, limit);
             }
+                if(String.Equals(q, "all"))
+                {
+                    return new FanControllerCallsGetProfile(Request, fanId);
+                }
+                
+                    
+            
+            }
+         
             //Endpoint for retrieving one fan
             throw new NotImplementedException();
         }

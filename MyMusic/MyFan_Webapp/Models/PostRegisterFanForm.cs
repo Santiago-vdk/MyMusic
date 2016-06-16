@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyFan_Webapp
 {
-    public class PostRegisterFanForm
+    public class RegisterFanForm
     {
         public string Username { get; set; }
         public string Password { get; set; }

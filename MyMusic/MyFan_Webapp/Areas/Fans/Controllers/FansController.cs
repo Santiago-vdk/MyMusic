@@ -34,6 +34,8 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             VMFanProfile profile = DataParser.parseFanProfile(response);
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+            
             return View(profile);
         }
 
@@ -54,6 +56,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
             return View(profile);
 
 
@@ -82,19 +85,5 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             return View(profile);
         }
 
-        public async Task<ActionResult> Search(int userId, string name, string country, string genre)
-        {
-            string response = await clsFanRequests.GetFanBands(userId);
-            VMFanProfile profile = DataParser.parseFanBands(response);
-
-
-
-            profile.Id = Int32.Parse(Session["Id"].ToString());
-            profile.Username = Session["Username"].ToString();
-            profile.Name = Session["Name"].ToString();
-            return View(profile);
-
-
-        }
     }
 }

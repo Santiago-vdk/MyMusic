@@ -24,5 +24,20 @@ namespace MyFan_Webapp.Requests
                 return await Task.FromResult("Unexpected error ocurred");
             }
         }
+        public static async Task<string> GetSearchParams()
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans?q=search_Values");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else //if ((int) response.StatusCode == 500)
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
+
     }
 }

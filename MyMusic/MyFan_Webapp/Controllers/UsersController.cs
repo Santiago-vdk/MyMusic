@@ -1,4 +1,6 @@
-﻿using MyFan_Webapp.Requests;
+﻿using MyFan_Webapp.Models.Views;
+using MyFan_Webapp.Requests;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -19,5 +21,47 @@ namespace MyFan_Webapp.Controllers
             return File(data, "image/png");
             
         }
+
+
+        public async Task<ActionResult> GetSearch()
+        {
+            //[Bandas,Posts]
+            string response = await clsUserRequests.GetSearchParams();
+
+            //Hubo error
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life...";
+            }
+
+            Form SearchParams = DataParser.parseSearchParams(response);
+            return Json(JsonConvert.SerializeObject(SearchParams), JsonRequestBehavior.AllowGet);
+
+        }
+
+     /*   public async Task<ActionResult> Search(int userId, string name, string country, string genre)
+        {
+            string response = await clsUserRequests.GetFanBands(userId);
+
+            //Hubo error
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life2...";
+            }
+            VMFanProfile profile = DataParser.parseFanBands(response);
+
+            string response2 = await clsRegisterRequests.GetRegisterFanForm();
+            string ParsedMessage = ErrorParser.parse(response2);
+            profile.EditForm = DataParser.parseFanForm(response2);
+
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+            return View(profile);
+
+
+        }*/
     }
+
+
 }
