@@ -67,10 +67,6 @@ namespace DataAccess.FanDataAccess
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
                 cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
-                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
-                message.Direction = ParameterDirection.Output;
-                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
-                cod.Direction = ParameterDirection.Output;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
@@ -183,7 +179,7 @@ namespace DataAccess.FanDataAccess
             //c.FanCod = 98;
             //c.Chunks = 10;
             //c.Offset = 10;
-            Console.WriteLine(b.Serialize(a.getWall(ref d,89,0,50)));
+            Console.WriteLine(b.Serialize(a.getBands(c,ref d,89,0,5)));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }
