@@ -35,8 +35,11 @@ namespace DataAccess.BandDataAccess
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                 cod.Direction = ParameterDirection.Output;
+                SqlParameter id = cmd.Parameters.Add("@intCodeUserReturn", SqlDbType.Int);
+                id.Direction = ParameterDirection.Output;
                 conn.Open();
                 cmd.ExecuteNonQuery();
+                pclsInfoBand.Id = Convert.ToInt32(id.Value);
                 pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
                 pclsResponse.Message = message.Value.ToString();
                 pclsResponse.Success = true;
