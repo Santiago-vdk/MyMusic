@@ -77,8 +77,8 @@ namespace DataAccess
             clsForm b = new clsForm();
             clsResponse c = new clsResponse();
             Serializer j = new Serializer();
-            
-            
+            clsInfoBand p = new clsInfoBand();
+
             Console.WriteLine(j.Serialize(a.getAllGenres(a.getAllGenders(b,ref c),ref c)));
             Console.WriteLine(sw.ElapsedMilliseconds);
             sw.Stop();

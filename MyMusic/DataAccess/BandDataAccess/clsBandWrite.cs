@@ -35,10 +35,12 @@ namespace DataAccess.BandDataAccess
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                 cod.Direction = ParameterDirection.Output;
-                SqlParameter id = cmd.Parameters.Add("@intCodeUserReturn", SqlDbType.Int);
+                SqlParameter id = cmd.Parameters.Add("@intCodUserReturn", SqlDbType.Int);
                 id.Direction = ParameterDirection.Output;
                 conn.Open();
+
                 cmd.ExecuteNonQuery();
+                
                 pclsInfoBand.Id = Convert.ToInt32(id.Value);
                 pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
                 pclsResponse.Message = message.Value.ToString();
@@ -67,7 +69,7 @@ namespace DataAccess.BandDataAccess
         {
             
             clsInfoBand b = new clsInfoBand();
-            b.Username = "yepene";
+            b.Username = "yepe2ne";
             b.Password = "panocho";
             b.Name = "panocho";
             b.Genres = new List<string>(new string[] { "Rock", "Metal" });
@@ -75,9 +77,9 @@ namespace DataAccess.BandDataAccess
             b.DateCreation = "1-2-2016";
             b.Biography = "Listo";
             b.Country = "9";
-            b.Hashtag = "@PanochonPene";
-            b.Salt = "dhjsdhjss37aweweesaasr22ddsds";
-            b.SaltHashed = "dsdswewwesdsd";
+            b.Hashtag = "@PanochonPene2";
+            b.Salt = "dhjsdhj111aweweesaasr22ddsds";
+            b.SaltHashed = "dsdswewqwwesdsd";
             clsBandWrite d = new clsBandWrite();
             clsResponse f = new clsResponse();
             d.createBand(b, ref f);
