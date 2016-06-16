@@ -80,7 +80,7 @@ namespace DataAccess.FanDataAccess
                     tmp.Name = result["strNombre"].ToString();
                     tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());                  
                     DateTime dat = Convert.ToDateTime(result["dtAnoCreacion"].ToString());
-                    tmp.DateCreation = dat.ToString("yyyy-MM-dd");
+                    tmp.DateCreation = dat.ToString("yyyy");
                     bands.Add(tmp);
                 }
 
