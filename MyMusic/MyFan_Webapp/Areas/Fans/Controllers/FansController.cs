@@ -1,15 +1,8 @@
 ﻿using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Fans.Requests;
 using MyFan_Webapp.Logic;
-using MyFan_Webapp.Requests;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -38,16 +31,31 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
             VMFanProfile profile = DataParser.parseFanProfile(response);
             profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
             return View(profile);
         }
 
-       
 
-        public new ActionResult Profile(int userId)
+
+      /*  public async Task<ActionResult> Profiles(int Id)
         {
-            System.Diagnostics.Debug.WriteLine("check profile from " + userId);
-            return View();
-        }
+            System.Diagnostics.Debug.WriteLine(Id);
+            string response = await clsFanRequests.GetFanBands(Id);
+
+            //Hubo error
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life2...";
+            }
+
+            VMFanProfile profile = DataParser.parseFanBands(response);
+
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            return View(profile);
+
+
+        }*/
 
         public ActionResult Edit()
         {

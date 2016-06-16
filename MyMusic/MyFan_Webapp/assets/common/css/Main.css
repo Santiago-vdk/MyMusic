@@ -33,6 +33,13 @@ h5 {
     font-size: 13.28px;
     margin-top: 5px;
 }
+a {
+    text-decoration: none !important;
+}
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
 p {}
 .artwork-name {
   

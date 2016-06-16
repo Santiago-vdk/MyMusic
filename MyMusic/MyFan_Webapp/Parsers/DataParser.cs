@@ -62,6 +62,14 @@ namespace MyFan_Webapp
             return form;
         }
 
+        public static VMFanProfile parseFanBands(string json)
+        {
+            VMFanProfile profile = new VMFanProfile();
+
+            profile.Bands = parseBands(json);
+            return profile;
+        }
+
         public static bool hasContent(string json)
         {
             throw new NotImplementedException();
@@ -83,13 +91,13 @@ namespace MyFan_Webapp
             return JsonConvert.DeserializeObject<List<clsPublication>>(Response.Data);
         }
 
-        private static List<Bands> parseBands(string json)
+        private static List<clsBands> parseBands(string json)
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
             System.Diagnostics.Debug.WriteLine(json);
             //dynamic data = JObject.Parse();
-            List<Bands> bands = JsonConvert.DeserializeObject<List<Bands>>(Convert.ToString(data.Bands));
+            List<clsBands> bands = JsonConvert.DeserializeObject<List<clsBands>>(Convert.ToString(data.Bands));
             return bands;
             
         }
