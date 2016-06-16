@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 
 namespace MyFan_Webapp.Requests
 {
-    public static class Client
+    public static class clsHttpClient
     {
         public static HttpClient getClient()
         {

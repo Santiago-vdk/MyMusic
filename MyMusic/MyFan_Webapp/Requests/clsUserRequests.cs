@@ -13,21 +13,15 @@ namespace MyFan_Webapp.Requests
     {
         public static async Task<string> GetProfilePicture(int Id)
         {
-            using (var client = new HttpClient())
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users?q=image&action=read&value=" + Id);
+            if (request.IsSuccessStatusCode)
             {
-                
-                // HTTP GET
-                HttpResponseMessage request = await Client.getClient().GetAsync("users?q=image&action=read&value=" + Id);
-                if (request.IsSuccessStatusCode)
-                {
-                    string response = request.Content.ReadAsStringAsync().Result;
-                    return await Task.FromResult(response);
-                }
-                else //if ((int) response.StatusCode == 500)
-                {
-                    return await Task.FromResult("Unexpected error ocurred");
-                }
-
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
             }
         }
     }
