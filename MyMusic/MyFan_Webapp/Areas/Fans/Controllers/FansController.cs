@@ -61,7 +61,6 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
         public async Task<ActionResult> Edit(int userId)
         {
-            System.Diagnostics.Debug.WriteLine(userId);
             string response = await clsFanRequests.GetFanBands(userId);
 
             //Hubo error
@@ -79,7 +78,23 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
             return View(profile);
+        }
+
+        public async Task<ActionResult> Search(int userId, string name, string country, string genre)
+        {
+            string response = await clsFanRequests.GetFanBands(userId);
+            VMFanProfile profile = DataParser.parseFanBands(response);
+
+
+
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+            return View(profile);
+
+
         }
     }
 }

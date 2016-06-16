@@ -66,6 +66,7 @@ namespace MyFan_Webapp.Controllers
             Session["username"] = session.Username;
             Session["id"] = session.Id;
             Session["rol"] = session.Rol;
+            Session["name"] = session.Name;
             Session.Timeout = 10;
 
             if (Sessions.isBand(session.Rol))

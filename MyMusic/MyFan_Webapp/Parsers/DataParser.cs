@@ -153,11 +153,13 @@ namespace MyFan_Webapp
             int id = Convert.ToInt32(data.Id);
             string username= Convert.ToString(data.Username);
             int rol = Convert.ToInt32(data.Rol);
+            string name = Convert.ToString(data.Name);
 
             UserSession session = new UserSession();
             session.Id = id;
             session.Username = username;
             session.Rol = rol;
+            session.Name = name;
 
             return session;
             

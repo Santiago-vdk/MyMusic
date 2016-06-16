@@ -154,6 +154,7 @@
     <Content Include="Areas\Fans\Views\Shared\_FanProfileLayout.cshtml" />
     <Content Include="Areas\Fans\Views\Fans\Profile.cshtml" />
     <Content Include="Areas\Fans\Views\Fans\Edit.cshtml" />
+    <Content Include="Areas\Fans\Views\Fans\Search.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -186,7 +187,7 @@
     <Compile Include="Models\Views\Gender.cs" />
     <Compile Include="Models\Views\Location.cs" />
     <Compile Include="Models\Views\UserSession.cs" />
-    <Compile Include="Requests\Client.cs" />
+    <Compile Include="Utility\clsHttpClient.cs" />
     <Compile Include="Requests\clsLoginRequests.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Models\PostLoginUserForm.cs" />
