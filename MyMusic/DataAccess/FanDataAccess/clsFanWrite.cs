@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace DataAccess.FanDataAccess
 {
@@ -33,9 +34,15 @@ namespace DataAccess.FanDataAccess
                  message.Direction = ParameterDirection.Output;
                  SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                  cod.Direction = ParameterDirection.Output;
-                 conn.Open();
-                 cmd.ExecuteNonQuery();
-                 pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
+                SqlParameter id = cmd.Parameters.Add("@intCodeUserReturn", SqlDbType.Int);
+                id.Direction = ParameterDirection.Output;
+                conn.Open();
+                
+                SqlDataReader result = cmd.ExecuteReader();
+                Console.WriteLine("entre");
+                pclsInfoFan.Id = Convert.ToInt32(id.Value);     
+                       
+                pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
                  pclsResponse.Message = message.Value.ToString();
                  pclsResponse.Success = true;
 
@@ -107,18 +114,20 @@ namespace DataAccess.FanDataAccess
         {
             clsFanWrite a = new clsFanWrite();
             clsInfoFan b = new clsInfoFan();
-            b.Username = "StivenBanano2";
-            b.Password = "aadfadsda";
-            b.Name = "panochonocho";
+            Serializer c = new Serializer();
+            b.Username = "StivenBanano22232";
+            b.Password = "aadfads23da";
+            b.Name = "panoch232onocho";
             b.Genres = new List<string>(new string[] { "1","3","4" });
             b.Birthday = "1-2-2016";
             b.Country = "10";
             b.Gender = "1";
-            b.Salt = "oo12o";
-            b.SaltHashed = "jkjkj";
+            b.Salt = "oo145232242o";
+            b.SaltHashed = "jkjkj232";
             clsFanWrite d = new clsFanWrite();
             clsResponse f = new clsResponse();
             d.createFan(b,ref f);
+            Console.WriteLine(c.Serialize(b));
             Console.WriteLine(f.Message);
             Console.ReadKey();
         }
