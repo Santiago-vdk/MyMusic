@@ -69,7 +69,6 @@ namespace BusinessLogic.UserBusinessLogic
             return ArchiveManager.getUserImage(pintUserId);
             
         }
-
         public string getPublications(int pintUserId, int pintOffset,int pintLimit)
         {
             clsResponse response = new clsResponse();
@@ -78,6 +77,16 @@ namespace BusinessLogic.UserBusinessLogic
             
 
             response.Data = serializer.Serialize(publications);
+            return serializer.Serialize(response);
+        }
+        public string getSearchParams()
+        {
+            clsForm form = new clsForm();
+            clsResponse response = new clsResponse();
+            form = FacadeDA.getAllGenres(form,ref response);
+            form = FacadeDA.getAllLocations(form, ref response);
+
+            response.Data = serializer.Serialize(form);
             return serializer.Serialize(response);
         }
     }
