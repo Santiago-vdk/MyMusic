@@ -66,6 +66,18 @@ namespace BusinessLogic
 
         }
 
+        public clsSearch DeserializeSearch(string pstringData)
+        {
+            clsSearch Search = new clsSearch();
+            dynamic data = JObject.Parse(pstringData);
+
+            Search.Genres = Convert.ToString(data.Genres);
+            Search.Name = Convert.ToString(data.Name);
+            Search.Country = Convert.ToString(data.Country);
+
+            return Search;
+        }
+
         
     }
 }

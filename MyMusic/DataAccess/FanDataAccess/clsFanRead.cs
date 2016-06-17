@@ -180,7 +180,7 @@ namespace DataAccess.FanDataAccess
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
-                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.Int).Value = pclsSearch.Pais;
+                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.Int).Value = pclsSearch.Country;
                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.Int).Value = String.Join(",", pclsSearch.Genres);
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.Int).Value = pclsSearch.Name;
                 conn.Open();
