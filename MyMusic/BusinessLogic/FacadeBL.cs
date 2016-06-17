@@ -84,6 +84,16 @@ namespace BusinessLogic
             return BandBL.checkHashtag(pstringHashtag);
         }
 
+        public string searchBands(string pstringRequest, int pintOffset, int pintLimit)
+        {
+            return FanBL.searchBands(pstringRequest, pintOffset, pintLimit);
+        }
+
+        public string updateFan(string pstringRequest)
+        {
+            return FanBL.updateFan(pstringRequest);
+        }
+
         
 
         

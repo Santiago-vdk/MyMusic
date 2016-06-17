@@ -52,6 +52,17 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
         }
 
+        public string searchBands(string pstringData,int pintOffset,int pintLimit)
+        {
+            clsSearch search = DeserializeJson.DeserializeSearch(pstringData);
+            clsResponse response = new clsResponse();
+            clsBandsBlock BandsBlock = new clsBandsBlock();
+            BandsBlock = FacadeDA.getBandsSearch(BandsBlock,ref response,ref search,pintOffset,pintLimit);
+
+            response.Data = serializer.Serialize(BandsBlock);
+            return serializer.Serialize(response);
+        }
+
         public string createFan(string pstringRequest)
         {
 
@@ -87,6 +98,23 @@ namespace BusinessLogic.FanBusinessLogic
 
 
             response.Data = serializer.Serialize(InfoFan);
+            return serializer.Serialize(response);
+        }
+        public string updateFan(string pstringRequest)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
+            clsResponse response = new clsResponse();
+
+            InfoFan = FacadeDA.updateFan(InfoFan,ref response);
+
+
+            if (InfoFan.Picture != null) // change image 
+            {
+                ArchiveManager.updateUserImage(InfoFan.Id, InfoFan.Picture, ref response);
+            }
+
+            //Data = null
             return serializer.Serialize(response);
         }
 
