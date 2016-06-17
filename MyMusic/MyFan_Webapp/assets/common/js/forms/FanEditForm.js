@@ -1,8 +1,5 @@
-﻿function FormModel() {
+﻿function FormEditModel() {
     var self = this;
-    self.inputUsername = $("#inputUsername").val();
-    self.inputPassword = $("#Password").val();
-    self.inputConfirmPassword = $("#inputConfirmPassword").val();
     self.inputName = $("#inputName").val();
     self.inputBirthday = $("#inputBirthday").val();
     self.selectGender = parseInt($("#selectGender :selected").attr('id'));
@@ -15,30 +12,11 @@
     self.selectGenres = selectedGenres;
     self.profilePicture = $('#profile-pic').attr('src');
 }
-
-
 jQuery(function ($) {
-    $("#form").validate({
+    $("#form-edit").validate({
         rules: {
             imgInp: {
                 required: false
-            },
-            Username: {
-                required: true,
-                rangelength: [3, 24],
-                remote: {
-                    url: "ValidateUsername",
-                    type: "post"
-                }
-            },
-            Password: {
-                required: true,
-                minlength: 5
-            },
-            ConfirmPassword: {
-                required: true,
-                minlength: 5,
-                equalTo: "#Password"
             },
             Name: {
                 required: true,
@@ -56,18 +34,9 @@ jQuery(function ($) {
             },
             Genres: {
                 required: true
-            },
-            Accept: {
-                required: true
             }
         },
         messages: {
-            Username: {
-                remote: "Username already in use :("
-            },
-            ConfirmPassword: {
-                equalTo: "Please enter the same password as above"
-            },
             Birthday: {
                 required: "Come on! Everyone has a birthday"
             },
@@ -76,24 +45,37 @@ jQuery(function ($) {
             }
         }
     });
+   
+    $("#form-edit :input").change(function () {
+        $("#form-edit").data("changed", true);
 
-    $('#submit').click(function () {
-        if ($("#form").valid()) {
-            $('#submit').prop('disabled', true);
-            var request = new FormModel();
-            $.ajax({
-                url: "RegisterFan",
-                dataType: 'text',
-                contentType: 'application/json',
-                type: "POST",
-                data: JSON.stringify(request),
-                success: function (data, status) {
-                    window.location.href = "/";
-                },
-                error: function () {
-                    alert('Something goes wrong!');
-                }
-            });
+    });
+
+    $('#update-form').click(function () {
+        if ($("#form-edit").valid()) {
+            $('#update-form').prop('disabled', true);
+            var request = new FormEditModel();
+            alert("Put Edit");
+
+            if ($("#form-edit").data("changed")) {
+                $.ajax({
+                    url: "UpdateProfile",
+                    dataType: 'text',
+                    contentType: 'application/json',
+                    type: "POST",
+                    data: JSON.stringify(request),
+                    success: function (data, status) {
+                        window.location.href = "/";
+                    },
+                    error: function () {
+                        alert('Something goes wrong!');
+                    }
+                });
+            }
+
+               
+            
+            
             return false;
         }
     });

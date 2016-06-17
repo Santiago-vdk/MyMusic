@@ -29,18 +29,19 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetForm(Request);
             }
-            if (String.Equals(q, "search_Values")) {
+            if (String.Equals(q, "search_Values"))
+            {
 
                 return new FanControllerCallsGetSearchParams(Request);
             }
-            
+
             //Endpoint for retrieving all fans
             throw new NotImplementedException();
         }
 
         [Route("{fanId}"), HttpGet]
         // api/v1/users/fans/1 GET
-        public IHttpActionResult Get(int fanId, string q, int offset=0, int limit=5)
+        public IHttpActionResult Get(int fanId, string q, int offset = 0, int limit = 5)
         {
             if (String.Equals(q, "bands"))
             {
@@ -52,18 +53,18 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetPosts(Request, fanId, offset, limit);
             }
-                if(String.Equals(q, "all"))
-                {
-                    return new FanControllerCallsGetProfile(Request, fanId);
-                }
-                
-                    
-            
+            if (String.Equals(q, "all"))
+            {
+                return new FanControllerCallsGetProfile(Request, fanId);
             }
-         
             //Endpoint for retrieving one fan
             throw new NotImplementedException();
+
+
         }
+
+
+
 
         [Route("{fanId}")]
         [HttpPut]

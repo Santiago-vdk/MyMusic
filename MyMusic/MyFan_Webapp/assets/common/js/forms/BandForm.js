@@ -56,7 +56,8 @@ jQuery(function ($) {
                 minlength: 3
             },
             DateCreation: {
-                required: false
+                required: false,
+                date: true
             },
             Hashtag: {
                 required: true,
