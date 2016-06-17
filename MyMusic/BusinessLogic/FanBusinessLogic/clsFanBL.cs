@@ -109,7 +109,7 @@ namespace BusinessLogic.FanBusinessLogic
 
             if (InfoFan.Id == pintFanId) {
                 InfoFan = FacadeDA.updateFan(InfoFan, ref response);
-                if (InfoFan.Picture != null) // change image 
+                if (InfoFan.Picture.CompareTo("")!=0) // change image 
                 {
                     ArchiveManager.updateUserImage(InfoFan.Id, InfoFan.Picture, ref response);
                 }

@@ -13,7 +13,7 @@ namespace BusinessLogic.BandBusinessLogic
         Serializer serializer = new Serializer();
         clsArchiveManager ArchiveManager = new clsArchiveManager();
 
-        public String getForm()
+        public string getForm()
         {
             clsForm form = new clsForm();
             clsResponse response = new clsResponse();
@@ -23,6 +23,17 @@ namespace BusinessLogic.BandBusinessLogic
             System.Diagnostics.Debug.WriteLine(serializer.Serialize(response));
             return serializer.Serialize(response);
 
+        }
+        public string getBandInfo(int pintBandId)
+        {
+            clsInfoBand InfoBand = new clsInfoBand();
+            clsResponse response = new clsResponse();
+
+            FacadeDA.getBandInfo(ref InfoBand,ref response,pintBandId);
+            
+
+            response.Data = serializer.Serialize(InfoBand);
+            return serializer.Serialize(response);
         }
 
         public string createBand(string pstringRequest)
