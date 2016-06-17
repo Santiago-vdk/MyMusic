@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -249,9 +250,9 @@ namespace DataAccess.FanDataAccess
                     pclsInfoFan.Name = result["NombreFanatico"].ToString();
                     pclsInfoFan.Country = result["Pais"].ToString();
                     pclsInfoFan.Gender = result["Sexo"].ToString();
-                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
-                    Console.WriteLine(dat);
-                    pclsInfoFan.Birthday = dat.ToString("dd/mm/yyyy");
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString(), CultureInfo.InvariantCulture);
+
+                    pclsInfoFan.Birthday = dat.Day+"-"+dat.Month+"-"+dat.Year;
 
                 }
 
