@@ -251,7 +251,7 @@ namespace DataAccess.FanDataAccess
                     pclsInfoFan.Gender = result["Sexo"].ToString();
                     DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
                     Console.WriteLine(dat);
-                    pclsInfoFan.Birthday = dat.ToString("yyyy/mm/dd");
+                    pclsInfoFan.Birthday = dat.ToString("dd/mm/yyyy");
 
                 }
 
