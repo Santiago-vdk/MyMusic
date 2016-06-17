@@ -1,4 +1,4 @@
-﻿
+﻿@model MyFan_Webapp.Areas.Fans.Models.FanProfileViewModel
 @{
     ViewBag.Title = "Profiles";
     Layout = "~/Areas/Fans/Views/Shared/_FanProfileLayout.cshtml";
@@ -23,23 +23,33 @@
                 <div class="col-md-4">
                     <a href="~/Fans/@Model.Id"><img class="img-circle img-profile" src="~/Users/image?Id=@Model.Id"></a>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <h1>@Model.Name</h1>
                     <a href="edit" class="btn btn-success">Edit Profile <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <div class="row">
+                    <div class="col-md-12 info-profile">
+                        <h3>Username: @Model.Username</h3>
+                        <h3>Gender: @Model.Info.Gender</h3>
+                        <h3>Birthday: @Model.Info.Birthday</h3>
+                        <h3>Country: @Model.Info.Country</h3>
+                        <h3>Favoutite Genres: 
+                            @foreach (var genre in @Model.Info.Genres)
+                            {
+
+                                @genre @Html.Raw(", ")
+
+                            }
+
+
+                        </h3>
+                        <br />
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-9 col-md-offset-2 info-profile">
-                <h3>Username: @Model.Name</h3>
-                <h3>Username: @Model.Username</h3>
-                <h3>Username: @Model.Username</h3>
-                <h3>Username: @Model.Username</h3>
-                <h3>Username: @Model.Username</h3>
-                <br />
-            </div>
-        </div>
+        <
     </div>
 </body>
 </html>

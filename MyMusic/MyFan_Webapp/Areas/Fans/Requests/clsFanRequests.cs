@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Utility;
 
 namespace MyFan_Webapp.Areas.Fans.Requests
 {
@@ -60,7 +61,41 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             }
         }
 
-       
+        public static async Task<string> GetFanInfo(int Id)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans/" + Id + "/?q=all");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                System.Diagnostics.Debug.WriteLine(response);
+                return await Task.FromResult(response);
+            }
+            else //if ((int) response.StatusCode == 500)
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
+        public static async Task<string> UpdateProfile(int Id, RegisterFanForm form)
+        {
+
+            Serializer serializer = new Serializer();
+            string RequestBody = serializer.Serialize(form);
+            clsRequest RequestObject = new clsRequest("-1", Id, RequestBody);
+
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/fans", RequestObject);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+
+
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-﻿@model MyFan_Webapp.Areas.Fans.Models.VMFanProfile
+﻿@model MyFan_Webapp.Areas.Fans.Models.FanProfileViewModel
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Fans/Views/Shared/_FanProfileLayout.cshtml";
@@ -16,6 +16,7 @@
     <link crossorigin="anonymous" href="~/assets/common/css/foms/Register.css" rel="stylesheet">
     <script src="~/assets/common/js/Processing.js"></script>
     <script src="~/assets/common/js/forms/FanForm.js"></script>
+    <script src="~/assets/common/js/forms/FanEditForm.js"></script>
     <link rel="stylesheet" href="~/assets/common/css/Profile.css">
     <title>MyFan</title>
 </head>
@@ -27,12 +28,12 @@
         <h2 class="post-header">Edit Profile</h2>
 
         <div class="row">
-          
+
 
 
             <div class="col-md-8">
 
-                <form id="form" class='form-horizontal'>
+                <form id="form-edit" class='form-horizontal'>
 
                     <div class="form-group">
                         <div class="col-xs-3 text-right">
@@ -64,7 +65,7 @@
                             <label for="inputName">Name</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Name" value="@Model.Name" name="Name" id="inputName">
+                            <input type="text" class="form-control" placeholder="Name" value="@Model.Info.Name" name="Name" id="inputName">
                         </div>
                     </div>
 
@@ -73,7 +74,7 @@
                             <label for="inputBirthday">Birthday</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="date" name="Birthday" id="inputBirthday">
+                            <input type="date" value="@Model.Info.Birthday" name="Birthday" id="inputBirthday">
                         </div>
                     </div>
 
@@ -111,10 +112,20 @@
                             <label for="selectMusicalGenre">Musical Genres</label>
                         </div>
                         <div class="col-xs-9">
+                       
                             <select class="selectpicker" data-live-search="true" name="Genres" id="selectGenres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
                                 @foreach (var genre in Model.EditForm.genres)
                                 {
-                                    <option id="@genre.Id" data-tokens="@genre.Name">@genre.Name</option>
+                                    if (@Model.Info.Genres.Contains(genre.Name))
+                                    {
+                                        <option id="@genre.Id" data-tokens="@genre.Name" selected>@genre.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option id="@genre.Id" data-tokens="@genre.Name">@genre.Name</option>
+                                    }
+
+
                                 }
                             </select>
                         </div>
@@ -123,7 +134,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-offset-4 col-xs-3">
-                                <button id="submit" class="btn btn-success">Update</button>
+                                <button id="update-form" class="btn btn-success">Update</button>
                             </div>
                             <div class="col-xs-3">
                                 <a href="~/" class="btn btn-danger">Cancel</a>
@@ -139,12 +150,12 @@
                 </div>
 
             </div>
-     
+
 
 
         </div>
 
-       
+
     </div>
 </body>
 </html>

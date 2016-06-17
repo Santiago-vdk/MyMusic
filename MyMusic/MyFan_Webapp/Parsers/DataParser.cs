@@ -60,6 +60,12 @@ namespace MyFan_Webapp
             return listLocations;
         }
 
+        public static clsInfoFan parseFanInfo(string json)
+        {
+            clsResponse Response = parseResponse(json);
+          
+            return JsonConvert.DeserializeObject<clsInfoFan>(Response.Data);
+        }
 
         public static Form parseFanForm(string json)
         {
@@ -76,9 +82,9 @@ namespace MyFan_Webapp
 
 
 
-        public static VMFanProfile parseFanBands(string json)
+        public static FanProfileViewModel parseFanBands(string json)
         {
-            VMFanProfile profile = new VMFanProfile();
+            FanProfileViewModel profile = new FanProfileViewModel();
 
             profile.Bands = parseBands(json);
             return profile;
@@ -95,16 +101,15 @@ namespace MyFan_Webapp
 
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
-
             
             form.genres = parseGenres(Convert.ToString(data.genres), Convert.ToString(data.codGenres));
             form.locations = parseCountry(Convert.ToString(data.locations), Convert.ToString(data.codLocations));
             return form;
         }
 
-        public static VMFanProfile parseFanProfile(List<string> json)
+        public static FanProfileViewModel parseFanProfile(List<string> json)
         {
-            VMFanProfile profile = new VMFanProfile();
+            FanProfileViewModel profile = new FanProfileViewModel();
 
             profile.Bands = parseBands(json[0]);
             profile.Posts = parsePosts(json[1]);

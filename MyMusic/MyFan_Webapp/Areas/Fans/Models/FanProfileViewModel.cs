@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MyFan_Webapp.Areas.Fans.Models
 {
-    public class VMFanProfile
+    public class FanProfileViewModel
     {
         public string Username { get; set; }
         public string Name { get; set; }
@@ -14,6 +14,7 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public List<clsPublication> Posts { get; set; }
         public int Id { get; set; }
         public Form EditForm { get; set; }
+        public clsInfoFan Info { get; set; }
 
     }
 }
