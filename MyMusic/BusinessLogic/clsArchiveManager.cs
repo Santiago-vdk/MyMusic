@@ -124,9 +124,9 @@ namespace BusinessLogic
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/");
                 }
 
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpg")) //directory does not exist
                 {
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpg");
                 }
                 if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".png")) //directory does not exist
                 {
@@ -134,6 +134,7 @@ namespace BusinessLogic
                 }
                 if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif")) //directory does not exist
                 {
+                    pclsResponse.Message = "Eliminando gif";
                     File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".gif");
                 }
 
@@ -152,7 +153,7 @@ namespace BusinessLogic
                 //type validations
                 if (pstringImage.Contains(FileTypePrefixJpg))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Images/" + pintUserId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 if (pstringImage.Contains(FileTypePrefixPng))
                 {

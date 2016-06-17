@@ -104,6 +104,7 @@ namespace BusinessLogic.FanBusinessLogic
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
+            InfoFan.Id = request.Id;
             clsResponse response = new clsResponse();
 
             if (InfoFan.Id == pintFanId) {
