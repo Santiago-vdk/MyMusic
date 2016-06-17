@@ -46,7 +46,7 @@ namespace BusinessLogic.FanBusinessLogic
             clsResponse response = new clsResponse();
 
             FacadeDA.getFanInfo(ref InfoFan,ref response,pintFanId);
-            FacadeDA.getGenres(ref InfoFan, ref response, pintFanId);
+            FacadeDA.getGenresFan(ref InfoFan, ref response, pintFanId);
 
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);

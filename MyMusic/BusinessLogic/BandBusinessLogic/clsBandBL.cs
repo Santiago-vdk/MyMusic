@@ -30,6 +30,8 @@ namespace BusinessLogic.BandBusinessLogic
             clsResponse response = new clsResponse();
 
             FacadeDA.getBandInfo(ref InfoBand,ref response,pintBandId);
+            FacadeDA.getGenresBand(ref InfoBand,ref response,pintBandId);
+            FacadeDA.getMembersInfo(ref InfoBand, ref response, pintBandId);
             
 
             response.Data = serializer.Serialize(InfoBand);

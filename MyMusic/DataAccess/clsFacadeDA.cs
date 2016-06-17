@@ -62,7 +62,7 @@ namespace DataAccess
         {
             return FanDA.getWall(ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
-        public void getGenres(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
+        public void getGenresFan(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
         {
             FanDA.getGenresFan(ref pclsInfoFan, ref pclsResponse, pintUserCode);
         }
