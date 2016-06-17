@@ -13,6 +13,7 @@ namespace DTO
         public string Country { get; set; }
         public string Hashtag { get; set; }
         public List<string> Members { get; set; }
+        public List<int> CodMembers { get; set; }
         public string Biography { get; set; }
         public string Picture { get; set; }
         public int Id { get; set; }

@@ -78,6 +78,10 @@ namespace DataAccess
         {
             BandDA.getBandInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
         }
+        public void getMembersInfo(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserID)
+        {
+            BandDA.getMembersInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
+        }
 
 
 

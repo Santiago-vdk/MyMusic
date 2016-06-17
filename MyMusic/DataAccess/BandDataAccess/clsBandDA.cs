@@ -31,7 +31,7 @@ namespace DataAccess.BandDataAccess
         {
             try
             {
-              BandRead.validateHashTag(pclsInfoBand, ref pclsResponse);
+                BandRead.validateHashTag(pclsInfoBand, ref pclsResponse);
             }
             catch
             {
@@ -42,7 +42,11 @@ namespace DataAccess.BandDataAccess
         }
         public void getBandInfo(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserID)
         {
-          BandRead.getBandInfo(ref  pclsInfoBand, ref pclsResponse, pintUserID);
+            BandRead.getBandInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
+        }
+        public void getMembersInfo(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserID)
+        {
+            BandRead.getMembersInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
         }
     }
 }
