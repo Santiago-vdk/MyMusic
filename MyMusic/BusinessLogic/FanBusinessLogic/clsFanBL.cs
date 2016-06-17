@@ -117,7 +117,7 @@ namespace BusinessLogic.FanBusinessLogic
             {
                 //error info
                 response.Success = false;
-                response.Message = "Invalid Operation";
+                response.Message = "Invalid Operation" + InfoFan.Id+ "  "+ pintFanId;
                 response.Code = 401;
             }
             //Data = null
