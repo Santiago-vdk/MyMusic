@@ -83,7 +83,7 @@ namespace DataAccess.BandDataAccess
                     pclsInfoBand.Country = result["Pais"].ToString();
                     pclsInfoBand.Hashtag = result["Hashtag"].ToString();
                     DateTime dat = Convert.ToDateTime(result["AnoCreacion"].ToString(), CultureInfo.InvariantCulture);
-                    pclsInfoBand.DateCreation = dat.ToString("dd") + "-" + dat.ToString("MM") + "-" + dat.ToString("yyyy");
+                    pclsInfoBand.DateCreation =  dat.ToString("yyyy")+"-" + dat.ToString("MM")+'-'+ dat.ToString("dd");
 
                 }
 
