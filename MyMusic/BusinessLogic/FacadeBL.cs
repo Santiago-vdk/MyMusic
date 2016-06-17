@@ -89,9 +89,9 @@ namespace BusinessLogic
             return FanBL.searchBands(pstringRequest, pintOffset, pintLimit);
         }
 
-        public string updateFan(string pstringRequest)
+        public string updateFan(string pstringRequest,int pintFanId)
         {
-            return FanBL.updateFan(pstringRequest);
+            return FanBL.updateFan(pstringRequest, pintFanId);
         }
 
         

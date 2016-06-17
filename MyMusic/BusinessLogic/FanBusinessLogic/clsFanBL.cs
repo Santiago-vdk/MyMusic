@@ -100,20 +100,26 @@ namespace BusinessLogic.FanBusinessLogic
             response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }
-        public string updateFan(string pstringRequest)
+        public string updateFan(string pstringRequest,int pintFanId)
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoFan InfoFan = DeserializeJson.DeserializeFanForm(request.Data);
             clsResponse response = new clsResponse();
 
-            InfoFan = FacadeDA.updateFan(InfoFan,ref response);
-
-
-            if (InfoFan.Picture != null) // change image 
-            {
-                ArchiveManager.updateUserImage(InfoFan.Id, InfoFan.Picture, ref response);
+            if (InfoFan.Id == pintFanId) {
+                InfoFan = FacadeDA.updateFan(InfoFan, ref response);
+                if (InfoFan.Picture != null) // change image 
+                {
+                    ArchiveManager.updateUserImage(InfoFan.Id, InfoFan.Picture, ref response);
+                }
             }
-
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Invalid Operation";
+                response.Code = 401;
+            }
             //Data = null
             return serializer.Serialize(response);
         }
