@@ -74,6 +74,13 @@ namespace DataAccess
         {
             return FanDA.getBandsSearch(pclsBandsBlock, ref pclsResponse, ref pclsSearch, pintOffset, pintLimit);
         }
+        public void getBandInfo(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserID)
+        {
+            BandDA.getBandInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
+        }
+
+
+
         public static void Main()
         {
             System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();

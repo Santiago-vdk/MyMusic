@@ -40,5 +40,9 @@ namespace DataAccess.BandDataAccess
                 pclsResponse.Message = "Internal Error";
             }
         }
+        public void getBandInfo(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserID)
+        {
+          BandRead.getBandInfo(ref  pclsInfoBand, ref pclsResponse, pintUserID);
+        }
     }
 }

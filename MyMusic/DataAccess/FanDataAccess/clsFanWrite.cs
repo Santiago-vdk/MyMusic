@@ -73,7 +73,7 @@ namespace DataAccess.FanDataAccess
 
                 SqlCommand cmd = new SqlCommand("myFan.SP_ActualizarFanatico", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Username;
+                cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pclsInfoFan.Id;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoFan.Genres);
                 cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;
@@ -85,8 +85,8 @@ namespace DataAccess.FanDataAccess
                 cod.Direction = ParameterDirection.Output;
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
-                pclsResponse.Message = message.Value.ToString();
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
 
             }

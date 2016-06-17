@@ -250,7 +250,8 @@ namespace DataAccess.FanDataAccess
                     pclsInfoFan.Country = result["Pais"].ToString();
                     pclsInfoFan.Gender = result["Sexo"].ToString();
                     DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
-                    pclsInfoFan.Birthday = dat.ToString("yyyy-mm-dd");
+                    Console.WriteLine(dat);
+                    pclsInfoFan.Birthday = dat.ToString("yyyy/mm/dd");
 
                 }
 
@@ -281,12 +282,13 @@ namespace DataAccess.FanDataAccess
         {
             clsFanRead a = new clsFanRead();
             Serializer b = new Serializer();
-            clsBandsBlock c = new clsBandsBlock();
+            clsInfoFan h = new clsInfoFan();
             clsResponse d= new clsResponse();
             //c.FanCod = 98;
             //c.Chunks = 10;
             //c.Offset = 10;
-            Console.WriteLine(b.Serialize(a.getBands(c,ref d,89,0,5)));
+            a.getFanInfo(ref h, ref d, 89);
+            Console.WriteLine(b.Serialize(h));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }
