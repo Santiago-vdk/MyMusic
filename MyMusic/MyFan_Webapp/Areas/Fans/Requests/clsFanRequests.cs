@@ -82,8 +82,7 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             Serializer serializer = new Serializer();
             string RequestBody = serializer.Serialize(form);
             clsRequest RequestObject = new clsRequest("-1", Id, RequestBody);
-
-            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/fans", RequestObject);
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/fans/" + Id, RequestObject);
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;

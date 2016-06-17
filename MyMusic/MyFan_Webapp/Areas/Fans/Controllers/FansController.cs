@@ -92,47 +92,35 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
         public async Task<ActionResult> UpdateProfile(string inputName, string inputBirthday, int selectGender, int selectCountry, 
             List<int> selectGenres, string profilePicture)
         {
-            System.Diagnostics.Debug.WriteLine(inputName);
-            System.Diagnostics.Debug.WriteLine(inputBirthday);
             System.Diagnostics.Debug.WriteLine(selectGender);
-            System.Diagnostics.Debug.WriteLine(inputName);
-
+            System.Diagnostics.Debug.WriteLine(selectCountry);
             if (Sessions.isAuthenticated(Request, Session))
             {
 
-                int sessionRol = Int32.Parse(Session["rol"].ToString());
-                if (Sessions.isBand(sessionRol))
-                {
-                    return RedirectToAction("Index", "Bands", new { area = "Bands", userId = Session["id"] });
-                }
-                else if (Sessions.isFan(sessionRol))
-                {
-                    return RedirectToAction("Index", "Fans", new { area = "Fans", userId = Session["id"] });
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            RegisterFanForm form = new RegisterFanForm();
-            form.Name = inputName;
-            form.Birthday = inputBirthday;
-            form.Gender = selectGender;
-            form.Country = selectCountry;
-            form.Genres = selectGenres;
-            form.Picture = profilePicture;
+                RegisterFanForm form = new RegisterFanForm();
+                form.Name = inputName;
+                form.Birthday = inputBirthday;
+                form.Gender = selectGender;
+                form.Country = selectCountry;
+                form.Genres = selectGenres;
+                form.Picture = profilePicture;
 
-            string response = await clsFanRequests.UpdateProfile(Int32.Parse(Session["Id"].ToString()),form);
-            System.Diagnostics.Debug.WriteLine(response);
-            string ParsedMessage = ErrorParser.parse(response);
-            if (!ParsedMessage.Equals(""))
+                string response = await clsFanRequests.UpdateProfile((int)Session["Id"], form);
+                System.Diagnostics.Debug.WriteLine("form pytted", response);
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = ParsedMessage;
+                    
+                }
+
+                Session["Name"] = form.Name;
+                return RedirectToAction("Edit", "Fans", new { area = "Fans", userId = Session["id"] });
+            } else
             {
-                ViewBag.Message = ParsedMessage;
-                return View("Index");
+                return View("~/Views/Login/Index.cshtml");
             }
-            ViewBag.Message = "We are glad to have you onboard!";
-
-            return RedirectToAction("Index", "Login");
+            
         }
 
     }

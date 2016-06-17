@@ -38,5 +38,14 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
+        [Route("users/search)"), HttpGet]
+        public IHttpActionResult Search(int offset, int limit)
+        {
+            return new UserControllerCallsSearch(Request, offset, limit);
+
+            //Endpoint for retrieving all users
+            throw new NotImplementedException();
+        }
+
     }
 }

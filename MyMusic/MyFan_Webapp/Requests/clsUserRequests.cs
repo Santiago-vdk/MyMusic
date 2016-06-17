@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using Utility;
 
 namespace MyFan_Webapp.Requests
 {
@@ -38,6 +40,23 @@ namespace MyFan_Webapp.Requests
             }
         }
 
+        public static async Task<string> Search(clsSearch SearchParams)
+        {
+            Serializer serializer = new Serializer();
+            string RequestBody = serializer.Serialize(SearchParams);
 
+            clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
+            HttpResponseMessage request = await clsHttpClient.getClient().PostAsJsonAsync("users/search", RequestObject);
+
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else //if ((int) response.StatusCode == 500)
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
     }
 }

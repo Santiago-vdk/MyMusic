@@ -29,11 +29,7 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetForm(Request);
             }
-            if (String.Equals(q, "search_Values"))
-            {
-
-                return new FanControllerCallsGetSearchParams(Request);
-            }
+            
 
             //Endpoint for retrieving all fans
             throw new NotImplementedException();
@@ -71,6 +67,12 @@ namespace MyFan_API.Controllers
         // api/v1/users/fans/1 PUT
         public IHttpActionResult UpdateOneFan(int fanId)
         {
+            System.Diagnostics.Debug.WriteLine("Updating fan with id " + fanId);
+            System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
+                //return Ok();
+                return new FanControllerCallsUpdateProfile(Request, fanId);
+
+            
             //Endpoint for updating one fan
             throw new NotImplementedException();
         }

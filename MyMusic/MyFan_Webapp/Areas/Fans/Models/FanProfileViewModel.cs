@@ -15,6 +15,7 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public int Id { get; set; }
         public Form EditForm { get; set; }
         public clsInfoFan Info { get; set; }
+        public List<clsBands> SearchResults { get; set; }
 
     }
 }

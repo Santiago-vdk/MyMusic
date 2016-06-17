@@ -90,6 +90,8 @@ namespace MyFan_Webapp
             return profile;
         }
 
+       
+
         public static bool hasContent(string json)
         {
             throw new NotImplementedException();
@@ -123,7 +125,7 @@ namespace MyFan_Webapp
             return JsonConvert.DeserializeObject<List<clsPublication>>(Response.Data);
         }
 
-        private static List<clsBands> parseBands(string json)
+        public static List<clsBands> parseBands(string json)
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);

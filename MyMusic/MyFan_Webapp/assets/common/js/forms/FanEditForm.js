@@ -1,4 +1,5 @@
-﻿function FormEditModel() {
+﻿var picChanged = false;
+function FormEditModel() {
     var self = this;
     self.inputName = $("#inputName").val();
     self.inputBirthday = $("#inputBirthday").val();
@@ -10,7 +11,11 @@
         selectedGenres[i] = parseInt($(selected).attr('id'));
     });
     self.selectGenres = selectedGenres;
-    self.profilePicture = $('#profile-pic').attr('src');
+
+    if (picChanged) {
+       // alert("Submit because it changed");
+        self.profilePicture = $('#profile-pic').attr('src');
+    }
 }
 jQuery(function ($) {
     $("#form-edit").validate({
@@ -51,21 +56,37 @@ jQuery(function ($) {
 
     });
 
+    $("#img-profile-edit img").change(function () {
+        $("#img-profile-edit img").data("changed", true);
+        alert("image changed");
+    });
+
+   
+    
+
+        $("#profile-pic").data("changed", false);
+    
+
     $('#update-form').click(function () {
         if ($("#form-edit").valid()) {
-            $('#update-form').prop('disabled', true);
+            
             var request = new FormEditModel();
-            alert("Put Edit");
+            
 
             if ($("#form-edit").data("changed")) {
-                $.ajax({
+               // alert("Put Edit");
+               $.ajax({
                     url: "UpdateProfile",
                     dataType: 'text',
                     contentType: 'application/json',
                     type: "POST",
                     data: JSON.stringify(request),
+                    beforeSend: function () {
+                        $('#update-form').prop('disabled', true);
+                    },
                     success: function (data, status) {
-                        window.location.href = "/";
+                        $('#update-form').prop('disabled', false);
+                        location.reload();
                     },
                     error: function () {
                         alert('Something goes wrong!');
@@ -112,6 +133,7 @@ jQuery(function ($) {
     }
 
     $("#imgInp").change(function (e) {
+        picChanged = true;
         readURL(this);
     });
 

@@ -1,7 +1,11 @@
-﻿using MyFan_Webapp.Models.Views;
+﻿using DTO;
+using MyFan_Webapp.Areas.Fans.Models;
+using MyFan_Webapp.Areas.Fans.Requests;
+using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -39,20 +43,25 @@ namespace MyFan_Webapp.Controllers
 
         }
 
-     /*   public async Task<ActionResult> Search(int userId, string name, string country, string genre)
+        public async Task<ActionResult> Search(int userId, string name, int country, List<int> genre)
         {
-            string response = await clsUserRequests.GetFanBands(userId);
+            string response = await clsFanRequests.GetFanBands(userId);
+
+            clsSearch searchParams = new clsSearch();
+            searchParams.Name = name;
+            searchParams.Genres = genre;
+            searchParams.Country = country;
+
+            string response2 = await clsUserRequests.Search(searchParams);
 
             //Hubo error
             if (!ErrorParser.parse(response).Equals(""))
             {
                 ViewBag.Message = "Fuck my life2...";
             }
-            VMFanProfile profile = DataParser.parseFanBands(response);
+            FanProfileViewModel profile = DataParser.parseFanBands(response);
 
-            string response2 = await clsRegisterRequests.GetRegisterFanForm();
-            string ParsedMessage = ErrorParser.parse(response2);
-            profile.EditForm = DataParser.parseFanForm(response2);
+            profile.SearchResults = DataParser.parseBands(response2);
 
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
@@ -60,7 +69,7 @@ namespace MyFan_Webapp.Controllers
             return View(profile);
 
 
-        }*/
+        }
     }
 
 

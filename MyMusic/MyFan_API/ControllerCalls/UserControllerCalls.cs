@@ -79,6 +79,35 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+    public class UserControllerCallsSearch : IHttpActionResult
+    {
+
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _offset;
+        int _limit;
+
+
+        public UserControllerCallsSearch(HttpRequestMessage request, int offset, int limit)
+        {
+            _offset = offset;
+            _limit = limit;
+            _request = request;
+            _facade = new FacadeBL();
+        }
+
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.searchBands(_request.Content.ReadAsStringAsync().Result, _offset, _limit)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+
+    }
+        
 }
 
 
