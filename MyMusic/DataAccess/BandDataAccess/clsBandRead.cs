@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,8 +82,8 @@ namespace DataAccess.BandDataAccess
                     pclsInfoBand.Name = result["NombreBanda"].ToString();
                     pclsInfoBand.Country = result["Pais"].ToString();
                     pclsInfoBand.Hashtag = result["Hashtag"].ToString();
-                    DateTime dat = Convert.ToDateTime(result["AnoCreacion"].ToString());
-                    pclsInfoBand.DateCreation = dat.ToString("yyyy-mm-dd");
+                    DateTime dat = Convert.ToDateTime(result["AnoCreacion"].ToString(), CultureInfo.InvariantCulture);
+                    pclsInfoBand.DateCreation = dat.Day + "-" + dat.Month + "-" + dat.Year;
 
                 }
 
