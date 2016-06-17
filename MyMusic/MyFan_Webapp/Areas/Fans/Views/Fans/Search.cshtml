@@ -1,8 +1,48 @@
-﻿
+﻿@model MyFan_Webapp.Areas.Fans.Models.FanProfileViewModel
 @{
     ViewBag.Title = "Search";
     Layout = "~/Areas/Fans/Views/Shared/_FanProfileLayout.cshtml";
 }
 
-<h2>Search</h2>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/assets/common/css/Profile.css">
+    <title>MyFan</title>
+</head>
+
+<body>
+
+    <div id="post-section" class="row">
+        <h2 class="post-header">News & Events</h2>
+
+        <!-- Post -->
+        @foreach (var Band in Model.SearchResults)
+            {
+            <a href="@Model.Id/Bands/@Band.Id">
+                <div id="Res" class="col-lg-8 center-block no-float">
+
+
+                    <div class="post-box">
+                        <div class="row">
+                            <div class="col-xs-8 post-title">
+                                <h2><u>@Band.Name</u></h2>
+                                <h4>Foundation  Year: @Band.DateCreation</h4>
+                            </div>
+                            <div class="col-xs-4 post-title">
+                                <a href="@Model.Id/Bands/@Band.Id"><img class="img-circle img-profile" src="~/Users/image?Id=@Band.Id"></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </a>
+        }
+    </div>
+
+</body>
+</html>
+
 

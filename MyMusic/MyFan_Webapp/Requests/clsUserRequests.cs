@@ -28,7 +28,7 @@ namespace MyFan_Webapp.Requests
         }
         public static async Task<string> GetSearchParams()
         {
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans?q=search_Values");
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans?q=search_values");
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;
@@ -44,10 +44,12 @@ namespace MyFan_Webapp.Requests
         {
             Serializer serializer = new Serializer();
             string RequestBody = serializer.Serialize(SearchParams);
-
+            
             clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
-            HttpResponseMessage request = await clsHttpClient.getClient().PostAsJsonAsync("users/search", RequestObject);
 
+            
+            HttpResponseMessage request = await clsHttpClient.getClient().PostAsJsonAsync("users/search", RequestObject);
+  
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;

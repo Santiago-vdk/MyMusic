@@ -52,9 +52,10 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string searchBands(string pstringData,int pintOffset,int pintLimit)
+        public string searchBands(string pstringRequest,int pintOffset,int pintLimit)
         {
-            clsSearch search = DeserializeJson.DeserializeSearch(pstringData);
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsSearch search = DeserializeJson.DeserializeSearch(request.Data);
             clsResponse response = new clsResponse();
             clsBandsBlock BandsBlock = new clsBandsBlock();
             BandsBlock = FacadeDA.getBandsSearch(BandsBlock,ref response,ref search,pintOffset,pintLimit);

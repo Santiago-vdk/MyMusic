@@ -29,7 +29,11 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetForm(Request);
             }
-            
+            if (String.Equals(q, "search_values"))
+            {
+                return new FanControllerCallsGetSearchParams(Request);
+            }
+
 
             //Endpoint for retrieving all fans
             throw new NotImplementedException();

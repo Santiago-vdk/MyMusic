@@ -71,9 +71,8 @@ namespace BusinessLogic
             clsSearch Search = new clsSearch();
             dynamic data = JObject.Parse(pstringData);
 
-            Search.Genres = JsonConvert.DeserializeObject<List<int>>(Convert.ToInt32(data.Genres));
-            Search.Name = Convert.ToString(data.Name);
-            Search.Country = Convert.ToString(data.Country);
+            Search = JsonConvert.DeserializeObject<clsSearch>(Convert.ToString(data));
+         
 
             return Search;
         }

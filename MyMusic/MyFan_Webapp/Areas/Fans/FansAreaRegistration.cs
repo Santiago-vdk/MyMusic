@@ -30,6 +30,13 @@ namespace MyFan_Webapp.Areas.Fans
             );
 
             context.MapRoute(
+                "Fans_Search",
+                "Fans/search",
+                defaults: new { controller = "Fans", action = "Search" },
+                namespaces: new[] { "MyFan_Webapp.Areas.Fans.Controllers" }
+            );
+
+            context.MapRoute(
                 "Fans_Bands",
                 "Fans/{userId}/bands/{bandId}",
                 defaults: new { controller = "Bands", action = "Index" },

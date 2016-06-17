@@ -43,9 +43,15 @@ namespace MyFan_Webapp.Controllers
 
         }
 
-        public async Task<ActionResult> Search(int userId, string name, int country, List<int> genre)
+
+        [HttpPost]
+        public async Task<ActionResult> MakeSearch(string name, int country, List<int> genre)
         {
-            string response = await clsFanRequests.GetFanBands(userId);
+            System.Diagnostics.Debug.WriteLine(name);
+            System.Diagnostics.Debug.WriteLine(country);
+            System.Diagnostics.Debug.WriteLine(genre[0]);
+
+            string response = await clsFanRequests.GetFanBands(Int32.Parse(Session["Id"].ToString()));
 
             clsSearch searchParams = new clsSearch();
             searchParams.Name = name;
@@ -63,13 +69,21 @@ namespace MyFan_Webapp.Controllers
 
             profile.SearchResults = DataParser.parseBands(response2);
 
+            System.Diagnostics.Debug.WriteLine("search " + profile.SearchResults.Count);
+
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-            return View(profile);
+            //return View(profile);
 
-
+            
+            //TempData["profile"] = profile;
+            //return RedirectToAction("Search", "Fans", new { area = "Fans", userId = Session["id"] });
+            return View("~/Areas/Fans/Views/Fans/Search.cshtml", profile);
+            //return Json(new { result = "Redirect", url = Url.Action("Search", "Fans") });
         }
+
+
     }
 
 

@@ -3,6 +3,7 @@ using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Fans.Requests;
 using MyFan_Webapp.Logic;
 using MyFan_Webapp.Models.Views;
+using MyFan_Webapp.Requests;
 using MyFan_Webapp.Requests.Register;
 using System;
 using System.Collections.Generic;
@@ -86,7 +87,46 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
             return View(profile);
+
         }
+
+        public async Task<ActionResult> Search(string name, string country, string genre)
+        {
+            System.Diagnostics.Debug.WriteLine(name);
+            System.Diagnostics.Debug.WriteLine(genre);
+
+            string response = await clsFanRequests.GetFanBands(Int32.Parse(Session["Id"].ToString()));
+            List<int> l = new List<int>();
+            l.Add(0);
+            clsSearch searchParams = new clsSearch();
+            searchParams.Name = name;
+            searchParams.Genres = l;
+            searchParams.Country = 0;
+
+            string response2 = await clsUserRequests.Search(searchParams);
+
+            //Hubo error
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life2...";
+            }
+            FanProfileViewModel profile = DataParser.parseFanBands(response);
+
+            profile.SearchResults = DataParser.parseBands(response2);
+
+            System.Diagnostics.Debug.WriteLine("search " + profile.SearchResults.Count);
+
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+            //return View(profile);
+
+
+            //TempData["profile"] = profile;
+            //return RedirectToAction("Search", "Fans", new { area = "Fans", userId = Session["id"] });
+            return View(profile);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> UpdateProfile(string inputName, string inputBirthday, int selectGender, int selectCountry, 
@@ -122,6 +162,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             }
             
         }
+
 
     }
 }

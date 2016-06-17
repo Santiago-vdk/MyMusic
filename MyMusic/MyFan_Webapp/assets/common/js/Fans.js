@@ -1,10 +1,51 @@
-﻿jQuery(function ($) {
+﻿function SearchModel() {
+    var self = this;
+
+    self.name = $("#search_main").val();
+
+    if ($("#search_main").val() == '') {
+        self.name = $("#search_secondary").val();
+    }
+
+    self.country = parseInt($("#CountryList :selected").attr('id'));
+
+    var selectedGenres = [];
+    $('#GenreList :selected').each(function (i, selected) {
+        selectedGenres[i] = parseInt($(selected).attr('id'));
+    });
+
+    self.genre = selectedGenres;
+}
 
 
+jQuery(function ($) {
+
+ 
+
+    $('.makeSearch').click(function (e) {
+        e.preventDefault();
+      
+        var request = new SearchModel();
+        console.log(request);
+        $.ajax({
+            url: "/Fans/search/",
+            
+            
+            type: "GET",
+            data: request,
+            success: function (data, status) {
+                alert("Wurks")
+
+            },
+            error: function () {
+                alert('Something goes wrong!');
+            }
+        });
+        return false;
+    });
+    /*
     $('#searchButton').click(function (e) {
-        
-        
-
+        $('#search_main').val('');
         e.preventDefault();
         $.ajax({
             url: '/Users/GetSearch',
@@ -15,9 +56,7 @@
                 var json = JSON.parse(data);
                 var genres = json.genres
                 var lengthGenres = $('#GenreList').children('option').length;
-                if (lengthGenres > 0) {
-                    
-                }
+                if (lengthGenres > 1) { }
                 else {
                     $.each(genres, function (i, genres) {
                         $('#GenreList').append($('<option>', {
@@ -31,7 +70,7 @@
 
                 var country = json.locations
                 var lengthCountry = $('#CountryList').children('option').length;
-                if (lengthCountry > 0) {
+                if (lengthCountry > 1) {
 
                 }
                 else {
@@ -50,10 +89,5 @@
                 alert("Upss");
             }
         });
-    });
-
-
-
-
-
+    });*/
 });
