@@ -77,5 +77,11 @@ namespace DataAccess.FanDataAccess
         {
             return FanRead.getBandsSearch(pclsBandsBlock, ref pclsResponse, ref pclsSearch, pintOffset, pintLimit);
         }
+
+        public void getGenresFan(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            FanRead.getGenresFan(ref pclsInfoFan, ref pclsResponse, pintUserCode);
+        }
+
     }
 }

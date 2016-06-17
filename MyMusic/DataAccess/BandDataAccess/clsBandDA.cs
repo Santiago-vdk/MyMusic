@@ -48,5 +48,9 @@ namespace DataAccess.BandDataAccess
         {
             BandRead.getMembersInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
         }
+        public void getGenresBand(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            BandRead.getGenresBand(ref pclsInfoBand, ref pclsResponse, pintUserCode);
+        }
     }
 }

@@ -182,8 +182,8 @@ namespace DataAccess.FanDataAccess
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
                 cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.Int).Value = pclsSearch.Country;
-                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.Int).Value = String.Join(",", pclsSearch.Genres);
-                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.Int).Value = pclsSearch.Name;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsSearch.Genres);
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsSearch.Name;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
@@ -279,6 +279,46 @@ namespace DataAccess.FanDataAccess
             }
         }
 
+        public void getGenresFan(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetGenresByUser", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intUserCode", System.Data.SqlDbType.Int).Value = pintUserCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<String> tmpGenres = new List<string>();
+                List<int> tmpCodGenres = new List<int>();
+                while (result.Read())
+                {
+                    tmpGenres.Add(result["DescripcionGenero"].ToString());
+                    tmpCodGenres.Add(Convert.ToInt32(result["CodigoGenero"].ToString()));
+                }
+                pclsInfoFan.Genres = tmpGenres;
+                pclsInfoFan.CodGenres = tmpCodGenres;
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
 
         public static void Main()
         {

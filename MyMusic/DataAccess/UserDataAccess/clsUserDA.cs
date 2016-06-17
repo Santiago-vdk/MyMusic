@@ -70,9 +70,6 @@ namespace DataAccess.UserDataAccess
             }
 
         }
-        public void getGenres(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
-        {
-            FanRead.getGenres(ref pclsInfoFan, ref pclsResponse, pintUserCode);
-        }
+
     }
 }

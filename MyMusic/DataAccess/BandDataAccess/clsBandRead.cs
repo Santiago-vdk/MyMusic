@@ -151,6 +151,46 @@ namespace DataAccess.BandDataAccess
             }
         }
 
+        public void getGenresBand(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetGenresByUser", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intUserCode", System.Data.SqlDbType.Int).Value = pintUserCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<String> tmpGenres = new List<string>();
+                List<int> tmpCodGenres = new List<int>();
+                while (result.Read())
+                {
+                    tmpGenres.Add(result["DescripcionGenero"].ToString());
+                    tmpCodGenres.Add(Convert.ToInt32(result["CodigoGenero"].ToString()));
+                }
+                pclsInfoBand.Genres = tmpGenres;
+                pclsInfoBand.CodGenres = tmpCodGenres;
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
 
         public static void Main()
         {

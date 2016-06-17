@@ -64,7 +64,7 @@ namespace DataAccess
         }
         public void getGenres(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserCode)
         {
-            UserDA.getGenres(ref pclsInfoFan, ref pclsResponse, pintUserCode);
+            FanDA.getGenresFan(ref pclsInfoFan, ref pclsResponse, pintUserCode);
         }
         public void getFanInfo(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserID)
         {
@@ -82,7 +82,10 @@ namespace DataAccess
         {
             BandDA.getMembersInfo(ref pclsInfoBand, ref pclsResponse, pintUserID);
         }
-
+        public void getGenresBand(ref clsInfoBand pclsInfoBand, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            BandDA.getGenresBand(ref pclsInfoBand, ref pclsResponse, pintUserCode);
+        }
 
 
         public static void Main()
