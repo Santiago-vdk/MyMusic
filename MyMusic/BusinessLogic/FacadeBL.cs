@@ -59,6 +59,10 @@ namespace BusinessLogic
         {
             return FanBL.getFanInfo(pintFanId);
         }
+        public string getBandInfo(int pintBandId)
+        {
+            return BandBL.getBandInfo(pintBandId);
+        }
 
 
         public string createFan(string pstringRequest)

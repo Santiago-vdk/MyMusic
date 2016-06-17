@@ -9,7 +9,7 @@ namespace DTO
     public class clsSearch
     {
         public int Country { get; set; }
-        public List<String> Genres { get; set; }
-        public String Name { get; set; }
+        public List<int> Genres { get; set; }
+        public string Name { get; set; }
     }
 }
