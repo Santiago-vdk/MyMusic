@@ -1,0 +1,182 @@
+﻿@model MyFan_Webapp.Areas.Bands.Models.BandProfileViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Fans/Views/Shared/_BandProfileLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- jQuery Validate -->
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+    <!-- Bootstrap Select -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <!-- Style -->
+    <link crossorigin="anonymous" href="~/assets/common/css/foms/Register.css" rel="stylesheet">
+    <script src="~/assets/common/js/Processing.js"></script>
+    <script src="~/assets/common/js/forms/FanForm.js"></script>
+    <script src="~/assets/common/js/forms/FanEditForm.js"></script>
+    <link rel="stylesheet" href="~/assets/common/css/Profile.css">
+    <title>MyFan</title>
+</head>
+<body>
+
+    <!-- Post-Section -->
+    <div id="post-section" class="row">
+
+        <h2 class="post-header">Edit Profile</h2>
+
+        <div class="row">
+
+
+
+            <div class="col-md-8">
+
+                <form id="form-edit" class='form-horizontal'>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputPicture">Profile Pic</label>
+                        </div>
+                        <div class="col-xs-9">
+
+                            <label class="btn btn-success btn-file">
+                                Browse... <input id="imgInp" name="imgInp" type="file">
+                            </label><small>Only 400x400, .jpg .png .gif, less than 2Mb</small>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputUsername">Username</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" placeholder="Username" value="@Model.Username" id="inputUsername" name="Username" disabled>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputName">Name</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" placeholder="Name" value="@Model.Info.Name" name="Name" id="inputName">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputBirthday">Birthday</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="date" value="@Model.Info.Birthday" name="Birthday" id="inputBirthday">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="selectGenre">Gender</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <select class="selectpicker" id="selectGender" name="Gender" data-width="100%">
+
+                           
+                                @foreach (var gender in Model.EditForm.genders)
+                                {
+                                    if (String.Equals(gender.Name, @Model.Info.Gender))
+                                    {
+                                        <option id="@gender.Id" selected>@gender.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option id="@gender.Id">@gender.Name</option>
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="selectCountry">Country</label>
+                        </div>
+                        <div class="col-xs-9">
+                            
+                            <select class="selectpicker" data-live-search="true" name="Country" id="selectCountry" data-width="100%">
+                                @foreach (var country in Model.EditForm.locations)
+                                {
+                                    if (String.Equals(country.Name,@Model.Info.Country))
+                                    {
+                                        <option id="@country.Id" data-tokens="@country.Name" selected>@country.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option id="@country.Id" data-tokens="@country.Name">@country.Name</option>
+                                    }
+
+                                }
+
+                             
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="selectMusicalGenre">Musical Genres</label>
+                        </div>
+                        <div class="col-xs-9">
+                       
+                            <select class="selectpicker" data-live-search="true" name="Genres" id="selectGenres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
+                                @foreach (var genre in Model.EditForm.genres)
+                                {
+                                    if (@Model.Info.Genres.Contains(genre.Name))
+                                    {
+                                        <option id="@genre.Id" data-tokens="@genre.Name" selected>@genre.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option id="@genre.Id" data-tokens="@genre.Name">@genre.Name</option>
+                                    }
+
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-offset-4 col-xs-3">
+                                <button id="update-form" class="btn btn-success">Update</button>
+                            </div>
+                            <div class="col-xs-3">
+                                <a href="~/" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-md-4 img-profile-edit">
+                    <img id="profile-pic" class="img-circle" src="~/Users/image?Id=@Model.Id">
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</body>
+</html>
+

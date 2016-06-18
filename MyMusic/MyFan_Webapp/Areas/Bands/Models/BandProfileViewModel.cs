@@ -13,5 +13,6 @@ namespace MyFan_Webapp.Areas.Bands.Models
         public int Id { get; set; }
         public List<clsAlbum> Albums { get; set; }
         public List<clsPublication> Posts { get; set; }
+        public clsInfoBand Info { get; set; }
     }
 }
