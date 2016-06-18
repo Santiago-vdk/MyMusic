@@ -177,12 +177,12 @@ namespace DataAccess.FanDataAccess
             try
             {
 
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandFiltered", conn);
+                SqlCommand cmd = new SqlCommand("myFan.GetBandFilteredByName", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
-                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.Int).Value = pclsSearch.Country;
-                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsSearch.Genres);
+                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.VarChar).Value = pclsSearch.Country;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value =  pclsSearch.Genres;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsSearch.Name;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
@@ -216,7 +216,7 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
@@ -324,13 +324,19 @@ namespace DataAccess.FanDataAccess
         {
             clsFanRead a = new clsFanRead();
             Serializer b = new Serializer();
-            clsInfoFan h = new clsInfoFan();
+            clsBandsBlock h = new clsBandsBlock();
             clsResponse d= new clsResponse();
             //c.FanCod = 98;
             //c.Chunks = 10;
             //c.Offset = 10;
-            a.getFanInfo(ref h, ref d, 89);
-            Console.WriteLine(b.Serialize(h));
+            clsSearch k = new clsSearch();
+            k.Name = "pe";
+            List<Int32> l = new List<int>();
+            l.Add(0);
+            k.Genres = l;
+            k.Country = 0;
+        
+            Console.WriteLine(b.Serialize(a.getBandsSearch(h, ref d, ref k, 0, 5)));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }
