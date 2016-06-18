@@ -35,9 +35,10 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1/albums/1 GET
         public IHttpActionResult GetOneAlbum(string q, int bandId, int albumId)
         {
+            System.Diagnostics.Debug.WriteLine("Getting album " + albumId + " info for " + bandId);
             if (String.Equals(q, "all"))
             {
-                return new AlbumControllerCallsGetAlbum(Request, bandId,albumId);
+                return new AlbumControllerCallsGetAlbum(Request, albumId);
             }
             //Endpoint for retrieving one album of a band
             throw new NotImplementedException();

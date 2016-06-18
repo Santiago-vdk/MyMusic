@@ -16,12 +16,12 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
         // GET: Bands/Albums
         public async Task<ActionResult> Index(int userId, int Id)
         {
-            System.Diagnostics.Debug.WriteLine("check band from " + userId + " with album " + Id);
+            //System.Diagnostics.Debug.WriteLine("check band from " + userId + " with album " + Id);
             string response = await clsBandRequests.getBandAlbums(userId);
-
+            //System.Diagnostics.Debug.WriteLine("Soy yo 1: " + response);
 
             string response2 = await clsAlbumRequests.GetAlbumInfo(userId, Id);
-            System.Diagnostics.Debug.WriteLine(response2);
+            //System.Diagnostics.Debug.WriteLine("Soy yo: " + response2);
 
             //Hubo error
             if (!ErrorParser.parse(response).Equals(""))
@@ -33,8 +33,8 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-
             profile.Albums = DataParser.parseAlbums(response);
+            profile.Disk = DataParser.parseDisk(response2);
 
             return View(profile);
         }

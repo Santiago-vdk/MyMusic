@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using DTO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,27 @@ namespace BusinessLogic.NewBusinessLogic
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
 
-        public string getNew(int pintNewId)
+
+        public string createNew(string pstringRequest,int pintBandId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsNew New = DeserializeJson.DeserializeNew(request.Data.ToString());
+            clsResponse response = new clsResponse();
+
+            if (request.Id == pintBandId)
+            {
+                New.Id = FacadeDA.createnew(ref New, ref response, pintBandId);
+            }
+
+            response.Data = serializer.Serialize(New);
+            return serializer.Serialize(response);
+        }
+        public string getNewInfo(int pintNewId)
         {
             clsNew New = new clsNew();
             clsResponse response = new clsResponse();
 
-            //FacadeDA
+            FacadeDA.getnew(ref New,ref response,pintNewId);
 
             response.Data = serializer.Serialize(New);
             return serializer.Serialize(response);

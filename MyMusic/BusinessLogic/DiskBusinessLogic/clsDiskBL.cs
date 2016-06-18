@@ -32,8 +32,11 @@ namespace BusinessLogic.DiskBusinessLogic
             clsDisk Disk = new clsDisk();
             clsResponse response = new clsResponse();
 
+            Disk.Id = pintDiskId;
+
             FacadeDA.getdiskinfo(ref Disk, ref response, pintDiskId);
             FacadeDA.getsongs(ref Disk, ref response, pintDiskId);
+
 
             response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);

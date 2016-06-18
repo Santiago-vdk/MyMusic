@@ -38,7 +38,7 @@ namespace MyFan_API.Controllers
             }
             if (String.Equals(q, "posts"))
             {
-                return new BandControllerCallsGetPosts(Request, bandId);
+                return new BandControllerCallsGetPosts(Request, bandId, offset, limit);
             }
             if (String.Equals(q, "all"))
             {

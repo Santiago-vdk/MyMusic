@@ -40,14 +40,14 @@ namespace MyFan_API.ControllerCalls
     {
         HttpRequestMessage _request;
         FacadeBL _facade;
-        int _userId;
+     
         int _albumId;
 
-        public AlbumControllerCallsGetAlbum(HttpRequestMessage request, int userId, int albumId)
+        public AlbumControllerCallsGetAlbum(HttpRequestMessage request, int albumId)
         {
             _request = request;
             _facade = new FacadeBL();
-            _userId = userId;
+   
             _albumId = albumId;
         }
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)

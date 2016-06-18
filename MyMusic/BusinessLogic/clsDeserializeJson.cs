@@ -99,6 +99,25 @@ namespace BusinessLogic
 
             return Review;
         }
+        public clsNew DeserializeNew(string pstringData)
+        {
+            clsNew New = new clsNew();
+            dynamic data = JObject.Parse(pstringData);
+
+            New = JsonConvert.DeserializeObject<clsNew>(Convert.ToString(data));
+
+            return New;
+        }
+
+        public clsEvent DeserializeEvent(string pstringData)
+        {
+            clsEvent Event = new clsEvent();
+            dynamic data = JObject.Parse(pstringData);
+
+            Event = JsonConvert.DeserializeObject<clsEvent>(Convert.ToString(data));
+
+            return Event;
+        }
 
         public clsSong DeserializeSong(string pstringData)
         {
