@@ -53,7 +53,12 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1 PUT
         public IHttpActionResult UpdateOneBand(int bandId)
         {
-            //Endpoint for updating one band
+            System.Diagnostics.Debug.WriteLine("Updating fan with id " + bandId);
+            System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
+
+            return new BandControllerCallsUpdateProfile(Request, bandId);
+
+            //Endpoint for updating one fan
             throw new NotImplementedException();
         }
 

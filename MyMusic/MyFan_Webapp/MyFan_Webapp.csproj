@@ -109,6 +109,7 @@
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
     <Content Include="assets\common\js\Fans.js" />
+    <Content Include="assets\common\js\forms\BandEditForm.js" />
     <Content Include="assets\common\js\forms\BandForm.js" />
     <Content Include="assets\common\js\forms\FanEditForm.js" />
     <Content Include="assets\common\js\forms\FanForm.js" />
