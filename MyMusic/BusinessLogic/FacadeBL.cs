@@ -67,12 +67,21 @@ namespace BusinessLogic
         {
             return DiskBL.getDiskInfo(pintDiskId);
         }
-        
+
+        public string getBandReviews(int pintBandId)
+        {
+            return BandBL.getBandReviews(pintBandId);
+        }
         public string getDiskReviews(int pintBandId)
         {
             return DiskBL.getDiskReviews(pintBandId);
         }
-        
+        public string getEventReviews(int pintEventId)
+        {
+            return EventBL.getEventReviews(pintEventId);
+        }
+
+
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);
@@ -114,10 +123,17 @@ namespace BusinessLogic
             return BandBL.updateBand(pstringRequest, pintBandId);
         }
 
+        public string getEvent(int pintEventId)
+        {
+            return EventBL.getEvent(pintEventId);
+        }
+        public string getNew(int pintNewId)
+        {
+            return NewBL.getNew(pintNewId);
+        }
 
 
 
 
-
-    }
+        }
 }

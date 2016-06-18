@@ -3,6 +3,7 @@ using DTO;
 using Newtonsoft.Json;
 using System;
 using Utility;
+using System.Collections.Generic;
 
 namespace BusinessLogic.BandBusinessLogic
 {
@@ -109,6 +110,17 @@ namespace BusinessLogic.BandBusinessLogic
                 response.Code = 401;
             }
             //Data = null
+            return serializer.Serialize(response);
+        }
+
+        public string getBandReviews(int pintBandId)
+        {
+            List<clsReview> reviews = new List<clsReview>();
+            clsResponse response = new clsResponse();
+
+            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
+
+            response.Data = serializer.Serialize(reviews);
             return serializer.Serialize(response);
         }
     }

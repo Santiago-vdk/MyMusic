@@ -49,23 +49,11 @@ namespace BusinessLogic.DiskBusinessLogic
             clsDisk Disk = DeserializeJson.DeserializeDisk(request.Data.ToString());
             clsResponse response = new clsResponse();
 
+            //llamado a FacadeDA
 
-            //FacadeDA.validateDisk(Disk.Id,pintBandId, ref response);
-
-            if (!response.Success)//not existing disk
-            {
-                //llamado a FacadeDA
-
-                //save image here!
-                ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
-            }
-            else
-            {
-                //error info
-                response.Success = false;
-                response.Message = "Existing Username";
-                response.Code = 3;
-            }
+            //save image here!
+            ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
+        
 
             //Data = null
             return serializer.Serialize(response);
