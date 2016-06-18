@@ -74,7 +74,7 @@ namespace DataAccess.BandDataAccess
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pclsInfoBand.Id;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Name;
-                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Genres);
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.CodGenres);
                 cmd.Parameters.Add("@strIntegrantes", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Members);
                 cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
                 cmd.Parameters.Add("@intUbicacion", System.Data.SqlDbType.Int).Value = pclsInfoBand.Country;
@@ -116,7 +116,7 @@ namespace DataAccess.BandDataAccess
         {
             
             clsInfoBand b = new clsInfoBand();
-            b.Username = "yepe2ne";
+            b.Username = "yepe22ne";
             b.Password = "panocho";
             b.Name = "panocho";
             b.Genres = new List<string>(new string[] { "Rock", "Metal" });
@@ -124,8 +124,8 @@ namespace DataAccess.BandDataAccess
             b.DateCreation = "1-2-2016";
             b.Biography = "Listo";
             b.Country = "9";
-            b.Hashtag = "@PanochonPene2";
-            b.Salt = "dhjsdhj111aweweesaasr22ddsds";
+            b.Hashtag = "@Panochon22Pene2";
+            b.Salt = "dhjsdhj111aw222eweesaasr22ddsds";
             b.SaltHashed = "dsdswewqwwesdsd";
             clsBandWrite d = new clsBandWrite();
             clsResponse f = new clsResponse();
