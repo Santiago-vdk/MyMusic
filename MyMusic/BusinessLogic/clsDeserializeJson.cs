@@ -84,7 +84,7 @@ namespace BusinessLogic
             
             Disk.Name = Convert.ToString(data.Name);
             Disk.DateCreation = Convert.ToString(data.DateCreation);
-            Disk.Genre = Convert.ToString(data.Genre);
+            Disk.CodGenre = Convert.ToString(data.Genre);
             Disk.Picture = Convert.ToString(data.Picture);
 
             return Disk;
