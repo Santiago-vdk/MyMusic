@@ -132,6 +132,8 @@
     <Content Include="Areas\Bands\Views\Bands\Index.cshtml" />
     <Content Include="Areas\Bands\Views\Shared\_BandProfileLayout.cshtml" />
     <Content Include="Areas\Fans\Views\Bands\Index.cshtml" />
+    <Content Include="Areas\Bands\Views\Bands\Edit.cshtml" />
+    <Content Include="Areas\Bands\Views\Bands\Profile.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

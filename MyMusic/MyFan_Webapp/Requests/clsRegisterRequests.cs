@@ -83,6 +83,7 @@ namespace MyFan_Webapp.Requests.Register
             string RequestBody = Serializer.Serialize(form);
             System.Diagnostics.Debug.WriteLine("Body " + RequestBody);
             clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
+            System.Diagnostics.Debug.WriteLine(RequestObject.Data);
             HttpResponseMessage request = await clsHttpClient.getClient().PostAsJsonAsync("users/bands", RequestObject);
             if (request.IsSuccessStatusCode)
             {

@@ -12,6 +12,7 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands POST
         public IHttpActionResult CreateBand() {
             //Endpoint for creating a band
+            System.Diagnostics.Debug.WriteLine(Request.Content.ReadAsStringAsync().Result);
             return new BandControllerCallsRegisterBand(Request);
         }
 

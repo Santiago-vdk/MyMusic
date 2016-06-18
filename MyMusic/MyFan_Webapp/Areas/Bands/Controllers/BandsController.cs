@@ -18,21 +18,21 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             if (Sessions.isAuthenticated(Request, Session))
             {
                 int sessionRol = Int32.Parse(Session["rol"].ToString());
-                if (!Sessions.isFan(sessionRol))
+                if (!Sessions.isBand(sessionRol))
                 {
                     return View("~/Views/Login/Index.cshtml");
                 }
             }
             //[Bandas,Posts]
-            List<string> response = await clsBandRequests.GetBandProfile(userId);
+            //List<string> response = await clsBandRequests.GetBandProfile(userId);
 
             //Hubo error
-            if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals(""))
+           /* if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals(""))
             {
                 ViewBag.Message = "Fuck my life...";
-            }
-
-            BandProfileViewModel profile = DataParser.parseBandProfile(response);
+            }*/
+            //DataParser.parseBandProfile(response);
+            BandProfileViewModel profile = new BandProfileViewModel();
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
@@ -51,6 +51,13 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
         public ActionResult Edit()
         {
             System.Diagnostics.Debug.WriteLine("Edit Profile");
+
+
+            BandProfileViewModel profile = new BandProfileViewModel();
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+
             return View();
         }
     }

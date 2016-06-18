@@ -50,7 +50,7 @@ namespace MyFan_Webapp
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
 
-            clsInfoBand infoBand = JsonConvert.DeserializeObject<List<clsInfoBand>>(data);
+            clsInfoBand infoBand = JsonConvert.DeserializeObject<clsInfoBand>(data);
 
             return infoBand;
         }
