@@ -7,5 +7,6 @@
         public string DateCreation { get; set; }
         public int Genre { get; set; }
         public string Picture { get; set; }
+        public string Label { get; set; }
     }
 }
