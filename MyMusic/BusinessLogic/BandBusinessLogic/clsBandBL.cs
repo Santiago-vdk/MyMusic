@@ -95,7 +95,7 @@ namespace BusinessLogic.BandBusinessLogic
 
             if (InfoBand.Id == pintFanId)
             {
-                //InfoBand = FacadeDA.updateBand(InfoBand, ref response);
+                InfoBand = FacadeDA.updateBand(InfoBand, ref response);
                 if (InfoBand.Picture.CompareTo("") != 0) // change image 
                 {
                     ArchiveManager.updateUserImage(InfoBand.Id, InfoBand.Picture, ref response);
