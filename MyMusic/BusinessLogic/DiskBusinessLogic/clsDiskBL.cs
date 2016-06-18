@@ -76,15 +76,23 @@ namespace BusinessLogic.DiskBusinessLogic
             response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
         }
-        public string createSong(string pstringRequest, int pintDiskId)
+        public string createSong(string pstringRequest,int pintBandId, int pintDiskId)
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsSong Song = DeserializeJson.DeserializeSong(request.Data.ToString());
             clsResponse response = new clsResponse();
 
-            FacadeDA.createsong(ref Song, ref response, pintDiskId);
-
-            response.Data = serializer.Serialize(Song);
+            if (request.Id == pintBandId)
+            {
+                FacadeDA.createsong(ref Song, ref response, pintDiskId);
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Invalid Operation";
+                response.Code = 401;
+            }
             return serializer.Serialize(response);
         }
 

@@ -103,9 +103,9 @@ namespace BusinessLogic
         {
             return DiskBL.createDisk(pstringRequest,pintBandId);
         }
-        public string createSong(string pstringRequest, int pintDiskId)
+        public string createSong(string pstringRequest, int pintBandId, int pintDiskId)
         {
-            return DiskBL.createSong(pstringRequest, pintDiskId);
+            return DiskBL.createSong(pstringRequest,pintBandId, pintDiskId);
         }
 
         public string login(string pstringRequest)
