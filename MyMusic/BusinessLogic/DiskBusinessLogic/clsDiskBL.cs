@@ -22,17 +22,17 @@ namespace BusinessLogic.DiskBusinessLogic
 
             clsResponse response = new clsResponse();
             clsDisksBlock DisksBlock = new clsDisksBlock();
-           // DisksBlock = FacadeDA.getDisks(DisksBlock, ref response, pintBandId, pintOffset, pintLimit);
+            FacadeDA.getAlbums(ref DisksBlock, ref response, pintBandId, pintOffset, pintLimit);
             response.Data = serializer.Serialize(DisksBlock);
             return serializer.Serialize(response);
         }
 
-        public string getDiskInfo()
+        public string getDiskInfo(int pintDiskId)
         {
             clsDisk Disk = new clsDisk();
             clsResponse response = new clsResponse();
 
-            //FacadeDA.getDiskInfo(ref Disk, ref response, pintFanId);
+            //FacadeDA.getDiskInfo(ref Disk, ref response, pintDiskId);
 
             response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
