@@ -194,7 +194,143 @@ namespace DataAccess.BandDataAccess
 
         }
 
+        public void getAlbums(ref clsDisksBlock pclsDisksBlock, ref clsResponse pclsResponse, int pintUserCode, int pintOffset, int pintLimit)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetDiscsByBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intUserCode", System.Data.SqlDbType.Int).Value = pintUserCode;
+                cmd.Parameters.Add("@intCodeBand", System.Data.SqlDbType.Int).Value = 0;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<clsSimpleInfo> disks = new List<clsSimpleInfo>();
 
+                while (result.Read())
+                {
+                    clsSimpleInfo tmp = new clsSimpleInfo();
+                    tmp.Name = (result["Descripcion"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["dtFechaPublicacion"].ToString());
+                    tmp.DateCreation = dat.ToString("yyyy");
+                    tmp.Id = Convert.ToInt32(result["DiscCode"].ToString());
+                    disks.Add(tmp);
+                }
+                pclsDisksBlock.Disks = disks;
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        public void getdisk(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintUserCode, int pintOffset, int pintLimit)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetDiscsByBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intUserCode", System.Data.SqlDbType.Int).Value = pintUserCode;
+                cmd.Parameters.Add("@intCodeBand", System.Data.SqlDbType.Int).Value = 0;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<clsSimpleInfo> disks = new List<clsSimpleInfo>();
+
+                while (result.Read())
+                {
+                    clsSimpleInfo tmp = new clsSimpleInfo();
+                    tmp.Name = (result["Descripcion"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["dtFechaPublicacion"].ToString());
+                    tmp.DateCreation = dat.ToString("yyyy");
+                    tmp.Id = Convert.ToInt32(result["DiscCode"].ToString());
+                    disks.Add(tmp);
+                }
+                //pclsDisksBlock.Disks = disks;
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        public void getsongs(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetDiscsByBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodeDisc", System.Data.SqlDbType.Int).Value = pintDiskCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<clsSong> songs = new List<clsSong>();
+
+                while (result.Read())
+                {
+                    clsSong tmp = new clsSong();
+                    tmp.Name = (result["Nombre"].ToString());
+                    tmp.Link = (result["Video"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["Duracion"].ToString());
+                    tmp.Duration = dat.ToString("hh:mm tt");
+                    tmp.Type = Convert.ToBoolean(result["EnVivo"].ToString());
+                    songs.Add(tmp);
+                }
+                //pclsDisksBlock.Disks = disks;
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
         public static void Main()
         {
             clsBandRead a = new clsBandRead();

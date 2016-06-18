@@ -1,13 +1,8 @@
-﻿using DataAccess;
-using DTO;
+﻿
 using BusinessLogic.FanBusinessLogic;
 using BusinessLogic.BandBusinessLogic;
 using BusinessLogic.UserBusinessLogic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BusinessLogic.DiskBusinessLogic;
 using BusinessLogic.EventBusinessLogic;
 using BusinessLogic.NewBusinessLogic;
@@ -32,14 +27,10 @@ namespace BusinessLogic
         {
             return BandBL.getForm();
         }
+
         public string getUserPicture(string pstringUserId)
         {
             return UserBL.getPicture(Int32.Parse(pstringUserId));
-        }
-      
-        public string getEvent(string pstringId)
-        {
-            return EventBL.getEvent(pstringId);
         }
         public string getPublications(int pintUserId, int pintOffset, int pintLimit)
         {
@@ -49,10 +40,12 @@ namespace BusinessLogic
         {
             return FanBL.getBands(pintUserId, pintOffset, pintLimit);
         }
+
         public string getSearchParams()
         {
             return UserBL.getSearchParams();
         }
+
         public string getFanInfo(int pintFanId)
         {
             return FanBL.getFanInfo(pintFanId);
@@ -61,6 +54,7 @@ namespace BusinessLogic
         {
             return BandBL.getBandInfo(pintBandId);
         }
+
         public string getDisks(int pintBandId, int pintOffset, int pintLimit)
         {
             return DiskBL.getDisks(pintBandId,pintOffset,pintLimit);
@@ -78,6 +72,10 @@ namespace BusinessLogic
         public string createBand(string pstringRequest)
         {
             return BandBL.createBand(pstringRequest);
+        }
+        public string createDisk(string pstringRequest,int pintBandId)
+        {
+            return DiskBL.createDisk(pstringRequest,pintBandId);
         }
 
         public string login(string pstringRequest)

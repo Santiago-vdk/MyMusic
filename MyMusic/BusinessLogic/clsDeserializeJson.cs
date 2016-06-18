@@ -77,6 +77,17 @@ namespace BusinessLogic
             return Search;
         }
 
-        
+        public clsDisk DeserializeDisk(string pstringData)
+        {
+            clsDisk Disk = new clsDisk();
+            dynamic data = JObject.Parse(pstringData);
+
+            Disk = JsonConvert.DeserializeObject<clsDisk>(Convert.ToString(data));
+
+            return Disk;
+        }
+
+
+
     }
 }

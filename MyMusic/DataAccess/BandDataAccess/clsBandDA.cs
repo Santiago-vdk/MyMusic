@@ -56,5 +56,10 @@ namespace DataAccess.BandDataAccess
         {
             return BandWrite.updateBand(pclsInfoBand, ref pclsResponse);
         }
+        public void getAlbums(ref clsDisksBlock pclsDisksBlock, ref clsResponse pclsResponse, int pintUserCode, int pintOffset, int pintLimit)
+        {
+            BandRead.getAlbums(ref pclsDisksBlock, ref pclsResponse, pintUserCode, pintOffset, pintLimit);
+        }
+
     }
 }
