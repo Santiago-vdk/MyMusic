@@ -8,7 +8,6 @@ namespace DTO
 {
     public class clsDisk
     {
-        public string Description { get; set; }
         public string Name { get; set; }
         public List<clsSong> Songs { get; set; }
         public string Label { get; set; }

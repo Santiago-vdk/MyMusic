@@ -1,13 +1,8 @@
-﻿using DataAccess;
-using DTO;
+﻿
 using BusinessLogic.FanBusinessLogic;
 using BusinessLogic.BandBusinessLogic;
 using BusinessLogic.UserBusinessLogic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BusinessLogic.DiskBusinessLogic;
 using BusinessLogic.EventBusinessLogic;
 using BusinessLogic.NewBusinessLogic;
