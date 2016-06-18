@@ -49,8 +49,8 @@ namespace BusinessLogic.DiskBusinessLogic
             clsDisk Disk = DeserializeJson.DeserializeDisk(request.Data.ToString());
             clsResponse response = new clsResponse();
 
-            //llamado a FacadeDA
-
+            FacadeDA.createdisk(ref Disk,ref response,pintBandId);
+            
             //save image here!
             ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
         
