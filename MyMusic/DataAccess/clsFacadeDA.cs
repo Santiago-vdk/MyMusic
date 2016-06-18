@@ -112,7 +112,14 @@ namespace DataAccess
         {
             return DiskDA.createdisk(ref pclsDisk, ref pclsResponse, pintUserCode);
         }
-
+        public bool existreviewdisk(int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            return DiskDA.existreviewdisk(pintCodDisk, pintUserCode, ref pclsResponse);
+        }
+        public void createsong(ref clsSong pclsSong, ref clsResponse pclsResponse, int pintCodDisc)
+        {
+            DiskDA.createsong(ref pclsSong, ref pclsResponse, pintCodDisc);
+        }
 
 
 

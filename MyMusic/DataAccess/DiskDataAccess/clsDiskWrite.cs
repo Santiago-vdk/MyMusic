@@ -57,5 +57,46 @@ namespace DataAccess.DiskDataAccess
             }
             return tmp;
         }
+        public void createsong(ref clsSong pclsSong, ref clsResponse pclsResponse, int pintCodDisc)
+        {
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_InsertSong", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodDisc", System.Data.SqlDbType.Int).Value = pintCodDisc;
+                cmd.Parameters.Add("@tmDuration", System.Data.SqlDbType.Time).Value = pclsSong.Duration;
+                cmd.Parameters.Add("@btLive", System.Data.SqlDbType.Bit).Value = pclsSong.Type;
+                cmd.Parameters.Add("@btEdicionLimitada", System.Data.SqlDbType.Bit).Value = pclsSong.LimitedEdition;
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsSong.Name;
+                cmd.Parameters.Add("@strVideoURL", System.Data.SqlDbType.VarChar).Value = pclsSong.Link;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
     }
 }
