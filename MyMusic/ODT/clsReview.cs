@@ -8,7 +8,7 @@ namespace DTO
 {
     public class clsReview
     {
-        public IUser Author { get; set; }
+        public String Author { get; set; }
         public string Calification { get; set; }
         public string Comment { get; set; }
     }

@@ -240,6 +240,49 @@ namespace DataAccess.BandDataAccess
 
         }
 
+        public void getdiskreviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetReviewDiscs", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intDisc", System.Data.SqlDbType.Int).Value = pintDiskCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+                List<clsReview> reviews = new List<clsReview>();
+                while (result.Read())
+                {
+                    clsReview tmp = new clsReview();
+                    tmp.Author = (result["strNombre"].ToString());
+                    tmp.Calification = (result["intClasificacion"].ToString());
+                    tmp.Comment = (result["strComentario"].ToString());
+                    reviews.Add(tmp);
+
+                }
+                pclsReviews = reviews;
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
 
 
 
@@ -250,9 +293,9 @@ namespace DataAccess.BandDataAccess
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsDisksBlock d = new clsDisksBlock();
+            List<clsReview> d = new List<clsReview>();
             Serializer r = new Serializer();
-            a.getAlbums(ref d, ref b,124,0,20);
+            a.getdiskreviews(ref d, ref b,1);
             Console.WriteLine(r.Serialize(d));
             Console.WriteLine(b.Message);
             Console.ReadKey();

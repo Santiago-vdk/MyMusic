@@ -104,6 +104,10 @@ namespace DataAccess
         {
             DiskDA.getdiskinfo(ref pclsDisk, ref pclsResponse, pintDiskCode);
         }
+        public void getdiskreviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            DiskDA.getdiskreviews(ref pclsReviews, ref pclsResponse, pintDiskCode);
+        }
 
 
 
