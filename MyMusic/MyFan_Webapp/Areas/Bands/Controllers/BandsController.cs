@@ -24,20 +24,24 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
                 }
             }
             //[Bandas,Posts]
-            //List<string> response = await clsBandRequests.GetBandProfile(userId);
+            string response = await clsBandRequests.GetBandInfo(userId);
 
             //Hubo error
-           /* if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals(""))
+            if (!ErrorParser.parse(response).Equals(""))
             {
                 ViewBag.Message = "Fuck my life...";
-            }*/
-            //DataParser.parseBandProfile(response);
+            }
+            
+
             BandProfileViewModel profile = new BandProfileViewModel();
+            
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-            
+            profile.Info = DataParser.parseBandInfo(response);
+
             return View(profile);
+
         }
 
 
