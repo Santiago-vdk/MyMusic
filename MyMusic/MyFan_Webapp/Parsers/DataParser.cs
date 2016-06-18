@@ -7,6 +7,7 @@ using MyFan_Webapp.Models;
 using MyFan_Webapp.Controllers;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Areas.Fans.Models;
+using MyFan_Webapp.Areas.Bands.Models;
 
 namespace MyFan_Webapp
 {
@@ -44,6 +45,25 @@ namespace MyFan_Webapp
             return listGenders;
         }
 
+        public static BandProfileViewModel parseBandProfile(List<string> json)
+        {
+            BandProfileViewModel profile = new BandProfileViewModel();
+
+            profile.Albums = parseAlbums(json[0]);
+            profile.Posts = parsePosts(json[1]);
+
+            return profile;
+
+        }
+
+        private static List<clsAlbum> parseAlbums(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
+            List<clsAlbum> albums = JsonConvert.DeserializeObject<List<clsAlbum>>(Convert.ToString(data.Disks));
+            return albums;
+        }
+
         private static List<Location> parseCountry(string pStringLocations, string pStringLocationsIds)
         {
             List<string> locations = JsonConvert.DeserializeObject<List<string>>(pStringLocations);
@@ -63,7 +83,6 @@ namespace MyFan_Webapp
         public static clsInfoFan parseFanInfo(string json)
         {
             clsResponse Response = parseResponse(json);
-          
             return JsonConvert.DeserializeObject<clsInfoFan>(Response.Data);
         }
 

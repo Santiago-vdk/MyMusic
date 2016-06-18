@@ -43,7 +43,7 @@ jQuery(function ($) {
         });
         return false;
     });
-    /*
+    
     $('#searchButton').click(function (e) {
         $('#search_main').val('');
         e.preventDefault();
@@ -62,7 +62,8 @@ jQuery(function ($) {
                         $('#GenreList').append($('<option>', {
                             value: genres.Name,
                             text: genres.Name,
-                            id: genres.Id
+                            id: genres.Id,
+                            "data-tokens": genres.Name
                         }));
                     });
                 }
@@ -89,5 +90,5 @@ jQuery(function ($) {
                 alert("Upss");
             }
         });
-    });*/
+    });
 });

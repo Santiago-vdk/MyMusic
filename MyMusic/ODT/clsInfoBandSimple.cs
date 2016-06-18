@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class clsInfoBandSimple
+    public class clsSimpleInfo
     {
         public string Name { get; set; }
         public int Id { get; set; }

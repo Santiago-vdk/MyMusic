@@ -6,17 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Utility;
 
-namespace BusinessLogic.Controllers
+namespace BusinessLogic.NewBusinessLogic
 {
-    public class clsEventBL
+    public class clsNewBL
     {
         clsFacadeDA FacadeDA = new clsFacadeDA();
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
+        
 
-        public string getEvent(string pstringEvent)
-        {
-            return "";
-        }
     }
 }

@@ -50,12 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsSecurityManager.cs" />
-    <Compile Include="Controllers\clsAlbumBL.cs" />
     <Compile Include="BandBusinessLogic\clsBandBL.cs" />
-    <Compile Include="Controllers\clsDiskBL.cs" />
-    <Compile Include="Controllers\clsEventBL.cs" />
+    <Compile Include="DiskBusinessLogic\clsDiskBL.cs" />
+    <Compile Include="EventBusinessLogic\clsEventBL.cs" />
     <Compile Include="FanBusinessLogic\clsFanBL.cs" />
-    <Compile Include="Controllers\clsNewBL.cs" />
+    <Compile Include="NewBusinessLogic\clsNewBL.cs" />
     <Compile Include="clsArchiveManager.cs" />
     <Compile Include="UserBusinessLogic\clsUserBL.cs" />
     <Compile Include="FacadeBL.cs" />
