@@ -69,6 +69,17 @@ namespace BusinessLogic.DiskBusinessLogic
             //Data = null
             return serializer.Serialize(response);
         }
+        public string createSong(string pstringRequest, int pintDiskId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsSong Song = DeserializeJson.DeserializeSong(request.Data.ToString());
+            clsResponse response = new clsResponse();
+
+            //FacadeDA.createsong(ref Disk, ref response, pintBandId);
+
+            //Data = null
+            return serializer.Serialize(response);
+        }
 
         public string getDiskReviews(int pintBandId)
         {
