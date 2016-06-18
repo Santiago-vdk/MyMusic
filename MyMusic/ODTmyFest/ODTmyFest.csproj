@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BA754BF-2147-41BF-9496-3D82B620C060}</ProjectGuid>
+    <ProjectGuid>{44E9848F-8760-46FB-B6CD-8A3B724708AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataAccessMyFest</RootNamespace>
-    <AssemblyName>DataAccessMyFest</AssemblyName>
+    <RootNamespace>ODTmyFest</RootNamespace>
+    <AssemblyName>ODTmyFest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsConnection.cs" />
-    <Compile Include="clsFachadaDA.cs" />
-    <Compile Include="DashboardDataAccess\clsDashboardDA.cs" />
-    <Compile Include="DashboardDataAccess\clsDashboardRead.cs" />
-    <Compile Include="DashboardDataAccess\clsDashboardWrite.cs" />
+    <Compile Include="clsInfoDashboard.cs" />
+    <Compile Include="clsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
