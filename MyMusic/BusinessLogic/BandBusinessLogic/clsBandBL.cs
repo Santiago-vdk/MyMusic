@@ -85,5 +85,31 @@ namespace BusinessLogic.BandBusinessLogic
             return serializer.Serialize(response);
 
         }
+
+        public string updateBand(string pstringRequest, int pintFanId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data);
+            InfoBand.Id = request.Id;
+            clsResponse response = new clsResponse();
+
+            if (InfoBand.Id == pintFanId)
+            {
+                //InfoBand = FacadeDA.updateBand(InfoBand, ref response);
+                if (InfoBand.Picture.CompareTo("") != 0) // change image 
+                {
+                    ArchiveManager.updateUserImage(InfoBand.Id, InfoBand.Picture, ref response);
+                }
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Invalid Operation";
+                response.Code = 401;
+            }
+            //Data = null
+            return serializer.Serialize(response);
+        }
     }
 }
