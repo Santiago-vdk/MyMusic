@@ -28,6 +28,15 @@ namespace BusinessLogic
             return BandBL.getForm();
         }
 
+        public string getEvent(int pintEventId)
+        {
+            return EventBL.getEvent(pintEventId);
+        }
+        public string getNew(int pintNewId)
+        {
+            return NewBL.getNew(pintNewId);
+        }
+
         public string getUserPicture(string pstringUserId)
         {
             return UserBL.getPicture(Int32.Parse(pstringUserId));
@@ -123,15 +132,18 @@ namespace BusinessLogic
             return BandBL.updateBand(pstringRequest, pintBandId);
         }
 
-        public string getEvent(int pintEventId)
+        public string reviewBand(string pstringRequest, int pintBandId)
         {
-            return EventBL.getEvent(pintEventId);
+            return BandBL.reviewBand(pstringRequest,pintBandId);
         }
-        public string getNew(int pintNewId)
+        public string reviewDisk(string pstringRequest, int pintDiskId)
         {
-            return NewBL.getNew(pintNewId);
+            return DiskBL.reviewDisk(pstringRequest, pintDiskId);
         }
-
+        public string reviewEvent(string pstringRequest, int pintEventId)
+        {
+            return EventBL.reviewEvent(pstringRequest, pintEventId);
+        }
 
 
 

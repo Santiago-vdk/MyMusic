@@ -30,10 +30,10 @@ namespace BusinessLogic.BandBusinessLogic
             clsInfoBand InfoBand = new clsInfoBand();
             clsResponse response = new clsResponse();
 
-            FacadeDA.getBandInfo(ref InfoBand,ref response,pintBandId);
-            FacadeDA.getGenresBand(ref InfoBand,ref response,pintBandId);
+            FacadeDA.getBandInfo(ref InfoBand, ref response, pintBandId);
+            FacadeDA.getGenresBand(ref InfoBand, ref response, pintBandId);
             FacadeDA.getMembersInfo(ref InfoBand, ref response, pintBandId);
-            
+
 
             response.Data = serializer.Serialize(InfoBand);
             return serializer.Serialize(response);
@@ -45,7 +45,7 @@ namespace BusinessLogic.BandBusinessLogic
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsInfoBand InfoBand = DeserializeJson.DeserializeBandForm(request.Data.ToString());
             clsResponse response = new clsResponse();
-            
+
 
             clsInfoUser InfoUser = new clsInfoUser();
             InfoUser.Username = InfoBand.Username;
@@ -121,6 +121,19 @@ namespace BusinessLogic.BandBusinessLogic
             //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
 
             response.Data = serializer.Serialize(reviews);
+            return serializer.Serialize(response);
+        }
+
+        public string reviewBand(string pstringRequest, int pintBandId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsReview review = DeserializeJson.DeserializeReview(request.Data);
+            clsResponse response = new clsResponse();
+
+            //validar si el usuario ya habia hecho review
+            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
+            
+            //data null
             return serializer.Serialize(response);
         }
     }

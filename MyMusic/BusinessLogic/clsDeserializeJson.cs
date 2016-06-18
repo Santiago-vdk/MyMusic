@@ -87,6 +87,16 @@ namespace BusinessLogic
             return Disk;
         }
 
+        public clsReview DeserializeReview(string pstringData)
+        {
+            clsReview Review = new clsReview();
+            dynamic data = JObject.Parse(pstringData);
+
+            Review = JsonConvert.DeserializeObject<clsReview>(Convert.ToString(data));
+
+            return Review;
+        }
+
 
 
     }

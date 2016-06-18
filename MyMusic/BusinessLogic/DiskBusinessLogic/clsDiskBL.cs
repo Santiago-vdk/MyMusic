@@ -69,5 +69,18 @@ namespace BusinessLogic.DiskBusinessLogic
             response.Data = serializer.Serialize(reviews);
             return serializer.Serialize(response);
         }
+
+        public string reviewDisk(string pstringRequest, int pintDiskId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsReview review = DeserializeJson.DeserializeReview(request.Data);
+            clsResponse response = new clsResponse();
+
+            //validar si el usuario ya habia hecho review
+            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
+
+            //data null
+            return serializer.Serialize(response);
+        }
     }
 }
