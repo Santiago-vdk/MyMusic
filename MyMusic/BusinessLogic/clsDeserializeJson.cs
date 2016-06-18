@@ -81,8 +81,11 @@ namespace BusinessLogic
         {
             clsDisk Disk = new clsDisk();
             dynamic data = JObject.Parse(pstringData);
-
-            Disk = JsonConvert.DeserializeObject<clsDisk>(Convert.ToString(data));
+            
+            Disk.Name = Convert.ToString(data.Name);
+            Disk.DateCreation = Convert.ToString(data.DateCreation);
+            Disk.Genre = Convert.ToString(data.Genre);
+            Disk.Picture = Convert.ToString(data.Picture);
 
             return Disk;
         }
@@ -97,7 +100,15 @@ namespace BusinessLogic
             return Review;
         }
 
+        public clsSong DeserializeSong(string pstringData)
+        {
+            clsSong Song = new clsSong();
+            dynamic data = JObject.Parse(pstringData);
 
+            Song = JsonConvert.DeserializeObject<clsReview>(Convert.ToString(data));
+
+            return Song;
+        }
 
     }
 }
