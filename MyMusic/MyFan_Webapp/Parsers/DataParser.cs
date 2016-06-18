@@ -66,7 +66,7 @@ namespace MyFan_Webapp
 
         }
 
-        private static List<clsAlbum> parseAlbums(string json)
+        public static List<clsAlbum> parseAlbums(string json)
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
@@ -89,6 +89,8 @@ namespace MyFan_Webapp
             }
             return listLocations;
         }
+
+ 
 
         public static clsInfoFan parseFanInfo(string json)
         {

@@ -25,9 +25,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
                     return View("~/Views/Login/Index.cshtml");
                 }
             }
-   
-            
-            
+       
 
             BandProfileViewModel profile = new BandProfileViewModel();
             
@@ -47,7 +45,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             System.Diagnostics.Debug.WriteLine("check profile from " + userId);
 
             string response = await clsBandRequests.GetBandInfo(userId);
-
+            string response2 = await clsBandRequests.getBandAlbums(userId);
             //Hubo error
             if (!ErrorParser.parse(response).Equals(""))
             {
@@ -59,6 +57,8 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
             profile.Info = DataParser.parseBandInfo(response);
+
+            profile.Albums = DataParser.parseAlbums(response2);
             return View(profile);
 
 
@@ -75,7 +75,9 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             System.Diagnostics.Debug.WriteLine(response);
             string response2 = await clsRegisterRequests.GetRegisterBandForm();
             string ParsedMessage = ErrorParser.parse(response2);
-            
+
+            string response3 = await clsBandRequests.getBandAlbums(userId);
+
             
             BandProfileViewModel profile = new BandProfileViewModel();
             profile.Id = Int32.Parse(Session["Id"].ToString());
@@ -83,7 +85,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Name = Session["Name"].ToString();
             profile.Info = DataParser.parseBandInfo(response);
             profile.EditForm = DataParser.parseBandForm(response2);
-
+            profile.Albums = DataParser.parseAlbums(response3);
             return View(profile);
         }
 

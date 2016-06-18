@@ -24,7 +24,6 @@ function FormEditModel() {
     self.inputMembers = inputMembers;
 
     if (picChanged) {
-        alert("Submit because it changed");
         self.profilePicture = $('#profile-pic').attr('src');
     }
 
@@ -110,7 +109,7 @@ jQuery(function ($) {
             if ($("#form-edit").data("changed")) {
                 alert("Put Edit");
                 
-                /*$.ajax({
+                $.ajax({
                     url: "UpdateProfile",
                     dataType: 'text',
                     contentType: 'application/json',
@@ -126,7 +125,7 @@ jQuery(function ($) {
                     error: function () {
                         alert('Something goes wrong!');
                     }
-                });*/
+                });
             }
 
 
