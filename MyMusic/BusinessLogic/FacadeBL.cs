@@ -36,10 +36,7 @@ namespace BusinessLogic
         {
             return UserBL.getPicture(Int32.Parse(pstringUserId));
         }
-        public string getNew(string pstringId)
-        {
-            return NewBL.getNew(pstringId);
-        }
+      
         public string getEvent(string pstringId)
         {
             return EventBL.getEvent(pstringId);
