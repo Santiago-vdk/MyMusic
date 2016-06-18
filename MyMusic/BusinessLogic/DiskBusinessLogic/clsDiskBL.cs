@@ -66,6 +66,13 @@ namespace BusinessLogic.DiskBusinessLogic
                 response.Code = 401;
             }
 
+            Disk.Picture = null;
+            Disk.Songs = null;
+            Disk.Label = null;
+            Disk.DateCreation = null;
+            Disk.Name = null;
+            Disk.CodGenre = -1;
+
             response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
         }
