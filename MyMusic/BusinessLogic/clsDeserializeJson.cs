@@ -39,7 +39,8 @@ namespace BusinessLogic
             InfoBand.DateCreation = Convert.ToString(data.DateCreation);
             InfoBand.Country = Convert.ToString(data.Country);
             InfoBand.Hashtag = Convert.ToString(data.Hashtag);
-            InfoBand.Genres = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.Genres));
+            InfoBand.CodGenres = JsonConvert.DeserializeObject<List<int>>(Convert.ToString(data.Genres));
+            //InfoBand.Genres = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.Genres));
             InfoBand.Name = Convert.ToString(data.Name);
             InfoBand.Members = JsonConvert.DeserializeObject<List<string>>(Convert.ToString(data.Members));
             InfoBand.Biography = Convert.ToString(data.Biography);
