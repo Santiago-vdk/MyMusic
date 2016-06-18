@@ -252,7 +252,7 @@ namespace DataAccess.BandDataAccess
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
-                cmd.Parameters.Add("@inCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
+                cmd.Parameters.Add("@intCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
@@ -281,7 +281,7 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
@@ -316,6 +316,7 @@ namespace DataAccess.BandDataAccess
             Serializer r = new Serializer();
             
            // a.createdisk(ref d,ref b,124);
+            Console.WriteLine(r.Serialize(a.getWallBand(ref b,124,0,5)));
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }
