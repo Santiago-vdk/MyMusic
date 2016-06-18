@@ -24,7 +24,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
                 }
             }
             string response = await clsBandRequests.getBandAlbums(userId);
-            
+            string response2 = await clsBandRequests.GetBandPosts(userId);
 
             BandProfileViewModel profile = new BandProfileViewModel();
             
@@ -32,7 +32,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
             profile.Albums = DataParser.parseAlbums(response);
-
+            profile.Posts = DataParser.parsePosts(response2);
             return View(profile);
 
         }

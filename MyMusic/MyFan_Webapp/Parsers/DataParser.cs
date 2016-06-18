@@ -70,8 +70,8 @@ namespace MyFan_Webapp
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
-        
-            int albumId = JsonConvert.DeserializeObject<int>(Convert.ToInt32(data.Id));
+            System.Diagnostics.Debug.WriteLine(json);
+            int albumId = JsonConvert.DeserializeObject<int>(Convert.ToString(data.Id));
             return albumId;
         }
 
@@ -160,7 +160,7 @@ namespace MyFan_Webapp
             return profile;
 
         }
-        private static List<clsPublication> parsePosts(string json)
+        public static List<clsPublication> parsePosts(string json)
         {
             clsResponse Response = parseResponse(json);
             return JsonConvert.DeserializeObject<List<clsPublication>>(Response.Data);

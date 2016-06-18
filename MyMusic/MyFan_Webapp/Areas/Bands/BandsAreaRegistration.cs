@@ -2,17 +2,17 @@
 
 namespace MyFan_Webapp.Areas.Bands
 {
-    public class BandsAreaRegistration : AreaRegistration 
+    public class BandsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Bands";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Bands_default",
@@ -25,19 +25,19 @@ namespace MyFan_Webapp.Areas.Bands
 
             context.MapRoute(
                 "Bands_Albums",
-                "Bands/{userId}/{controller}/{action}",
-           
+                "Bands/{userId}/{controller}/{action}/{id}",
+                defaults: new { controller = "Albums", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "MyFan_Webapp.Areas.Bands.Controllers" }
             );
 
-           /* context.MapRoute(
-                "Bands_Edit",
-                "Bands/{userId}/profile/edit",
-                defaults: new { controller = "Bands", action = "Edit" },
-                namespaces: new[] { "MyFan_Webapp.Areas.Bands.Controllers" }
-            );*/
+            /* context.MapRoute(
+                 "Bands_Edit",
+                 "Bands/{userId}/profile/edit",
+                 defaults: new { controller = "Bands", action = "Edit" },
+                 namespaces: new[] { "MyFan_Webapp.Areas.Bands.Controllers" }
+             );*/
 
-            
+
         }
     }
 }

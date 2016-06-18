@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using MyFan_API.ControllerCalls;
+using System;
 using System.Web.Http;
 
 namespace MyFan_API.Controllers
 {
-    [RoutePrefix("api/v1/users/bands/{bandId}/albums/{albumId}/discs")]
-    public class DiscsController : ApiController
+    [RoutePrefix("api/v1/users/bands/{bandId}/albums/{albumId}/songs")]
+    public class SongsController : ApiController
     {
         [Route("")]
         [HttpPost]
         // api/v1/users/bands/1/albums/1/discs POST
         public IHttpActionResult CreateDisc(int bandId, int albumId)
         {
+            System.Diagnostics.Debug.WriteLine(Request.Content.ReadAsStringAsync().Result);
+            return new SongControllerCallsCreateSong(Request, bandId, albumId);
+            // return new DiscControllerCallsRegisterFan(Request);
             //Endpoint for creating a disc for a band
             throw new NotImplementedException();
         }
