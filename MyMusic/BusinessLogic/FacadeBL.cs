@@ -54,11 +54,6 @@ namespace BusinessLogic
             return DiskBL.getDisks(pintBandId, pintOffset, pintLimit);
         }
 
-        public string getSearchParams()
-        {
-            return UserBL.getSearchParams();
-        }
-
         public string getFanInfo(int pintFanId)
         {
             return FanBL.getFanInfo(pintFanId);
@@ -73,11 +68,11 @@ namespace BusinessLogic
         }
         public string getEventInfo(int pintEventId)
         {
-            return EventBL.getEvent(pintEventId);
+            return EventBL.getEventInfo(pintEventId);
         }
         public string getNewInfo(int pintNewId)
         {
-            return NewBL.getNew(pintNewId);
+            return NewBL.getNewInfo(pintNewId);
         }
 
         public string getBandReviews(int pintBandId)
@@ -92,7 +87,6 @@ namespace BusinessLogic
         {
             return EventBL.getEventReviews(pintEventId);
         }
-
 
         public string createFan(string pstringRequest)
         {
@@ -110,10 +104,13 @@ namespace BusinessLogic
         {
             return DiskBL.createSong(pstringRequest,pintBandId, pintDiskId);
         }
-
-        public string login(string pstringRequest)
+        public string createNew(string pstringRequest, int pintBandId)
         {
-            return UserBL.login(pstringRequest);
+            return NewBL.createNew(pstringRequest, pintBandId);
+        }
+        public string createEvent(string pstringRequest, int pintBandId)
+        {
+            return EventBL.createEvent(pstringRequest, pintBandId);
         }
 
         public string checkUsername(string pstringUsername)
@@ -123,11 +120,6 @@ namespace BusinessLogic
         public string checkHashtag(string pstringHashtag)
         {
             return BandBL.checkHashtag(pstringHashtag);
-        }
-
-        public string searchBands(string pstringRequest, int pintOffset, int pintLimit)
-        {
-            return FanBL.searchBands(pstringRequest, pintOffset, pintLimit);
         }
 
         public string updateFan(string pstringRequest,int pintFanId)
@@ -152,7 +144,19 @@ namespace BusinessLogic
             return EventBL.reviewEvent(pstringRequest, pintEventId);
         }
 
-
-
+        public string login(string pstringRequest)
+        {
+            return UserBL.login(pstringRequest);
         }
+
+        public string searchBands(string pstringRequest, int pintOffset, int pintLimit)
+        {
+            return FanBL.searchBands(pstringRequest, pintOffset, pintLimit);
+        }
+
+        public string getSearchParams()
+        {
+            return UserBL.getSearchParams();
+        }
+    }
 }

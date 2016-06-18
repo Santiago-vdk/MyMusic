@@ -16,7 +16,7 @@ namespace BusinessLogic.EventBusinessLogic
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
 
-        public string getEvent(int pintEventId)
+        public string getEventInfo(int pintEventId)
         {
             clsEvent Event = new clsEvent();
             clsResponse response = new clsResponse();
@@ -48,6 +48,21 @@ namespace BusinessLogic.EventBusinessLogic
             //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
 
             //data null
+            return serializer.Serialize(response);
+        }
+
+        public string createEvent(string pstringRequest, int pintBandId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsEvent Event = DeserializeJson.DeserializeEvent(request.Data.ToString());
+            clsResponse response = new clsResponse();
+
+            if (request.Id == pintBandId)
+            {
+                //Event.Id = FacadeDA.createevent(ref Event, ref response, pintBandId);
+            }
+
+            response.Data = serializer.Serialize(Event);
             return serializer.Serialize(response);
         }
 
