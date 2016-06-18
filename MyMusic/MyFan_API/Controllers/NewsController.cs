@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFan_API.ControllerCalls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,11 +12,11 @@ namespace MyFan_API.Controllers
     public class NewsController : ApiController
     {
 
-        [Route("")]
-        [HttpPost]
+        [Route(""), HttpPost]
         // api/v1/users/bands/1/news POST
         public IHttpActionResult CreateNew(int bandId)
         {
+            return new NewControllerCallsCreateNew(Request, bandId);
             //Endpoint for creating a New for a band
             throw new NotImplementedException();
         }

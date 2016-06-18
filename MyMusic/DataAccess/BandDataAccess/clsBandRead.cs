@@ -298,7 +298,7 @@ namespace DataAccess.BandDataAccess
             return Wall;
         }
 
-
+        
 
 
 
@@ -306,17 +306,16 @@ namespace DataAccess.BandDataAccess
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsDisk d = new clsDisk();
-            d.Name = "a";
-            d.Label = "b";
-            d.CodGenre = 4;
-            d.DateCreation = "2000-09-03";
+            clsNew d = new clsNew();
+            d.Title = "a";
+            d.Content = "b";
+
 
 
             Serializer r = new Serializer();
             
            // a.createdisk(ref d,ref b,124);
-            Console.WriteLine(r.Serialize(a.getWallBand(ref b,124,0,5)));
+            //Console.WriteLine(r.Serialize(a.createnew(ref d, ref b,124)));
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }

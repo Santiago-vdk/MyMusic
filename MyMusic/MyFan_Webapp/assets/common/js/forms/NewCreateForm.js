@@ -35,7 +35,7 @@ jQuery(function ($) {
                 alert("Put New");
 
                 $.ajax({
-                    url: "Create",
+                    url: "NewNoticia",
                     dataType: 'json',
                     contentType: 'application/json',
                     type: "POST",
@@ -47,6 +47,7 @@ jQuery(function ($) {
                     success: function (data, status) {
                         $('#update-form-band').prop('disabled', false);
                         $('#loading').addClass("hide");
+                        
                     },
                     error: function () {
                         alert('Something goes wrong!');
