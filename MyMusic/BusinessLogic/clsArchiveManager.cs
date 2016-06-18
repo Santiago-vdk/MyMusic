@@ -171,9 +171,9 @@ namespace BusinessLogic
             {
                 // Load file meta data with FileInfo
                 string path = "";
-                string path1 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/" + pintDiskId.ToString() + ".jpg";
-                string path2 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/" + pintDiskId.ToString() + ".png";
-                string path3 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/" + pintDiskId.ToString() + ".gif";
+                string path1 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".jpg";
+                string path2 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".png";
+                string path3 = AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".gif";
 
                 if (File.Exists(path1))
                 {
@@ -211,11 +211,11 @@ namespace BusinessLogic
             try
             {
 
-                if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/")) //directory does not exist
+                if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/")) //directory does not exist
                 {
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/");
-                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/");
-                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/");
+                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/");
+                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/");
                 }
                 System.Diagnostics.Debug.WriteLine("Path: " + AppDomain.CurrentDomain.BaseDirectory);
 
@@ -236,15 +236,15 @@ namespace BusinessLogic
                 //type validations
                 if (pstringImage.Contains(FileTypePrefixJpg))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/" + pintDiskId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 if (pstringImage.Contains(FileTypePrefixPng))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/" + pintDiskId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
                 if (pstringImage.Contains(FileTypePrefixGif))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disks/" + pintDiskId.ToString() + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
                 }
             }
             catch
@@ -260,25 +260,24 @@ namespace BusinessLogic
             try
             {
 
-                if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/")) //directory does not exist
+                if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/")) //directory does not exist
                 {
                     Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/");
-                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/");
-                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/");
+                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/");
+                    Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/");
                 }
 
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".jpg")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".jpg")) //directory does not exist
                 {
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".jpg");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".jpg");
                 }
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".png")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".png")) //directory does not exist
                 {
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".png");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".png");
                 }
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".gif")) //directory does not exist
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".gif")) //directory does not exist
                 {
-                    pclsResponse.Message = "Eliminando gif";
-                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".gif");
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".gif");
                 }
 
                 const string FileTypePrefixJpg = "data:image/jpg;base64,";
@@ -296,15 +295,15 @@ namespace BusinessLogic
                 //type validations
                 if (pstringImage.Contains(FileTypePrefixJpg))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 if (pstringImage.Contains(FileTypePrefixPng))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
                 if (pstringImage.Contains(FileTypePrefixGif))
                 {
-                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Profiles/Disk/" + pintDiskId.ToString() + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
+                    image.Save(AppDomain.CurrentDomain.BaseDirectory + "/Data/Disks/Images/" + pintDiskId.ToString() + ".gif", System.Drawing.Imaging.ImageFormat.Gif);
                 }
             }
             catch
