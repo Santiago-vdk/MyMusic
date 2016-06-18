@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace DataAccess.BandDataAccess
 {
@@ -198,9 +199,9 @@ namespace DataAccess.BandDataAccess
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
             clsInfoBand d = new clsInfoBand();
-            d.Hashtag = "@pene";
-            a.getMembersInfo(ref d, ref b,124);
-            Console.WriteLine(b.Message);
+            Serializer r = new Serializer();
+            a.getBandInfo(ref d, ref b,124);
+            Console.WriteLine(r.Serialize(d));
             Console.ReadKey();
         }
 

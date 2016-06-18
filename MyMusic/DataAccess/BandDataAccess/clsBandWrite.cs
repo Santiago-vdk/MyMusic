@@ -23,7 +23,7 @@ namespace DataAccess.BandDataAccess
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Username;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Name;
-                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Genres);
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.CodGenres);
                 cmd.Parameters.Add("@strBiografia", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Biography;
                 cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
                 cmd.Parameters.Add("@intPais", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Country;
@@ -83,6 +83,7 @@ namespace DataAccess.BandDataAccess
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                 cod.Direction = ParameterDirection.Output;
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 pclsResponse.Code = 0;
@@ -116,17 +117,18 @@ namespace DataAccess.BandDataAccess
         {
             
             clsInfoBand b = new clsInfoBand();
-            b.Username = "yepe22ne";
+            b.Username = "yepe2wq2n111e";
             b.Password = "panocho";
             b.Name = "panocho";
-            b.Genres = new List<string>(new string[] { "Rock", "Metal" });
+            b.CodGenres = new List<int>(new int[] { 1, 2 });
             b.Members = new List<string>(new string[] { "Panochon69", "PAnochote69" });
             b.DateCreation = "1-2-2016";
             b.Biography = "Listo";
             b.Country = "9";
-            b.Hashtag = "@Panochon22Pene2";
-            b.Salt = "dhjsdhj111aw222eweesaasr22ddsds";
+            b.Hashtag = "@Panochow111qn22Pene2";
+            b.Salt = "dhjsdhj111aw222qw111qeweesaasr22ddsds";
             b.SaltHashed = "dsdswewqwwesdsd";
+   
             clsBandWrite d = new clsBandWrite();
             clsResponse f = new clsResponse();
             d.createBand(b, ref f);
