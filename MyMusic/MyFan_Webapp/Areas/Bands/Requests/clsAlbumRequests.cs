@@ -31,8 +31,6 @@ namespace MyFan_Webapp.Areas.Bands.Requests
 
         public static async Task<string> GetAlbumInfo(int userId, int id)
         {
-
-            System.Diagnostics.Debug.WriteLine("users/bands/" + userId + "/albums/" + id + "/q?=all");
             // HTTP GET
             HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/albums/" + id + "/?q=all");
             System.Diagnostics.Debug.WriteLine(request);

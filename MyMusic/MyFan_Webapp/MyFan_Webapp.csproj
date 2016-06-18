@@ -141,6 +141,7 @@
     <Content Include="Areas\Bands\Views\Albums\Create.cshtml" />
     <Content Include="Areas\Bands\Views\News\Create.cshtml" />
     <Content Include="Areas\Bands\Views\Albums\Index.cshtml" />
+    <Content Include="Areas\Bands\Views\News\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -161,6 +162,7 @@
     <Compile Include="Areas\Bands\Models\clsAlbum.cs" />
     <Compile Include="Areas\Bands\Requests\clsAlbumRequests.cs" />
     <Compile Include="Areas\Bands\Requests\clsBandRequests.cs" />
+    <Compile Include="Areas\Bands\Requests\clsNewRequests.cs" />
     <Compile Include="Areas\Fans\Controllers\AlbumsController.cs" />
     <Compile Include="Areas\Fans\Controllers\BandsController.cs" />
     <Compile Include="Areas\Fans\Controllers\FansController.cs" />
