@@ -37,10 +37,6 @@ namespace BusinessLogic
         {
             return UserBL.getPicture(Int32.Parse(pstringUserId));
         }
-        public string getEvent(string pstringId)
-        {
-            return EventBL.getEvent(pstringId);
-        }
         public string getPublications(int pintUserId, int pintOffset, int pintLimit)
         {
             return UserBL.getPublications(pintUserId, pintOffset, pintLimit);

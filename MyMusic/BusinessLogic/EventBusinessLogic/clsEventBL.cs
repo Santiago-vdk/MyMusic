@@ -13,10 +13,6 @@ namespace BusinessLogic.EventBusinessLogic
         clsFacadeDA FacadeDA = new clsFacadeDA();
         clsDeserializeJson DeserializeJson = new clsDeserializeJson();
         Serializer serializer = new Serializer();
-
-        public string getEvent(string pstringEvent)
-        {
-            return "";
-        }
+        
     }
 }

@@ -15,6 +15,6 @@ namespace DTO
         public int Id { get; set; }
         public string DateCreation { get; set; }
         public string Picture { get; set; }
-        public bool LimitedEdition { get; set; }
+        
     }
 }
