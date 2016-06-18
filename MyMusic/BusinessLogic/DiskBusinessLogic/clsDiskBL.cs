@@ -53,7 +53,7 @@ namespace BusinessLogic.DiskBusinessLogic
             if (Disk.Id == pintBandId)
             {
 
-                FacadeDA.createdisk(ref Disk, ref response, pintBandId);
+                Disk.Id = FacadeDA.createdisk(ref Disk, ref response, pintBandId);
 
                 //save image here!
                 ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
