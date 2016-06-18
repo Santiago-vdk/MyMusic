@@ -66,7 +66,7 @@ namespace BusinessLogic.DiskBusinessLogic
                 response.Code = 401;
             }
 
-            //Data = null
+            response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
         }
         public string createSong(string pstringRequest, int pintDiskId)
@@ -77,7 +77,7 @@ namespace BusinessLogic.DiskBusinessLogic
 
             FacadeDA.createsong(ref Song, ref response, pintDiskId);
 
-            //Data = null
+            response.Data = serializer.Serialize(Song);
             return serializer.Serialize(response);
         }
 
