@@ -72,7 +72,6 @@ namespace BusinessLogic
             dynamic data = JObject.Parse(pstringData);
 
             Search = JsonConvert.DeserializeObject<clsSearch>(Convert.ToString(data));
-         
 
             return Search;
         }

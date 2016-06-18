@@ -8,8 +8,8 @@ namespace DTO
 {
     public class clsSearch
     {
-        public int Country { get; set; }
-        public List<int> Genres { get; set; }
+        public string Country { get; set; }
+        public string Genre { get; set; }
         public string Name { get; set; }
     }
 }
