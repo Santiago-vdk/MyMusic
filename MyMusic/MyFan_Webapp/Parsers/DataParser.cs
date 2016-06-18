@@ -70,6 +70,7 @@ namespace MyFan_Webapp
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
+            System.Diagnostics.Debug.WriteLine(json);
             List<clsAlbum> albums = JsonConvert.DeserializeObject<List<clsAlbum>>(Convert.ToString(data.Disks));
             return albums;
         }

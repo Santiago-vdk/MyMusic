@@ -108,7 +108,10 @@ namespace DataAccess
         {
             DiskDA.getdiskreviews(ref pclsReviews, ref pclsResponse, pintDiskCode);
         }
-
+        public int createdisk(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            return DiskDA.createdisk(ref pclsDisk, ref pclsResponse, pintUserCode);
+        }
 
 
 

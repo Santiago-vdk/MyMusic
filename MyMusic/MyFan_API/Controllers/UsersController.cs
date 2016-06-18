@@ -20,9 +20,13 @@ namespace MyFan_API.Controllers
             {
                 return new UserControllerCallsValidateUsername(Request, value);
             }
-            if (String.Equals(q.ToLower(), "image") && String.Equals(action.ToLower(), "read") && (value.ToLower() != null))
+            if (String.Equals(q.ToLower(), "image") && String.Equals(action.ToLower(), "profile") && (value.ToLower() != null))
             {
-                return new UserControllerCallsGetPicture(Request, value);
+                return new UserControllerCallsGetProfilePicture(Request, value);
+            }
+            if (String.Equals(q.ToLower(), "image") && String.Equals(action.ToLower(), "album") && (value.ToLower() != null))
+            {
+                return new UserControllerCallsGetDiskPicture(Request, value);
             }
             throw new NotImplementedException();
         }

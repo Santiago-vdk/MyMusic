@@ -5,9 +5,7 @@ using MyFan_Webapp.Models;
 using MyFan_Webapp.Requests.Register;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MyFan_Webapp.Areas.Bands.Controllers
@@ -25,14 +23,14 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
                     return View("~/Views/Login/Index.cshtml");
                 }
             }
-       
+            string response = await clsBandRequests.getBandAlbums(userId);
 
             BandProfileViewModel profile = new BandProfileViewModel();
             
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-   
+            profile.Albums = DataParser.parseAlbums(response);
 
             return View(profile);
 
@@ -85,6 +83,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Name = Session["Name"].ToString();
             profile.Info = DataParser.parseBandInfo(response);
             profile.EditForm = DataParser.parseBandForm(response2);
+
             profile.Albums = DataParser.parseAlbums(response3);
             return View(profile);
         }

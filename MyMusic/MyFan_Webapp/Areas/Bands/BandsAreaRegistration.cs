@@ -21,12 +21,12 @@ namespace MyFan_Webapp.Areas.Bands
                 namespaces: new[] { "MyFan_Webapp.Areas.Bands.Controllers" }
             );
 
-            context.MapRoute(
+           /* context.MapRoute(
                 "Bands_Edit",
                 "Bands/{userId}/profile/edit",
                 defaults: new { controller = "Bands", action = "Edit" },
                 namespaces: new[] { "MyFan_Webapp.Areas.Bands.Controllers" }
-            );
+            );*/
 
             context.MapRoute(
                 "Bands_default",

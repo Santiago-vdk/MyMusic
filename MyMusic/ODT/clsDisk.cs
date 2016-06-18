@@ -14,6 +14,7 @@ namespace DTO
         public int Id { get; set; }
         public string DateCreation { get; set; }
         public string Picture { get; set; }
-        
+        public string Genre { get; set; }
+        public int CodGenre { get; set; }
     }
 }

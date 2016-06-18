@@ -26,6 +26,15 @@ namespace MyFan_Webapp.Controllers
             
         }
 
+        public async Task<ActionResult> imageAlbum(int Id)
+        {
+            string response = await clsUserRequests.GetDiskPicture(Id);
+   
+            byte[] data = Convert.FromBase64String(response);
+            return File(data, "image/png");
+
+        }
+
 
         public async Task<ActionResult> GetSearch()
         {

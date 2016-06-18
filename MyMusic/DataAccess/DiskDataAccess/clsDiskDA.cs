@@ -24,5 +24,9 @@ namespace DataAccess.DiskDataAccess
         {
             DiskRead.getdiskreviews(ref pclsReviews, ref pclsResponse, pintDiskCode);
         }
+        public int createdisk(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            return DiskWrite.createdisk(ref pclsDisk, ref pclsResponse, pintUserCode);
+        }
     }
 }
