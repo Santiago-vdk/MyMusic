@@ -45,6 +45,13 @@ namespace MyFan_Webapp
             return listGenders;
         }
 
+        public static clsDisk parseDisk(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            clsDisk disk = JsonConvert.DeserializeObject<clsDisk>(Convert.ToString(Response.Data));
+            return disk;
+        }
+
         internal static clsInfoBand parseBandInfo(string json)
         {
             clsResponse Response = parseResponse(json);

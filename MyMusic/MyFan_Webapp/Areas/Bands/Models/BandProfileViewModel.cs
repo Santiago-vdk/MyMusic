@@ -16,5 +16,6 @@ namespace MyFan_Webapp.Areas.Bands.Models
         public List<clsPublication> Posts { get; set; }
         public clsInfoBand Info { get; set; }
         public Form EditForm { get; set; }
+        public clsDisk Disk { get; set; }
     }
 }

@@ -100,7 +100,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
 
         public static async Task<string> getBandAlbums(int userId)
         {
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/?q=albums");
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/?q=albums&offset=15");
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;

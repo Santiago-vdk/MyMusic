@@ -24,24 +24,13 @@
 <body>
     <!-- Post-Section -->
     <div id="post-section" class="row">
-        <h2 class="post-header">Add new album</h2>
+        <h2 class="post-header">Album @Model.Disk.Name</h2>
         <div class="row">
             <div class="col-md-8">
 
                 <form id="form-new-album" class='form-horizontal'>
 
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputPicture">Artwork</label>
-                        </div>
-                        <div class="col-xs-9">
-
-                            <label class="btn btn-success btn-file">
-                                Browse... <input id="imgInp" name="imgInp" type="file">
-                            </label><small>Only 400x400, .jpg .png .gif, less than 2Mb</small>
-
-                        </div>
-                    </div>
+                   
 
 
                     <div class="form-group">
@@ -49,7 +38,7 @@
                             <label for="inputAlbumName">Album Name:</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Album Name" name="AlbumName" id="AlbumName" />
+                            <input type="text" class="form-control" placeholder="Album Name" value="@Model.Disk.Name" name="AlbumName" id="AlbumName" disabled/>
                         </div>
                     </div>
 
@@ -59,7 +48,7 @@
                             <label for="inputLabel">Record Label:</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Record Label Name" name="Label" id="inputLabel" />
+                            <input type="text" class="form-control" placeholder="Record Label Name" value="@Model.Disk.Label" name="Label" id="inputLabel" disabled />
                         </div>
                     </div>
 
@@ -69,49 +58,33 @@
                             <label for="inputDateRelease">Release Date:</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="date" id="inputDateRelease" name="DateRelease">
+                            <input type="date" id="inputDateRelease" value="@Model.Disk.DateCreation" name="DateRelease" disabled>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-3 text-right">
-                            <label for="selectMusicalGenre">Musical Genres</label>
+                            <label for="selectMusicalGenre">Musical Genre</label>
                         </div>
                         <div class="col-xs-9">
                             <!-- multiple data-max-options="5"-->
-                            <select class="selectpicker" data-live-search="true" id="selectGenres" name="Genres" title="Choose five musical genres" data-width="100%">
-                                @foreach (var genre in Model.EditForm.genres)
-                                {
-                                    <option id="@genre.Id" data-tokens="@genre.Name">@genre.Name</option>
-                                }
+                            <select class="selectpicker" data-live-search="true" id="selectGenres" name="Genres" data-width="100%" disabled>
+                                
+                                    <option id="@Model.Disk.CodGenre" data-tokens="@Model.Disk.Genre">@Model.Disk.Genre</option>
+                                
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-xs-offset-4 col-xs-3">
-                                <button id="post-album-form" type="button" class="btn btn-success">Publish Album!</button>
-                            </div>
-                            <div class="col-xs-3">
-                                <a href="~/" class="btn btn-danger">Back</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-5 col-xs-offset-5 centerBlock">
-
-                            <i id="loading" class="fa fa-refresh fa-spin fa-5x fa-fw hide"></i>
-                            <span class="sr-only">Loading...</span>
-
-                            <a id="AddSong" class="btn btn-primary hide">Add a Song</a>
-                        </div>
-                    </div>
-                    <br />
+                   
                 </form>
 
-                <ul id="songs-list"></ul>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
 
                 <div class="container">
@@ -137,7 +110,12 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+                                    @foreach (var song in Model.Disk.Songs)
+                                    {
+                                        <tr><td>@song.Name</td><td>@song.Duration</td><td>@song.Type</td><td>@song.LimitedEdition</td><td><a href="@song.Link" target="_blank">Go To Link</a></td></tr>
+                                    }
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -148,7 +126,7 @@
 
             </div>
             <div class="row ">
-                <img id="album-pic" class="img-responsive img-circle" src="" />
+                <img id="album-pic" class="img-responsive img-circle" src="~/Users/imageAlbum?Id=@Model.Disk.Id" />
             </div>
         </div>
     </div>
