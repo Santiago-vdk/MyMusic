@@ -36,5 +36,9 @@ namespace DataAccess.DiskDataAccess
         {
             DiskWrite.createsong(ref pclsSong, ref pclsResponse, pintCodDisc);
         }
+        public void creatediskreview(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintCodDisc, int pintUserCode)
+        {
+            DiskWrite.creatediskreview(ref pclsReview, ref pclsResponse, pintCodDisc, pintUserCode);
+        }
     }
 }

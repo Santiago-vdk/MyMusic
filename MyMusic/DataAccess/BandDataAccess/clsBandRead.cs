@@ -249,21 +249,17 @@ namespace DataAccess.BandDataAccess
 
 
 
-
         public static void Main()
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsSong d = new clsSong();
-            d.Name = "pene";
-            d.Link = "youporn";
-            d.Type = true;
-            d.LimitedEdition = true;
-            d.Duration = "00:01:00";
+            clsReview d = new clsReview();
+            d.Comment = "pene";
+            d.Calification ="10";
 
             Serializer r = new Serializer();
             
-            //Console.WriteLine(a.createsong(ref d,ref b,124,6));
+            //a.creatediskreview(ref d,ref b,6,89);
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }

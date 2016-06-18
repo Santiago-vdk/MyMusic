@@ -120,7 +120,10 @@ namespace DataAccess
         {
             DiskDA.createsong(ref pclsSong, ref pclsResponse, pintCodDisc);
         }
-
+        public void creatediskreview(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintCodDisc, int pintUserCode)
+        {
+            DiskDA.creatediskreview(ref pclsReview, ref pclsResponse, pintCodDisc, pintUserCode);
+        }
 
 
 
