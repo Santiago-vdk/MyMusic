@@ -1,0 +1,211 @@
+﻿@model MyFan_Webapp.Areas.Fans.Models.FanProfileViewModel
+@{
+    Layout = "~/Areas/Fans/Views/Shared/_FanProfileLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyFan</title>
+</head>
+
+<body>
+    <!-- Artwork Section -->
+    <div id="artwork-section" class="row">
+        <div>
+            <h2 class="artwork-header">Artwork Section</h2>
+        </div>
+        <div class="row align-center">
+            <!-- Previous -->
+
+            <div id="previous" class="col-md-1">
+                <button class="half-circle">
+                    <div class="icon">
+                        <i class="fa fa-angle-left  fa-3x" aria-hidden="true"></i>
+                    </div>
+                </button>
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive" src="assets/common/img/album.jpg">
+                <p class="artwork-name">Pink Floyd</p>
+                <small class="artwork-date">1973</small>
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive" src="assets/common/img/album.jpg">
+                <p class="artwork-name">Rage Against the Machine asdf asdf asdf asdfasd asdf</p>
+                <small class="artwork-date">1973</small>
+
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive" src="assets/common/img/album.jpg">
+                <p class="artwork-name">Pink Floyd</p>
+                <small class="artwork-date">1973</small>
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive" src="assets/common/img/album.jpg">
+                <p class="artwork-name">Pink Floyd</p>
+                <small class="artwork-date">1973</small>
+            </div>
+            <div class="col-md-2">
+                <img class="img-responsive" src="assets/common/img/album.jpg">
+                <p class="artwork-name">Pink Floyd</p>
+                <small class="artwork-date">1973</small>
+            </div>
+
+            <!-- Next -->
+            <div id="next" class="col-md-1">
+                <button class="half-circle">
+                    <div class="icon">
+                        <i class="fa fa-angle-right  fa-3x" aria-hidden="true"></i>
+                    </div>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <div class="row">
+
+        <!-- Profile Section -->
+        <div id="profile-section" class="col-md-3">
+            <!-- Profile Data Section -->
+            <div class="row">
+
+                <!-- Profile Picture Section -->
+                <div id="picture" class="row">
+                    <div class="col-xs-12">
+                        <div id="follow" class="pull-right">
+                            <button type="button" class="btn btn-warning btn_follow">Follow</button>
+                        </div>
+                        <div class="col-xs-12 center-block no-float content_centered">
+                            <img class="img-circle" src="assets/common/img/album.jpg">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Profile Information Section -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row content_centered">
+                            <h2>Band Name</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 topic">
+                                <h4>Hashtag:</h4>
+                            </div>
+                            <div class="col-xs-8 description">
+                                <h4>#BandHashtag</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 topic">
+                                <h4>Foundation Year:</h4>
+                            </div>
+                            <div class="col-xs-4 description">
+                                <h4>1995</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 topic">
+                                <h4>Genres:</h4>
+                            </div>
+                            <div class="col-xs-9 description">
+                                <h4>Rock, Metal, Pop, Reggae, Indie</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 topic">
+                                <h4>Biography:</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 bio">
+                                <h4>Cigarettes After Sex is a pop group founded in El Paso, TX. Initially created in 2008 the group... <link href="">Read More</link></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Review Section -->
+            <div id="review-section-title" class="row">
+                <h2>Band Reviews</h2>
+            </div>
+            <div id="review-section" class="row">
+                <div class="row ">
+                    <div class="col-xs-12 review-box">
+                        <!-- Review Header -->
+                        <div class="row">
+                            <!-- Review User -->
+                            <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
+                            <!-- Review Calification -->
+                            <div class="col-xs-6"><img class="img-circle" src="assets/common/img/acetato-rare.png"></div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Review Comment -->
+                            <div class="col-xs-12">
+                                <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="review-section" class="row">
+                <div class="row ">
+                    <div class="col-xs-12 review-box">
+                        <!-- Review Header -->
+                        <div class="row">
+                            <!-- Review User -->
+                            <div class="col-xs-6 review-user"><h4>Santiago<h4></div>
+                            <!-- Review Calification -->
+                            <div class="col-xs-6"><img class="img-circle" src="assets/common/img/acetato-rare.png"></div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Review Comment -->
+                            <div class="col-xs-12">
+                                <p>User cotempor incillum dsunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post-Section -->
+        <div class="col-md-9">
+            <div id="post-section" class="row">
+                <h2 class="post-header">News & Events</h2>
+
+                <!-- Post -->
+                <div class="col-lg-8 center-block no-float">
+                    <div class="post-box">
+                        <div class="row">
+                            <div class="col-xs-10 post-title">
+                                <h2><u>Hi I am the title</u></h2>
+                            </div>
+                            <div class="col-xs-2 post-date">
+                                <h5>29/10/95<h5>
+                            </div>
+                        </div>
+                        <div class="row post-content">
+                            <div class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu placerat nibh. Integer malesuada vulputate imperdiet. Phasellus sit amet augue facilisis eros faucibus gravida a a justo. Nam ullamcorper id turpis lacinia elementum. Aenean sit amet turpis lobortis, egestas nibh vel, cursus ipsum. Cras ultricies a libero vel dignissim. Vestibulum ultrices bibendum facilisis. Nam cursus felis at tellus commodo, quis bibendum risus egestas. Vivamus id felis et sapien efficitur aliquam.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+

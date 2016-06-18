@@ -140,7 +140,7 @@
                     @foreach (var band in Model.Bands)
                     {
                         <div class="inline">
-                            <a href="~/Bands/@band.Id">
+                            <a href="@Model.Id/Bands/@band.Id">
                                 <img class="img-responsive" src="~/Users/image?Id=@band.Id">
                                 <p class="artwork-name">@band.Name</p>
                                 <small class="artwork-date">@band.DateCreation</small>

@@ -65,6 +65,49 @@ namespace DataAccess.BandDataAccess
             return pclsInfoBand;
         }
 
+        public clsInfoBand updateBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("myFan.SP_ActualizarBanda", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pclsInfoBand.Id;
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Name;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Genres);
+                cmd.Parameters.Add("@strIntegrantes", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Members);
+                cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
+                cmd.Parameters.Add("@intUbicacion", System.Data.SqlDbType.Int).Value = pclsInfoBand.Country;
+                cmd.Parameters.Add("@strHashTag", System.Data.SqlDbType.Int).Value = pclsInfoBand.Hashtag;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return pclsInfoBand;
+        }
 
 
 

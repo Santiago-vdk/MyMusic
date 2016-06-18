@@ -117,6 +117,7 @@ namespace DataAccess.BandDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetMemberBand", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodBand", System.Data.SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pintUserID;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 List<String> members = new List<string>();
@@ -197,7 +198,7 @@ namespace DataAccess.BandDataAccess
             clsResponse b = new clsResponse();
             clsInfoBand d = new clsInfoBand();
             d.Hashtag = "@pene";
-            a.validateHashTag(d, ref b);
+            a.getMembersInfo(ref d, ref b,124);
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }
