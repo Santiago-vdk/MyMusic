@@ -20,7 +20,7 @@ namespace MyFan_Webapp.Controllers
 
             clsRequest RequestObject = new clsRequest("-1", -1, RequestBody);
             HttpResponseMessage request = await clsHttpClient.getClient().PostAsJsonAsync("users/login", RequestObject);
-            System.Diagnostics.Debug.WriteLine(request);
+
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;

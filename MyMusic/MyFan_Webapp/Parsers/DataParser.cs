@@ -45,6 +45,16 @@ namespace MyFan_Webapp
             return listGenders;
         }
 
+        internal static clsInfoBand parseBandInfo(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
+
+            clsInfoBand infoBand = JsonConvert.DeserializeObject<List<clsInfoBand>>(data);
+
+            return infoBand;
+        }
+
         public static BandProfileViewModel parseBandProfile(List<string> json)
         {
             BandProfileViewModel profile = new BandProfileViewModel();

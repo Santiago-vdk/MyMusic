@@ -103,11 +103,15 @@ namespace BusinessLogic
         {
             return FanBL.updateFan(pstringRequest, pintFanId);
         }
+        public string updateBand(string pstringRequest, int pintBandId)
+        {
+            return BandBL.updateBand(pstringRequest, pintBandId);
+        }
 
-        
 
-        
-        
+
+
+
 
     }
 }
