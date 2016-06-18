@@ -47,13 +47,24 @@ namespace BusinessLogic.DiskBusinessLogic
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsDisk Disk = DeserializeJson.DeserializeDisk(request.Data.ToString());
+            Disk.Id = request.Id;
             clsResponse response = new clsResponse();
 
-            FacadeDA.createdisk(ref Disk,ref response,pintBandId);
-            
-            //save image here!
-            ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
-        
+            if (Disk.Id == pintBandId)
+            {
+
+                FacadeDA.createdisk(ref Disk, ref response, pintBandId);
+
+                //save image here!
+                ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Invalid Operation";
+                response.Code = 401;
+            }
 
             //Data = null
             return serializer.Serialize(response);
