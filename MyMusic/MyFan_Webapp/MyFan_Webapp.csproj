@@ -109,11 +109,14 @@
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
     <Content Include="assets\common\js\Fans.js" />
+    <Content Include="assets\common\js\forms\AlbumCreateForm.js" />
     <Content Include="assets\common\js\forms\BandEditForm.js" />
     <Content Include="assets\common\js\forms\BandForm.js" />
     <Content Include="assets\common\js\forms\FanEditForm.js" />
     <Content Include="assets\common\js\forms\FanForm.js" />
+    <Content Include="assets\common\js\forms\NewCreateForm.js" />
     <Content Include="assets\common\js\Processing.js" />
+    <Content Include="assets\lib\BootBox\bootbox.min.js" />
     <Content Include="assets\lib\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\lib\bootstrap\js\bootstrap.min.js" />
@@ -135,6 +138,8 @@
     <Content Include="Areas\Fans\Views\Bands\Index.cshtml" />
     <Content Include="Areas\Bands\Views\Bands\Edit.cshtml" />
     <Content Include="Areas\Bands\Views\Bands\Profile.cshtml" />
+    <Content Include="Areas\Bands\Views\Albums\Create.cshtml" />
+    <Content Include="Areas\Bands\Views\News\Create.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -153,6 +158,7 @@
     <Compile Include="Areas\Bands\Controllers\NewsController.cs" />
     <Compile Include="Areas\Bands\Models\BandProfileViewModel.cs" />
     <Compile Include="Areas\Bands\Models\clsAlbum.cs" />
+    <Compile Include="Areas\Bands\Requests\clsAlbumRequests.cs" />
     <Compile Include="Areas\Bands\Requests\clsBandRequests.cs" />
     <Compile Include="Areas\Fans\Controllers\AlbumsController.cs" />
     <Compile Include="Areas\Fans\Controllers\BandsController.cs" />
@@ -217,9 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Bands\Views\Albums\" />
     <Folder Include="Areas\Bands\Views\Events\" />
-    <Folder Include="Areas\Bands\Views\News\" />
     <Folder Include="Areas\Fans\Views\Albums\" />
     <Folder Include="Areas\Fans\Views\News\" />
     <Folder Include="Views\Logout\" />
