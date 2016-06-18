@@ -325,11 +325,11 @@ namespace DataAccess.FanDataAccess
             //c.Chunks = 10;
             //c.Offset = 10;
             clsSearch k = new clsSearch();
-            k.Name = "and";
+            k.Name = "";
             List<Int32> l = new List<int>();
             l.Add(0);
-            k.Genre = "";
-            k.Country = "España";
+            k.Genre = "Pop";
+            k.Country = "";
         
             Console.WriteLine(b.Serialize(a.getBandsSearch(h, ref d, ref k, 0, 5)));
             Console.WriteLine(d.Message);
