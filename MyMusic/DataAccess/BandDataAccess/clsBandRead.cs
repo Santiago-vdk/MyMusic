@@ -83,6 +83,7 @@ namespace DataAccess.BandDataAccess
                     pclsInfoBand.Name = result["NombreBanda"].ToString();
                     pclsInfoBand.Country = result["Pais"].ToString();
                     pclsInfoBand.Hashtag = result["Hashtag"].ToString();
+                    pclsInfoBand.Biography = result["Biografia"].ToString();
                     DateTime dat = Convert.ToDateTime(result["AnoCreacion"].ToString(), CultureInfo.InvariantCulture);
                     pclsInfoBand.DateCreation =  dat.ToString("yyyy")+"-" + dat.ToString("MM")+'-'+ dat.ToString("dd");
 
@@ -200,7 +201,7 @@ namespace DataAccess.BandDataAccess
             clsResponse b = new clsResponse();
             clsInfoBand d = new clsInfoBand();
             Serializer r = new Serializer();
-            a.getBandInfo(ref d, ref b,124);
+            a.getBandInfo(ref d, ref b,133);
             Console.WriteLine(r.Serialize(d));
             Console.ReadKey();
         }
