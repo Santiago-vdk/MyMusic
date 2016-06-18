@@ -14,5 +14,6 @@ namespace DTO
         public bool IsConcert { get; set; }
         public bool State { get; set; }
         public List<clsReview> Reviews { get; set; }
+        public int Id { get; set; }
     }
 }
