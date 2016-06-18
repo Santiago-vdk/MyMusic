@@ -12,5 +12,6 @@ namespace DTO
         public string Title { get; set; }
         public string Content { get; set; }
         public string Date { get; set; }
+        public string BandName { get; set; }
     }
 }

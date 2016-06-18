@@ -253,13 +253,16 @@ namespace DataAccess.BandDataAccess
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsReview d = new clsReview();
-            d.Comment = "pene";
-            d.Calification ="10";
+            clsDisk d = new clsDisk();
+            d.Name = "a";
+            d.Label = "b";
+            d.CodGenre = 4;
+            d.DateCreation = "2000-09-03";
+
 
             Serializer r = new Serializer();
             
-            //a.creatediskreview(ref d,ref b,6,89);
+           // a.createdisk(ref d,ref b,124);
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }

@@ -1,6 +1,7 @@
 ﻿using DataAccess.BandDataAccess;
 using DataAccess.DiskDataAccess;
 using DataAccess.FanDataAccess;
+using DataAccess.NewsDataAccess;
 using DataAccess.UserDataAccess;
 using DTO;
 using System;
@@ -19,6 +20,7 @@ namespace DataAccess
         clsFanDA FanDA = new clsFanDA();
         clsBandDA BandDA = new clsBandDA();
         clsDiskDA DiskDA = new clsDiskDA();
+        clsNewsDA NewsDA = new clsNewsDA();
 
         public clsForm getAllGenres(clsForm pclsForm,ref clsResponse pclsResponse)
         {
@@ -124,8 +126,14 @@ namespace DataAccess
         {
             DiskDA.creatediskreview(ref pclsReview, ref pclsResponse, pintCodDisc, pintUserCode);
         }
-
-
+        public int createnew(ref clsNew pclsNew, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            return NewsDA.createnew(ref pclsNew, ref pclsResponse, pintUserCode);
+        }
+        public void getnew(ref clsNew pclsNew, ref clsResponse pclsResponse, int pintCodeNew)
+        {
+            NewsDA.getnew(ref pclsNew, ref pclsResponse, pintCodeNew);
+        }
 
 
 
