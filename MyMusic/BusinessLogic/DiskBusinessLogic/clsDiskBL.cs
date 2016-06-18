@@ -53,7 +53,7 @@ namespace BusinessLogic.DiskBusinessLogic
             if (Disk.Id == pintBandId)
             {
 
-                FacadeDA.createdisk(ref Disk, ref response, pintBandId);
+                Disk.Id = FacadeDA.createdisk(ref Disk, ref response, pintBandId);
 
                 //save image here!
                 ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
@@ -66,18 +66,33 @@ namespace BusinessLogic.DiskBusinessLogic
                 response.Code = 401;
             }
 
-            //Data = null
+            Disk.Picture = null;
+            Disk.Songs = null;
+            Disk.Label = null;
+            Disk.DateCreation = null;
+            Disk.Name = null;
+            Disk.CodGenre = -1;
+
+            response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
         }
-        public string createSong(string pstringRequest, int pintDiskId)
+        public string createSong(string pstringRequest,int pintBandId, int pintDiskId)
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsSong Song = DeserializeJson.DeserializeSong(request.Data.ToString());
             clsResponse response = new clsResponse();
 
-            //FacadeDA.createsong(ref Disk, ref response, pintBandId);
-
-            //Data = null
+            if (request.Id == pintBandId)
+            {
+                FacadeDA.createsong(ref Song, ref response, pintDiskId);
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Invalid Operation";
+                response.Code = 401;
+            }
             return serializer.Serialize(response);
         }
 
