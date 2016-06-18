@@ -120,13 +120,13 @@ namespace DataAccess.BandDataAccess
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 List<String> members = new List<string>();
-                List<int> codmembers = new List<int>();
+
                 while (result.Read())
                 {
-                    members.Add(result["LoginName"].ToString());
-                    codmembers.Add(Convert.ToInt32(result["Integrante"].ToString()));
+                    members.Add(result["Nombre"].ToString());
+
                 }
-                pclsInfoBand.CodMembers = codmembers;
+
                 pclsInfoBand.Members = members;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
