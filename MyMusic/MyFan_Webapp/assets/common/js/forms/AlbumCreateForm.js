@@ -3,6 +3,7 @@ function NewAlbumModel() {
     var self = this;
     self.AlbumName = $("#AlbumName").val();
     self.DateRelease = $("#inputDateRelease").val();
+    self.Label = $("#inputLabel").val();
 
   /*  var selectedGenres = [];
     $('#selectGenres :selected').each(function (i, selected) {
@@ -42,6 +43,8 @@ jQuery(function ($) {
                     $('#update-form-band').prop('disabled', false);
                     $('#loading').addClass("hide");
                     $('#AddSong').removeClass("hide");
+                    var json = JSON.parse(data);
+                    alert(json.Id);
                 },
                 error: function () {
                     alert('Something goes wrong!');

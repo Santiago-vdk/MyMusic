@@ -13,7 +13,7 @@ namespace MyFan_API.Controllers
         public IHttpActionResult CreateAlbum(int bandId)
         {
             
-            System.Diagnostics.Debug.WriteLine("Creating album for" + bandId);
+            System.Diagnostics.Debug.WriteLine("En API Albums " + Request.Content.ReadAsStringAsync().Result);
             return new AlbumControllerCallsCreateAlbum(Request, bandId);
 
             

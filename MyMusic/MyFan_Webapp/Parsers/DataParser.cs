@@ -66,6 +66,15 @@ namespace MyFan_Webapp
 
         }
 
+        public static int parseAlbumForm(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
+        
+            int albumId = JsonConvert.DeserializeObject<int>(Convert.ToInt32(data.Id));
+            return albumId;
+        }
+
         public static List<clsAlbum> parseAlbums(string json)
         {
             clsResponse Response = parseResponse(json);

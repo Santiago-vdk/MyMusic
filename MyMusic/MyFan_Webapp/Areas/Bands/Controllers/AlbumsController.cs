@@ -41,7 +41,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             return View(profile);
         }
 
-        public async Task<ActionResult> NewAlbum(string AlbumName, string DateRelease, int Genre, string profilePicture)
+        public async Task<ActionResult> NewAlbum(string AlbumName, string Label, string DateRelease, int Genre, string profilePicture)
         {
             System.Diagnostics.Debug.WriteLine(AlbumName);
             System.Diagnostics.Debug.WriteLine(DateRelease);
@@ -51,12 +51,14 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             form.DateCreation = DateRelease;
             form.Genre = Genre;
             form.Picture = profilePicture;
+            form.Label = Label;
 
             string response = await clsAlbumRequests.PostAlbumForm(form, Int32.Parse(Session["Id"].ToString()));
-
+            
             System.Diagnostics.Debug.WriteLine(response);
-
-            return Json("");
+            int Id = DataParser.parseAlbumForm(response);
+            System.Diagnostics.Debug.WriteLine(Id);
+            return Json("{albumId:"+Id+"}" );
         }
 
 
