@@ -1,7 +1,7 @@
 ﻿@model MyFan_Webapp.Areas.Bands.Models.BandProfileViewModel
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Areas/Fans/Views/Shared/_BandProfileLayout.cshtml";
+    Layout = "~/Areas/Bands/Views/Shared/_BandProfileLayout.cshtml";
 }
 <!DOCTYPE html>
 <html>
@@ -15,8 +15,7 @@
     <!-- Style -->
     <link crossorigin="anonymous" href="~/assets/common/css/foms/Register.css" rel="stylesheet">
     <script src="~/assets/common/js/Processing.js"></script>
-    <script src="~/assets/common/js/forms/FanForm.js"></script>
-    <script src="~/assets/common/js/forms/FanEditForm.js"></script>
+    <script src="~/assets/common/js/forms/BandEditForm.js"></script>
     <link rel="stylesheet" href="~/assets/common/css/Profile.css">
     <title>MyFan</title>
 </head>
@@ -48,70 +47,59 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <div class="col-xs-3 text-right">
                             <label for="inputUsername">Username</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Username" value="@Model.Username" id="inputUsername" name="Username" disabled>
+                            <input type="text" class="form-control" placeholder="Username" value="@Model.Username" name="Username" id="inputUsername" disabled/>
                         </div>
                     </div>
 
+               
 
-
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputName">Name</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Name" value="@Model.Info.Name" name="Name" id="inputName">
-                        </div>
-                    </div>
+           
 
                     <div class="form-group">
                         <div class="col-xs-3 text-right">
-                            <label for="inputBirthday">Birthday</label>
+                            <label for="inputName">Band/Artist Name</label>
                         </div>
                         <div class="col-xs-9">
-                            <input type="date" value="@Model.Info.Birthday" name="Birthday" id="inputBirthday">
+                            <input type="text" class="form-control" placeholder="Name" value="@Model.Name" name="Name" id="inputName" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-3 text-right">
-                            <label for="selectGenre">Gender</label>
+                            <label for="inputName">Hashtag</label>
                         </div>
                         <div class="col-xs-9">
-                            <select class="selectpicker" id="selectGender" name="Gender" data-width="100%">
-
-                           
-                                @foreach (var gender in Model.EditForm.genders)
-                                {
-                                    if (String.Equals(gender.Name, @Model.Info.Gender))
-                                    {
-                                        <option id="@gender.Id" selected>@gender.Name</option>
-                                    }
-                                    else
-                                    {
-                                        <option id="@gender.Id">@gender.Name</option>
-                                    }
-
-                                }
-                            </select>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="sizing-addon2">#</span>
+                                <input type="text" class="form-control" id="inputHashtag" value="@Model.Info.Hashtag" placeholder="Hashtag" name="Hashtag" aria-describedby="sizing-addon2" disabled>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputBirthday">Year of Foundation</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="date" id="inputDateCreation" value="@Model.Info.DateCreation" name="DateCreation">
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <div class="col-xs-3 text-right">
                             <label for="selectCountry">Country</label>
                         </div>
                         <div class="col-xs-9">
-                            
-                            <select class="selectpicker" data-live-search="true" name="Country" id="selectCountry" data-width="100%">
+                            <select class="selectpicker" data-live-search="true" value="@Model.Info.Country" name="Country" id="selectCountry" data-width="100%">
                                 @foreach (var country in Model.EditForm.locations)
                                 {
-                                    if (String.Equals(country.Name,@Model.Info.Country))
+                                    if (String.Equals(country.Name, @Model.Info.Country))
                                     {
                                         <option id="@country.Id" data-tokens="@country.Name" selected>@country.Name</option>
                                     }
@@ -119,10 +107,10 @@
                                     {
                                         <option id="@country.Id" data-tokens="@country.Name">@country.Name</option>
                                     }
-
                                 }
 
-                             
+
+
                             </select>
                         </div>
                     </div>
@@ -132,8 +120,7 @@
                             <label for="selectMusicalGenre">Musical Genres</label>
                         </div>
                         <div class="col-xs-9">
-                       
-                            <select class="selectpicker" data-live-search="true" name="Genres" id="selectGenres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
+                            <select class="selectpicker" data-live-search="true" id="selectGenres" name="Genres" title="Choose five musical genres" multiple data-max-options="5" data-width="100%">
                                 @foreach (var genre in Model.EditForm.genres)
                                 {
                                     if (@Model.Info.Genres.Contains(genre.Name))
@@ -151,6 +138,50 @@
                         </div>
                     </div>
 
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputMembers">Members</label>
+                        </div>
+
+                        <input type="hidden" name="count" value="1">
+                        <div class="control-group" id="fields">
+                            <div class="controls" id="profs">
+
+                                <div id="field">@{
+                                        int i = 0;
+                                        foreach (var member in Model.Info.Members)
+                                        {
+                                        <input autocomplete="off" class="input form-control" id="@String.Concat("field", i)" name="@String.Concat("prof", i)" type="text" value="@member" data-items="8" />
+                                        <button id="@String.Concat("remove", i)" class="btn btn-danger remove-me" >-</button>
+                                        i = i + 1;
+                                    }
+                                    <input autocomplete="off" class="input form-control" id="@String.Concat("field", i)" name="@String.Concat("prof", i)" type="text" placeholder="Member Name" data-items="8" />
+                                    <button id="@String.Concat("b", i)" class="btn add-more" type="button">+</button>
+
+                                }
+                                    
+
+                                    
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="selectTerms">Biography</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" name="Biography" id="inputBiography">@Model.Info.Biography</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-offset-4 col-xs-3">
@@ -161,21 +192,19 @@
                             </div>
                         </div>
                     </div>
+
                 </form>
-            </div>
 
-            <div class="col-md-4">
-                <div class="col-md-4 img-profile-edit">
-                    <img id="profile-pic" class="img-circle" src="~/Users/image?Id=@Model.Id">
-                </div>
+
 
             </div>
+            <div class="row">
 
+                <img id="profile-pic" class="img-responsive img-circle" src="~/Users/image?Id=@Model.Id" />
+            </div>
 
 
         </div>
-
-
     </div>
 </body>
 </html>
