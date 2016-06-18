@@ -32,6 +32,11 @@ namespace BusinessLogic
         {
             return UserBL.getPicture(Int32.Parse(pstringUserId));
         }
+        public string getDiskPicture(string pstringDiskId)
+        {
+            return DiskBL.getImage(Int32.Parse(pstringDiskId));
+        }
+
         public string getPublications(int pintUserId, int pintOffset, int pintLimit)
         {
             return UserBL.getPublications(pintUserId, pintOffset, pintLimit);
@@ -39,6 +44,10 @@ namespace BusinessLogic
         public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
             return FanBL.getBands(pintUserId, pintOffset, pintLimit);
+        }
+        public string getDisks(int pintBandId, int pintOffset, int pintLimit)
+        {
+            return DiskBL.getDisks(pintBandId, pintOffset, pintLimit);
         }
 
         public string getSearchParams()
@@ -54,17 +63,16 @@ namespace BusinessLogic
         {
             return BandBL.getBandInfo(pintBandId);
         }
-
-        public string getDisks(int pintBandId, int pintOffset, int pintLimit)
+        public string getDiskInfo(int pintDiskId)
         {
-            return DiskBL.getDisks(pintBandId,pintOffset,pintLimit);
+            return DiskBL.getDiskInfo(pintDiskId);
         }
-        public string getDiskPicture(string pstringDiskId)
+        
+        public string getDiskReviews(int pintBandId)
         {
-            return DiskBL.getImage(Int32.Parse(pstringDiskId));
+            return DiskBL.getDiskReviews(pintBandId);
         }
-
-
+        
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);
