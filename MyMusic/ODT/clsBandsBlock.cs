@@ -10,5 +10,10 @@ namespace DTO
     {
         public List<clsSimpleInfo> Bands { get; set; }
         public Boolean Limit { get; set; }
+
+        public static implicit operator clsBandsBlock(clsInfoFan v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

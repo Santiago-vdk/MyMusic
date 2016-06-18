@@ -73,11 +73,11 @@ namespace DataAccess.FanDataAccess
 
                 List<String> values = new List<String>();
                 List<String> cods = new List<String>();
-                List<clsSimpleInfo> bands = new List<clsSimpleInfo>();
+                List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
                 pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
-                    clsSimpleInfo tmp = new clsSimpleInfo();
+                    clsInfoBandSimple tmp = new clsInfoBandSimple();
                     tmp.Name = result["strNombre"].ToString();
                     tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());                  
                     DateTime dat = Convert.ToDateTime(result["dtAnoCreacion"].ToString());
@@ -177,23 +177,22 @@ namespace DataAccess.FanDataAccess
             try
             {
 
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandFiltered", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandFilteredByName", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
-                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.Int).Value = pclsSearch.Country;
-                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsSearch.Genres);
+                cmd.Parameters.Add("@strPais", System.Data.SqlDbType.VarChar).Value = pclsSearch.Country;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value =  pclsSearch.Genre;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsSearch.Name;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
                 List<String> values = new List<String>();
                 List<String> cods = new List<String>();
-                List<clsSimpleInfo> bands = new List<clsSimpleInfo>();
-                pclsBandsBlock.Limit = false;
+                List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
                 while (result.Read())
                 {
-                    clsSimpleInfo tmp = new clsSimpleInfo();
+                    clsInfoBandSimple tmp = new clsInfoBandSimple();
                     tmp.Name = result["NombreBanda"].ToString();
                     tmp.Id = Convert.ToInt32(result["UserCode"].ToString());
                     DateTime dat = Convert.ToDateTime(result["FechaCreacion"].ToString());
@@ -203,10 +202,6 @@ namespace DataAccess.FanDataAccess
 
 
 
-                if (cods.Count < pintLimit)
-                {
-                    pclsBandsBlock.Limit = true;
-                }
                 pclsBandsBlock.Bands = bands;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
@@ -216,7 +211,7 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
@@ -324,13 +319,19 @@ namespace DataAccess.FanDataAccess
         {
             clsFanRead a = new clsFanRead();
             Serializer b = new Serializer();
-            clsInfoFan h = new clsInfoFan();
+            clsBandsBlock h = new clsBandsBlock();
             clsResponse d= new clsResponse();
             //c.FanCod = 98;
             //c.Chunks = 10;
             //c.Offset = 10;
-            a.getFanInfo(ref h, ref d, 89);
-            Console.WriteLine(b.Serialize(h));
+            clsSearch k = new clsSearch();
+            k.Name = "";
+            List<Int32> l = new List<int>();
+            l.Add(0);
+            k.Genre = "Pop";
+            k.Country = "";
+        
+            Console.WriteLine(b.Serialize(a.getBandsSearch(h, ref d, ref k, 0, 5)));
             Console.WriteLine(d.Message);
             Console.ReadKey();
         }

@@ -44,8 +44,8 @@ namespace MyFan_Webapp.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult> MakeSearch(string name, int country, List<int> genre)
+        /*[HttpPost]
+        public async Task<ActionResult> MakeSearch(string name, string country, List<int> genre)
         {
             System.Diagnostics.Debug.WriteLine(name);
             System.Diagnostics.Debug.WriteLine(country);
@@ -55,7 +55,7 @@ namespace MyFan_Webapp.Controllers
 
             clsSearch searchParams = new clsSearch();
             searchParams.Name = name;
-            searchParams.Genres = genre;
+            searchParams.Genre = genre;
             searchParams.Country = country;
 
             string response2 = await clsUserRequests.Search(searchParams);
@@ -81,7 +81,7 @@ namespace MyFan_Webapp.Controllers
             //return RedirectToAction("Search", "Fans", new { area = "Fans", userId = Session["id"] });
             return View("~/Areas/Fans/Views/Fans/Search.cshtml", profile);
             //return Json(new { result = "Redirect", url = Url.Action("Search", "Fans") });
-        }
+        }*/
 
 
     }

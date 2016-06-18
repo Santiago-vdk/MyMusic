@@ -93,15 +93,14 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
         public async Task<ActionResult> Search(string name, string country, string genre)
         {
             System.Diagnostics.Debug.WriteLine(name);
+            System.Diagnostics.Debug.WriteLine(country);
             System.Diagnostics.Debug.WriteLine(genre);
 
             string response = await clsFanRequests.GetFanBands(Int32.Parse(Session["Id"].ToString()));
-            List<int> l = new List<int>();
-            l.Add(0);
             clsSearch searchParams = new clsSearch();
             searchParams.Name = name;
-            searchParams.Genres = l;
-            searchParams.Country = 0;
+            searchParams.Genre = genre;
+            searchParams.Country = country;
 
             string response2 = await clsUserRequests.Search(searchParams);
 
