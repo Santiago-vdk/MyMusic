@@ -35,4 +35,29 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+
+    public class AlbumControllerCallsGetAlbum : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+        int _albumId;
+
+        public AlbumControllerCallsGetAlbum(HttpRequestMessage request, int userId, int albumId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+            _albumId = albumId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getDiskInfo(_albumId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
 }

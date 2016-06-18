@@ -102,11 +102,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ControllerCalls\AlbumControllerCalls.cs" />
     <Compile Include="ControllerCalls\BandControllerCalls.cs" />
+    <Compile Include="ControllerCalls\SongControllerCalls.cs" />
     <Compile Include="ControllerCalls\UserControllerCalls.cs" />
     <Compile Include="Models\JSONResponse.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\BandsController.cs" />
-    <Compile Include="Controllers\DiscsController.cs" />
+    <Compile Include="Controllers\SongsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FansController.cs" />
     <Compile Include="Controllers\NewsController.cs" />

@@ -105,7 +105,7 @@ namespace BusinessLogic
             clsSong Song = new clsSong();
             dynamic data = JObject.Parse(pstringData);
 
-            Song = JsonConvert.DeserializeObject<clsReview>(Convert.ToString(data));
+            Song = JsonConvert.DeserializeObject<clsSong>(Convert.ToString(data));
 
             return Song;
         }

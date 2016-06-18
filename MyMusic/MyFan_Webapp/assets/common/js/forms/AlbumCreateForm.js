@@ -1,4 +1,4 @@
-﻿
+﻿var albumID = -1;
 function NewAlbumModel() {
     var self = this;
     self.AlbumName = $("#AlbumName").val();
@@ -19,7 +19,9 @@ jQuery(function ($) {
     function validateDisc(SongName, Duration, Live, LimitedEdition, UrlVideo){
         if(SongName!="" && Duration!="" && UrlVideo != ""){
             console.log("Listo");
+
             var request = {
+                "albumId":albumID,
                 "Name": SongName,
                 "Duration": Duration,
                 "Live": Live,
@@ -43,8 +45,9 @@ jQuery(function ($) {
                     $('#update-form-band').prop('disabled', false);
                     $('#loading').addClass("hide");
                     $('#AddSong').removeClass("hide");
-                    var json = JSON.parse(data);
-                    alert(json.Id);
+
+                    var s = '<tr>  <td>' + data.Name + '</td><td>' + data.Duration + '</td><td>' + data.Type + '</td><td>' + data.LimitedEdition + '</td><td>' + '<a href=' + data.Link + ' target="_blank">Go To Link</a> </td>   </tr>';
+                    $('#table').append(s);
                 },
                 error: function () {
                     alert('Something goes wrong!');
@@ -77,12 +80,12 @@ jQuery(function ($) {
                         var Live = $('input[name=subject]:checked').val();
                         var LimitedEdition = $('input[name=LimitedEdition]:checked').val();
                         var UrlVideo = $('#urlVideo').val();
-
+/*
                         console.log(SongName);
                         console.log(Duration);
                         console.log(Live);
                         console.log(LimitedEdition);
-                        console.log(UrlVideo);
+                        console.log(UrlVideo);*/
 
                         validateDisc(SongName, Duration, Live, LimitedEdition, UrlVideo);
                     }
@@ -132,7 +135,7 @@ jQuery(function ($) {
             console.log(request);
 
             if ($("#form-new-album").data("changed")) {
-                alert("Put Edit");
+         
 
                 $.ajax({
                     url: "NewAlbum",
@@ -141,17 +144,29 @@ jQuery(function ($) {
                     type: "POST",
                     data: JSON.stringify(request),
                     beforeSend: function () {
-                        $('#update-form-band').prop('disabled', true);
+                        $('#post-album-form').prop('disabled', true);
                         $('#loading').removeClass("hide");
                     },
                     success: function (data, status) {
-                        $('#update-form-band').prop('disabled', false);
+                        $('#post-album-form').prop('disabled', true);
                         $('#loading').addClass("hide");
+
+                        console.log("here " + data.albumId);
+                        //var json = JSON.parse(data);
+                        //alert(json.albumId);
+                        albumID = data.albumId;
+
+                        $("#AlbumName").attr("disabled", true);
+                        $("#inputDateRelease").attr("disabled", true);
+                        $("#inputLabel").attr("disabled", true);
+                        $('#selectGenres').attr("disabled", true);
+                        $('#album-pic').attr("disabled", true);
+                        $('#imgInp').attr("disabled", true);
                         $('#AddSong').removeClass("hide");
                     },
                     error: function () {
                         alert('Something goes wrong!');
-                        $('#update-form-band').prop('disabled', false);
+                        $('#post-album-form').prop('disabled', false);
                         $('#loading').addClass("hide");
                     }
                 });

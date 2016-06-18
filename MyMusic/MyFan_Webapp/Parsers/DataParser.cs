@@ -70,8 +70,8 @@ namespace MyFan_Webapp
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);
-        
-            int albumId = JsonConvert.DeserializeObject<int>(Convert.ToInt32(data.Id));
+            System.Diagnostics.Debug.WriteLine(json);
+            int albumId = JsonConvert.DeserializeObject<int>(Convert.ToString(data.Id));
             return albumId;
         }
 
