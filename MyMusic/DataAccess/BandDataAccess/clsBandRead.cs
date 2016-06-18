@@ -290,7 +290,7 @@ namespace DataAccess.BandDataAccess
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetDiscsByBand", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetSongsByDisc", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodeDisc", System.Data.SqlDbType.Int).Value = pintDiskCode;
                 conn.Open();
@@ -305,9 +305,10 @@ namespace DataAccess.BandDataAccess
                     DateTime dat = Convert.ToDateTime(result["Duracion"].ToString());
                     tmp.Duration = dat.ToString("hh:mm tt");
                     tmp.Type = Convert.ToBoolean(result["EnVivo"].ToString());
+                    tmp.LimitedEdition = Convert.ToBoolean(result["EdicionLimitada"].ToString());
                     songs.Add(tmp);
                 }
-                //pclsDisksBlock.Disks = disks;
+                pclsDisk.Songs = songs;
 
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
@@ -331,14 +332,62 @@ namespace DataAccess.BandDataAccess
             }
 
         }
+
+        public void getdiskinfo(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetInfoDisc", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intDisc", System.Data.SqlDbType.Int).Value = pintDiskCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+                while (result.Read())
+                {
+                    pclsDisk.Name = (result["Nombre"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
+                    pclsDisk.DateCreation = dat.ToString("yyyy");
+                    pclsDisk.Name = (result["Genero"].ToString());
+                    pclsDisk.Label = (result["SelloDiscografico"].ToString());
+
+                }
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+
+
+
         public static void Main()
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsInfoBand d = new clsInfoBand();
+            clsDisk d = new clsDisk();
             Serializer r = new Serializer();
-            a.getBandInfo(ref d, ref b,133);
+            a.getdiskinfo(ref d, ref b,1);
             Console.WriteLine(r.Serialize(d));
+            Console.WriteLine(b.Message);
             Console.ReadKey();
         }
 
