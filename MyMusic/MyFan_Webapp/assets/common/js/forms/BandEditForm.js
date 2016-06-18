@@ -30,7 +30,7 @@ function FormEditModel() {
 }
 jQuery(function ($) {
 
-    var next = 1;
+    var next = 0;
     $(".add-more").click(function (e) {
         alert("esta");
         e.preventDefault();
@@ -56,7 +56,7 @@ jQuery(function ($) {
     });
 
 
-    $("#form-edit").validate({
+    $("#form-edit-band").validate({
         rules: {
             imgInp: {
                 required: false
@@ -84,8 +84,8 @@ jQuery(function ($) {
         }
     });
 
-    $("#form-edit :input").change(function () {
-        $("#form-edit").data("changed", true);
+    $("#form-edit-band :input").change(function () {
+        $("#form-edit-band").data("changed", true);
 
     });
 
@@ -100,13 +100,13 @@ jQuery(function ($) {
     $("#profile-pic").data("changed", false);
 
 
-    $('#update-form').click(function () {
-        if ($("#form-edit").valid()) {
+    $('#update-form-band').click(function () {
+        if ($("#form-edit-band").valid()) {
 
             var request = new FormEditModel();
             console.log(request);
 
-            if ($("#form-edit").data("changed")) {
+            if ($("#form-edit-band").data("changed")) {
                 alert("Put Edit");
                 
                 $.ajax({
@@ -116,10 +116,10 @@ jQuery(function ($) {
                     type: "POST",
                     data: JSON.stringify(request),
                     beforeSend: function () {
-                        $('#update-form').prop('disabled', true);
+                        $('#update-form-band').prop('disabled', true);
                     },
                     success: function (data, status) {
-                        $('#update-form').prop('disabled', false);
+                        $('#update-form-band').prop('disabled', false);
                         location.reload();
                     },
                     error: function () {

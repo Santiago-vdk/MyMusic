@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model MyFan_Webapp.Areas.Bands.Models.BandProfileViewModel
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -88,18 +89,29 @@
                     </button>
                 </div>
                 <div class="col-md-10">
+                    @{
+                        if (Model.Albums != null)
+                        {
+                            foreach (var album in Model.Albums)
+                            {
+                                <div class="inline">
+                                    <a href="Albums/@album.Id">
+                                        <img class="img-responsive" src="~/Users/imageAlbum?Id=@album.Id">
+                                        <p class="artwork-name">@album.Name</p>
+                                        <small class="artwork-date">@album.DateCreation</small>
 
-                    @*@foreach (var band in Model.Bands)
-                    {
-                        <div class="inline">
-                            <a href="~/Bands/@band.Id">
-                                <img class="img-responsive" src="~/Users/image?Id=@band.Id">
-                                <p class="artwork-name">@band.Name</p>
-                                <small class="artwork-date">@band.DateCreation</small>
+                                    </a>
+                                </div>
+                            }
 
-                            </a>
-                        </div>
-                    }*@
+                        }
+
+
+
+
+
+                    }
+                    
                 </div>
                 <!-- Next -->
                 <div id="next" class="col-md-1">

@@ -15,7 +15,7 @@ namespace MyFan_Webapp.Requests
     {
         public static async Task<string> GetProfilePicture(int Id)
         {
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users?q=image&action=read&value=" + Id);
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users?q=image&action=profile&value=" + Id);
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;
@@ -26,6 +26,21 @@ namespace MyFan_Webapp.Requests
                 return await Task.FromResult("Unexpected error ocurred");
             }
         }
+
+        public static async Task<string> GetDiskPicture(int Id)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users?q=image&action=album&value=" + Id);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
         public static async Task<string> GetSearchParams()
         {
             HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans?q=search_values");
