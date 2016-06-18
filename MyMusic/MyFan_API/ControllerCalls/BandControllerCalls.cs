@@ -87,18 +87,22 @@ namespace MyFan_API.ControllerCalls
         HttpRequestMessage _request;
         FacadeBL _facade;
         int _userId;
+        int _offset;
+        int _limit;
 
-        public BandControllerCallsGetPosts(HttpRequestMessage request, int userId)
+        public BandControllerCallsGetPosts(HttpRequestMessage request, int userId, int offset, int limit)
         {
             _request = request;
             _facade = new FacadeBL();
             _userId = userId;
+            _offset = offset;
+            _limit = limit;
         }
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(""),
+                Content = new StringContent(_facade.getBandPublications(_userId, _offset, _limit)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);

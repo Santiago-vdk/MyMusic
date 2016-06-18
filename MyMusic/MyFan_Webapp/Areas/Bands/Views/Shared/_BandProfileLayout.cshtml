@@ -76,7 +76,7 @@
         <!-- Artwork Section -->
         <div id="artwork-section" class="row">
             <div>
-                <h2 class="artwork-header">Artwork Section  <a href="@Model.Id/Albums/Create"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></h2>
+                <h2 class="artwork-header">Artwork Section  <a href="/Bands/@Model.Id/Albums/Create"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></h2>
             </div>
             <div class="row align-center">
 
@@ -95,7 +95,7 @@
                             foreach (var album in Model.Albums)
                             {
                                 <div class="inline">
-                                    <a href="Albums/@album.Id">
+                                    <a href="@Url.Action("Index", "Albums", new { userId = Model.Id , id = @album.Id })">
                                         <img class="img-responsive" src="~/Users/imageAlbum?Id=@album.Id">
                                         <p class="artwork-name">@album.Name</p>
                                         <small class="artwork-date">@album.DateCreation</small>

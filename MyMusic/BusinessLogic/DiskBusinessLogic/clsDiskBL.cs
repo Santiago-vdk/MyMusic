@@ -96,12 +96,12 @@ namespace BusinessLogic.DiskBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getDiskReviews(int pintBandId)
+        public string getDiskReviews(int pintDiskId)
         {
             List<clsReview> reviews = new List<clsReview>();
             clsResponse response = new clsResponse();
 
-            FacadeDA.getdiskreviews(ref reviews,ref response, pintBandId);
+            FacadeDA.getdiskreviews(ref reviews,ref response, pintDiskId);
 
             response.Data = serializer.Serialize(reviews);
             return serializer.Serialize(response);

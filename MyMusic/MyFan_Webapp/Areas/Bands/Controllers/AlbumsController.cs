@@ -1,4 +1,5 @@
-﻿using MyFan_Webapp.Areas.Bands.Models;
+﻿using DTO;
+using MyFan_Webapp.Areas.Bands.Models;
 using MyFan_Webapp.Areas.Bands.Requests;
 using MyFan_Webapp.Requests.Register;
 using System;
@@ -13,10 +14,29 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
     public class AlbumsController : Controller
     {
         // GET: Bands/Albums
-        public ActionResult Index(int userId)
+        public async Task<ActionResult> Index(int userId, int Id)
         {
-            System.Diagnostics.Debug.WriteLine("check band from " + userId + " with album ");
-            return View();
+            System.Diagnostics.Debug.WriteLine("check band from " + userId + " with album " + Id);
+            string response = await clsBandRequests.getBandAlbums(userId);
+
+
+            string response2 = await clsAlbumRequests.GetAlbumInfo(userId, Id);
+            System.Diagnostics.Debug.WriteLine(response2);
+
+            //Hubo error
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life...";
+            }
+
+            BandProfileViewModel profile = new BandProfileViewModel();
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+
+            profile.Albums = DataParser.parseAlbums(response);
+
+            return View(profile);
         }
 
         public async Task<ActionResult> Create(int userId)
@@ -41,6 +61,8 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             return View(profile);
         }
 
+
+
         public async Task<ActionResult> NewAlbum(string AlbumName, string Label, string DateRelease, int Genre, string profilePicture)
         {
             System.Diagnostics.Debug.WriteLine(AlbumName);
@@ -57,19 +79,37 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             
             System.Diagnostics.Debug.WriteLine(response);
             int Id = DataParser.parseAlbumForm(response);
-            System.Diagnostics.Debug.WriteLine(Id);
-            return Json("{albumId:"+Id+"}" );
+            System.Diagnostics.Debug.WriteLine("Got id: " + Id);
+            
+            
+            return Json(new { albumId = Id});
         }
 
 
-        public ActionResult NewSong(string Name, string Duration, bool Live, bool LimitedEdition, string UrlVideo)
+        public async Task<ActionResult> NewSong(int albumId, string Name, string Duration, bool Live, bool LimitedEdition, string UrlVideo)
         {
+           /* System.Diagnostics.Debug.WriteLine(albumId);
             System.Diagnostics.Debug.WriteLine(Name);
             System.Diagnostics.Debug.WriteLine(Live);
             System.Diagnostics.Debug.WriteLine(Duration);
             System.Diagnostics.Debug.WriteLine(LimitedEdition);
-            System.Diagnostics.Debug.WriteLine(UrlVideo);
-            return Json("");
+            System.Diagnostics.Debug.WriteLine(UrlVideo);*/
+
+            clsSong form = new clsSong();
+            form.Duration = Duration;
+            form.Link = UrlVideo;
+            form.Name = Name;
+            form.LimitedEdition = LimitedEdition;
+            form.Type = Live;
+
+            string response = await clsAlbumRequests.PostSongForm(form, Int32.Parse(Session["Id"].ToString()), albumId);
+            if (!ErrorParser.parse(response).Equals(""))
+            {
+                ViewBag.Message = "Fuck my life...";
+            }
+
+
+            return Json(form);
         }
     }
 }
