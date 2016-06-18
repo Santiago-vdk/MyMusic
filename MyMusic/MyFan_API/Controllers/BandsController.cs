@@ -29,15 +29,20 @@ namespace MyFan_API.Controllers
 
         [Route("{bandId}"), HttpGet]
         // api/v1/users/bands/1 GET
-        public IHttpActionResult GetOneBand(int bandId, string q)
+        public IHttpActionResult GetOneBand(int bandId, string q, int offset = 0, int limit = 5)
         {
             if (String.Equals(q, "albums"))
             {
-                return new BandControllerCallsGetAlbums(Request, bandId);
+                return new BandControllerCallsGetAlbums(Request, bandId, offset, limit);
             }
             if (String.Equals(q, "posts"))
             {
                 return new BandControllerCallsGetPosts(Request, bandId);
+            }
+            if (String.Equals(q, "all"))
+            {
+                System.Diagnostics.Debug.WriteLine("Getting all info for band " + bandId);
+                return new BandControllerCallsGetProfile(Request, bandId);
             }
             //Endpoint for retrieving one band
             throw new NotImplementedException();

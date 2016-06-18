@@ -131,6 +131,7 @@
     <Content Include="Areas\Fans\Views\Fans\Search.cshtml" />
     <Content Include="Areas\Bands\Views\Bands\Index.cshtml" />
     <Content Include="Areas\Bands\Views\Shared\_BandProfileLayout.cshtml" />
+    <Content Include="Areas\Fans\Views\Bands\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -159,6 +160,7 @@
     <Compile Include="Areas\Fans\Models\Events.cs" />
     <Compile Include="Areas\Fans\Models\News.cs" />
     <Compile Include="Areas\Fans\Models\FanProfileViewModel.cs" />
+    <Compile Include="Areas\Fans\Requests\clsBandRequests.cs" />
     <Compile Include="Areas\Fans\Requests\clsFanRequests.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -216,7 +218,6 @@
     <Folder Include="Areas\Bands\Views\Events\" />
     <Folder Include="Areas\Bands\Views\News\" />
     <Folder Include="Areas\Fans\Views\Albums\" />
-    <Folder Include="Areas\Fans\Views\Bands\" />
     <Folder Include="Areas\Fans\Views\News\" />
     <Folder Include="Views\Logout\" />
     <Folder Include="Views\Users\" />
