@@ -60,6 +60,9 @@ namespace DataAccess.BandDataAccess
         {
             BandRead.getAlbums(ref pclsDisksBlock, ref pclsResponse, pintUserCode, pintOffset, pintLimit);
         }
-
+        public List<clsPublication> getWallBand(ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            return BandRead.getWallBand(ref pclsResponse, pintUserID, pintOffset, pintLimit);
+        }
     }
 }

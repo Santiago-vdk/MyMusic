@@ -134,7 +134,10 @@ namespace DataAccess
         {
             NewsDA.getnew(ref pclsNew, ref pclsResponse, pintCodeNew);
         }
-
+        public List<clsPublication> getWallBand(ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            return BandDA.getWallBand(ref pclsResponse, pintUserID, pintOffset, pintLimit);
+        }
 
 
         public static void Main()

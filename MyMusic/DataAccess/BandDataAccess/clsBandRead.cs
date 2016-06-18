@@ -243,7 +243,60 @@ namespace DataAccess.BandDataAccess
 
         }
 
-        
+        public List<clsPublication> getWallBand(ref clsResponse pclsResponse, int pintUserID, int pintOffset, int pintLimit)
+        {
+            List<clsPublication> Wall = new List<clsPublication>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetNewsEventsWallByBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
+                cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
+                cmd.Parameters.Add("@inCodeUser", System.Data.SqlDbType.Int).Value = pintUserID;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+
+
+
+                while (result.Read())
+                {
+                    clsPublication tmp = new clsPublication();
+                    tmp.Title = result["Nombre"].ToString();
+                    tmp.Content = result["Descripcion"].ToString();
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
+                    tmp.Date = dat.ToString("yyyy-MM-dd");
+                    tmp.Type = Convert.ToInt32(result["Tipo"].ToString());
+                    tmp.Id = Convert.ToInt32(result["Codigo"].ToString());
+                    Wall.Add(tmp);
+                }
+
+
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return Wall;
+        }
 
 
 
