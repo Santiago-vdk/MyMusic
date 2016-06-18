@@ -72,8 +72,9 @@ namespace MyFan_API.Controllers
 
         [Route("{bandId:int}/review"), HttpPost]
         // api/v1/users/bands/1/review POST
-        public IHttpActionResult ReviewOneBand(int bandId)
+        public IHttpActionResult ReviewOneBand(int bandId, string q)
         {
+            
             //Endpoint for deleting one band
             throw new NotImplementedException();
         }

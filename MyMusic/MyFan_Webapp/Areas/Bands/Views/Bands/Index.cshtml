@@ -7,11 +7,41 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+
+    <title>My Wall</title>
 </head>
 <body>
-    <div> 
+    <!-- Post-Section -->
+    <div id="post-section" class="row">
+        <h2 class="post-header">News & Events</h2>
+        <a href="@Model.Id/News/Create">Add New<i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a href="@Model.Id/Events/Create">Add Event<i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+
+        <!-- Post -->
+        @*@foreach (var Post in Model.Posts)
+            {
+            <div class="col-lg-8 center-block no-float">
+                <div class="post-box">
+                    <div class="row">
+                        <div class="col-xs-10 post-title">
+                            <h2><u>@Post.Title</u></h2>
+                        </div>
+                        <div class="col-xs-2 post-date">
+                            <h5>@Post.Date</h5>
+                        </div>
+                    </div>
+                    <div class="row post-content">
+                        <div class="post-text">@Post.Content</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 post-read-more">
+                            <a href="/@Post.Id"><small>Read more...</small></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }*@
     </div>
+
 </body>
 </html>

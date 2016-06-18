@@ -13,5 +13,6 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
         {
             return View();
         }
+
     }
 }
