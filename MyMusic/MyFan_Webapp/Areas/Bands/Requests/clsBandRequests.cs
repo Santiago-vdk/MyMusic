@@ -77,5 +77,19 @@ namespace MyFan_Webapp.Areas.Bands.Requests
                 return await Task.FromResult("Unexpected error ocurred");
             }
         }
+
+        public static async Task<string> getBandAlbums(int userId)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/?q=bands");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else //if ((int) response.StatusCode == 500)
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
     }
 }
