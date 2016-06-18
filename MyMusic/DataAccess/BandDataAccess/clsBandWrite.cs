@@ -78,12 +78,12 @@ namespace DataAccess.BandDataAccess
                 cmd.Parameters.Add("@strIntegrantes", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Members);
                 cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
                 cmd.Parameters.Add("@intUbicacion", System.Data.SqlDbType.Int).Value = pclsInfoBand.Country;
-                cmd.Parameters.Add("@strHashTag", System.Data.SqlDbType.Int).Value = pclsInfoBand.Hashtag;
+                cmd.Parameters.Add("@strHashTag", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Hashtag;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                 cod.Direction = ParameterDirection.Output;
-
+                
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 pclsResponse.Code = 0;
@@ -117,21 +117,20 @@ namespace DataAccess.BandDataAccess
         {
             
             clsInfoBand b = new clsInfoBand();
-            b.Username = "yepe2wq2n111e";
-            b.Password = "panocho";
-            b.Name = "panocho";
+            b.Username = "canesa me la besa";
+            b.Name = "canesota";
             b.CodGenres = new List<int>(new int[] { 1, 2 });
             b.Members = new List<string>(new string[] { "Panochon69", "PAnochote69" });
             b.DateCreation = "1-2-2016";
             b.Biography = "Listo";
             b.Country = "9";
-            b.Hashtag = "@Panochow111qn22Pene2";
-            b.Salt = "dhjsdhj111aw222qw111qeweesaasr22ddsds";
-            b.SaltHashed = "dsdswewqwwesdsd";
+            b.Hashtag = "@canepicha";
+            b.Id = 133;
+
    
             clsBandWrite d = new clsBandWrite();
             clsResponse f = new clsResponse();
-            d.createBand(b, ref f);
+            d.updateBand(b, ref f);
             Console.WriteLine(f.Message);
             Console.ReadKey();
         }
