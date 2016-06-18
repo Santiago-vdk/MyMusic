@@ -240,7 +240,7 @@ namespace DataAccess.BandDataAccess
 
         }
 
-        public void getdisk(ref clsDisk pclsDisksBlock, ref clsResponse pclsResponse, int pintUserCode, int pintOffset, int pintLimit)
+        public void getdisk(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintUserCode, int pintOffset, int pintLimit)
         {
             try
             {
@@ -260,6 +260,52 @@ namespace DataAccess.BandDataAccess
                     tmp.DateCreation = dat.ToString("yyyy");
                     tmp.Id = Convert.ToInt32(result["DiscCode"].ToString());
                     disks.Add(tmp);
+                }
+                //pclsDisksBlock.Disks = disks;
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        public void getsongs(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetDiscsByBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodeDisc", System.Data.SqlDbType.Int).Value = pintDiskCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<clsSong> songs = new List<clsSong>();
+
+                while (result.Read())
+                {
+                    clsSong tmp = new clsSong();
+                    tmp.Name = (result["Nombre"].ToString());
+                    tmp.Link = (result["Video"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["Duracion"].ToString());
+                    tmp.Duration = dat.ToString("hh:mm tt");
+                    tmp.Type = Convert.ToBoolean(result["EnVivo"].ToString());
+                    songs.Add(tmp);
                 }
                 //pclsDisksBlock.Disks = disks;
 
