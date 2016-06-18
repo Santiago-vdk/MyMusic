@@ -38,6 +38,14 @@ namespace BusinessLogic.BandBusinessLogic
             response.Data = serializer.Serialize(InfoBand);
             return serializer.Serialize(response);
         }
+        public string getBandPublications(int pintUserId, int pintOffset, int pintLimit)
+        {
+            clsResponse response = new clsResponse();
+            List<clsPublication> publications = FacadeDA.getWall(ref response, pintUserId, pintOffset, pintLimit);
+            
+            response.Data = serializer.Serialize(publications);
+            return serializer.Serialize(response);
+        }
 
         public string createBand(string pstringRequest)
         {
