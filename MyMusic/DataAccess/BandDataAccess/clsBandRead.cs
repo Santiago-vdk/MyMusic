@@ -117,7 +117,6 @@ namespace DataAccess.BandDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetMemberBand", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodBand", System.Data.SqlDbType.Int).Value = 0;
-                cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pintUserID;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 List<String> members = new List<string>();
