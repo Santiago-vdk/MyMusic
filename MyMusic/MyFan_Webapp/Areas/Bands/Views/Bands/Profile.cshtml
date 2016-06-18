@@ -1,8 +1,8 @@
 ﻿@model MyFan_Webapp.Areas.Bands.Models.BandProfileViewModel
 @{
-    ViewBag.Title = "Profiles";
     Layout = "~/Areas/Bands/Views/Shared/_BandProfileLayout.cshtml";
 }
+
 <!DOCTYPE html>
 <html>
 
@@ -29,19 +29,30 @@
                     <div class="row">
                     <div class="col-md-12 info-profile">
                         <h3>Username: @Model.Username</h3>
-                        <h3>Gender: @Model.</h3>
-                        <h3>Birthday: @Model.Info.Birthday</h3>
+                        <h3>Hashtag: #@Model.Info.Hashtag</h3>
+                        <h3>Birthday: @Model.Info.DateCreation</h3>
                         <h3>Country: @Model.Info.Country</h3>
+
+                        <h3>Members: 
+                            @foreach (var member in @Model.Info.Members)
+                            {
+                                @member @Html.Raw(", ")
+
+                            }
+
+                        
+                        </h3>
+
                         <h3>Favoutite Genres: 
                             @foreach (var genre in @Model.Info.Genres)
                             {
-
                                 @genre @Html.Raw(", ")
 
                             }
 
 
                         </h3>
+                        <h3>Biography: @Model.Info.Biography</h3>
                         <br />
                     </div>
                 </div>
