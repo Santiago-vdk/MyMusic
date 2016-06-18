@@ -177,12 +177,12 @@ namespace DataAccess.FanDataAccess
             try
             {
 
-                SqlCommand cmd = new SqlCommand("myFan.GetBandFilteredByName", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetBandFilteredByName", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intOffset", System.Data.SqlDbType.Int).Value = pintOffset;
                 cmd.Parameters.Add("@intRows", System.Data.SqlDbType.Int).Value = pintLimit;
-                cmd.Parameters.Add("@intCodPais", System.Data.SqlDbType.VarChar).Value = pclsSearch.Country;
-                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value =  pclsSearch.Genres;
+                cmd.Parameters.Add("@strPais", System.Data.SqlDbType.VarChar).Value = pclsSearch.Country;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value =  pclsSearch.Genre;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsSearch.Name;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
@@ -190,7 +190,6 @@ namespace DataAccess.FanDataAccess
                 List<String> values = new List<String>();
                 List<String> cods = new List<String>();
                 List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
-                pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
                     clsInfoBandSimple tmp = new clsInfoBandSimple();
@@ -203,10 +202,6 @@ namespace DataAccess.FanDataAccess
 
 
 
-                if (cods.Count < pintLimit)
-                {
-                    pclsBandsBlock.Limit = true;
-                }
                 pclsBandsBlock.Bands = bands;
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
@@ -330,11 +325,11 @@ namespace DataAccess.FanDataAccess
             //c.Chunks = 10;
             //c.Offset = 10;
             clsSearch k = new clsSearch();
-            k.Name = "pe";
+            k.Name = "and";
             List<Int32> l = new List<int>();
             l.Add(0);
-            k.Genres = l;
-            k.Country = 0;
+            k.Genre = "";
+            k.Country = "España";
         
             Console.WriteLine(b.Serialize(a.getBandsSearch(h, ref d, ref k, 0, 5)));
             Console.WriteLine(d.Message);
