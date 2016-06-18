@@ -75,7 +75,7 @@ namespace BusinessLogic.DiskBusinessLogic
             clsSong Song = DeserializeJson.DeserializeSong(request.Data.ToString());
             clsResponse response = new clsResponse();
 
-            //FacadeDA.createsong(ref Disk, ref response, pintBandId);
+            FacadeDA.createsong(ref Song, ref response, pintDiskId);
 
             //Data = null
             return serializer.Serialize(response);
