@@ -32,6 +32,52 @@ namespace MyFan_API.ControllerCalls
         }
     }
 
+    public class BandControllerCallsGetAlbums : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+        public BandControllerCallsGetAlbums(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getBandInfo(_userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    public class BandControllerCallsGetPosts : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+        public BandControllerCallsGetPosts(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getBandInfo(_userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
     public class BandControllerCallsRegisterBand : IHttpActionResult
     {
         HttpRequestMessage _request;
