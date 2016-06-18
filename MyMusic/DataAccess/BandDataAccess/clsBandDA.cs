@@ -52,5 +52,9 @@ namespace DataAccess.BandDataAccess
         {
             BandRead.getGenresBand(ref pclsInfoBand, ref pclsResponse, pintUserCode);
         }
+        public clsInfoBand updateBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            return BandWrite.updateBand(pclsInfoBand, ref pclsResponse);
+        }
     }
 }

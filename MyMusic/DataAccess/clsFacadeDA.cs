@@ -86,7 +86,10 @@ namespace DataAccess
         {
             BandDA.getGenresBand(ref pclsInfoBand, ref pclsResponse, pintUserCode);
         }
-
+        public clsInfoBand updateBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
+        {
+            return BandDA.updateBand(pclsInfoBand, ref pclsResponse);
+        }
 
         public static void Main()
         {

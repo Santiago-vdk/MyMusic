@@ -67,36 +67,28 @@ namespace DataAccess.BandDataAccess
 
         public clsInfoBand updateBand(clsInfoBand pclsInfoBand, ref clsResponse pclsResponse)
         {
-
             try
             {
 
-                SqlCommand cmd = new SqlCommand("myFan.SP_CrearBanda", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_ActualizarBanda", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Username;
+                cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pclsInfoBand.Id;
                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Name;
                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Genres);
-                cmd.Parameters.Add("@strBiografia", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Biography;
-                cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
-                cmd.Parameters.Add("@intPais", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Country;
                 cmd.Parameters.Add("@strIntegrantes", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoBand.Members);
-                cmd.Parameters.Add("@strHashTag", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Hashtag;
-                cmd.Parameters.Add("@strSalt", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.Salt;
-                cmd.Parameters.Add("@strSaltHashedPassword", System.Data.SqlDbType.VarChar).Value = pclsInfoBand.SaltHashed;
+                cmd.Parameters.Add("@dtAnoCreacion", System.Data.SqlDbType.Date).Value = pclsInfoBand.DateCreation;
+                cmd.Parameters.Add("@intUbicacion", System.Data.SqlDbType.Int).Value = pclsInfoBand.Country;
+                cmd.Parameters.Add("@strHashTag", System.Data.SqlDbType.Int).Value = pclsInfoBand.Hashtag;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                 cod.Direction = ParameterDirection.Output;
-                SqlParameter id = cmd.Parameters.Add("@intCodUserReturn", SqlDbType.Int);
-                id.Direction = ParameterDirection.Output;
                 conn.Open();
-
                 cmd.ExecuteNonQuery();
-
-                pclsInfoBand.Id = Convert.ToInt32(id.Value);
-                pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
-                pclsResponse.Message = message.Value.ToString();
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
+
             }
             catch (SqlException ex)
             {
