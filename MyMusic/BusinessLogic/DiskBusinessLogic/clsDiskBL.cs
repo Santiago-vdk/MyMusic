@@ -47,13 +47,35 @@ namespace BusinessLogic.DiskBusinessLogic
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsDisk Disk = DeserializeJson.DeserializeDisk(request.Data.ToString());
+            Disk.Id = request.Id;
             clsResponse response = new clsResponse();
 
-            //llamado a FacadeDA
+            if (Disk.Id == pintBandId)
+            {
 
-            //save image here!
-            ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
-        
+                FacadeDA.createdisk(ref Disk, ref response, pintBandId);
+
+                //save image here!
+                ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Invalid Operation";
+                response.Code = 401;
+            }
+
+            //Data = null
+            return serializer.Serialize(response);
+        }
+        public string createSong(string pstringRequest, int pintDiskId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsSong Song = DeserializeJson.DeserializeSong(request.Data.ToString());
+            clsResponse response = new clsResponse();
+
+            //FacadeDA.createsong(ref Disk, ref response, pintBandId);
 
             //Data = null
             return serializer.Serialize(response);
@@ -67,6 +89,19 @@ namespace BusinessLogic.DiskBusinessLogic
             FacadeDA.getdiskreviews(ref reviews,ref response, pintBandId);
 
             response.Data = serializer.Serialize(reviews);
+            return serializer.Serialize(response);
+        }
+
+        public string reviewDisk(string pstringRequest, int pintDiskId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsReview review = DeserializeJson.DeserializeReview(request.Data);
+            clsResponse response = new clsResponse();
+
+            //validar si el usuario ya habia hecho review
+            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
+
+            //data null
             return serializer.Serialize(response);
         }
     }

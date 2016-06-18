@@ -24,6 +24,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
                 }
             }
             string response = await clsBandRequests.getBandAlbums(userId);
+            
 
             BandProfileViewModel profile = new BandProfileViewModel();
             
@@ -40,7 +41,6 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
 
         public new async Task<ActionResult> Profile(int userId)
         {
-            System.Diagnostics.Debug.WriteLine("check profile from " + userId);
 
             string response = await clsBandRequests.GetBandInfo(userId);
             string response2 = await clsBandRequests.getBandAlbums(userId);
@@ -76,7 +76,6 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
 
             string response3 = await clsBandRequests.getBandAlbums(userId);
 
-            
             BandProfileViewModel profile = new BandProfileViewModel();
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();

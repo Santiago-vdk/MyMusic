@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using MyFan_API.ControllerCalls;
+using System;
 using System.Web.Http;
 
 namespace MyFan_API.Controllers
@@ -15,6 +12,11 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1/albums POST
         public IHttpActionResult CreateAlbum(int bandId)
         {
+            
+            System.Diagnostics.Debug.WriteLine("Creating album for" + bandId);
+            return new AlbumControllerCallsCreateAlbum(Request, bandId);
+
+            
             //Endpoint for creating an album for a band
             throw new NotImplementedException();
         }
