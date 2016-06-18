@@ -90,6 +90,10 @@ namespace DataAccess
         {
             return BandDA.updateBand(pclsInfoBand, ref pclsResponse);
         }
+        public void getAlbums(ref clsDisksBlock pclsDisksBlock, ref clsResponse pclsResponse, int pintUserCode, int pintOffset, int pintLimit)
+        {
+            BandDA.getAlbums(ref pclsDisksBlock, ref pclsResponse, pintUserCode, pintOffset, pintLimit);
+        }
 
         public static void Main()
         {
