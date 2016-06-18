@@ -1,4 +1,5 @@
 ﻿using DataAccess.BandDataAccess;
+using DataAccess.DiskDataAccess;
 using DataAccess.FanDataAccess;
 using DataAccess.UserDataAccess;
 using DTO;
@@ -17,6 +18,7 @@ namespace DataAccess
         clsUserDA UserDA = new clsUserDA();
         clsFanDA FanDA = new clsFanDA();
         clsBandDA BandDA = new clsBandDA();
+        clsDiskDA DiskDA = new clsDiskDA();
 
         public clsForm getAllGenres(clsForm pclsForm,ref clsResponse pclsResponse)
         {
@@ -94,6 +96,21 @@ namespace DataAccess
         {
             BandDA.getAlbums(ref pclsDisksBlock, ref pclsResponse, pintUserCode, pintOffset, pintLimit);
         }
+        public void getsongs(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            DiskDA.getsongs(ref pclsDisk, ref pclsResponse, pintDiskCode);
+        }
+        public void getdiskinfo(ref clsDisk pclsDisk, ref clsResponse pclsResponse, int pintDiskCode)
+        {
+            DiskDA.getdiskinfo(ref pclsDisk, ref pclsResponse, pintDiskCode);
+        }
+
+
+
+
+
+
+
 
         public static void Main()
         {
