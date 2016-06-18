@@ -73,11 +73,11 @@ namespace DataAccess.FanDataAccess
 
                 List<String> values = new List<String>();
                 List<String> cods = new List<String>();
-                List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
+                List<clsSimpleInfo> bands = new List<clsSimpleInfo>();
                 pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
-                    clsInfoBandSimple tmp = new clsInfoBandSimple();
+                    clsSimpleInfo tmp = new clsSimpleInfo();
                     tmp.Name = result["strNombre"].ToString();
                     tmp.Id = Convert.ToInt32(result["intCodBanda"].ToString());                  
                     DateTime dat = Convert.ToDateTime(result["dtAnoCreacion"].ToString());
@@ -189,11 +189,11 @@ namespace DataAccess.FanDataAccess
 
                 List<String> values = new List<String>();
                 List<String> cods = new List<String>();
-                List<clsInfoBandSimple> bands = new List<clsInfoBandSimple>();
+                List<clsSimpleInfo> bands = new List<clsSimpleInfo>();
                 pclsBandsBlock.Limit = false;
                 while (result.Read())
                 {
-                    clsInfoBandSimple tmp = new clsInfoBandSimple();
+                    clsSimpleInfo tmp = new clsSimpleInfo();
                     tmp.Name = result["NombreBanda"].ToString();
                     tmp.Id = Convert.ToInt32(result["UserCode"].ToString());
                     DateTime dat = Convert.ToDateTime(result["FechaCreacion"].ToString());

@@ -8,7 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BusinessLogic.Controllers;
+using BusinessLogic.DiskBusinessLogic;
+using BusinessLogic.EventBusinessLogic;
+using BusinessLogic.NewBusinessLogic;
 
 namespace BusinessLogic
 {
@@ -21,7 +23,6 @@ namespace BusinessLogic
         clsUserBL UserBL = new clsUserBL();
         clsNewBL NewBL = new clsNewBL();
         clsDiskBL DiskBL = new clsDiskBL();
-        clsAlbumBL AlbumBL = new clsAlbumBL();
 
         public string getFanForm()
         {
@@ -62,6 +63,14 @@ namespace BusinessLogic
         public string getBandInfo(int pintBandId)
         {
             return BandBL.getBandInfo(pintBandId);
+        }
+        public string getDisks(int pintBandId, int pintOffset, int pintLimit)
+        {
+            return DiskBL.getDisks(pintBandId,pintOffset,pintLimit);
+        }
+        public string getDiskPicture(string pstringDiskId)
+        {
+            return DiskBL.getImage(Int32.Parse(pstringDiskId));
         }
 
 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class clsBandsBlock
+    public class clsDisksBlock
     {
-        public List<clsSimpleInfo> Bands { get; set; }
+        public List<clsSimpleInfo> Disks { get; set; }
         public Boolean Limit { get; set; }
     }
 }

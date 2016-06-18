@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsBandsBlock.cs" />
+    <Compile Include="clsDisksBlock.cs" />
     <Compile Include="clsInfoBandSimple.cs" />
     <Compile Include="clsInfoUser.cs" />
-    <Compile Include="clsDisc.cs" />
+    <Compile Include="clsDisk.cs" />
     <Compile Include="clsPublication.cs" />
     <Compile Include="clsRequest.cs" />
     <Compile Include="clsResponse.cs" />
