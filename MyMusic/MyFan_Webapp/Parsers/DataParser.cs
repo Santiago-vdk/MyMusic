@@ -160,7 +160,7 @@ namespace MyFan_Webapp
             return profile;
 
         }
-        private static List<clsPublication> parsePosts(string json)
+        public static List<clsPublication> parsePosts(string json)
         {
             clsResponse Response = parseResponse(json);
             return JsonConvert.DeserializeObject<List<clsPublication>>(Response.Data);
