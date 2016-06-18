@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using DTO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,6 @@ namespace BusinessLogic.DiskBusinessLogic
             response.Data = serializer.Serialize(DisksBlock);
             return serializer.Serialize(response);
         }
-
         public string getDiskInfo(int pintDiskId)
         {
             clsDisk Disk = new clsDisk();
@@ -37,10 +37,37 @@ namespace BusinessLogic.DiskBusinessLogic
             response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
         }
-
         public string getImage(int intDiskId)
         {
             return ArchiveManager.getDiskImage(intDiskId);
+        }
+
+        public string createDisk(string pstringRequest, int pintBandId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsDisk Disk = DeserializeJson.DeserializeDisk(request.Data.ToString());
+            clsResponse response = new clsResponse();
+
+
+            //FacadeDA.validateDisk(Disk.Id,pintBandId, ref response);
+
+            if (!response.Success)//not existing disk
+            {
+                //llamado a FacadeDA
+
+                //save image here!
+                ArchiveManager.saveDiskImage(Disk.Id, Disk.Picture, ref response);
+            }
+            else
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Existing Username";
+                response.Code = 3;
+            }
+
+            //Data = null
+            return serializer.Serialize(response);
         }
     }
 }
