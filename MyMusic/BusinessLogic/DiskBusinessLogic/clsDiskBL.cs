@@ -32,7 +32,8 @@ namespace BusinessLogic.DiskBusinessLogic
             clsDisk Disk = new clsDisk();
             clsResponse response = new clsResponse();
 
-            //FacadeDA.getDiskInfo(ref Disk, ref response, pintDiskId);
+            FacadeDA.getdiskinfo(ref Disk, ref response, pintDiskId);
+            FacadeDA.getsongs(ref Disk, ref response, pintDiskId);
 
             response.Data = serializer.Serialize(Disk);
             return serializer.Serialize(response);
@@ -67,6 +68,17 @@ namespace BusinessLogic.DiskBusinessLogic
             }
 
             //Data = null
+            return serializer.Serialize(response);
+        }
+
+        public string getDiskReviews(int pintBandId)
+        {
+            List<clsReview> reviews = new List<clsReview>();
+            clsResponse response = new clsResponse();
+
+            FacadeDA.getdiskreviews(ref reviews,ref response, pintBandId);
+
+            response.Data = serializer.Serialize(reviews);
             return serializer.Serialize(response);
         }
     }

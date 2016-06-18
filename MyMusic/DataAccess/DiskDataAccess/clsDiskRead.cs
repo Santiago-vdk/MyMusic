@@ -76,7 +76,7 @@ namespace DataAccess.DiskDataAccess
                     pclsDisk.Name = (result["Nombre"].ToString());
                     DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
                     pclsDisk.DateCreation = dat.ToString("yyyy");
-                    pclsDisk.Name = (result["Genero"].ToString());
+                    pclsDisk.Genre = (result["Genero"].ToString());
                     pclsDisk.Label = (result["SelloDiscografico"].ToString());
 
                 }
