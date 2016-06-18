@@ -59,6 +59,9 @@
     <Compile Include="FanDataAccess\clsFanWrite.cs" />
     <Compile Include="FanDataAccess\clsFanDA.cs" />
     <Compile Include="FanDataAccess\clsFanRead.cs" />
+    <Compile Include="NewsDataAccess\clsNewsDA.cs" />
+    <Compile Include="NewsDataAccess\clsNewsRead.cs" />
+    <Compile Include="NewsDataAccess\clsNewsWrite.cs" />
     <Compile Include="UserDataAccess\clsUserDA.cs" />
     <Compile Include="UserDataAccess\clsUserRead.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
