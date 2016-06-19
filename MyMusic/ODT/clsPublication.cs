@@ -13,5 +13,6 @@ namespace DTO
         public string Date { get; set; }
         public int Id { get; set; }
         public int Type { get; set; }
+        public int OwnerId { get; set; }
     }
 }
