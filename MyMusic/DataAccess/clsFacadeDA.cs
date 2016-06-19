@@ -1,5 +1,6 @@
 ﻿using DataAccess.BandDataAccess;
 using DataAccess.DiskDataAccess;
+using DataAccess.EventsDataAccess;
 using DataAccess.FanDataAccess;
 using DataAccess.NewsDataAccess;
 using DataAccess.UserDataAccess;
@@ -21,6 +22,7 @@ namespace DataAccess
         clsBandDA BandDA = new clsBandDA();
         clsDiskDA DiskDA = new clsDiskDA();
         clsNewsDA NewsDA = new clsNewsDA();
+        clsEventsDA EventsDA = new clsEventsDA();
 
         public clsForm getAllGenres(clsForm pclsForm,ref clsResponse pclsResponse)
         {
@@ -138,6 +140,15 @@ namespace DataAccess
         {
             return BandDA.getWallBand(ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
+        public int createEvent(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            return EventsDA.createEvent(ref pclsEvent, ref pclsResponse, pintUserCode);
+        }
+        public void changeStateEvent(String State, ref clsResponse pclsResponse, int pintEventCode)
+        {
+            EventsDA.changeStateEvent(State, ref pclsResponse, pintEventCode);
+        }
+
 
 
         public static void Main()
