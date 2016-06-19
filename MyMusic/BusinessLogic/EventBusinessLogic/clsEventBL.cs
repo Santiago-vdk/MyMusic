@@ -64,8 +64,7 @@ namespace BusinessLogic.EventBusinessLogic
 
             Event.Title = null;
             Event.Description = null;
-            Event.Reviews = null;
-            Event.State = false;
+            Event.State = null;
             Event.Location = null;
             Event.IsConcert = false;
             Event.Title = null;
