@@ -59,7 +59,8 @@ namespace BusinessLogic.EventBusinessLogic
 
             if (request.Id == pintBandId)
             {
-                //Event.Id = FacadeDA.createevent(ref Event, ref response, pintBandId);
+                Event.State = "pendiente";
+                Event.Id = FacadeDA.createEvent(ref Event, ref response, pintBandId);
             }
 
             Event.Title = null;
@@ -71,6 +72,16 @@ namespace BusinessLogic.EventBusinessLogic
 
             response.Data = serializer.Serialize(Event);
             return serializer.Serialize(response);
+        }
+
+        public string changeState(string pstringState,int pintEventId)
+        {
+            clsResponse response = new clsResponse();
+            FacadeDA.changeStateEvent(pstringState,ref response,pintEventId);
+
+            //data bull
+            return serializer.Serialize(response);
+
         }
 
     }
