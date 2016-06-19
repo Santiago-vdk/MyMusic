@@ -13,9 +13,28 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
     public class EventsController : Controller
     {
         // GET: Bands/Events
-        public ActionResult Index()
+        public async Task<ActionResult> Index(int userId, int id)
         {
-            return View();
+            System.Diagnostics.Debug.WriteLine("check band from " + userId + " with event " + id);
+
+            string response = await clsBandRequests.getBandAlbums(userId);
+
+            string response2 = await clsEventRequests.GetEvent(userId, id);
+            System.Diagnostics.Debug.WriteLine("antes de parsear event " + response2);
+            if (!ErrorParser.parse(response2).Equals(""))
+            {
+                ViewBag.Message = "Couldn´t get the news correctly";
+            }
+
+            BandProfileViewModel profile = new BandProfileViewModel();
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+
+            profile.Albums = DataParser.parseAlbums(response);
+            profile.Event = DataParser.parseEvent(response2);
+
+            return View(profile);
         }
 
 
@@ -40,7 +59,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
         }
 
         public async Task<ActionResult> NewEvent(int userId, string EventTitle, string EventDate, string EventTime, bool EventType, 
-            int EventState, string EventLocation, string EventContent)
+            string EventState, string EventLocation, string EventContent)
         {
 
             System.Diagnostics.Debug.WriteLine(userId);
@@ -61,8 +80,8 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             form.Date = EventDate;
             form.Title = EventTitle;
 
-
-            string response = await clsEventRequests.createEvent(userId, form);
+            string response = await clsBandRequests.getBandAlbums(userId);
+            string response2 = await clsEventRequests.createEvent(userId, form);
 
             //Hubo error
             if (!ErrorParser.parse(response).Equals(""))
@@ -74,10 +93,17 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-
             profile.Albums = DataParser.parseAlbums(response);
+           
 
-            return View(profile);
+            int Id = DataParser.parseEventForm(response2);
+            System.Diagnostics.Debug.WriteLine("Got id: " + Id);
+
+            return Json(new
+            {
+                redirectUrl = Url.Action("Index", "Events", new { userId = Int32.Parse(Session["Id"].ToString()), id = Id }),
+                isRedirect = true
+            });
         }
 
     }

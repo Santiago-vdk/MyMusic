@@ -5,7 +5,7 @@ function EventModel() {
     self.EventDate = $("#EventDate").val();
     self.EventTime = $("#EventTime").val();
     self.EventType = $("#EventTypeID :selected").attr("id");
-    self.EventState = parseInt($("#EventStateID :selected").attr("id"));
+    self.EventState = $("#EventStateID :selected").attr("id");
     self.EventLocation = $("#EventLocation").val();
     self.EventContent = $("#EventContent").val();
 

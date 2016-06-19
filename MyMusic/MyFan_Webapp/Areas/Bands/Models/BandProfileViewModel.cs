@@ -18,5 +18,6 @@ namespace MyFan_Webapp.Areas.Bands.Models
         public Form EditForm { get; set; }
         public clsDisk Disk { get; set; }
         public clsNew New { get; set; }
+        public clsEvent Event { get; set; }
     }
 }
