@@ -47,7 +47,9 @@ jQuery(function ($) {
                     success: function (data, status) {
                         $('#update-form-band').prop('disabled', false);
                         $('#loading').addClass("hide");
-                        
+                        if (data.isRedirect) {
+                            window.location.href = data.redirectUrl;
+                        }
                     },
                     error: function () {
                         alert('Something goes wrong!');

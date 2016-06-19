@@ -32,7 +32,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
         public static async Task<string> GetNew(int userId, int id)
         {
             // HTTP GET
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "news/" + id );
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/news/" + id );
             
             if (request.IsSuccessStatusCode)
             {

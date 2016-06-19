@@ -153,10 +153,14 @@ namespace BusinessLogic
         {
             return FanBL.searchBands(pstringRequest, pintOffset, pintLimit);
         }
-
         public string getSearchParams()
         {
             return UserBL.getSearchParams();
+        }
+
+        public string changeEventState(string pstringState, int pintEventId)
+        {
+            return EventBL.changeState(pstringState,pintEventId);
         }
     }
 }

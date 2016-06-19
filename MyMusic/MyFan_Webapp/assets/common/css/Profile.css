@@ -21,4 +21,22 @@
             height:260px;
     width:260px;
 }
+#album-pic-index{
+            height:180px;
+    width:180px;
+}
+.right-section {
+    margin-left:60px;
+}
+.img-calif{
+            height:50px;
+    width:50px;
+    float:right;
+}
+.reviews{
+    margin-left:25px;
 
+}
+.review-row{
+    margin-bottom:20px;
+}
