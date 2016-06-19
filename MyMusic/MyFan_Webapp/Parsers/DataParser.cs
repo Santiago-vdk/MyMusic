@@ -45,11 +45,27 @@ namespace MyFan_Webapp
             return listGenders;
         }
 
+        public static clsNew parseNew(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            clsNew New = JsonConvert.DeserializeObject<clsNew>(Convert.ToString(Response.Data));
+            return New;
+        }
+
         public static clsDisk parseDisk(string json)
         {
             clsResponse Response = parseResponse(json);
             clsDisk disk = JsonConvert.DeserializeObject<clsDisk>(Convert.ToString(Response.Data));
             return disk;
+        }
+
+        internal static int parseNewForm(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
+          
+            int NewId = JsonConvert.DeserializeObject<int>(Convert.ToString(data.Id));
+            return NewId;
         }
 
         internal static clsInfoBand parseBandInfo(string json)

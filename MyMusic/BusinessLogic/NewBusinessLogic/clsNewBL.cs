@@ -28,6 +28,11 @@ namespace BusinessLogic.NewBusinessLogic
                 New.Id = FacadeDA.createnew(ref New, ref response, pintBandId);
             }
 
+            New.BandName = null;
+            New.Content = null;
+            New.Date = null;
+            New.Title = null;
+
             response.Data = serializer.Serialize(New);
             return serializer.Serialize(response);
         }

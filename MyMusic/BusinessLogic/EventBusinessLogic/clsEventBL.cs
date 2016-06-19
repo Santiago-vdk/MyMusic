@@ -62,6 +62,14 @@ namespace BusinessLogic.EventBusinessLogic
                 //Event.Id = FacadeDA.createevent(ref Event, ref response, pintBandId);
             }
 
+            Event.Title = null;
+            Event.Description = null;
+            Event.Reviews = null;
+            Event.State = false;
+            Event.Location = null;
+            Event.IsConcert = false;
+            Event.Title = null;
+
             response.Data = serializer.Serialize(Event);
             return serializer.Serialize(response);
         }
