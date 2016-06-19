@@ -20,5 +20,9 @@ namespace DataAccess.EventsDataAccess
         {
             EventsWrite.changeStateEvent(State, ref pclsResponse, pintEventCode);
         }
+        public void geteventreviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintEventCode)
+        {
+            EventsRead.geteventreviews(ref pclsReviews, ref pclsResponse, pintEventCode);
+        }
     }
 }

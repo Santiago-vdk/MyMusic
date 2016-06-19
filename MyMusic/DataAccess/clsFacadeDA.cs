@@ -148,7 +148,10 @@ namespace DataAccess
         {
             EventsDA.changeStateEvent(State, ref pclsResponse, pintEventCode);
         }
-
+        public void geteventreviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintEventCode)
+        {
+            EventsDA.geteventreviews(ref pclsReviews, ref pclsResponse, pintEventCode);
+        }
 
 
         public static void Main()
