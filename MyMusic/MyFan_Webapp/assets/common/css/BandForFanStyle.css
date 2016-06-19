@@ -39,6 +39,7 @@ h4 {
     text-align: left;
     padding-left: 8%;
     padding-right: 8%;
+    word-wrap: break-word;
 }
 .btn_follow {
     font-family: 'Bree Serif', sans-serif;

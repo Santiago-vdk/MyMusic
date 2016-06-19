@@ -39,12 +39,15 @@
                     <div>
                         <div class="col-xs-12">
                             <div class="input-group" id="adv-search">
-                                <input type="text" name="name" id="search_main" class="form-control" placeholder="Search for your favorite bands and artists..." />
+
+                                <input type="text" name="name" form="buscar" id="search_secondary" class="form-control" placeholder="Search for your favorite bands and artists..." />
+                                
                                 <div class="input-group-btn">
                                     <div class="btn-group" role="group">
                                         <div class="dropdown dropdown-lg">
                                             <button type="submit" id="searchButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                                             <div class="dropdown-menu dropdown-menu-right" role="menu">
+
                                                 <form action="search" class="form-horizontal" id="buscar" role="form">
 
                                                     <div class="form-group">
@@ -87,7 +90,7 @@
                 <!-- Page Title -->
                 <div class="row page-title">
                     <div class="col-md-6 center-block no-float">
-                        <h1>My Wall</h1>
+                        <h1><a href="~/Fans/@Model.Id">My Wall</a></h1>
                         <h5>@ViewBag.Message</h5>
                     </div>
                 </div>
@@ -140,7 +143,7 @@
                     @foreach (var band in Model.Bands)
                     {
                         <div class="inline">
-                            <a href="@Model.Id/Bands/@band.Id">
+                            <a href="~/Fans/@Model.Id/Bands/@band.Id">
                                 <img class="img-responsive" src="~/Users/image?Id=@band.Id">
                                 <p class="artwork-name">@band.Name</p>
                                 <small class="artwork-date">@band.DateCreation</small>

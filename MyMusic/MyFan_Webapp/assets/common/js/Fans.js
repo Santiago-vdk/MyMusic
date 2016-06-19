@@ -18,13 +18,16 @@
 }
 
 
+
 jQuery(function ($) {
 
- 
+
+
+ /*
 
     $('.makeSearch').click(function (e) {
         e.preventDefault();
-      
+        alert("submited");
         var request = new SearchModel();
         console.log(request);
         $.ajax({
@@ -43,7 +46,9 @@ jQuery(function ($) {
         });
         return false;
     });
-    
+    */
+
+    //Llena las opciones del formulario
     $('#searchButton').click(function (e) {
         $('#search_main').val('');
         e.preventDefault();
@@ -67,8 +72,6 @@ jQuery(function ($) {
                         }));
                     });
                 }
-                
-
                 var country = json.locations
                 var lengthCountry = $('#CountryList').children('option').length;
                 if (lengthCountry > 1) {
@@ -91,4 +94,7 @@ jQuery(function ($) {
             }
         });
     });
+
+
+
 });

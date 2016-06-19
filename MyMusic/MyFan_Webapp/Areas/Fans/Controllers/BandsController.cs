@@ -1,4 +1,5 @@
 ﻿using DTO;
+using MyFan_Webapp.Areas.Bands.Models;
 using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Fans.Requests;
 using MyFan_Webapp.Logic;
@@ -28,7 +29,10 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             }
             //[Bandas,Posts]
             string response = await clsBandRequests.GetBandInfo(bandId);
-
+            string response2 = await Bands.Requests.clsBandRequests.getBandAlbums(bandId);
+            string response3 = await Bands.Requests.clsBandRequests.GetBandPosts(bandId);
+            string response4 = await Bands.Requests.clsBandRequests.GetBandInfo(bandId);
+            System.Diagnostics.Debug.WriteLine(response2);
             //Hubo error
             if (!ErrorParser.parse(response).Equals(""))
             {
@@ -38,10 +42,18 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             clsInfoBand infoBand = DataParser.parseBandInfo(response);
 
             FanProfileViewModel profile = new FanProfileViewModel();
+            BandProfileViewModel BandProfile = new BandProfileViewModel();
+            BandProfile.Id = bandId;
+            profile.BandProfile = BandProfile;
+
+
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
             profile.BandInfo = infoBand;
+            profile.BandProfile.Albums = DataParser.parseAlbums(response2);
+            profile.BandProfile.Posts = DataParser.parsePosts(response3);
+            profile.BandProfile.Info = DataParser.parseBandInfo(response4);
 
             return View(profile);
 

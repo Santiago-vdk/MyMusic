@@ -17,6 +17,17 @@ h2 {
     font-size: 24px;
     margin-top: 5px;
 }
+.circle
+{
+width:50px;
+height:50px;
+border-radius:50%;
+font-size:23px;
+color:#fff;
+line-height:50px;
+text-align:center;
+background:#000
+}
 .artwork-header {
     color: #FFFFFF;
 }
@@ -187,7 +198,7 @@ p {}
 }
 .post-box {
     padding: 10px;
-    width: 100%;
+    width: 105%;
     height: 200px;
     margin: 40px auto;
     background: rgba(165, 165, 175, .28);

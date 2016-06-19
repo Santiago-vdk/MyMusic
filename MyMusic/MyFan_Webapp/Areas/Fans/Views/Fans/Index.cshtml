@@ -12,7 +12,7 @@
 <body>
 
 
-        <!-- Post-Section -->
+    <!-- Post-Section -->
     <div id="post-section" class="row">
         <h2 class="post-header">News & Events</h2>
 
@@ -34,7 +34,15 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-2 post-read-more">
-                            <a href="/@Post.Id"><small>Read more...</small></a>
+                            @if (@Post.Type == 1)
+                            {
+                                <a href="~/Fans/@Model.Id/News/Index/@Post.Id"><small>Read more...</small></a>
+                            }
+                            else
+                            {
+                                <a href="~/Fans/@Model.Id/Events/Index/@Post.Id"><small>Read more...</small></a>
+                            }
+                            
                         </div>
                     </div>
                 </div>
@@ -43,8 +51,7 @@
     </div>
 
 
- 
+
 </body>
 
 </html>
-
