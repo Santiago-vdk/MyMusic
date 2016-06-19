@@ -76,6 +76,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             form.Description = EventContent;
             form.IsConcert = EventType;
             form.State = EventState;
+            form.Location = EventLocation;
             form.Time = EventTime;
             form.Date = EventDate;
             form.Title = EventTitle;

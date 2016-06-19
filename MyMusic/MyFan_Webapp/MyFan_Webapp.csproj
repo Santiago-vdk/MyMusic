@@ -103,9 +103,13 @@
     <Content Include="assets\common\css\Main.css" />
     <Content Include="assets\common\css\foms\Register.css" />
     <Content Include="assets\common\css\Profile.css" />
-    <Content Include="assets\common\img\Acetato-rare.png" />
     <Content Include="assets\common\img\album.jpg" />
     <Content Include="assets\common\img\avatar.png" />
+    <Content Include="assets\common\img\califications\Acetato-gold.png" />
+    <Content Include="assets\common\img\califications\Acetato-original.png" />
+    <Content Include="assets\common\img\califications\Acetato-rare.png" />
+    <Content Include="assets\common\img\califications\acetato-silver.png" />
+    <Content Include="assets\common\img\califications\acetato-wood.png" />
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
     <Content Include="assets\common\js\Fans.js" />
@@ -215,6 +219,9 @@
     <Content Include="assets\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Bands\Views\Events\Index.cshtml" />
+    <Content Include="Areas\Fans\Views\Shared\_FanInBandProfileLayout.cshtml" />
+    <Content Include="Areas\Fans\Views\News\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -225,7 +232,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Fans\Views\Albums\" />
-    <Folder Include="Areas\Fans\Views\News\" />
     <Folder Include="Views\Logout\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>

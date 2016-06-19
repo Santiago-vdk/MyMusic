@@ -1,4 +1,5 @@
 ﻿using DTO;
+using MyFan_Webapp.Areas.Bands.Models;
 using MyFan_Webapp.Models.Views;
 using System.Collections.Generic;
 
@@ -17,6 +18,7 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public clsInfoFan Info { get; set; }
         public List<clsBands> SearchResults { get; set; }
         public clsInfoBand BandInfo { get; set; }
+        public BandProfileViewModel BandProfile { get; set; }
 
     }
 }

@@ -35,7 +35,16 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-2 post-read-more">
-                            <a href="/@Post.Id"><small>Read more...</small></a>
+
+
+                            @if (@Post.Type == 1)
+                            {
+                                <a href="~/Bands/@Model.Id/News/Index/@Post.Id"><small>Read more...</small></a>
+                            }
+                            else
+                            {
+                                <a href="~/Bands/@Model.Id/Events/Index/@Post.Id"><small>Read more...</small></a>
+                            }
                         </div>
                     </div>
                 </div>
