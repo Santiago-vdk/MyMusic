@@ -120,6 +120,7 @@ namespace BusinessLogic
             Event.Date = Convert.ToString(data.Date);
             Event.Location = Convert.ToString(data.Location);
             Event.Time = Convert.ToString(data.Time);
+            Event.State = Convert.ToString(data.State);
 
             return Event;
         }
