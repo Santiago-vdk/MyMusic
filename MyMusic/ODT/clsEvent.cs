@@ -12,7 +12,8 @@ namespace DTO
         public string Description { get; set; }
         public string Location { get; set; }
         public bool IsConcert { get; set; }
-        public bool State { get; set; }
-        public List<clsReview> Reviews { get; set; }
+        public string State { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
     }
 }

@@ -13,19 +13,23 @@ namespace DataAccess.EventsDataAccess
     {
         private SqlConnection conn = new clsConnection().getPort();
 
-        public int createnew(ref clsEvent pclsNew, ref clsResponse pclsResponse, int pintUserCode)
+        public int createnew(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintUserCode)
         {
             int tmp = new int();
             try
             {
-                SqlCommand cmd = new SqlCommand("myFan.SP_IngresarNoticia", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_IngresarEvento", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intTitulo", System.Data.SqlDbType.Int).Value = pclsNew.Title;
-                cmd.Parameters.Add("@strComentario", System.Data.SqlDbType.VarChar).Value = "s";
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsEvent.Title;
+                cmd.Parameters.Add("@strDescripcion", System.Data.SqlDbType.VarChar).Value = pclsEvent.Description;
+                cmd.Parameters.Add("@strUbicacion", System.Data.SqlDbType.VarChar).Value = pclsEvent.Location;
+                cmd.Parameters.Add("@btEsConcierto", System.Data.SqlDbType.Bit).Value = pclsEvent.IsConcert;
+                cmd.Parameters.Add("@strEstado", System.Data.SqlDbType.VarChar).Value = pclsEvent.State;
                 cmd.Parameters.Add("@intCodUsuario", System.Data.SqlDbType.Int).Value = pintUserCode;
+                cmd.Parameters.Add("@dtFechaHora", System.Data.SqlDbType.DateTime).Value = pclsEvent.Date + pclsEvent.Time;
                 SqlParameter id = cmd.Parameters.Add("@intCodNoticia", SqlDbType.Int);
-                id.Direction = ParameterDirection.Output;
-                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                id.Direction = ParameterDirection.Output; 
+                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
                 cod.Direction = ParameterDirection.Output;

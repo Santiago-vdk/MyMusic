@@ -298,24 +298,111 @@ namespace DataAccess.BandDataAccess
             return Wall;
         }
 
-        
+        public int createevent(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintUserCode)
+        {
+            int tmp = new int();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_IngresarEvento", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsEvent.Title;
+                cmd.Parameters.Add("@strDescripcion", System.Data.SqlDbType.VarChar).Value = pclsEvent.Description;
+                cmd.Parameters.Add("@strUbicacion", System.Data.SqlDbType.VarChar).Value = pclsEvent.Location;
+                cmd.Parameters.Add("@btEsConcierto", System.Data.SqlDbType.Bit).Value = pclsEvent.IsConcert;
+                cmd.Parameters.Add("@strEstado", System.Data.SqlDbType.VarChar).Value = pclsEvent.State;
+                cmd.Parameters.Add("@intCodUsuario", System.Data.SqlDbType.Int).Value = pintUserCode;
+                cmd.Parameters.Add("@dtFechaHora", System.Data.SqlDbType.DateTime).Value = Convert.ToDateTime(pclsEvent.Date + " " + pclsEvent.Time);
+                SqlParameter id = cmd.Parameters.Add("@intCodEvento", SqlDbType.Int);
+                id.Direction = ParameterDirection.Output;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                Console.Write("entre");
+                tmp = Convert.ToInt32(id.Value.ToString());
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message =ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tmp;
+        }
 
-
+        public void getnew(ref clsNew pclsNew, ref clsResponse pclsResponse, int pintCodeNew)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetNew", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodeNew", System.Data.SqlDbType.Int).Value = pintCodeNew;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                while (result.Read())
+                {
+                    pclsNew.BandName = result["Banda"].ToString();
+                    pclsNew.Content = result["Contenido"].ToString();
+                    pclsNew.Title = result["Encabezado"].ToString();
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString(), CultureInfo.InvariantCulture);
+                    pclsNew.Date = dat.ToString("yyyy") + "-" + dat.ToString("MM") + '-' + dat.ToString("dd");
+                }
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         public static void Main()
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsNew d = new clsNew();
+            clsEvent d = new clsEvent();
             d.Title = "a";
-            d.Content = "b";
+            d.Description = "b";
+            d.IsConcert = true;
+            d.Location = "tencha";
+            d.State = "cancelado";
+            d.Time = "07:08:00";
+            d.Date = "2007-05-08";
 
 
 
             Serializer r = new Serializer();
             
            // a.createdisk(ref d,ref b,124);
-            //Console.WriteLine(r.Serialize(a.createnew(ref d, ref b,124)));
+            Console.WriteLine(a.createevent(ref d, ref b,124));
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }

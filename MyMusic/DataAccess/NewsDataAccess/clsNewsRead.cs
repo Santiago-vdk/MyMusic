@@ -19,7 +19,7 @@ namespace DataAccess.NewsDataAccess
             {
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetNew", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intCodeNew", System.Data.SqlDbType.Int).Value = pintCodeNew;
+                cmd.Parameters.Add("@intCodNew", System.Data.SqlDbType.Int).Value = pintCodeNew;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
                 while (result.Read())
