@@ -142,6 +142,7 @@ namespace DataAccess.FanDataAccess
                     tmp.Date = dat.ToString("yyyy-MM-dd");
                     tmp.Type = Convert.ToInt32(result["Tipo"].ToString());
                     tmp.Id = Convert.ToInt32(result["Codigo"].ToString());
+                    tmp.OwnerId = Convert.ToInt32(result["IDOwner"].ToString()); 
                     Wall.Add(tmp);
                 }
 
