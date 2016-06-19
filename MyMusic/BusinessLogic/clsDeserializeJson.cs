@@ -115,11 +115,12 @@ namespace BusinessLogic
             dynamic data = JObject.Parse(pstringData);
 
             Event.Title = Convert.ToString(data.Title);
-            Event.IsConcert = Convert.ToString(data.IsConcert);
+            Event.IsConcert = Convert.ToBoolean(data.IsConcert);
             Event.Description = Convert.ToString(data.Description);
             Event.Date = Convert.ToString(data.Date);
             Event.Location = Convert.ToString(data.Location);
             Event.Time = Convert.ToString(data.Time);
+            Event.State = Convert.ToString(data.State);
 
             return Event;
         }

@@ -45,6 +45,13 @@ namespace MyFan_Webapp
             return listGenders;
         }
 
+        public static clsEvent parseEvent(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            clsEvent Event = JsonConvert.DeserializeObject<clsEvent>(Convert.ToString(Response.Data));
+            return Event;
+        }
+
         public static clsNew parseNew(string json)
         {
             clsResponse Response = parseResponse(json);
@@ -87,6 +94,15 @@ namespace MyFan_Webapp
 
             return profile;
 
+        }
+
+        public static int parseEventForm(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
+            System.Diagnostics.Debug.WriteLine(json);
+            int eventId = JsonConvert.DeserializeObject<int>(Convert.ToString(data.Id));
+            return eventId;
         }
 
         public static int parseAlbumForm(string json)

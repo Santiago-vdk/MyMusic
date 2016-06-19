@@ -30,6 +30,20 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             }
         }
 
+        public static async Task<string> GetEvent(int userId, int eventId)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
 
 
     }
