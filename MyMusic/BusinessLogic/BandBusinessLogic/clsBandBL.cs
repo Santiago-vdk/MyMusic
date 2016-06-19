@@ -43,6 +43,7 @@ namespace BusinessLogic.BandBusinessLogic
             clsResponse response = new clsResponse();
             List<clsPublication> publications = FacadeDA.getWallBand(ref response, pintUserId, pintOffset, pintLimit);
             
+
             response.Data = serializer.Serialize(publications);
             return serializer.Serialize(response);
         }
