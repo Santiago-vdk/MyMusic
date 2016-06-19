@@ -298,25 +298,25 @@ namespace DataAccess.BandDataAccess
             return Wall;
         }
 
-     
-
+        
+        
 
 
         public static void Main()
         {
             clsBandRead a = new clsBandRead();
             clsResponse b = new clsResponse();
-            clsNew d = new clsNew();
-            d.Title = "a";
-            d.Content = "b";
+            clsEvent d = new clsEvent();
 
+
+         
 
 
 
             Serializer r = new Serializer();
             
-           // a.createdisk(ref d,ref b,124);
-            //Console.WriteLine(a.createnew(ref d, ref b,124));
+            //a.geteventinfo(ref d,ref b,4);
+            Console.WriteLine(r.Serialize(d));
             Console.WriteLine(b.Message);
             Console.ReadKey();
         }

@@ -152,7 +152,10 @@ namespace DataAccess
         {
             EventsDA.geteventreviews(ref pclsReviews, ref pclsResponse, pintEventCode);
         }
-
+        public void geteventinfo(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintEventCode)
+        {
+            EventsDA.geteventinfo(ref pclsEvent, ref pclsResponse, pintEventCode);
+        }
 
         public static void Main()
         {

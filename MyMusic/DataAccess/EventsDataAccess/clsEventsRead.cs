@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,19 +13,26 @@ namespace DataAccess.EventsDataAccess
     {
         private SqlConnection conn = new clsConnection().getPort();
 
-        public void geteventinfo(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintDiskCode)
+        public void geteventinfo(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintEventCode)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetInfoDisc", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetEvent", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intDisc", System.Data.SqlDbType.Int).Value = pintDiskCode;
+                cmd.Parameters.Add("@intCodEvent", System.Data.SqlDbType.Int).Value = pintEventCode;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
                 while (result.Read())
                 {
-                   
+                    pclsEvent.Title = (result["Nombre"].ToString());
+                    pclsEvent.Description = (result["strDescripcion"].ToString());
+                    pclsEvent.IsConcert = Convert.ToBoolean(result["Concierto"].ToString());
+                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString());
+                    pclsEvent.Date = dat.ToString("yyyy-MM-dd");
+                    pclsEvent.Time = dat.ToString("HH:mm:ss");
+                    pclsEvent.State = (result["Estado"].ToString());
+                    pclsEvent.Location = (result["Ubicacion"].ToString());
                 }
 
                 pclsResponse.Code = 0;
@@ -35,20 +43,23 @@ namespace DataAccess.EventsDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
                 conn.Close();
             }
 
+
         }
+
+
         public void geteventreviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintEventCode)
         {
             try

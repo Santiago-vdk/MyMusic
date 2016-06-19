@@ -24,5 +24,9 @@ namespace DataAccess.EventsDataAccess
         {
             EventsRead.geteventreviews(ref pclsReviews, ref pclsResponse, pintEventCode);
         }
+        public void geteventinfo(ref clsEvent pclsEvent, ref clsResponse pclsResponse, int pintEventCode)
+        {
+            EventsRead.geteventinfo(ref pclsEvent, ref pclsResponse, pintEventCode);
+        }
     }
 }
