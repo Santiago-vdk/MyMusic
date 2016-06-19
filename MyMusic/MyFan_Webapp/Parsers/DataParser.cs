@@ -59,7 +59,7 @@ namespace MyFan_Webapp
             return disk;
         }
 
-        internal static int parseNewForm(string json)
+        public static int parseNewForm(string json)
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);

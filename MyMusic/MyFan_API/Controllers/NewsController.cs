@@ -35,6 +35,7 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1/news/1 GET
         public IHttpActionResult GetOneNew(int bandId, int newId)
         {
+            return new NewControllerCallsGetNew(Request,newId);
             //Endpoint for retrieving one new of a band
             throw new NotImplementedException();
         }

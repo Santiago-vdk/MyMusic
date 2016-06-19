@@ -35,4 +35,31 @@ namespace MyFan_API.ControllerCalls
         }
     }
 
+    public class NewControllerCallsGetNew : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _newId;
+
+
+        public NewControllerCallsGetNew(HttpRequestMessage request, int newId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _newId = newId;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getNewInfo(_newId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+    
+
+
 }
