@@ -59,7 +59,6 @@ namespace BusinessLogic.EventBusinessLogic
 
             if (request.Id == pintBandId)
             {
-                Event.State = "pendiente";
                 Event.Id = FacadeDA.createEvent(ref Event, ref response, pintBandId);
             }
 
