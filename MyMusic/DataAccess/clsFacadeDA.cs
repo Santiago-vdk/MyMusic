@@ -156,6 +156,18 @@ namespace DataAccess
         {
             EventsDA.geteventinfo(ref pclsEvent, ref pclsResponse, pintEventCode);
         }
+        public void followBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+          FanDA.followBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
+        public bool isFollowBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            return FanDA.isFollowBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
+        public void stopfollowBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            FanDA.stopfollowBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
 
         public static void Main()
         {

@@ -83,5 +83,19 @@ namespace DataAccess.FanDataAccess
             FanRead.getGenresFan(ref pclsInfoFan, ref pclsResponse, pintUserCode);
         }
 
+        public void followBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            FanWrite.followBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
+
+        public bool isFollowBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            return FanRead.isFollowBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
+
+        public void stopfollowBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            FanWrite.stopfollowBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
     }
 }
