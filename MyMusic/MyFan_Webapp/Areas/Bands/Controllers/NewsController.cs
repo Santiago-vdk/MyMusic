@@ -19,6 +19,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
 
             string response = await clsBandRequests.getBandAlbums(userId);
             string response2 = await clsNewRequests.GetNew(userId, id);
+            System.Diagnostics.Debug.WriteLine("antes de parsear " + response2);
             if (!ErrorParser.parse(response2).Equals(""))
             {
                 ViewBag.Message = "Couldn´t get the news correctly";
@@ -28,7 +29,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-
+           
             profile.Albums = DataParser.parseAlbums(response);
             profile.New = DataParser.parseNew(response2);
 
@@ -55,7 +56,16 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             int Id = DataParser.parseNewForm(response);
             System.Diagnostics.Debug.WriteLine("Got id: " + Id);
 
-            return RedirectToAction("Index", "News", new { userId = Int32.Parse(Session["Id"].ToString()), id = Id });
+
+
+          
+
+
+            return Json(new
+            {
+                redirectUrl = Url.Action("Index", "News", new { userId = Int32.Parse(Session["Id"].ToString()), id = Id }),
+                isRedirect = true
+            });
         }
 
         public async Task<ActionResult> Create(int userId)
