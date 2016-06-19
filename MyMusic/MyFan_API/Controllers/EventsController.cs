@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFan_API.ControllerCalls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,11 +11,12 @@ namespace MyFan_API.Controllers
     [RoutePrefix("api/v1/users/bands/{bandId}/events")]
     public class EventsController : ApiController
     {
-        [Route("")]
-        [HttpPost]
+        [Route(""), HttpPost]
         // api/v1/users/bands/1/events POST
         public IHttpActionResult CreateEvent(int bandId)
         {
+            return new EventControllerCallsCreateEvent(Request, bandId);
+
             //Endpoint for creating an event for a band
             throw new NotImplementedException();
         }
@@ -28,20 +30,21 @@ namespace MyFan_API.Controllers
             throw new NotImplementedException();
         }
 
-        [Route("{eventId}")]
-        [HttpGet]
+        [Route("{eventId}"), HttpGet]
         // api/v1/users/bands/1/events/1 GET
         public IHttpActionResult GetOneEvent(int bandId, int eventId)
         {
+            return new EventControllerCallGetEvent(Request, eventId);
+
             //Endpoint for retrieving one event of a band
             throw new NotImplementedException();
         }
 
-        [Route("{eventId}")]
-        [HttpPut]
+        [Route("{eventId}"), HttpPut]
         // api/v1/users/bands/1/events/1 PUT
         public IHttpActionResult UpdateOneEvent(int bandId, int eventId)
         {
+            return new EventControllerCallUpdateEvent(Request, eventId);
             //Endpoint for updating one event of a band
             throw new NotImplementedException();
         }
