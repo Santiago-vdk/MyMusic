@@ -21,7 +21,7 @@ namespace BusinessLogic.EventBusinessLogic
             clsEvent Event = new clsEvent();
             clsResponse response = new clsResponse();
 
-            //FacadeDA
+            FacadeDA.geteventinfo(ref Event,ref response,pintEventId);
 
             response.Data = serializer.Serialize(Event);
             return serializer.Serialize(response);
