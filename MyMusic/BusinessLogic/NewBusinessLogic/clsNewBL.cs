@@ -43,6 +43,7 @@ namespace BusinessLogic.NewBusinessLogic
 
             FacadeDA.getnew(ref New,ref response,pintNewId);
 
+            New.Id = pintNewId;
             response.Data = serializer.Serialize(New);
             return serializer.Serialize(response);
         }
