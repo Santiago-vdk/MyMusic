@@ -162,5 +162,10 @@ namespace BusinessLogic
         {
             return EventBL.changeState(pstringState,pintEventId);
         }
+
+        public string followBand(int pintFanId, int pintBandId)
+        {
+            return FanBL.followBand(pintFanId,pintBandId);
+        }
     }
 }
