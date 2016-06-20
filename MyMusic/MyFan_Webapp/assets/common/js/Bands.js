@@ -1,18 +1,15 @@
 ﻿function follow(fanId, bandId) {
-    console.log("Fan with Id " + fanId);
-    console.log("Band with Id " + bandId);
-
-
+    console.log("Llamada follow");
     if ($("#Follow_Button").text() == "Unfollow") {
         unfollow(fanId, bandId);
-        console.log("Llamada un follow");
+        
     }
-
+    
     var request = {
         fanId: fanId,
         bandId: bandId
     }
-    console.log(request);
+    
     $.ajax({
         url: "/Fans/" + fanId + "/followBand",
         dataType: 'json',
@@ -36,7 +33,7 @@ function unfollow(fanId, bandId) {
         fanId: fanId,
         bandId: bandId
     }
-    console.log(request);
+    console.log("Llamada unfollow");
     $.ajax({
         url: "/Fans/" + fanId + "/unfollowBand",
         dataType: 'json',
@@ -44,7 +41,8 @@ function unfollow(fanId, bandId) {
         type: "POST",
         data: JSON.stringify(request),
         success: function (data, status) {
-            if (data.state == true) {
+
+            if (data.state == "True") {
                 $("#Follow_Button").text('Follow');
             }
         },
@@ -75,7 +73,7 @@ function getPopularity(fanId, bandId) {
         data: JSON.stringify(request),
         success: function (json, status) {
             var data = JSON.parse(json);
-            console.log(data);
+   
             
 
             $("#BandFollowers").html(abbreviateNumber(data.Followers));
@@ -131,7 +129,7 @@ function isFollowing(fanId, bandId) {
         fanId: fanId,
         bandId: bandId
     }
-    
+    console.log("Is following?");
     $.ajax({
         url: "/Fans/" + fanId + "/isFollowingBand",
         dataType: 'json',
@@ -139,8 +137,8 @@ function isFollowing(fanId, bandId) {
         type: "POST",
         data: JSON.stringify(request),
         success: function (data, status) {
-
-            if (data.state == true) {
+           
+            if (data.state == "True") {
            
                 $("#Follow_Button").text('Unfollow');
             }

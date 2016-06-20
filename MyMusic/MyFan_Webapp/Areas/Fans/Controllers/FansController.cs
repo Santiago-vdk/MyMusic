@@ -235,10 +235,10 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 if (!ParsedMessage.Equals(""))
                 {
                     ViewBag.Message = "Something went wrong";
-                    return Json(new { state = false });
+                    return Json(new { state = "False" });
                 }
 
-                return Json(new { state = true });
+                return Json(new { state = "True"});
             }
             else
             {
