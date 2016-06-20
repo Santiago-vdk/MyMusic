@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using Utility;
 using System.Collections.Generic;
+using tweetupdater;
 
 namespace BusinessLogic.BandBusinessLogic
 {
@@ -150,11 +151,26 @@ namespace BusinessLogic.BandBusinessLogic
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
+            TwitterCom twitter = new TwitterCom();
 
             bool existBand = FacadeDA.existreviewdisk(pintBandId, request.Id, ref response);
             if (!existBand && response.Success)
             {
                 FacadeDA.createReviewBand(ref review, request.Id, pintBandId, ref response);
+                try
+                {
+                    string hashtag = FacadeDA.getHashTag(ref response, pintBandId);
+                    string fanName = FacadeDA.getFanName(ref response, request.Id);
+                    string msj = fanName + "sigue a " + hashtag;
+                    twitter.sendTweet(msj);
+                }
+                catch
+                {
+                    //error info
+                    response.Success = false;
+                    response.Message = "Error with twitter";
+                    response.Code = 5;
+                }
             }
 
             //data null
