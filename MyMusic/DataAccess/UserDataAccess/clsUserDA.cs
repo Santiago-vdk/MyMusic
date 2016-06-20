@@ -9,13 +9,14 @@ namespace DataAccess.UserDataAccess
 {
     public class clsUserDA
     {
-        clsUserRead FanRead = new clsUserRead();
+        clsUserRead UserRead = new clsUserRead();
+        clsUserWrite UserWrite = new clsUserWrite();
 
         public clsForm getAllGenres(clsForm pclsForm, ref clsResponse pclsResponse)
         {
             try
             {
-                return FanRead.getAllgenres(pclsForm,ref pclsResponse);
+                return UserRead.getAllgenres(pclsForm, ref pclsResponse);
             }
             catch
             {
@@ -30,7 +31,7 @@ namespace DataAccess.UserDataAccess
         {
             try
             {
-                return FanRead.getAllLocations(pclsForm, ref pclsResponse);
+                return UserRead.getAllLocations(pclsForm, ref pclsResponse);
             }
             catch
             {
@@ -45,13 +46,13 @@ namespace DataAccess.UserDataAccess
         {
             try
             {
-                FanRead.validateUser(pclsInfoUser, ref pclsResponse);
+                UserRead.validateUser(pclsInfoUser, ref pclsResponse);
             }
             catch
             {
                 pclsResponse.Code = 007;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Internal Error";                   
+                pclsResponse.Message = "Internal Error";
             }
 
         }
@@ -59,7 +60,7 @@ namespace DataAccess.UserDataAccess
         {
             try
             {
-                return FanRead.getSaltPass(pclsInfoUser, ref pclsResponse);
+                return UserRead.getSaltPass(pclsInfoUser, ref pclsResponse);
             }
             catch
             {
@@ -70,6 +71,9 @@ namespace DataAccess.UserDataAccess
             }
 
         }
-
+        public void createNewGenero(string strGenero, ref clsResponse pclsResponse)
+        {
+            UserWrite.createNewGenero(strGenero, ref pclsResponse);
+        }
     }
 }

@@ -42,13 +42,13 @@ namespace DataAccess.NewsDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
