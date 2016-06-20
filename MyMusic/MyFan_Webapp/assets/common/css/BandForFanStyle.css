@@ -64,6 +64,31 @@ h4 {
     padding-top: 5%;
         padding-bottom: 5%;
 }
+//***********************************************************************/
+#review-section-viewing {
+    color:black;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 5%;
+        padding-bottom: 5%;
+}
+#review-sectio-viewing .row {
+    //margin-left: -10px;
+    //margin-right: auto;
+}
+#review-section-viewing p {
+    color: #000;
+}
+#review-section-viewing h4 {
+    color: #000;
+}
+#review-section-viewing img {
+        float: right;
+    height: 50%;
+    width: 50%;
+}
+
+//***********************************************************************/
 #review-section .row {
     //margin-left: -10px;
     //margin-right: auto;

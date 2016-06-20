@@ -15,68 +15,27 @@
 <body>
     <!-- Post-Section -->
     <div id="post-section" class="row">
-        <h2 class="post-header">Album @Model.BandProfile.Disk.Name</h2>
+        <h2 class="post-header">Album - @Model.BandProfile.Disk.Name</h2>
+
+
         <div class="row">
-            <div class="col-md-5">
-
-                <div class="row">
-                    <form id="form-new-album" class='form-horizontal'>
-
-                        <div class="form-group">
-                            <div class="col-xs-3 text-right">
-                                <label for="inputAlbumName">Album Name:</label>
-                            </div>
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" placeholder="Album Name" value="@Model.BandProfile.Disk.Name" name="AlbumName" id="AlbumName" disabled />
-                            </div>
-                        </div>
+            <div class="col-md-6">
 
 
-                        <div class="form-group">
-                            <div class="col-xs-3 text-right">
-                                <label for="inputLabel">Record Label:</label>
-                            </div>
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" placeholder="Record Label Name" value="@Model.BandProfile.Disk.Label" name="Label" id="inputLabel" disabled />
-                            </div>
-                        </div>
+                <img id="album-pic-index" class="img-responsive img-circle" src="~/Users/imageAlbum?Id=@Model.BandProfile.Disk.Id" />
+                <h3><b>Record Label:</b> @Model.BandProfile.Disk.Label</h3>
+                <h3><b>Release Date:</b> @Model.BandProfile.Disk.DateCreation</h3>
+                <h3><b>Genre:</b> @Model.BandProfile.Disk.Genre</h3>
 
 
-                        <div class="form-group">
-                            <div class="col-xs-3 text-right">
-                                <label for="inputDateRelease">Release Date:</label>
-                            </div>
-                            <div class="col-xs-9">
-                                <input type="date" id="inputDateRelease" value="@Model.BandProfile.Disk.DateCreation" name="DateRelease" disabled>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-xs-3 text-right">
-                                <label for="selectMusicalGenre">Musical Genre</label>
-                            </div>
-                            <div class="col-xs-9">
-                                <!-- multiple data-max-options="5"-->
-                                <select class="selectpicker" data-live-search="true" id="selectGenres" name="Genres" data-width="100%" disabled>
-
-                                    <option id="@Model.BandProfile.Disk.CodGenre" data-tokens="@Model.BandProfile.Disk.Genre">@Model.BandProfile.Disk.Genre</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-
-                    </form>
-
-
-                </div>
-
+            </div>
+            <div class="col-md-3">
                 <div class="row reviews">
                     <!-- Profile Review Section -->
 
                     <h2>Band Reviews</h2>
 
-                    <div id="review-section" class="row">
+                    <div id="review-section-viewing" class="row">
 
                         <div class="row ">
                             <div class="col-xs-12 review-box">
@@ -188,21 +147,14 @@
                     </div>
                 </div>
 
+
             </div>
+        </div>
 
-
-
+        <div class="row">
 
             <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-5">
-                        <img id="album-pic-index" class="img-responsive img-circle" src="~/Users/imageAlbum?Id=@Model.BandProfile.Disk.Id" />
-                        <br />
-                    </div>
 
-
-
-                </div>
                 <div class="row right-section">
 
                     <table class="table table-bordered table-hover" id="table">
@@ -234,10 +186,12 @@
                     </table>
                 </div>
             </div>
+
         </div>
-        <br />
-        <br />
-        <br />
+
+
+
+
 
     </div>
 

@@ -16,7 +16,8 @@ jQuery(function ($) {
         rules: {
             EventTitle: {
                 required: true,
-                minlength: 10
+                minlength: 10,
+                maxlength: 25
             },
             EventDate: {
                 required: true,
@@ -28,7 +29,7 @@ jQuery(function ($) {
             EventType: {
                 required: true
             },
-            EventState: {
+            EventType: {
                 required: true
             },
             EventState: {
@@ -40,9 +41,10 @@ jQuery(function ($) {
             },
             EventContent: {
                 required: true,
-                minlength:25
-            }
+                minlength: 25,
+                maxlength: 250
 
+            }
 
         }
     });
