@@ -30,7 +30,7 @@ namespace MyFan_API.Controllers
 
         [Route("{bandId}"), HttpGet]
         // api/v1/users/bands/1 GET
-        public IHttpActionResult GetOneBand(int bandId, string q, int offset = 0, int limit = 5)
+        public IHttpActionResult GetOneBand(int bandId, string q, int offset = 0, int limit = 5, string value = "")
         {
             if (String.Equals(q, "albums"))
             {
@@ -42,8 +42,11 @@ namespace MyFan_API.Controllers
             }
             if (String.Equals(q, "all"))
             {
-                System.Diagnostics.Debug.WriteLine("Getting all info for band " + bandId);
                 return new BandControllerCallsGetProfile(Request, bandId);
+            }
+            if(String.Equals(q, "stats") && !String.Equals(value,""))
+            {
+
             }
             //Endpoint for retrieving one band
             throw new NotImplementedException();

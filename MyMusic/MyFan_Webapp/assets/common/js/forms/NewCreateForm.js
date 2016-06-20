@@ -10,11 +10,13 @@ jQuery(function ($) {
         rules: {
             NewTitle: {
                 required: true,
-                minlength: 10
+                minlength: 10,
+                maxlength: 20
             },
             NewContent: {
                 required: true,
-                minlength: 50
+                minlength: 50,
+                maxlength: 500
             }
          
         }
