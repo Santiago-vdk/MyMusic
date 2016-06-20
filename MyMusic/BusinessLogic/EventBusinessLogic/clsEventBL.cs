@@ -32,7 +32,7 @@ namespace BusinessLogic.EventBusinessLogic
             List<clsReview> reviews = new List<clsReview>();
             clsResponse response = new clsResponse();
 
-            //FacadeDA.geteventreviews(ref reviews, ref response, pintEventId);
+            FacadeDA.geteventreviews(ref reviews, ref response, pintEventId);
 
             response.Data = serializer.Serialize(reviews);
             return serializer.Serialize(response);
@@ -44,9 +44,11 @@ namespace BusinessLogic.EventBusinessLogic
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
 
-            //validar si el usuario ya habia hecho review
-            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
-
+            bool existReview = FacadeDA.existreviewevent(pintEventId, request.Id, ref response);
+            if (!existReview && response.Success)
+            {
+                FacadeDA.createEventReview(ref review,ref response, request.Id, pintEventId);
+            }
             //data null
             return serializer.Serialize(response);
         }
