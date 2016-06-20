@@ -38,12 +38,13 @@ namespace BusinessLogic.EventBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getOwnEventReview(int pintFanId, int pintEventId)
+        public string getOwnEventReview(string pstringRequest, int pintEventId)
         {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsReview review = new clsReview();
             clsResponse response = new clsResponse();
 
-            FacadeDA.getEventReviewFan(ref review, pintEventId,pintFanId, ref response);
+            FacadeDA.getEventReviewFan(ref review, pintEventId,request.Id, ref response);
 
             response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
@@ -96,11 +97,12 @@ namespace BusinessLogic.EventBusinessLogic
 
         }
 
-        public string deleteEventReview(int pintFanId, int pintEventId)
+        public string deleteEventReview(string pstringRequest, int pintEventId)
         {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsResponse response = new clsResponse();
 
-            FacadeDA.deleteEventReview(ref response,pintFanId, pintEventId);
+            FacadeDA.deleteEventReview(ref response,request.Id, pintEventId);
 
             return serializer.Serialize(response);
         }
