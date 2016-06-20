@@ -270,4 +270,28 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+
+    public class BandControllerCallsGetDashboard : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+        public BandControllerCallsGetDashboard(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                //Content = new StringContent(_facade.Dashboard(userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+    
 }

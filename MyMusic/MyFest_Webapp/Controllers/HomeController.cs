@@ -70,23 +70,12 @@ namespace MyFest_Webapp.Controllers
 
 
 
-        public async Task<ActionResult> Dashboard(string name, string country, string genre)
+        public async Task<ActionResult> Dashboard(string bandId)
         {
-
-            clsSearch searchParams = new clsSearch();
-            searchParams.Name = name;
-            searchParams.Genre = genre;
-            searchParams.Country = country;
-
-            string response2 = await clsUserRequests.Search(searchParams);
-
-            System.Diagnostics.Debug.WriteLine("search " + response2);
-
-
-            FanProfileViewModel profile = new FanProfileViewModel();
-
-            profile.SearchResults = DataParser.parseBands(response2);
-            return View(profile);
+            System.Diagnostics.Debug.WriteLine("Dashboaer " + bandId);
+            string response2 = await MyFan_Webapp.Areas.Bands.Requests.clsBandRequests.GetBandDashboard(Int32.Parse(bandId));
+            return Json("");
+            
         }
 
     }

@@ -82,7 +82,7 @@
             <!-- Post -->
             @foreach (var Band in Model.SearchResults)
             {
-                <a href="~/Fans/@Model.Id/Bands/@Band.Id">
+                <a href="Dashboard/?bandId=@Band.Id">
                     <div id="Res" class="col-lg-8 center-block no-float">
 
 
@@ -93,7 +93,7 @@
                                     <h4>Foundation  Year: @Band.DateCreation</h4>
                                 </div>
                                 <div class="col-xs-4 post-title">
-                                    <a href="~/Fans/@Model.Id/Bands/@Band.Id"><img class="img-circle img-profile" src="~/Users/image?Id=@Band.Id"></a>
+                                    <a href=""><img class="img-circle img-profile" src="~/Users/image?Id=@Band.Id"></a>
                                 </div>
                             </div>
 

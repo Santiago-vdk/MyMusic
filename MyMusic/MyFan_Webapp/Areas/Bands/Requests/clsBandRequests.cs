@@ -64,6 +64,23 @@ namespace MyFan_Webapp.Areas.Bands.Requests
 
         }
 
+        public static async Task<string> GetBandDashboard(int Id)
+        {
+            // HTTP GET
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + Id + "/?q=dashboard");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else //if ((int) response.StatusCode == 500)
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+
+
+        }
+
 
 
         public static async Task<string> GetBandInfo(int Id)

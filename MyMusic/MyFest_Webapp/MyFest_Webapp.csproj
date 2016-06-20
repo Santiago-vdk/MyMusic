@@ -141,6 +141,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\Genres.cshtml" />
+    <Content Include="Views\Home\ShowDashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

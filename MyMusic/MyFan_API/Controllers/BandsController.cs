@@ -56,6 +56,11 @@ namespace MyFan_API.Controllers
             {
                 return new BandControllerCallsGetOneReview(Request, bandId);
             }
+            if (String.Equals(q, "dashboard"))
+            {
+                System.Diagnostics.Debug.WriteLine("Getting dashboard for" + bandId);
+                return new BandControllerCallsGetDashboard(Request, bandId);
+            }
             //Endpoint for retrieving one band
             throw new NotImplementedException();
         }
