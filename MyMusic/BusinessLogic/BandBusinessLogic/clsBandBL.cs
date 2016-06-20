@@ -201,8 +201,10 @@ namespace BusinessLogic.BandBusinessLogic
             clsResponse response = new clsResponse();
             clsBandDashboard dashboard = new clsBandDashboard();
 
-            //BandStats.Calification = FacadeDA.getCalificationBand(ref response, pintBandId);
-            //BandStats.Followers = FacadeDA.getFollowersBand(ref response, pintBandId);
+            dashboard.Calification = FacadeDA.getCalificationBand(ref response, pintBandId);
+            dashboard.Followers = FacadeDA.getFollowersBand(ref response, pintBandId);
+            dashboard.Disks = FacadeDA.getBandDiscCAlification(ref response, pintBandId);
+            dashboard.Events = FacadeDA.getBandEventCAlification(ref response, pintBandId);
 
             response.Data = serializer.Serialize(dashboard);
             return serializer.Serialize(response);

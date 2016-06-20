@@ -11,5 +11,6 @@ namespace DTO
         public int Calification { get; set; }
         public int Disks { get; set; }
         public int Events { get; set; }
+        public int Followers { get; set; }
     }
 }

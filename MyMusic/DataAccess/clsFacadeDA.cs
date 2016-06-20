@@ -229,5 +229,15 @@ namespace DataAccess
             return FanDA.getFanName(ref pclsResponse, pintFanCode);
         }
 
+        public int getBandDiscCAlification(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandDA.getBandDiscCAlification(ref pclsResponse, pintBandCode);
+        }
+
+        public int getBandEventCAlification(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandDA.getBandEventCAlification(ref pclsResponse, pintBandCode);
+        }
+
     }
 }

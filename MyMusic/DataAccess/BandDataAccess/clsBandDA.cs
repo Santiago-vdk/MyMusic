@@ -80,5 +80,17 @@ namespace DataAccess.BandDataAccess
         {
             return BandRead.getHashTag(ref pclsResponse, pintBandCode);
         }
+
+        public int getBandDiscCAlification(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandRead.getBandDiscCAlification(ref pclsResponse, pintBandCode);
+        }
+
+        public int getBandEventCAlification(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandRead.getBandEventCAlification(ref pclsResponse, pintBandCode);
+        }
+
+
     }
 }
