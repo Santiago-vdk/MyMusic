@@ -49,3 +49,56 @@ function GetDiskReviews(fanId, bandId, albumId) {
     });
     return false;
 }
+
+
+function GetAlbumReviewsInBand(bandId, albumId) {
+    console.log("Called album isnide band" + bandId + " " + " " + albumId);
+
+
+    var request = {
+        userId: bandId,
+        id: albumId
+    }
+    console.log(request)
+    $.ajax({
+        url: "/Bands/" + bandId + "/Albums/Reviews/" + albumId,
+        dataType: 'json',
+        contentType: 'application/json',
+        type: "POST",
+        data: JSON.stringify(request),
+        success: function (data, status) {
+
+            console.log(data);
+            for (i = 0; i < data.length; i++) {
+                $("#review-section").append(
+
+                '<div id="review-section-viewing" class="row">' +
+                  ' <div class="row ">' +
+                      ' <div class="col-xs-12 review-box">' +
+
+                          ' <div class="row">' +
+
+                               '<div class="col-xs-6 review-user"><h3>' + data[i].Author + '</h3></div>' +
+
+                              ' <div class="col-xs-6"><img class="img-circle" width="50" height="50" src="/assets/common/img/califications/' + data[i].Calification + '.png"></div>' +
+                           '</div>' +
+
+                           '<div class="row">' +
+
+                               '<div class="col-xs-12">' +
+                                  ' <p>' + data[i].Comment + '</p>' +
+                               '</div>' +
+                           '</div>' +
+                       '</div>' +
+                   '</div>' +
+               '</div><br/>')
+
+            }
+        },
+        error: function () {
+            alert('Something goes wrong!');
+
+        }
+    });
+    return false;
+}

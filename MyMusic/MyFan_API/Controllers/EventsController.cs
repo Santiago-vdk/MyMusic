@@ -35,7 +35,7 @@ namespace MyFan_API.Controllers
 
         [Route("{eventId}"), HttpGet]
         // api/v1/users/bands/1/events/1 GET
-        public IHttpActionResult GetOneEvent(string q, int bandId, int eventId)
+        public IHttpActionResult GetOneEvent(int bandId, int eventId, string q = "")
         {
             if (String.Equals(q, "reviews"))
             {
@@ -45,6 +45,7 @@ namespace MyFan_API.Controllers
             {
                 return new EventControllerCallGetEventReview(Request, eventId);
             }
+
             return new EventControllerCallGetEvent(Request, eventId);
 
             //Endpoint for retrieving one event of a band

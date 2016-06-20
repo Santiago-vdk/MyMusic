@@ -46,7 +46,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
 
         public static async Task<string> GetEventReviews(int userId, int eventId)
         {
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/q=reviews");
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/?q=reviews");
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;
