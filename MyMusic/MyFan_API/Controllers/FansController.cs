@@ -41,7 +41,7 @@ namespace MyFan_API.Controllers
 
         [Route("{fanId}"), HttpGet]
         // api/v1/users/fans/1 GET
-        public IHttpActionResult Get(int fanId, string q, int offset = 0, int limit = 5)
+        public IHttpActionResult Get(int fanId, string q, string value, int offset = 0, int limit = 5)
         {
             if (String.Equals(q, "bands"))
             {
@@ -57,6 +57,10 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetProfile(Request, fanId);
             }
+            if(String.Equals(q, "isfollowing"))
+            {
+                return new FanControllerCallsIsFollowing(Request, fanId, Int32.Parse(value));
+            }
             //Endpoint for retrieving one fan
             throw new NotImplementedException();
 
@@ -69,14 +73,17 @@ namespace MyFan_API.Controllers
         [Route("{fanId}")]
         [HttpPut]
         // api/v1/users/fans/1 PUT
-        public IHttpActionResult UpdateOneFan(int fanId)
+        public IHttpActionResult UpdateOneFan(int fanId, string action, string value)
         {
-            System.Diagnostics.Debug.WriteLine("Updating fan with id " + fanId);
-            System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
-                //return Ok();
-                return new FanControllerCallsUpdateProfile(Request, fanId);
+            //System.Diagnostics.Debug.WriteLine("Updating fan with id " + fanId);
+           // System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
+            if(String.Equals(action, "follow"))
+            {
+                return new FanControllerCallsFollowBand(Request, fanId, Int32.Parse(value));
+            }
+            return new FanControllerCallsUpdateProfile(Request, fanId);
 
-            
+
             //Endpoint for updating one fan
             throw new NotImplementedException();
         }

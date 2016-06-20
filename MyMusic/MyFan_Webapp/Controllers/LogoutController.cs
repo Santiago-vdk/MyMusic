@@ -11,6 +11,7 @@ namespace MyFan_Webapp.Controllers
         // GET: Logout
         public ActionResult Index()
         {
+            System.Diagnostics.Debug.WriteLine("Logout");
             if (Session["token"] != null)
             {
                 if (Session.IsNewSession)
@@ -21,18 +22,26 @@ namespace MyFan_Webapp.Controllers
                     {
                         //logged out
                         Session["token"] = null;
+                        Session.Abandon();
+                        Response.Cookies["userId"].Expires = DateTime.Now.AddDays(-1);
                         return View("~/Views/Login/Index.cshtml");
 
                     }
                     //you just loggued in
                     //return View();
                     Session["token"] = null;
+                    Session.Abandon();
+                    Response.Cookies["userId"].Expires = DateTime.Now.AddDays(-1);
                     return View("~/Views/Login/Index.cshtml");
                 }
                 Session["token"] = null;
+                Session.Abandon();
+                Response.Cookies["userId"].Expires = DateTime.Now.AddDays(-1);
                 return View("~/Views/Login/Index.cshtml");
             }
             Session["token"] = null;
+            Session.Abandon();
+            Response.Cookies["userId"].Expires = DateTime.Now.AddDays(-1);
             return View("~/Views/Login/Index.cshtml");
         }
     }

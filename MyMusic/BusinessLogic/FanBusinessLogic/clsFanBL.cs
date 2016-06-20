@@ -126,14 +126,33 @@ namespace BusinessLogic.FanBusinessLogic
             return serializer.Serialize(response);
         }
 
-        
+        public string followBand(int pintFanId, int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+
+            FacadeDA.followBand(pintFanId,pintBandId,ref response);
+
+            return serializer.Serialize(response);
+        }
+        public string IsFollowed(int pintFanId, int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+            FacadeDA.isFollowBand(pintFanId, pintBandId, ref response);
+            return serializer.Serialize(response);
+        }
+        public string UnfollowBand(int pintFanId, int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+            FacadeDA.stopfollowBand(pintFanId, pintBandId, ref response);
+            return serializer.Serialize(response);
+        }
 
 
 
 
 
 
-         public static void Main()
+        public static void Main()
         {
             clsFanBL l = new clsFanBL();
             Console.Write(l.getForm());
