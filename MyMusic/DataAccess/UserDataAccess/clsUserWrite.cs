@@ -2,34 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.NewsDataAccess
+namespace DataAccess.UserDataAccess
 {
-    public class clsNewsRead
+    public class clsUserWrite
     {
         private SqlConnection conn = new clsConnection().getPort();
 
-        public void getnew(ref clsNew pclsNew, ref clsResponse pclsResponse, int pintCodeNew)
+        public void createNewGenero(string strGenero, ref clsResponse pclsResponse)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetNew", conn);
+
+                SqlCommand cmd = new SqlCommand("myFan.SP_CreateGenero", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intCodNew", System.Data.SqlDbType.Int).Value = pintCodeNew;
+                cmd.Parameters.Add("@strGenero", System.Data.SqlDbType.VarChar).Value = strGenero;
                 conn.Open();
-                SqlDataReader result = cmd.ExecuteReader();
-                while (result.Read())
-                {
-                    pclsNew.BandName  = result["Banda"].ToString();
-                    pclsNew.Content = result["Contenido"].ToString();
-                    pclsNew.Title = result["Encabezado"].ToString();
-                    DateTime dat = Convert.ToDateTime(result["Fecha"].ToString(), CultureInfo.InvariantCulture);               
-                    pclsNew.Date = dat.ToString("yyyy") + "-" + dat.ToString("MM") + '-' + dat.ToString("dd");
-                }
+                cmd.ExecuteNonQuery();
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
                 pclsResponse.Success = true;
@@ -50,6 +42,7 @@ namespace DataAccess.NewsDataAccess
             {
                 conn.Close();
             }
+
         }
     }
 }

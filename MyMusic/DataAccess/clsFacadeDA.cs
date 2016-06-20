@@ -216,20 +216,10 @@ namespace DataAccess
         {
             return BandDA.getFollowersBand(ref pclsResponse, pintBandCode);
         }
-
-        public static void Main()
+        public void createNewGenero(string strGenero, ref clsResponse pclsResponse)
         {
-            System.Diagnostics.Stopwatch sw = Stopwatch.StartNew();
-            clsFacadeDA a = new clsFacadeDA();
-            clsForm b = new clsForm();
-            clsResponse c = new clsResponse();
-            Serializer j = new Serializer();
-            clsInfoBand p = new clsInfoBand();
-
-            Console.WriteLine(j.Serialize(a.getAllGenres(a.getAllGenders(b,ref c),ref c)));
-            Console.WriteLine(sw.ElapsedMilliseconds);
-            sw.Stop();
-            Console.ReadKey();
+            UserDA.createNewGenero(strGenero, ref pclsResponse);
         }
+ 
     }
 }

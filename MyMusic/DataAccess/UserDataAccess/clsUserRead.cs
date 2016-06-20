@@ -38,13 +38,13 @@ namespace DataAccess.UserDataAccess
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             finally
@@ -79,13 +79,13 @@ namespace DataAccess.UserDataAccess
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             finally
@@ -133,13 +133,13 @@ namespace DataAccess.UserDataAccess
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             finally
@@ -172,13 +172,13 @@ namespace DataAccess.UserDataAccess
             catch (SqlException ex)
             {
                 pclsResponse.Code = 1;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
                 pclsResponse.Success = false;
             }
             finally
@@ -190,20 +190,5 @@ namespace DataAccess.UserDataAccess
         }
 
         
-
-
-
-        public static void Main()
-        {
-            clsUserRead a = new clsUserRead();
-            clsResponse b = new clsResponse();
-            clsInfoUser c = new clsInfoUser();
-            Serializer d = new Serializer();
-            c.Username = "mamador";
-
-            Console.WriteLine(d.Serialize(a.getSaltPass(c,ref b)));
-            Console.WriteLine(b.Message);
-            Console.ReadKey();
-        }
     }
 }
