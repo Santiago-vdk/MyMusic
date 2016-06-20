@@ -145,5 +145,16 @@ namespace BusinessLogic.BandBusinessLogic
             //data null
             return serializer.Serialize(response);
         }
+
+        public string getBandStats(int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+            clsBandStats BandStats = new clsBandStats();
+
+            //FacadeDA
+
+            response.Data = serializer.Serialize(BandStats);
+            return serializer.Serialize(response);
+        }
     }
 }

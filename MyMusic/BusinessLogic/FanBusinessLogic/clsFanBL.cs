@@ -76,6 +76,8 @@ namespace BusinessLogic.FanBusinessLogic
             FacadeDA.validateUser(InfoUser, ref response);
             if (!response.Success)//not existing username
             {
+
+
                 response = new clsResponse();//clear the response
                 InfoFan.Salt = clsHasher.genSalt();
                 InfoFan.SaltHashed = clsHasher.hashPassword(InfoFan.Password, InfoFan.Salt);

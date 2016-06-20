@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsBandsBlock.cs" />
+    <Compile Include="clsBandStats.cs" />
     <Compile Include="clsDisksBlock.cs" />
     <Compile Include="clsSimpleInfo.cs" />
     <Compile Include="clsInfoUser.cs" />

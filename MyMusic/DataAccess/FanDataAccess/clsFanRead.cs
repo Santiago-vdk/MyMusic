@@ -354,6 +354,54 @@ namespace DataAccess.FanDataAccess
             }
             return tmp;
         }
+
+        public void getReviewBand(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetReviewBands", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intUserFanCode", System.Data.SqlDbType.Int).Value = pintFanCode;
+                cmd.Parameters.Add("@intUserBandCode", System.Data.SqlDbType.Int).Value = pintFanCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                List<String> tmpGenres = new List<string>();
+                List<int> tmpCodGenres = new List<int>();
+                while (result.Read())
+                {
+                    pclsReview.Comment =  (result["Comentario"].ToString());
+                    pclsReview.Calification = result["CodigoGenero"].ToString();
+                }
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+
+
+
+
+
+
+
         public static void Main()
         {
             clsFanRead a = new clsFanRead();
