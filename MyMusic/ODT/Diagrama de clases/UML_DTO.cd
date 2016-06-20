@@ -1,74 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="DTO.clsDisc">
-    <Position X="4.5" Y="5.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAAEAAgAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>clsDisc.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DTO.clsInfoBand">
-    <Position X="2.75" Y="0.5" Width="2.25" />
+    <Position X="3" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AADAAAAAAAAAAAAAAQIAAAQAAAIAAgAiAAAEAAAAIAA=</HashCode>
+      <HashCode>IADCgAAAAAAAAAAAAQIAAAQAAAIAAgAiAAAEAAAAIEA=</HashCode>
       <FileName>clsInfoBand.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DTO.clsInfoFan">
-    <Position X="5.25" Y="0.5" Width="2.25" />
+    <Position X="5.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AADAAAAAAAAAAACAAQIAAAQAAAIIAgAiAAAAAAAAIAA=</HashCode>
+      <HashCode>IADCgAAAAAAAAACAAQIAAAQAAAIIAgAiAAAAAAAAIAA=</HashCode>
       <FileName>clsInfoFan.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DTO.clsEvent">
-    <Position X="0.5" Y="5.5" Width="2" />
+    <Position X="0.5" Y="3.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAgAEAAAAIAAAABAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAgAEAAAAIAAAABAAAAAAABAAAABAAAAQA=</HashCode>
       <FileName>clsEvent.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsForm">
-    <Position X="7.75" Y="0.5" Width="2" />
+    <Position X="12.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAACAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAASAAAIAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>clsForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsNew">
-    <Position X="2.75" Y="5.5" Width="1.5" />
+    <Position X="2.75" Y="4.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAEAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAgAAAEAAAAAAAAAAAAAAAAABAAAAAAAAAAI=</HashCode>
       <FileName>clsNew.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsResponse">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAgABAAAAAAIAAAAAA=</HashCode>
       <FileName>clsResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsReview">
-    <Position X="6.75" Y="5.5" Width="1.75" />
+    <Position X="4.75" Y="4.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAgAAEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>clsReview.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DTO.clsSong">
-    <Position X="8.75" Y="5.5" Width="1.5" />
+    <Position X="6.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAQAAQAAAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAQAAQAAAAAA=</HashCode>
       <FileName>clsSong.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsBandsBlock">
+    <Position X="8.5" Y="3.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAABAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsBandsBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsBandStats">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsBandStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsDisk">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAACgAAAEAAAAAAAAAIEAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>clsDisk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsDisksBlock">
+    <Position X="10.25" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>clsDisksBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsInfoUser">
+    <Position X="8" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IADCAAAAAAAAAAAAAQIAAAQAAAAAAgAiAAAAAAAAIAA=</HashCode>
+      <FileName>clsInfoUser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DTO.clsPublication">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAgAAAEAAAAAAAAAAAAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>clsPublication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsRequest">
+    <Position X="12.75" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAABAAA=</HashCode>
+      <FileName>clsRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsSearch">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>clsSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.clsSimpleInfo">
+    <Position X="14.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>clsSimpleInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="DTO.IUser">
     <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AADAAAAAAAAAAAAAAQAAAAAAAAAAAgAiAAAAAAAAAAA=</HashCode>
+      <HashCode>IADAAAAAAAAAAAAAAQIAAAAAAAAAAgAiAAAAAAAAAAA=</HashCode>
       <FileName>IUser.cs</FileName>
     </TypeIdentifier>
   </Interface>

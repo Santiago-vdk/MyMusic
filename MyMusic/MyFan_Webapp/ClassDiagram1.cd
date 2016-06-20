@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyFan_Webapp.RouteConfig">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.MvcApplication">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.GetRegisterFanForm">
+    <Position X="2.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAEAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GetRegisterFanForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.RegisterFanForm">
+    <Position X="12" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAACAAQIAAAQAAAIIAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\PostRegisterFanForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Gender">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Views\Gender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Location">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Views\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.DataParser">
+    <Position X="10" Y="6.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIEABMAAoCAAAgQAABIAAAMQMIAABQAFgAAACAAAAAA=</HashCode>
+      <FileName>Parsers\DataParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.ErrorParser">
+    <Position X="11.25" Y="1.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAIAA=</HashCode>
+      <FileName>Parsers\ErrorParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.BandsAreaRegistration">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\BandsAreaRegistration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Controllers.AlbumsController">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAEAAAAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Controllers\AlbumsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Controllers.BandsController">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAACABEAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Controllers\BandsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Controllers.EventsController">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Controllers\EventsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Controllers.NewsController">
+    <Position X="2.5" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Controllers\NewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Models.BandProfileViewModel">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAASAABQAAAAQAAgAAAAAAAAAACEAAAAA=</HashCode>
+      <FileName>Areas\Bands\Models\BandProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Models.clsAlbum">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgEAAEAAAAAAAAAIAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Areas\Bands\Models\clsAlbum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Requests.clsAlbumRequests">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Requests\clsAlbumRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Requests.clsBandRequests">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IkAAABAAAAAAAAAABAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Requests\clsBandRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Requests.clsEventRequests">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Areas\Bands\Requests\clsEventRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Bands.Requests.clsNewRequests">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Bands\Requests\clsNewRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Controllers.FansController">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAABgCAAAAAAAAAAAAAAAAACAAAAACABEAAAAgAAI=</HashCode>
+      <FileName>Areas\Fans\Controllers\FansController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.FansAreaRegistration">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Fans\FansAreaRegistration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Models.clsBands">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Areas\Fans\Models\clsBands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Models.Events">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAEAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Fans\Models\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Models.FanProfileViewModel">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAgAAAAAQBABQAAAAQAAgAABAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Areas\Fans\Models\FanProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Models.News">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAEAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Fans\Models\News.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Requests.clsBandRequests">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Fans\Requests\clsBandRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Areas.Fans.Requests.clsFanRequests">
+    <Position X="11.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAAhACAAACAAAAAAAAAAAAACAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Areas\Fans\Requests\clsFanRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Controllers.LoginController">
+    <Position X="8.25" Y="7.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAA=</HashCode>
+      <FileName>Controllers\LoginController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Controllers.RegisterController">
+    <Position X="10" Y="4.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Controllers\RegisterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Controllers.UsersController">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Controllers\UsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Controllers.PostLoginUserForm">
+    <Position X="2.25" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PostLoginUserForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Controllers.clsLoginRequests">
+    <Position X="2.25" Y="0.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Requests\clsLoginRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Logic.Sessions">
+    <Position X="12" Y="7" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Logic\Sessions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Models.GetRegisterBandForm">
+    <Position X="0.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GetRegisterBandForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Models.PostRegisterBandForm">
+    <Position X="6" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAAAAAAAAQIAAAQAAAIAAAACAAAEAAAAIEA=</HashCode>
+      <FileName>Models\PostRegisterBandForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Models.Views.Form">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Views\Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Models.Views.Genre">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Views\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Models.Views.UserSession">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAQAAAAQAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Views\UserSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Requests.Register.clsRegisterRequests">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAgAAAAAAQAABIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Requests\clsRegisterRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Requests.clsUserRequests">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAQgABA=</HashCode>
+      <FileName>Requests\clsUserRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_Webapp.Requests.clsHttpClient">
+    <Position X="4.25" Y="7" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\clsHttpClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

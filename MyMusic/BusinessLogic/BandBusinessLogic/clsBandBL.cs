@@ -133,13 +133,12 @@ namespace BusinessLogic.BandBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getOwnBandReview(string pstringRequest, int pintBandId)
+        public string getOwnBandReview(int pintFanId, int pintBandId)
         {
-            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsReview review = new clsReview();
             clsResponse response = new clsResponse();
 
-            FacadeDA.getReviewBandUser(ref review,ref response,request.Id,pintBandId);
+            FacadeDA.getReviewBandUser(ref review,ref response,pintFanId,pintBandId);
 
             response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
@@ -175,6 +174,15 @@ namespace BusinessLogic.BandBusinessLogic
             }
 
             response.Data = serializer.Serialize(BandStats);
+            return serializer.Serialize(response);
+        }
+
+        public string deleteBandReview(int pintFanId, int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+
+            FacadeDA.deleteBandReview( ref response,pintFanId, pintBandId);
+            
             return serializer.Serialize(response);
         }
     }
