@@ -28,7 +28,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 }
             }
             //[Bandas,Posts]
-           // string response = await Fans.Requests.clsBandRequests.GetBandInfo(bandId);
+            string response = await Bands.Requests.clsBandRequests.GetBandReviews(bandId);
             string response2 = await Bands.Requests.clsBandRequests.getBandAlbums(bandId);
             string response3 = await Bands.Requests.clsNewRequests.GetNew(bandId, id);
             string response4 = await Bands.Requests.clsBandRequests.GetBandInfo(bandId);
@@ -50,7 +50,8 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-           // profile.BandInfo = infoBand;
+
+            profile.BandProfile.Reviews = DataParser.parseReviews(response);
             profile.BandProfile.Albums = DataParser.parseAlbums(response2);
 
             profile.BandProfile.New = DataParser.parseNew(response3);

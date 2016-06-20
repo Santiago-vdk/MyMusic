@@ -14,4 +14,12 @@ namespace MyFan_API
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
+
+    public class CopyOfWebApiApplication : System.Web.HttpApplication
+    {
+        protected void Application_Start()
+        {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+        }
+    }
 }

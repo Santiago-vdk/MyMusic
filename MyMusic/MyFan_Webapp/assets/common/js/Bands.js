@@ -1,8 +1,9 @@
 ﻿function follow(fanId, bandId) {
     console.log("Llamada follow");
+
     if ($("#Follow_Button").text() == "Unfollow") {
         unfollow(fanId, bandId);
-        
+        return false;
     }
     
     var request = {
@@ -17,8 +18,14 @@
         type: "POST",
         data: JSON.stringify(request),
         success: function (data, status) {
+
             if (data.state == true) {
-                $("#Follow_Button").text('Unfollow');
+                $("#Follow_Button").text("Unfollow");
+                getPopularity(fanId, bandId);
+            }
+            else if (data.state == false) {
+                $("#Follow_Button").text("Follow");
+                getPopularity(fanId, bandId);
             }
         },
         error: function () {
@@ -26,9 +33,12 @@
 
         }
     });
+    return false;
 }
 
 function unfollow(fanId, bandId) {
+    
+
     var request = {
         fanId: fanId,
         bandId: bandId
@@ -43,7 +53,14 @@ function unfollow(fanId, bandId) {
         success: function (data, status) {
 
             if (data.state == "True") {
-                $("#Follow_Button").text('Follow');
+                $("#Follow_Button").text("Follow");
+                console.log("Se hizo el unfollow, ahora lo puede volver a seguir");
+                getPopularity(fanId, bandId);
+            }
+            else if (data.state == "False") {
+                $("#Follow_Button").text("Unfollow");
+                console.log("No se hizo el unfollow queda igual");
+                getPopularity(fanId, bandId);
             }
         },
         error: function () {
@@ -51,11 +68,13 @@ function unfollow(fanId, bandId) {
 
         }
     });
+    return false;
 }
 
 function updateBody(fanId, bandId) {
     isFollowing(fanId, bandId);
     getPopularity(fanId, bandId);
+    return false;
 }
 
 
@@ -91,7 +110,7 @@ function getPopularity(fanId, bandId) {
                     $("#BandCalification").attr("src", "/assets/common/img/califications/3.png");
                     break;
                 case 4:
-                    d$("#BandCalification").attr("src", "/assets/common/img/califications/4.png");
+                    $("#BandCalification").attr("src", "/assets/common/img/califications/4.png");
                     break;
                 case 5:
                     $("#BandCalification").attr("src", "/assets/common/img/califications/5.png");
@@ -104,6 +123,8 @@ function getPopularity(fanId, bandId) {
 
         }
     });
+
+    return false;
 }
 
 function abbreviateNumber(value) {
@@ -129,7 +150,7 @@ function isFollowing(fanId, bandId) {
         fanId: fanId,
         bandId: bandId
     }
-    console.log("Is following?");
+    
     $.ajax({
         url: "/Fans/" + fanId + "/isFollowingBand",
         dataType: 'json',
@@ -137,13 +158,13 @@ function isFollowing(fanId, bandId) {
         type: "POST",
         data: JSON.stringify(request),
         success: function (data, status) {
-           
+ 
             if (data.state == "True") {
            
-                $("#Follow_Button").text('Unfollow');
+                $("#Follow_Button").text("Unfollow");
             }
-            else {
-                $("#Follow_Button").text('Follow');
+            else if(data.state == "False"){
+                $("#Follow_Button").text("Follow");
             }
         },
         error: function () {
@@ -151,5 +172,8 @@ function isFollowing(fanId, bandId) {
 
         }
     });
+    return false;
 }
+
+
 

@@ -102,6 +102,7 @@ h4 {
 .review-box {
     background: rgba(255, 253, 248, 1);
     padding-top:5px;
+    word-break:break-word;
 }
 .review-box img {
     float: right;

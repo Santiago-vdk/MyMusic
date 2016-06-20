@@ -61,7 +61,24 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             return View(profile);
         }
 
+        public async Task<ActionResult> Reviews(int userId, int id)
+        {
+            System.Diagnostics.Debug.WriteLine(userId + " " + id);
 
+            string response = await clsAlbumRequests.GetAlbumReviews(userId, id);
+            System.Diagnostics.Debug.WriteLine(response);
+
+            string ParsedMessage = ErrorParser.parse(response);
+            if (!ParsedMessage.Equals(""))
+            {
+                ViewBag.Message = "Something went wrong";
+                return Json(new { state = "False" });
+            }
+
+            return Json(DataParser.parseReviews(response));
+
+
+        }
 
         public async Task<ActionResult> NewAlbum(string AlbumName, string Label, string DateRelease, int Genre, string profilePicture)
         {

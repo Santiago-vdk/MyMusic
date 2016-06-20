@@ -37,7 +37,7 @@ jQuery(function ($) {
             },
             EventLocation: {
                 required: true,
-                minlength:25
+                minlength: 25
             },
             EventContent: {
                 required: true,
@@ -94,4 +94,88 @@ jQuery(function ($) {
             return false;
         }
     });
+
+
+
+    $('#update-event').click(function () {
+       
+
+    });
+
+
+
 });
+
+
+function updateclick(userId, eventId) {
+  
+
+    var request = {
+        "userId": userId,
+        "id": eventId,
+        "value": $("#EventStateID").val(),
+    }
+
+
+
+    $.ajax({
+        url: "/Bands/"+userId+"/Events/Update/" + eventId,
+        dataType: 'json',
+        contentType: 'application/json',
+        type: "POST",
+        data: JSON.stringify(request),
+        beforeSend: function () {
+            $('#update-form-band').prop('disabled', true);
+            $('#loading').removeClass("hide");
+        },
+        success: function (data, status) {
+            $('#update-form-band').prop('disabled', false);
+            $('#loading').addClass("hide");
+
+        },
+        error: function () {
+            alert('Something goes wrong!');
+            $('#update-form-band').prop('disabled', false);
+            $('#loading').addClass("hide");
+        }
+    });
+
+    return false;
+}
+
+
+
+function deleteclick(userId, eventId) {
+    alert("Estoy");
+
+    var request = {
+        "userId": userId,
+        "id": eventId,
+        "value": $("#EventStateID").val(),
+    }
+
+
+    $.ajax({
+        url: "/Bands/" + userId + "/Events/Delete/" + eventId,
+        dataType: 'json',
+        contentType: 'application/json',
+        type: "POST",
+        data: JSON.stringify(request),
+        beforeSend: function () {
+            $('#update-form-band').prop('disabled', true);
+            $('#loading').removeClass("hide");
+        },
+        success: function (data, status) {
+            $('#update-form-band').prop('disabled', false);
+            $('#loading').addClass("hide");
+
+        },
+        error: function () {
+            alert('Something goes wrong!');
+            $('#update-form-band').prop('disabled', false);
+            $('#loading').addClass("hide");
+        }
+    });
+
+    return false;
+}

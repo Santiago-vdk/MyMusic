@@ -9,7 +9,7 @@ using BusinessLogic.NewBusinessLogic;
 
 namespace BusinessLogic
 {
-   public class FacadeBL
+    public class FacadeBL
     {
 
         clsEventBL EventBL = new clsEventBL();
@@ -43,7 +43,7 @@ namespace BusinessLogic
         }
         public string getBandPublications(int pintUserId, int pintOffset, int pintLimit)
         {
-            return BandBL.getBandPublications( pintUserId, pintOffset, pintLimit);
+            return BandBL.getBandPublications(pintUserId, pintOffset, pintLimit);
         }
         public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
@@ -77,28 +77,28 @@ namespace BusinessLogic
 
         public string getBandReviews(int pintBandId)
         {
-            return BandBL.getBandReviews( pintBandId);
+            return BandBL.getBandReviews(pintBandId);
         }
-        public string getDiskReviews( int pintBandId)
+        public string getDiskReviews(int pintDiskId)
         {
-            return DiskBL.getDiskReviews( pintBandId);
+            return DiskBL.getDiskReviews(pintDiskId);
         }
         public string getEventReviews( int pintEventId)
         {
             return EventBL.getEventReviews( pintEventId);
         }
 
-        public string getOwnBandReview(string pstringRequest,int pintBandId)
+        public string getOwnBandReview(int pintFanId, int pintBandId)
         {
-            return BandBL.getOwnBandReview(pstringRequest, pintBandId);
+            return BandBL.getOwnBandReview(pintFanId, pintBandId);
         }
-        public string getOwnDiskReview(string pstringRequest,int pintBandId)
+        public string getOwnDiskReview(int pintFanId, int pintBandId)
         {
-            return DiskBL.getOwnDiskReview(pstringRequest, pintBandId);
+            return DiskBL.getOwnDiskReview(pintFanId, pintBandId);
         }
-        public string getOwnEventReview(string pstringRequest,int pintEventId)
+        public string getOwnEventReview(int pintFanId, int pintEventId)
         {
-            return EventBL.getOwnEventReview(pstringRequest, pintEventId);
+            return EventBL.getOwnEventReview(pintFanId, pintEventId);
         }
 
         public string getBandStats(int pintBandId)
@@ -160,6 +160,19 @@ namespace BusinessLogic
         public string reviewEvent(string pstringRequest, int pintEventId)
         {
             return EventBL.reviewEvent(pstringRequest, pintEventId);
+        }
+
+        public string deleteBandReview(int pintFanId, int pintBandId)
+        {
+            return BandBL.deleteBandReview(pintFanId, pintBandId);
+        }
+        public string deleteDiskReview(int pintFanId, int pintDiskId)
+        {
+            return DiskBL.deleteDiskReview(pintFanId, pintDiskId);
+        }
+        public string deleteEventReview(int pintFanId, int pintEventId)
+        {
+            return EventBL.deleteEventReview(pintFanId, pintEventId);
         }
 
         public string login(string pstringRequest)

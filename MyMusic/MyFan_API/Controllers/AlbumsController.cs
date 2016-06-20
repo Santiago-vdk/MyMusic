@@ -40,6 +40,14 @@ namespace MyFan_API.Controllers
             {
                 return new AlbumControllerCallsGetAlbum(Request, albumId);
             }
+            if(String.Equals(q, "reviews"))
+            {
+                return new AlbumControllerCallsGetReviews(Request, albumId);
+            }
+            if(String.Equals(q, "review"))
+            {
+                return new AlbumControllerCallsGetReview(Request, albumId);
+            }
             //Endpoint for retrieving one album of a band
             throw new NotImplementedException();
         }
