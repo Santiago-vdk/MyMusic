@@ -116,7 +116,7 @@ namespace BusinessLogic.DiskBusinessLogic
             clsReview review = new clsReview();
             clsResponse response = new clsResponse();
 
-            //FacadeDA.getReviewDisk(ref review, ref response, request.Id, pintDiskId);
+            FacadeDA.getdiscReviewFan(ref review, pintDiskId, request.Id, ref response);
 
             response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);

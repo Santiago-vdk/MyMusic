@@ -44,7 +44,7 @@ namespace BusinessLogic.EventBusinessLogic
             clsReview review = new clsReview();
             clsResponse response = new clsResponse();
 
-            //FacadeDA.getReviewDisk(ref review, ref response, request.Id, pintEventId);
+            FacadeDA.getEventReviewFan(ref review, pintEventId,request.Id, ref response);
 
             response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
