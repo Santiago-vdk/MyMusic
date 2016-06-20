@@ -26,7 +26,7 @@
 
 
 </head>
-<body onload="updateBody(@Model.Id, @Model.BandProfile.Id)">
+<body onload="updateBody(@Model.Id, @Model.BandProfile.Id); return false;">
     <!-- Container -->
     <div class="container-fluid">
         <!-- Header Section -->
@@ -177,7 +177,7 @@
                     <div id="picture" class="row">
                         <div class="col-xs-12">
                             <div id="follow" class="pull-right">
-                                <button id="Follow_Button" onClick="follow(@Model.Id, @Model.BandProfile.Id)" class="btn btn-warning btn_follow">Let me think...</button>
+                                <button id="Follow_Button" onClick="follow(@Model.Id, @Model.BandProfile.Id); return false;" class="btn btn-warning btn_follow">Let me think...</button>
                             </div>
                             <div id="band-profile-pic" class="col-xs-12 center-block no-float content_centered">
                                 <a href="~/Fans/@Model.Id/Bands/@Model.BandProfile.Id"><img class="img-circle" src="~/Users/image?Id=@Model.BandProfile.Id"></a>
@@ -239,7 +239,6 @@
                 <div id="review-section-title" class="row">
                     <h2>Band Reviews</h2>
                 </div>
-
                 @foreach (var review in Model.BandProfile.Reviews)
                 {
                     <div id="review-section" class="row">
@@ -250,7 +249,7 @@
                                     <!-- Review User -->
                                     <div class="col-xs-6 review-user"><h4>@review.Author</h4></div>
                                     <!-- Review Calification -->
-                                    <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/@(review.Calification)png"></div>
+                                    <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/@(review.Calification).png"></div>
                                 </div>
 
                                 <div class="row">

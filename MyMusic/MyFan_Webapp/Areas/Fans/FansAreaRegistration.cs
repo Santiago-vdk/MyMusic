@@ -51,6 +51,14 @@ namespace MyFan_Webapp.Areas.Fans
             );
 
 
+            context.MapRoute(
+                "Fans_Sucio",
+                "Fans/{userId}/bands/{bandId}/{controller}/{action}/{id}",
+                defaults: new { action = "Reviews" }, 
+                namespaces: new[] { "MyFan_Webapp.Areas.Fans.Controllers" }
+            );
+
+
 
 
 

@@ -2,6 +2,7 @@
 using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Logic;
 using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace MyFan_Webapp.Areas.Fans.Controllers
@@ -24,7 +25,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 }
             }
             //[Bandas,Posts]
-            // string response = await Fans.Requests.clsBandRequests.GetBandInfo(bandId);
+            string response = await Bands.Requests.clsBandRequests.GetBandReviews(bandId);
             string response2 = await Bands.Requests.clsBandRequests.getBandAlbums(bandId);
             string response3 = await Bands.Requests.clsAlbumRequests.GetAlbumInfo(bandId, id);
             string response4 = await Bands.Requests.clsBandRequests.GetBandInfo(bandId);
@@ -42,18 +43,42 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             BandProfile.Id = bandId;
             profile.BandProfile = BandProfile;
 
-
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-            // profile.BandInfo = infoBand;
+
+            profile.BandProfile.Reviews = DataParser.parseReviews(response);
             profile.BandProfile.Albums = DataParser.parseAlbums(response2);
-
-            
-
             profile.BandProfile.Disk = DataParser.parseDisk(response3);
             profile.BandProfile.Info = DataParser.parseBandInfo(response4);
+            
             return View(profile);
         }
+
+        public async Task<ActionResult> Reviews(int fanId, int bandId, int albumId)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " getting revies from " + bandId + " of album " + albumId);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await Bands.Requests.clsAlbumRequests.GetAlbumReviews(bandId, albumId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = "False" });
+                }
+
+                return Json(DataParser.parseReviews(response));
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+        }
+
+
+
     }
 }

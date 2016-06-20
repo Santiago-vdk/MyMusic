@@ -26,14 +26,25 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1/events GET
         public IHttpActionResult GetAllEvents(int bandId)
         {
+
+
+
             //Endpoint for retrieving all events of a band
             throw new NotImplementedException();
         }
 
         [Route("{eventId}"), HttpGet]
         // api/v1/users/bands/1/events/1 GET
-        public IHttpActionResult GetOneEvent(int bandId, int eventId)
+        public IHttpActionResult GetOneEvent(string q, int bandId, int eventId)
         {
+            if (String.Equals(q, "reviews"))
+            {
+                return new EventControllerCallGetEventReviews(Request, eventId);
+            }
+            if (String.Equals(q, "review"))
+            {
+                return new EventControllerCallGetEventReview(Request, eventId);
+            }
             return new EventControllerCallGetEvent(Request, eventId);
 
             //Endpoint for retrieving one event of a band
@@ -42,9 +53,9 @@ namespace MyFan_API.Controllers
 
         [Route("{eventId}"), HttpPut]
         // api/v1/users/bands/1/events/1 PUT
-        public IHttpActionResult UpdateOneEvent(int bandId, int eventId)
+        public IHttpActionResult UpdateOneEvent(int bandId, int eventId, string value = "")
         {
-            return new EventControllerCallUpdateEvent(Request, eventId);
+            return new EventControllerCallUpdateEvent(Request, eventId, value);
             //Endpoint for updating one event of a band
             throw new NotImplementedException();
         }

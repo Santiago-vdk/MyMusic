@@ -65,9 +65,38 @@ namespace MyFan_API.ControllerCalls
         HttpRequestMessage _request;
         FacadeBL _facade;
         int _eventId;
+        string _value;
+
+        public EventControllerCallUpdateEvent(HttpRequestMessage request, int eventId, string value)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _eventId = eventId;
+            _value = value;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.changeEventState(_value,_eventId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    
 
 
-        public EventControllerCallUpdateEvent(HttpRequestMessage request, int eventId)
+   public class EventControllerCallGetEventReviews : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _eventId;
+
+
+        public EventControllerCallGetEventReviews(HttpRequestMessage request, int eventId)
         {
             _request = request;
             _facade = new FacadeBL();
@@ -78,14 +107,36 @@ namespace MyFan_API.ControllerCalls
         {
             var response = new HttpResponseMessage()
             {
-               // Content = new StringContent(_facade.updateEvent(_request.Content.ReadAsStringAsync().Result,_eventId)),
+                Content = new StringContent(_facade.getEventReviews(_eventId)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
         }
     }
 
+    public class EventControllerCallGetEventReview : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _eventId;
 
-    
+
+        public EventControllerCallGetEventReview(HttpRequestMessage request, int eventId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _eventId = eventId;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getOwnEventReview(_request.Content.ReadAsStringAsync().Result,_eventId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
 
 }
