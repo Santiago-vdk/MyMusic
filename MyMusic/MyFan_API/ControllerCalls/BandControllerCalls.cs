@@ -152,4 +152,77 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+
+
+
+
+    public class BandControllerCallsGetStats : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+        public BandControllerCallsGetStats(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getBandStats(_userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    public class BandControllerCallsGetReviews : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+        public BandControllerCallsGetReviews(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getBandReviews(_userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    
+          public class BandControllerCallsGetOneReview : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _userId;
+
+        public BandControllerCallsGetOneReview(HttpRequestMessage request, int userId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _userId = userId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.getOwnBandReview(_request.Content.ReadAsStringAsync().Result, _userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
 }

@@ -111,5 +111,19 @@ namespace MyFan_Webapp.Areas.Bands.Requests
                 return await Task.FromResult("Unexpected error ocurred");
             }
         }
+
+        public static async Task<string> GetBandReviews(int bandId)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + bandId + "/?q=reviews");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
     }
 }

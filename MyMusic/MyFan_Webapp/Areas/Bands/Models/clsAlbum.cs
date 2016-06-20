@@ -1,4 +1,7 @@
-﻿namespace MyFan_Webapp.Areas.Bands.Models
+﻿using DTO;
+using System.Collections.Generic;
+
+namespace MyFan_Webapp.Areas.Bands.Models
 {
     public class clsAlbum
     {
@@ -8,5 +11,6 @@
         public int Genre { get; set; }
         public string Picture { get; set; }
         public string Label { get; set; }
+        public List<clsReview> Reviews { get; set; }
     }
 }

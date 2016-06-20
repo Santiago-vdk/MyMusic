@@ -239,48 +239,31 @@
                 <div id="review-section-title" class="row">
                     <h2>Band Reviews</h2>
                 </div>
-                <div id="review-section" class="row">
-                    <div class="row ">
-                        <div class="col-xs-12 review-box">
-                            <!-- Review Header -->
-                            <div class="row">
-                                <!-- Review User -->
-                                <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
-                                <!-- Review Calification -->
-                                <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/Acetato-original.png"></div>
-                            </div>
 
-                            <div class="row">
-                                <!-- Review Comment -->
-                                <div class="col-xs-12">
-                                    <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                @foreach (var review in Model.BandProfile.Reviews)
+                {
+                    <div id="review-section" class="row">
+                        <div class="row ">
+                            <div class="col-xs-12 review-box">
+                                <!-- Review Header -->
+                                <div class="row">
+                                    <!-- Review User -->
+                                    <div class="col-xs-6 review-user"><h4>@review.Author</h4></div>
+                                    <!-- Review Calification -->
+                                    <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/@(review.Calification)png"></div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Review Comment -->
+                                    <div class="col-xs-12">
+                                        <p>@review.Comment</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
 
-
-                <div id="review-section" class="row">
-                    <div class="row ">
-                        <div class="col-xs-12 review-box">
-                            <!-- Review Header -->
-                            <div class="row">
-                                <!-- Review User -->
-                                <div class="col-xs-6 review-user"><h4>Santiago<h4></div>
-                                <!-- Review Calification -->
-                                <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/Acetato-original.png"></div>
-                            </div>
-
-                            <div class="row">
-                                <!-- Review Comment -->
-                                <div class="col-xs-12">
-                                    <p>User cotempor incillum dsunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             @RenderBody()

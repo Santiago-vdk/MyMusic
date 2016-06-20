@@ -59,6 +59,13 @@ namespace MyFan_Webapp
             return New;
         }
 
+        public static List<clsReview> parseReviews(string json)
+        {
+            clsResponse Response = parseResponse(json);
+            List<clsReview> reviews = JsonConvert.DeserializeObject<List<clsReview>>(Convert.ToString(Response.Data));
+            return reviews;
+        }
+
         public static clsDisk parseDisk(string json)
         {
             clsResponse Response = parseResponse(json);
