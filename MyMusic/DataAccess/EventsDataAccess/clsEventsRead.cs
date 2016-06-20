@@ -152,7 +152,7 @@ namespace DataAccess.EventsDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_getReviewEventUser", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intUserCodFan", System.Data.SqlDbType.Int).Value = pintCodEvent;
-                cmd.Parameters.Add("@intDisc ", System.Data.SqlDbType.Int).Value = pintUserCode;
+                cmd.Parameters.Add("@intEvent ", System.Data.SqlDbType.Int).Value = pintUserCode;
 
 
                 conn.Open();
