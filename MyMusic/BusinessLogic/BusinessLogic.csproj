@@ -70,6 +70,10 @@
       <Project>{c80a7542-8db4-440c-b61e-d0de3d702060}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\tweetupdater\tweetupdater.csproj">
+      <Project>{1940ae68-5d84-4a53-ab5e-33e31f951ff0}</Project>
+      <Name>tweetupdater</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{d2a969ee-db6e-4af7-a730-dd4584326c5c}</Project>
       <Name>Utility</Name>

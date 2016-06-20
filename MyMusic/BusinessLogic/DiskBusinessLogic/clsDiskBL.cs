@@ -110,12 +110,13 @@ namespace BusinessLogic.DiskBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getOwnDiskReview(int pintFanId, int pintDiskId)
+        public string getOwnDiskReview(string pstringRequest, int pintDiskId)
         {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsReview review = new clsReview();
             clsResponse response = new clsResponse();
 
-            FacadeDA.getdiscReviewFan(ref review, pintDiskId, pintFanId, ref response);
+            FacadeDA.getdiscReviewFan(ref review, pintDiskId, request.Id, ref response);
 
             response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
@@ -137,11 +138,12 @@ namespace BusinessLogic.DiskBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string deleteDiskReview(int pintFanId, int pintDiskId)
+        public string deleteDiskReview(string pstringRequest, int pintDiskId)
         {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
             clsResponse response = new clsResponse();
 
-            FacadeDA.deleteDiscReview(ref response, pintFanId, pintDiskId);
+            FacadeDA.deleteDiscReview(ref response, request.Id, pintDiskId);
 
             return serializer.Serialize(response);
         }

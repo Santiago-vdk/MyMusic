@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tweetupdater;
 using Utility;
 
 namespace BusinessLogic.FanBusinessLogic
@@ -131,8 +132,12 @@ namespace BusinessLogic.FanBusinessLogic
         public string followBand(int pintFanId, int pintBandId)
         {
             clsResponse response = new clsResponse();
+            TwitterCom twitter = new TwitterCom();
 
+           
             FacadeDA.followBand(pintFanId,pintBandId,ref response);
+            string msj = "";
+            twitter.sendTweet(msj);
 
             return serializer.Serialize(response);
         }
