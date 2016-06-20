@@ -88,6 +88,11 @@ namespace BusinessLogic
             return EventBL.getEventReviews(pintEventId);
         }
 
+        public string getBandStats(int pintBandId)
+        {
+            return BandBL.getBandStats(pintBandId);
+        }
+
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);
