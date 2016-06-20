@@ -266,7 +266,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53702</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://127.0.0.1:53702/</IISUrl>
+          <IISUrl>http://localhost:53702/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

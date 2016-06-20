@@ -19,6 +19,7 @@ namespace MyFan_Webapp.Areas.Fans.Models
         public List<clsBands> SearchResults { get; set; }
         //public clsInfoBand BandInfo { get; set; }
         public BandProfileViewModel BandProfile { get; set; }
+        public List<Genre> Genres { get; set; }
 
     }
 }

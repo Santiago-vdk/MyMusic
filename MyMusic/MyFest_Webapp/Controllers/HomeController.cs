@@ -2,7 +2,9 @@
 using MyFan_Webapp;
 using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Fans.Requests;
+using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests;
+using MyFan_Webapp.Requests.Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +22,21 @@ namespace MyFest_Webapp.Controllers
             return View();
         }
 
-        public ActionResult Genres()
+        public async Task<ActionResult> Genres()
         {
-            return View();
+            string response = await clsRegisterRequests.GetRegisterBandForm();
+            List<Genre> genres = new List<Genre>();
+            genres = DataParser.parseBandForm(response).genres;
+
+
+            System.Diagnostics.Debug.WriteLine(genres[0].Name);
+
+
+
+            FanProfileViewModel model = new FanProfileViewModel();
+            model.Genres = genres;
+            
+            return View(model);
         }
 
         public async Task<ActionResult> CreateGenres(string name)

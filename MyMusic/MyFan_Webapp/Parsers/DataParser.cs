@@ -13,7 +13,7 @@ namespace MyFan_Webapp
 {
     public static class DataParser
     {
-        private static List<Genre> parseGenres(string pStringGenres, string pStringGenresIds)
+        public static List<Genre> parseGenres(string pStringGenres, string pStringGenresIds)
         {
             List<string> genres = JsonConvert.DeserializeObject<List<string>>(pStringGenres);
             List<int> genresIds = JsonConvert.DeserializeObject<List<int>>(pStringGenresIds);

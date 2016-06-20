@@ -1,4 +1,4 @@
-﻿
+﻿@model MyFan_Webapp.Areas.Fans.Models.FanProfileViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,17 +29,22 @@
                 <input id="search_secondary" name="name" class="form-control" type="text" />
             </div>
 
-         
+
 
 
             <button type="submit" class="btn btn-primary">Create Genre</button>
         </form>
 
+        <h1>Existing Genres</h1>
+        @foreach (var gen in Model.Genres)
+        {
+            <h4>@gen.Name</h4>
+
+
+        }
     </div>
 
 
 
 </body>
 </html>
-
-
