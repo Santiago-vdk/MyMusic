@@ -68,5 +68,13 @@ namespace DataAccess.BandDataAccess
         {
             BandRead.getAllBandReviews(ref pclsReviews, ref pclsResponse, pintBandCode);
         }
+        public int getCalificationBand(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandRead.getCalificationBand(ref pclsResponse, pintBandCode);
+        }
+        public int getFollowersBand(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandRead.getFollowersBand(ref pclsResponse, pintBandCode);
+        }
     }
 }

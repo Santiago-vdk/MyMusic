@@ -343,6 +343,85 @@ namespace DataAccess.BandDataAccess
 
         }
 
+        public int getCalificationBand(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            int tmp = 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GlobalCalificationBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodBand", System.Data.SqlDbType.Int).Value = pintBandCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                while (result.Read())
+                {
+
+                    tmp = Convert.ToInt32(result["Nombre"].ToString());
+                    
+                }
+ 
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tmp;
+        }
+
+        public int getFollowersBand(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            int tmp = 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GlobalFollowersBand", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodBand", System.Data.SqlDbType.Int).Value = pintBandCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                while (result.Read())
+                {
+
+                    tmp = Convert.ToInt32(result["Seguidores"].ToString());
+
+                }
+
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tmp;
+        }
 
         public static void Main()
         {

@@ -208,7 +208,14 @@ namespace DataAccess
         {
             BandDA.getAllBandReviews(ref pclsReviews, ref pclsResponse, pintBandCode);
         }
-
+        public int getCalificationBand(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandDA.getCalificationBand(ref pclsResponse, pintBandCode);
+        }
+        public int getFollowersBand(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandDA.getFollowersBand(ref pclsResponse, pintBandCode);
+        }
 
         public static void Main()
         {
