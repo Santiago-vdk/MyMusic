@@ -141,7 +141,7 @@ namespace BusinessLogic.FanBusinessLogic
             {
                 string hashtag = FacadeDA.getHashTag(ref response, pintBandId);
                 string fanName = FacadeDA.getFanName(ref response, pintFanId);
-                string msj = fanName + "sigue a " + hashtag;
+                string msj = fanName + " sigue a " + hashtag;
                 twitter.sendTweet(msj);
             }
             catch
