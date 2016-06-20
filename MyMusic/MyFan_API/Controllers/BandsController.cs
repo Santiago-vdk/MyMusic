@@ -68,7 +68,7 @@ namespace MyFan_API.Controllers
             System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
             if (String.Equals(q, "review"))
             {
-                System.Diagnostics.Debug.WriteLine("inserting review on band");
+                System.Diagnostics.Debug.WriteLine("inserting review on band for " + bandId);
                 return new BandControllerCallsPostReview(Request, bandId);
             }
             return new BandControllerCallsUpdateProfile(Request, bandId);

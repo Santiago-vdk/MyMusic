@@ -88,7 +88,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             form.Author = fanName;
             form.Calification = rate;
             form.Comment = comment;
-
+            
             string RequestBody = serializer.Serialize(form);
             clsRequest RequestObject = new clsRequest("-1", fanId, RequestBody);
 

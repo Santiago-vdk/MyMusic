@@ -108,8 +108,8 @@ namespace DataAccess.EventsDataAccess
                 cmd.Parameters.Add("@intCalificacion", System.Data.SqlDbType.Int).Value = Convert.ToInt32(pclsReview.Calification);
                 cmd.Parameters.Add("@strComentario", System.Data.SqlDbType.VarChar).Value = pclsReview.Comment;
                 cmd.Parameters.Add("@intUsuario", System.Data.SqlDbType.Int).Value = pintUserCode;
-                SqlParameter id = cmd.Parameters.Add("@intCodEvento", SqlDbType.Int);
-                id.Direction = ParameterDirection.Output;
+                /*SqlParameter id = cmd.Parameters.Add("@intCodEvento", SqlDbType.Int);
+                id.Direction = ParameterDirection.Output;*/
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);

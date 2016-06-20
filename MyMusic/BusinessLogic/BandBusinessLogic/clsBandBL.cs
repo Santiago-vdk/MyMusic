@@ -153,16 +153,19 @@ namespace BusinessLogic.BandBusinessLogic
             clsResponse response = new clsResponse();
             TwitterCom twitter = new TwitterCom();
 
-           // bool existBand = FacadeDA.existreviewdisk(pintBandId, request.Id, ref response);
-           // if (!existBand && response.Success)
-           // {
+            // bool existBand = FacadeDA.existreviewdisk(pintBandId, request.Id, ref response);
+            // if (!existBand && response.Success)
+            // {
+            System.Diagnostics.Debug.WriteLine(request.Id + " En rafa " + pintBandId);
                 FacadeDA.createReviewBand(ref review, request.Id, pintBandId, ref response);
+
                 try
                 {
                     string hashtag = FacadeDA.getHashTag(ref response, pintBandId);
                     string fanName = FacadeDA.getFanName(ref response, request.Id);
                     string msj = fanName + " reseñó a " + "#" + hashtag;
                     twitter.sendTweet(msj);
+                    
                 }
                 catch
                 {

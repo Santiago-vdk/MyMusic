@@ -240,7 +240,7 @@
                     <h2>Band Reviews</h2>
                 </div>
 
-                <form id="form-new-album" action="~/Fans/@Model.Id/Bands/PostReview/@Model.BandProfile" class='form-horizontal'>
+                <form id="form-new-album" action="~/Fans/@Model.Id/Bands/@Model.BandProfile.Id/Bands/PostReview/@Model.BandProfile.Id/" class='form-horizontal'>
 
                     <input class="form-control" name="fanId" value="@Model.Id" type="hidden" />
                     <input class="form-control" name="bandId" value="@Model.BandProfile.Id" type="hidden" />

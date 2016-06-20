@@ -196,8 +196,8 @@ namespace DataAccess.FanDataAccess
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodUsuarioBanda", System.Data.SqlDbType.Int).Value = pintCodBanda;
                 cmd.Parameters.Add("@intCalificacion", System.Data.SqlDbType.Int).Value = pclsReview.Calification;
-                cmd.Parameters.Add("@strComentario", System.Data.SqlDbType.Int).Value = pclsReview.Comment;
-                cmd.Parameters.Add("@intUsuario", System.Data.SqlDbType.VarChar).Value = pintCodFanatico;
+                cmd.Parameters.Add("@strComentario", System.Data.SqlDbType.VarChar).Value = pclsReview.Comment;
+                cmd.Parameters.Add("@intUsuario", System.Data.SqlDbType.Int).Value = pintCodFanatico;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);

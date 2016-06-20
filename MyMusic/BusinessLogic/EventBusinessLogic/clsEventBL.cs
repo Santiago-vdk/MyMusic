@@ -56,11 +56,11 @@ namespace BusinessLogic.EventBusinessLogic
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
 
-            bool existReview = FacadeDA.existreviewevent(pintEventId, request.Id, ref response);
-            if (!existReview && response.Success)
-            {
+            //bool existReview = FacadeDA.existreviewevent(pintEventId, request.Id, ref response);
+            //if (!existReview && response.Success)
+            //{
                 FacadeDA.createEventReview(ref review,ref response, request.Id, pintEventId);
-            }
+            //}
             //data null
             return serializer.Serialize(response);
         }
