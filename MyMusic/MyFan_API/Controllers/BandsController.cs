@@ -62,11 +62,15 @@ namespace MyFan_API.Controllers
 
         [Route("{bandId}"), HttpPut]
         // api/v1/users/bands/1 PUT
-        public IHttpActionResult UpdateOneBand(int bandId)
+        public IHttpActionResult UpdateOneBand(string q, int bandId)
         {
             System.Diagnostics.Debug.WriteLine("Updating fan with id " + bandId);
             System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
-
+            if (String.Equals(q, "review"))
+            {
+                System.Diagnostics.Debug.WriteLine("inserting review on band");
+                return new BandControllerCallsPostReview(Request, bandId);
+            }
             return new BandControllerCallsUpdateProfile(Request, bandId);
 
             //Endpoint for updating one fan

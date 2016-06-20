@@ -42,7 +42,7 @@
             
         },
         error: function () {
-            alert('Something goes wrong!');
+           // alert('Something goes wrong!');
 
         }
     });

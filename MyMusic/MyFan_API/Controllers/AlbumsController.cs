@@ -55,8 +55,13 @@ namespace MyFan_API.Controllers
         [Route("{albumId}")]
         [HttpPut]
         // api/v1/users/bands/1/albums/1 PUT
-        public IHttpActionResult UpdateOneAlbum(int bandId, int albumId)
+        public IHttpActionResult UpdateOneAlbum(string q, int bandId, int albumId)
         {
+            if (String.Equals(q, "review"))
+            {
+
+                return new AlbumControllerCallsPostReview(Request, albumId, bandId);
+            }
             //Endpoint for updating one album of a band
             throw new NotImplementedException();
         }

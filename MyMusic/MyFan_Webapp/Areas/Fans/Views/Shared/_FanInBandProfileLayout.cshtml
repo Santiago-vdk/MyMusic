@@ -239,6 +239,42 @@
                 <div id="review-section-title" class="row">
                     <h2>Band Reviews</h2>
                 </div>
+
+                <form id="form-new-album" action="~/Fans/@Model.Id/Bands/PostReview/@Model.BandProfile" class='form-horizontal'>
+
+                    <input class="form-control" name="fanId" value="@Model.Id" type="hidden" />
+                    <input class="form-control" name="bandId" value="@Model.BandProfile.Id" type="hidden" />
+    
+                    <input class="form-control" name="fanName" value="@Model.Name" type="hidden" />
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputAlbumName">Rate:</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" placeholder="Type a number from 1 to 5" name="rate" id="AlbumName" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-3 text-right">
+                            <label for="inputAlbumName">Comment:</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" placeholder="Comment" name="comment" id="AlbumName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-offset-4 col-xs-3">
+                                <button id="post-album-form" type="submit" class="btn btn-success">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
                 @foreach (var review in Model.BandProfile.Reviews)
                 {
                     <div id="review-section" class="row">

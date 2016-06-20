@@ -127,6 +127,62 @@ function getPopularity(fanId, bandId) {
     return false;
 }
 
+function updateBodyBand(bandId) {
+
+    getPopularityBand(bandId);
+    return false;
+}
+
+
+function getPopularityBand(bandId) {
+    var request = {
+        fanId:0,
+        bandId: bandId
+    }
+    console.log("here");
+    $.ajax({
+        url: "/Fans/" + 0 + "/GetBandStats",
+        dataType: 'json',
+        contentType: 'application/json',
+        type: "POST",
+        data: JSON.stringify(request),
+        success: function (json, status) {
+            var data = JSON.parse(json);
+
+
+
+            $("#BandFollowers").html(abbreviateNumber(data.Followers));
+
+            switch (data.Calification) {
+                case 0:
+                    break;
+                case 1:
+                    $("#BandCalification").attr("src", "/assets/common/img/califications/1.png");
+                    break;
+                case 2:
+                    $("#BandCalification").attr("src", "/assets/common/img/califications/2.png");
+                    break;
+                case 3:
+                    $("#BandCalification").attr("src", "/assets/common/img/califications/3.png");
+                    break;
+                case 4:
+                    $("#BandCalification").attr("src", "/assets/common/img/califications/4.png");
+                    break;
+                case 5:
+                    $("#BandCalification").attr("src", "/assets/common/img/califications/5.png");
+                    break;
+
+            }
+        },
+        error: function () {
+            alert('Something goes wrong!');
+
+        }
+    });
+
+    return false;
+}
+
 function abbreviateNumber(value) {
     var newValue = value;
     if (value >= 1000) {

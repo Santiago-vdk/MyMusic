@@ -79,5 +79,29 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             }
 
         }
+
+ 
+        public static async Task<string> PostReview(int fanId,int bandId, int albumId, string rate, string comment, string fanName)
+        {
+            Serializer serializer = new Serializer();
+            clsReview form = new clsReview();
+            form.Author = fanName;
+            form.Calification = rate;
+            form.Comment = comment;
+
+            string RequestBody = serializer.Serialize(form);
+            clsRequest RequestObject = new clsRequest("-1", fanId, RequestBody);
+
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/bands/" + bandId + "/albums/" + albumId + "/?q=review", RequestObject);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
     }
 }

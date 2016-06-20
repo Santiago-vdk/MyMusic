@@ -113,4 +113,31 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+
+    public class AlbumControllerCallsPostReview : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+
+        int _albumId;
+        int _bandId;
+
+        public AlbumControllerCallsPostReview(HttpRequestMessage request, int albumId, int bandId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _bandId = bandId;
+            _albumId = albumId;
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.reviewDisk(_request.Content.ReadAsStringAsync().Result, _albumId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+    
 }

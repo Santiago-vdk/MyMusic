@@ -60,5 +60,28 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
 
         }
+
+        public async Task<ActionResult> PostReview(int fanId, int bandId, string rate, string comment, string fanName)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " posting review " + bandId + " on band  " + rate + " " + comment);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await Bands.Requests.clsBandRequests.PostReview(fanId, bandId, rate, comment, fanName);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = "False" });
+                }
+
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+        }
     }
 }

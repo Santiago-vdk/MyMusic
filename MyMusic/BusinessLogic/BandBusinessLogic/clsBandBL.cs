@@ -153,9 +153,9 @@ namespace BusinessLogic.BandBusinessLogic
             clsResponse response = new clsResponse();
             TwitterCom twitter = new TwitterCom();
 
-            bool existBand = FacadeDA.existreviewdisk(pintBandId, request.Id, ref response);
-            if (!existBand && response.Success)
-            {
+           // bool existBand = FacadeDA.existreviewdisk(pintBandId, request.Id, ref response);
+           // if (!existBand && response.Success)
+           // {
                 FacadeDA.createReviewBand(ref review, request.Id, pintBandId, ref response);
                 try
                 {
@@ -171,7 +171,7 @@ namespace BusinessLogic.BandBusinessLogic
                     response.Message = "Error with twitter";
                     response.Code = 5;
                 }
-            }
+           // }
 
             //data null
             return serializer.Serialize(response);

@@ -128,11 +128,12 @@ namespace BusinessLogic.DiskBusinessLogic
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
 
-            bool existDisk = FacadeDA.existreviewdisk(pintDiskId, request.Id, ref response);
-            if (!existDisk && response.Success)
-            {
-                FacadeDA.creatediskreview(ref review, ref response, request.Id, pintDiskId);
-            }
+            // bool existDisk = FacadeDA.existreviewdisk(pintDiskId, request.Id, ref response);
+            // if (!existDisk && response.Success)
+            // {
+            System.Diagnostics.Debug.WriteLine(review.Author + " " + review.Calification + " " + review.Comment + " " + request.Id);
+                FacadeDA.creatediskreview(ref review, ref response, pintDiskId, request.Id );
+           // }
 
             //data null
             return serializer.Serialize(response);
