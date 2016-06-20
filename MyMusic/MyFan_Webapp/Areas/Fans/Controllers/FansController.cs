@@ -285,8 +285,9 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 }
 
                 string j = DataParser.parseResponse(response).Data;
-                //return Json(j);
-                return Json(new { Followers = 1200000, Calification = 5 });
+                System.Diagnostics.Debug.WriteLine(j);
+                return Json(j);
+               // return Json(new { Followers = 1200000, Calification = 5 });
             }
             else
             {
