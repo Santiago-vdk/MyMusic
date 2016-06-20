@@ -12,99 +12,65 @@
 <body>
     <!-- Post-Section -->
     <div id="post-section" class="row">
-        <h2 class="post-header">Create Event</h2>
+        <h2 class="post-header">Event</h2>
+
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-6">
+                <h3><b>Title:</b> @Model.BandProfile.Event.Title</h3>
+                <h3><b>Date:</b> @Model.BandProfile.Event.Date</h3>
+                <h3><b>Time:</b> @Model.BandProfile.Event.Time</h3>
+                @if (@Model.BandProfile.Event.IsConcert == true)
+                {
+                    <h3><b>Concert:</b> Yes</h3>
+                }
+                else
+                {
+                    <h3><b>Concert:</b> No</h3>
+                }
+                @if (String.Equals(@Model.BandProfile.Event.State, "0"))
+                {
+                    <h3><b>State:</b> Pending</h3>
+                }
+                @if (String.Equals(@Model.BandProfile.Event.State, "1"))
+                {
+                    <h3><b>State:</b> Finalized</h3>
+                }
+                else if (String.Equals(@Model.BandProfile.Event.State, "2"))
+                {
+                    <h3><b>State:</b> Cancelled</h3>
+                }
 
-                <form id="form-new-event" class='form-horizontal'>
-
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputEventName">Title:</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" value="@Model.BandProfile.Event.Title" name="EventTitle" id="EventTitle" disabled/>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-xs-5 col-xs-offset-3">
-                            <div class="form-group">
-                                <div class="col-xs-3 text-right">
-                                    <label for="inputDate">Date:</label>
-                                </div>
-                                <div class="col-xs-6">
-                                    <input type="date" class="form-control" value="@Model.BandProfile.Event.Date" name="EventDate" id="EventDate" disabled />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <div class="col-xs-3 text-right">
-                                    <label for="inputTime">Time:</label>
-                                </div>
-                                <div class="col-xs-6">
-                                    <input type="time" class="form-control" value="@Model.BandProfile.Event.Time" name="EventTime" id="EventTime" disabled />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputDate">Event Type:</label>
-                        </div>
-                        <div class="col-xs-6">
-                            <select class="selectpicker" id="EventTypeID" value="@Model.BandProfile.Event.IsConcert" name="EventType" data-width="100%" disabled>
-                                <option id="true">Concert</option>
-                                <option id="false">Not Concert</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputDate">Event State:</label>
-                        </div>
-                        <div class="col-xs-6">
-                            <select class="selectpicker" id="EventStateID" name="EventState" data-width="100%">
-                                <option id="0" selected>Pending</option>
-                                <option id="1">Finalized</option>
-                                <option id="2">Cancelled</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputLocation">Location:</label>
-                        </div>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" value="@Model.BandProfile.Event.Location" name="EventLocation" id="EventLocation" disabled />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-3 text-right">
-                            <label for="inputContent"></label>
-                        </div>
-                        <div class="col-xs-9">
-                            <div class="form-group">
-                                <textarea class="form-control" rows="10" name="EventContent" id="EventContent" disabled>@Model.BandProfile.Event.Description</textarea>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-
-                </form>
+                <h3><b>Location</b>: @Model.BandProfile.Event.Location</h3>
+                <h3><b>Content:</b> </h3>
+                <h3 class="prevent-overflow">@Model.BandProfile.Event.Description</h3>
 
             </div>
+            <div class="col-md-3">
+                <div id="review-section-title" class="row">
+                    <h2>Event Reviews</h2>
+                </div>
+                <div id="review-section-viewing" class="row">
+                    <div class="row ">
+                        <div class="col-xs-12 review-box">
+                            <!-- Review Header -->
+                            <div class="row">
+                                <!-- Review User -->
+                                <div class="col-xs-6 review-user"><h3>Santiago</h3></div>
+                                <!-- Review Calification -->
+                                <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/Acetato-original.png"></div>
+                            </div>
 
-        </div>
+                            <div class="row">
+                                <!-- Review Comment -->
+                                <div class="col-xs-12">
+                                    <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
     </div>
 </body>
-
-

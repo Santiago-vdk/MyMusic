@@ -28,7 +28,7 @@
 
 
 </head>
-<body onload="isFollowing(@Model.Id, @Model.BandProfile.Id)">
+<body onload="updateBody(@Model.Id, @Model.BandProfile.Id)">
     <!-- Container -->
     <div class="container-fluid">
         <!-- Header Section -->
@@ -75,8 +75,6 @@
                                                         <label for="filter">Genres</label>
                                                         <select id="GenreList" name="genre" class="form-control">
                                                             <option></option>
-
-
                                                         </select>
                                                     </div>
 
@@ -96,9 +94,9 @@
                 <div class="row page-title">
                     <h5>@ViewBag.Message</h5>
                     <div class="col-md-6 center-block no-float">
-                        <div class="col-md-4"><div class="circle">12K</div></div>
+                        <div class="col-md-4"><div class="circle" id="BandFollowers"> <i class="fa fa-spinner fa-spin fa-lg fa-fw"></i> </div></div>
                         <div class="col-md-6"><h1><a href="~/Fans/@Model.Id/Bands/@Model.BandProfile.Id">@Model.BandProfile.Info.Name</a></h1></div>
-                        <div class="col-md-2"><img class="img-circle img-calif" src="~/assets/common/img/califications/Acetato-rare.png"></div>
+                        <div class="col-md-2"><img class="img-circle img-calif" id="BandCalification"> </div>
                     </div>
                 </div>
             </div>
@@ -181,10 +179,10 @@
                     <div id="picture" class="row">
                         <div class="col-xs-12">
                             <div id="follow" class="pull-right">
-                                <button id="Follow_Button" onClick="follow(@Model.Id, @Model.BandProfile.Id)" class="btn btn-warning btn_follow"></button>
+                                <button id="Follow_Button" onClick="follow(@Model.Id, @Model.BandProfile.Id)" class="btn btn-warning btn_follow">Let me think...</button>
                             </div>
                             <div id="band-profile-pic" class="col-xs-12 center-block no-float content_centered">
-                                <img class="img-circle" src="~/Users/image?Id=@Model.BandProfile.Id">
+                                <a href="~/Fans/@Model.Id/Bands/@Model.BandProfile.Id"><img class="img-circle" src="~/Users/image?Id=@Model.BandProfile.Id"></a>
                             </div>
                         </div>
                     </div>

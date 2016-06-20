@@ -27,7 +27,7 @@ namespace BusinessLogic.EventBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getEventReviews(int pintEventId)
+        public string getEventReviews( int pintEventId)
         {
             List<clsReview> reviews = new List<clsReview>();
             clsResponse response = new clsResponse();
@@ -35,6 +35,18 @@ namespace BusinessLogic.EventBusinessLogic
             FacadeDA.geteventreviews(ref reviews, ref response, pintEventId);
 
             response.Data = serializer.Serialize(reviews);
+            return serializer.Serialize(response);
+        }
+
+        public string getOwnEventReview(string pstringRequest, int pintEventId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsReview review = new clsReview();
+            clsResponse response = new clsResponse();
+
+            //FacadeDA.getReviewDisk(ref review, ref response, request.Id, pintEventId);
+
+            response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
         }
 

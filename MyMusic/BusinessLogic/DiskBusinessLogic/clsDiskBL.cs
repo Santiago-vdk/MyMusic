@@ -99,7 +99,7 @@ namespace BusinessLogic.DiskBusinessLogic
             return serializer.Serialize(response);
         }
 
-        public string getDiskReviews(int pintDiskId)
+        public string getDiskReviews( int pintDiskId)
         {
             List<clsReview> reviews = new List<clsReview>();
             clsResponse response = new clsResponse();
@@ -107,6 +107,18 @@ namespace BusinessLogic.DiskBusinessLogic
             FacadeDA.getdiskreviews(ref reviews,ref response, pintDiskId);
 
             response.Data = serializer.Serialize(reviews);
+            return serializer.Serialize(response);
+        }
+
+        public string getOwnDiskReview(string pstringRequest, int pintDiskId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsReview review = new clsReview();
+            clsResponse response = new clsResponse();
+
+            //FacadeDA.getReviewDisk(ref review, ref response, request.Id, pintDiskId);
+
+            response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
         }
 

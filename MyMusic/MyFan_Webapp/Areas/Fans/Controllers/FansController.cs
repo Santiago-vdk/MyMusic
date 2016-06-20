@@ -267,9 +267,32 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             {
                 return View("~/Views/Login/Index.cshtml");
             }
-
         }
 
+        public async Task<ActionResult> GetBandStats(int fanId, int bandId)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " unfollwing " + bandId);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await clsFanRequests.GetBandStats(fanId, bandId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json("");
+                }
+
+                string j = DataParser.parseResponse(response).Data;
+                //return Json(j);
+                return Json(new { Followers = 1200000, Calification = 5 });
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+        }
 
 
 

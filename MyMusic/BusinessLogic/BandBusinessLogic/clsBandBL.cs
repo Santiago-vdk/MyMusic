@@ -126,10 +126,22 @@ namespace BusinessLogic.BandBusinessLogic
         {
             List<clsReview> reviews = new List<clsReview>();
             clsResponse response = new clsResponse();
-
-            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
+            
+            //FacadeDA
 
             response.Data = serializer.Serialize(reviews);
+            return serializer.Serialize(response);
+        }
+
+        public string getOwnBandReview(string pstringRequest, int pintBandId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsReview review = new clsReview();
+            clsResponse response = new clsResponse();
+
+            FacadeDA.getReviewBand(ref review,ref response,request.Id,pintBandId);
+
+            response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
         }
 
@@ -139,9 +151,12 @@ namespace BusinessLogic.BandBusinessLogic
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
 
-            //validar si el usuario ya habia hecho review
-            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
-            
+            bool existBand = FacadeDA.existreviewdisk(pintBandId, request.Id, ref response);
+            if (!existBand && response.Success)
+            {
+                FacadeDA.createReviewBand(ref review, request.Id, pintBandId, ref response);
+            }
+
             //data null
             return serializer.Serialize(response);
         }
