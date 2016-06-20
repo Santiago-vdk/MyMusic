@@ -406,8 +406,8 @@ namespace DataAccess.FanDataAccess
 
                 while (result.Read())
                 {
-                    pclsReview.Comment = (result["Comentario"].ToString());
-                    pclsReview.Calification = result["Calificacion"].ToString();
+                   // pclsReview.Comment = (result["Comentario"].ToString());
+                   // pclsReview.Calification = result["Calificacion"].ToString();
                 }
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";

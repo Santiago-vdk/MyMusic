@@ -72,9 +72,25 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             }
         }
 
-        public static async Task<string> GetEventReview(int userId, int eventId)
+        public static async Task<string> GetEventReview(int fanId, int bandId, int eventId)
         {
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/?q=review");
+            clsRequest RequestObject = new clsRequest("-1", fanId, fanId.ToString());
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/bands/" + bandId + "/events/" + eventId + "/?q=review", RequestObject);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
+        public static async Task<string> DeleteEventReview(int fanId, int eventId)
+        {
+            clsRequest RequestObject = new clsRequest("-1", fanId, fanId.ToString());
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/bands/" + fanId + "/events/" + eventId + "/?q=delete", RequestObject);
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;

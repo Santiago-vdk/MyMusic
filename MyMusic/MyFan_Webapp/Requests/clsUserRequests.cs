@@ -75,5 +75,22 @@ namespace MyFan_Webapp.Requests
                 return await Task.FromResult("Unexpected error ocurred");
             }
         }
+
+
+        public static async Task<string> CreateNewGenre(string name)
+        {
+
+            System.Diagnostics.Debug.WriteLine("genre with name " + name);
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users?q=genre&action=create&value=" + name);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
     }
 }

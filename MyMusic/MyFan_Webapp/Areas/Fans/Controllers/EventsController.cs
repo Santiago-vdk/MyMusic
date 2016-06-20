@@ -88,7 +88,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             System.Diagnostics.Debug.WriteLine(fanId + " getting one review from " + bandId + " of event " + eventId);
             if (Sessions.isAuthenticated(Request, Session))
             {
-                string response = await Bands.Requests.clsEventRequests.GetEventReview(bandId, eventId);
+                string response = await Bands.Requests.clsEventRequests.GetEventReview(fanId, bandId, eventId);
                 System.Diagnostics.Debug.WriteLine(response);
 
                 string ParsedMessage = ErrorParser.parse(response);

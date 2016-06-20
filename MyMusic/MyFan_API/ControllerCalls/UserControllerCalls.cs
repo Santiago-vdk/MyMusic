@@ -103,8 +103,30 @@ namespace MyFan_API.ControllerCalls
             return Task.FromResult(response);
         }
     }
+    public class UserControllerCallsCreateGenre : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        string _value;
 
+        public UserControllerCallsCreateGenre(HttpRequestMessage request, string value)
+        {
+            _value = value;
+            _request = request;
+            _facade = new FacadeBL();
+        }
 
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.createGenre(value)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+    
     public class UserControllerCallsSearch : IHttpActionResult
     {
 

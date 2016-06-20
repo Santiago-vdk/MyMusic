@@ -87,9 +87,34 @@ namespace MyFan_API.ControllerCalls
     }
 
 
+    public class EventControllerCallDeleteEventReview : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+
+        int _eventId;
+
+        public EventControllerCallDeleteEventReview(HttpRequestMessage request, int eventId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
 
 
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.deleteEventReview(_request.Content.ReadAsStringAsync().Result, _eventId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
     
+
+
+
 
    public class EventControllerCallGetEventReviews : IHttpActionResult
     {
