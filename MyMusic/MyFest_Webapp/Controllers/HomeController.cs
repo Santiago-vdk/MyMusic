@@ -1,16 +1,13 @@
 ﻿using DTO;
 using MyFan_Webapp;
 using MyFan_Webapp.Areas.Fans.Models;
-using MyFan_Webapp.Areas.Fans.Requests;
+using MyFan_Webapp.Models;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests;
 using MyFan_Webapp.Requests.Register;
-using MyFest_Webapp.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MyFest_Webapp.Controllers
@@ -87,7 +84,7 @@ namespace MyFest_Webapp.Controllers
 
             DashboardViewModel model = DataParser.parseDashboard(response2);
             model.Info = DataParser.parseBandInfo(response3);
-
+            model.Id = Int32.Parse(bandId);
 
             return View(model);
             

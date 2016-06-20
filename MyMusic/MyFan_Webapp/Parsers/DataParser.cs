@@ -8,7 +8,7 @@ using MyFan_Webapp.Controllers;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Bands.Models;
-using MyFest_Webapp.Models;
+
 
 namespace MyFan_Webapp
 {
@@ -83,10 +83,10 @@ namespace MyFan_Webapp
             dynamic data = JObject.Parse(Response.Data);
 
 
-            model.Calification =  Convert.ToString(data.Calification);
-            model.Disco = Convert.ToString(data.Disks);
-            model.Eventos = Convert.ToString(data.Events);
-            model.Followers = Convert.ToString(data.Followers);
+            model.Calification =  Convert.ToInt32(data.Calification);
+            model.Disco = Convert.ToInt32(data.Disks);
+            model.Eventos = Convert.ToInt32(data.Events);
+            model.Followers = Convert.ToInt32(data.Followers);
 
             return model;
 

@@ -1,21 +1,154 @@
-﻿@model MyFan_Webapp.Areas.Bands.Models.BandProfileViewModel
+﻿@model MyFan_Webapp.Models.DashboardViewModel
+
 @{
     Layout = null;
 }
 
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
-    <div> 
-        <h1>@Model.Info</h1>
+    <div class="col-md-2">
+        <a href="/Home/Dashboard" class="btn btn-primary">Dashboard</a>
+        <a href="/Home/Genres" class="btn btn-primary">Genres</a>
+
+    </div>
+    <div class="col-md-10">
+        <h1>Dashboard</h1>
+        <!-- Search Box -->
+        <div class="row search-box">
+            <div>
+                <div class="col-xs-12">
+                    <div class="input-group" id="adv-search">
+
+                        <input type="text" name="name" form="buscar" id="search_secondary" class="form-control" placeholder="Search for your favorite bands and artists..." />
+
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <div class="dropdown dropdown-lg">
+                                    <button type="submit" id="searchButton" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+
+                                        <form action="search" class="form-horizontal" id="buscar" role="form">
+
+                                            <div class="form-group">
+                                                <label for="contain">Band/Artist Name</label>
+                                                <input id="search_secondary" name="name" class="form-control" type="text" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="filter">Country</label>
+
+                                                <select id="CountryList" name="country" class="form-control">
+
+                                                    <option></option>
+
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="filter">Genres</label>
+                                                <select id="GenreList" name="genre" class="form-control">
+                                                    <option></option>
+
+
+                                                </select>
+                                            </div>
+
+
+                                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <button type="submit" form="buscar" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <img class="img-circle img-profile" height="150" width="150" src="~/Users/image?Id=@Model.Id">
+
+            <h1>Band Info</h1>
+            <h3>Username: @Model.Info.Username</h3>
+            <h3>Name: @Model.Info.Name</h3>
+            <h3>Hashtag: @Model.Info.Hashtag</h3>
+            <h3>Date Of Creation: @Model.Info.DateCreation</h3>
+            <h3>Country: @Model.Info.Country</h3>
+            <h3>Biography: @Model.Info.Biography</h3>
+            <h3>
+                Genres:
+                @foreach (var genre in Model.Info.Genres)
+            {
+                    @genre @Html.Raw(", ")
+                }
+            </h3>
+            <h3>
+                Members:
+                @foreach (var member in Model.Info.Members)
+            {
+                    @member @Html.Raw(", ")
+                }
+            </h3>
+
+        </div>
+   
+        <div class="col-md-5">
+
+            <h1>Promedios</h1>
+            <h3>Calificaciones: @Model.Calification</h3>
+            <h3>Discos: @Model.Disco</h3>
+            <h3>Eventos: @Model.Eventos</h3>
+            <h3>Followers: @Model.Followers</h3>
+
+
+        </div>
+
 
 
 
     </div>
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       

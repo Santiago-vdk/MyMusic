@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MyFest_Webapp.Models
+﻿namespace MyFan_Webapp.Models
 {
     public class DashboardViewModel
     {
@@ -13,6 +8,7 @@ namespace MyFest_Webapp.Models
         public int Followers { get; set; }
 
         public DTO.clsInfoBand  Info { get; set; }
-         
+        public int Id { get; set; }
+
     }
 }
