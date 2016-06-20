@@ -171,5 +171,10 @@ namespace DataAccess.EventsDataAccess
             }
 
         }
+
+        public static void main()
+        {
+
+        }
     }
 }

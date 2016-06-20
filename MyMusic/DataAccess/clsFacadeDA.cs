@@ -220,6 +220,10 @@ namespace DataAccess
         {
             UserDA.createNewGenero(strGenero, ref pclsResponse);
         }
- 
+        public string getHashTag(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandDA.getHashTag(ref pclsResponse, pintBandCode);
+        }
+
     }
 }

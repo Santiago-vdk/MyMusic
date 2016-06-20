@@ -76,5 +76,9 @@ namespace DataAccess.BandDataAccess
         {
             return BandRead.getFollowersBand(ref pclsResponse, pintBandCode);
         }
+        public string getHashTag(ref clsResponse pclsResponse, int pintBandCode)
+        {
+            return BandRead.getHashTag(ref pclsResponse, pintBandCode);
+        }
     }
 }

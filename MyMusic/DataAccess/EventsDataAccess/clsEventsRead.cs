@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility;
 
 namespace DataAccess.EventsDataAccess
 {
@@ -184,7 +185,20 @@ namespace DataAccess.EventsDataAccess
             }
 
         }
+
+        public static void Main()
+        {
+            List<clsReview> a = new List<clsReview>();
+            clsResponse b = new clsResponse();
+            Serializer c = new Serializer();
+            new clsEventsRead().geteventreviews(ref a, ref b, 7);
+            Console.WriteLine(c.Serialize(a));
+            Console.WriteLine(b.Message);
+            Console.ReadKey();
+        }
     }
+
+    
 
 
 }
