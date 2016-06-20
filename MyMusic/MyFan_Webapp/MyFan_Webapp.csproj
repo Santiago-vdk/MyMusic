@@ -112,7 +112,9 @@
     <Content Include="assets\common\img\califications\1.png" />
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
+    <Content Include="assets\common\js\Albums.js" />
     <Content Include="assets\common\js\Bands.js" />
+    <Content Include="assets\common\js\Events.js" />
     <Content Include="assets\common\js\Fans.js" />
     <Content Include="assets\common\js\forms\AlbumCreateForm.js" />
     <Content Include="assets\common\js\forms\BandEditForm.js" />

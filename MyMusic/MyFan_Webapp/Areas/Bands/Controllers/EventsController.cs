@@ -33,7 +33,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
 
             profile.Albums = DataParser.parseAlbums(response);
             profile.Event = DataParser.parseEvent(response2);
-
+            profile.Event.Id = id;
             return View(profile);
         }
 
@@ -58,18 +58,29 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             return View(profile);
         }
 
-        public async Task<ActionResult> NewEvent(int userId, string EventTitle, string EventDate, string EventTime, bool EventType, 
+        public async Task<ActionResult> Reviews(int userId, int id)
+        {
+            System.Diagnostics.Debug.WriteLine(userId + " " + id);
+
+            string response = await clsEventRequests.GetEventReviews(userId, id);
+            System.Diagnostics.Debug.WriteLine(response);
+
+            string ParsedMessage = ErrorParser.parse(response);
+            if (!ParsedMessage.Equals(""))
+            {
+                ViewBag.Message = "Something went wrong";
+                return Json(new { state = "False" });
+            }
+
+            return Json(DataParser.parseReviews(response));
+
+
+        }
+
+
+        public async Task<ActionResult> NewEvent(int userId, string EventTitle, string EventDate, string EventTime, bool EventType,
             string EventState, string EventLocation, string EventContent)
         {
-
-            System.Diagnostics.Debug.WriteLine(userId);
-            System.Diagnostics.Debug.WriteLine(EventTitle);
-            System.Diagnostics.Debug.WriteLine(EventDate);
-            System.Diagnostics.Debug.WriteLine(EventTime);
-            System.Diagnostics.Debug.WriteLine(EventType);
-            System.Diagnostics.Debug.WriteLine(EventState);
-            System.Diagnostics.Debug.WriteLine(EventLocation);
-            System.Diagnostics.Debug.WriteLine(EventContent);
 
             clsEvent form = new clsEvent();
             form.Date = EventDate;
@@ -95,7 +106,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
             profile.Albums = DataParser.parseAlbums(response);
-           
+
 
             int Id = DataParser.parseEventForm(response2);
             System.Diagnostics.Debug.WriteLine("Got id: " + Id);
