@@ -168,6 +168,18 @@ namespace DataAccess
         {
             FanDA.stopfollowBand(pintCodFanatico, pintCodBanda, ref pclsResponse);
         }
+        public void createEventReview(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintUserCode, int pintCodeEvent)
+        {
+            EventsDA.createEventReview(ref pclsReview, ref pclsResponse, pintUserCode, pintCodeEvent);
+        }
+        public bool existreviewevent(int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            return EventsDA.existreviewevent(pintCodDisk, pintUserCode, ref pclsResponse);
+        }
+
+
+
+
 
         public static void Main()
         {

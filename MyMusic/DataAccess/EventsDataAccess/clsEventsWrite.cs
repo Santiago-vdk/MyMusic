@@ -98,6 +98,46 @@ namespace DataAccess.EventsDataAccess
                 conn.Close();
             }
         }
+        public void createEventReview(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintUserCode,int pintCodeEvent)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_IngresarResenaEvento", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodEvento", System.Data.SqlDbType.Int).Value = pintCodeEvent;
+                cmd.Parameters.Add("@intCalificacion", System.Data.SqlDbType.Int).Value = Convert.ToInt32(pclsReview.Calification);
+                cmd.Parameters.Add("@strComentario", System.Data.SqlDbType.VarChar).Value = pclsReview.Comment;
+                cmd.Parameters.Add("@intUsuario", System.Data.SqlDbType.Int).Value = pintUserCode;
+                SqlParameter id = cmd.Parameters.Add("@intCodEvento", SqlDbType.Int);
+                id.Direction = ParameterDirection.Output;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
 
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
     }
 }

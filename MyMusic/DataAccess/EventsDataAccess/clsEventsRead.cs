@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -103,5 +104,45 @@ namespace DataAccess.EventsDataAccess
             }
 
         }
+
+        public bool existreviewevent(int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            bool tmp = false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_ExistReviewEvent", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodEvento", System.Data.SqlDbType.Int).Value = pintCodDisk;
+                cmd.Parameters.Add("@intCodUser", System.Data.SqlDbType.Int).Value = pintUserCode;
+                SqlParameter response = cmd.Parameters.Add("@btRespuesta", SqlDbType.Bit);
+                response.Direction = ParameterDirection.Output;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                tmp = Convert.ToBoolean(response.Value.ToString());
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tmp;
+        }
     }
+
+
 }

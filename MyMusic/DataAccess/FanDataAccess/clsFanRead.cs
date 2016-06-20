@@ -325,9 +325,7 @@ namespace DataAccess.FanDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_IsFollower", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodFanatico", System.Data.SqlDbType.Int).Value = pintCodFanatico;
-                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.VarChar).Value = pintCodBanda;
-                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
-                message.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.Int).Value = pintCodBanda;
                 SqlParameter cod = cmd.Parameters.Add("@btResult", SqlDbType.Bit);
                 cod.Direction = ParameterDirection.Output;
                 conn.Open();
@@ -342,7 +340,7 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
