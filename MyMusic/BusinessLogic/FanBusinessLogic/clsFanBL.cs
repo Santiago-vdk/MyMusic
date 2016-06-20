@@ -130,13 +130,22 @@ namespace BusinessLogic.FanBusinessLogic
         {
             clsResponse response = new clsResponse();
 
-            //FacadeDA.getFanInfo(ref InfoFan, ref response, pintFanId);
+            FacadeDA.followBand(pintFanId,pintBandId,ref response);
 
-            //response.Data = serializer.Serialize(InfoFan);
             return serializer.Serialize(response);
         }
-
-
+        public string IsFollowed(int pintFanId, int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+            FacadeDA.isFollowBand(pintFanId, pintBandId, ref response);
+            return serializer.Serialize(response);
+        }
+        public string UnfollowBand(int pintFanId, int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+            FacadeDA.stopfollowBand(pintFanId, pintBandId, ref response);
+            return serializer.Serialize(response);
+        }
 
 
 

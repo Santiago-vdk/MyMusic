@@ -167,5 +167,13 @@ namespace BusinessLogic
         {
             return FanBL.followBand(pintFanId,pintBandId);
         }
+        public string IsFollowed(int pintFanId, int pintBandId)
+        {
+            return FanBL.IsFollowed(pintFanId, pintBandId);
+        }
+        public string UnfollowBand(int pintFanId, int pintBandId)
+        {
+            return FanBL.UnfollowBand(pintFanId, pintBandId);
+        }
     }
 }
