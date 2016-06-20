@@ -298,8 +298,50 @@ namespace DataAccess.BandDataAccess
             return Wall;
         }
 
-        
-        
+
+        public void getAllBandReviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintBandCode)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetAllReviewBands", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodBand", System.Data.SqlDbType.Int).Value = pintBandCode;
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+                List<clsReview> reviews = new List<clsReview>();
+                while (result.Read())
+                {
+                    clsReview tmp = new clsReview();
+                    tmp.Author = (result["Nombre"].ToString());
+                    tmp.Calification = (result["Calificacion"].ToString());
+                    tmp.Comment = (result["Comentario"].ToString());
+                    reviews.Add(tmp);
+
+                }
+                pclsReviews = reviews;
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
 
 
         public static void Main()

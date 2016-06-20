@@ -103,9 +103,15 @@ namespace DataAccess.FanDataAccess
             FanWrite.createReviewBand(ref pclsReview, pintCodFanatico, pintCodBanda, ref pclsResponse);
         }
 
-        public void getReviewBand(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
+        public void getReviewBandUser(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
         {
-            FanRead.getReviewBand(ref pclsReview, ref pclsResponse, pintFanCode, pintBandCode);
+            FanRead.getReviewBandUser(ref pclsReview, ref pclsResponse, pintFanCode, pintBandCode);
         }
+
+        public void deleteBandReview(ref clsResponse pclsResponse, int pintFanCode, int pintCodeBand)
+        {
+            FanWrite.deleteBandReview(ref pclsResponse, pintFanCode, pintCodeBand);
+        }
+
     }
 }

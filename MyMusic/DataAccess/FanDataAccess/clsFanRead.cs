@@ -355,7 +355,7 @@ namespace DataAccess.FanDataAccess
             return tmp;
         }
 
-        public void getReviewBand(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
+        public void getReviewBandUser(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
         {
             try
             {

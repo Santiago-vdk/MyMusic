@@ -64,5 +64,9 @@ namespace DataAccess.BandDataAccess
         {
             return BandRead.getWallBand(ref pclsResponse, pintUserID, pintOffset, pintLimit);
         }
+        public void getAllBandReviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintBandCode)
+        {
+            BandRead.getAllBandReviews(ref pclsReviews, ref pclsResponse, pintBandCode);
+        }
     }
 }

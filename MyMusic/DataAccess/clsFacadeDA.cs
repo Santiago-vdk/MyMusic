@@ -180,9 +180,9 @@ namespace DataAccess
         {
             FanDA.createReviewBand(ref pclsReview, pintCodFanatico, pintCodBanda, ref pclsResponse);
         }
-        public void getReviewBand(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
+        public void getReviewBandUser(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
         {
-            FanDA.getReviewBand(ref pclsReview, ref pclsResponse, pintFanCode, pintBandCode);
+            FanDA.getReviewBandUser(ref pclsReview, ref pclsResponse, pintFanCode, pintBandCode);
         }
         public void getdiscReviewFan(ref clsReview pclsReview, int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
         {
@@ -200,6 +200,15 @@ namespace DataAccess
         {
             DiskDA.deleteDiscReview(ref pclsResponse, pintUserCode, pintCodeDisc);
         }
+        public void deleteBandReview(ref clsResponse pclsResponse, int pintFanCode, int pintCodeBand)
+        {
+            FanDA.deleteBandReview(ref pclsResponse, pintFanCode, pintCodeBand);
+        }
+        public void getAllBandReviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintBandCode)
+        {
+            BandDA.getAllBandReviews(ref pclsReviews, ref pclsResponse, pintBandCode);
+        }
+
 
         public static void Main()
         {

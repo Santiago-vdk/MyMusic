@@ -139,7 +139,6 @@ namespace DataAccess.EventsDataAccess
             }
 
         }
-
         public void deleteEventReview(ref clsResponse pclsResponse, int pintUserCode, int pintCodeEvent)
         {
             try
