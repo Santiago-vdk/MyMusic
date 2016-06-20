@@ -224,6 +224,10 @@ namespace DataAccess
         {
             return BandDA.getHashTag(ref pclsResponse, pintBandCode);
         }
+        public string getFanName(ref clsResponse pclsResponse, int pintFanCode)
+        {
+            return FanDA.getFanName(ref pclsResponse, pintFanCode);
+        }
 
     }
 }

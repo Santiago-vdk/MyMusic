@@ -393,21 +393,21 @@ namespace DataAccess.FanDataAccess
 
         }
 
-        public void getFanName(ref clsResponse pclsResponse, int pintFanCode)
+        public string getFanName(ref clsResponse pclsResponse, int pintFanCode)
         {
+            string tmp = "";
             try
             {
-                SqlCommand cmd = new SqlCommand("myFan.SP_GetReviewBands", conn);
+                SqlCommand cmd = new SqlCommand("myFan.SP_GetFanName", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intUserFanCode", System.Data.SqlDbType.Int).Value = pintFanCode;
-                cmd.Parameters.Add("@intUserBandCode", System.Data.SqlDbType.Int).Value = pintFanCode;
+                cmd.Parameters.Add("@intUserCodeFan", System.Data.SqlDbType.Int).Value = pintFanCode;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
 
                 while (result.Read())
                 {
-                   // pclsReview.Comment = (result["Comentario"].ToString());
-                   // pclsReview.Calification = result["Calificacion"].ToString();
+                    tmp = (result["nombre"].ToString());
+                    
                 }
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
@@ -429,7 +429,7 @@ namespace DataAccess.FanDataAccess
             {
                 conn.Close();
             }
-
+            return tmp;
         }
     }
 
