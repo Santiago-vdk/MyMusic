@@ -31,9 +31,6 @@
 }
 
 function unfollow(fanId, bandId) {
-    console.log("Unfollowing");
-
-
     var request = {
         fanId: fanId,
         bandId: bandId

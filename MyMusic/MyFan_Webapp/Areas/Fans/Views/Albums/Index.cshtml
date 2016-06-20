@@ -6,9 +6,6 @@
 }
 <head>
     <!-- Style -->
-    <link crossorigin="anonymous" href="~/assets/common/css/foms/Register.css" rel="stylesheet">
-    <script src="~/assets/common/js/Processing.js"></script>
-    <script src="~/assets/common/js/forms/AlbumCreateForm.js"></script>
     <link rel="stylesheet" href="~/assets/common/css/Profile.css">
 </head>
 
@@ -16,187 +13,88 @@
     <!-- Post-Section -->
     <div id="post-section" class="row">
         <h2 class="post-header">Album - @Model.BandProfile.Disk.Name</h2>
-
-
         <div class="row">
             <div class="col-md-6">
-
-
-                <img id="album-pic-index" class="img-responsive img-circle" src="~/Users/imageAlbum?Id=@Model.BandProfile.Disk.Id" />
-                <h3><b>Record Label:</b> @Model.BandProfile.Disk.Label</h3>
-                <h3><b>Release Date:</b> @Model.BandProfile.Disk.DateCreation</h3>
-                <h3><b>Genre:</b> @Model.BandProfile.Disk.Genre</h3>
-
-
-            </div>
-            <div class="col-md-3">
-                <div class="row reviews">
-                    <!-- Profile Review Section -->
-
-                    <h2>Band Reviews</h2>
-
-                    <div id="review-section-viewing" class="row">
-
-                        <div class="row ">
-                            <div class="col-xs-12 review-box">
-
-                                <!-- Review Header -->
-                                <div class="row">
-                                    <!-- Review User -->
-                                    <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
-                                    <!-- Review Calification -->
-                                    <div class="col-xs-6"><img class="img-circle img-calif" src="~/assets/common/img/Acetato-rare.png"></div>
-                                </div>
-
-                                <div class="row">
-                                    <!-- Review Comment -->
-                                    <div class="col-xs-12">
-                                        <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <h3><b>Record Label:</b> @Model.BandProfile.Disk.Label</h3>
+                            <h3><b>Release Date:</b> @Model.BandProfile.Disk.DateCreation</h3>
+                            <h3><b>Genre:</b> @Model.BandProfile.Disk.Genre</h3>
                         </div>
-
-                        <div class="row review-row">
-                            <div class="col-xs-12 review-box">
-
-                                <!-- Review Header -->
-                                <div class="row">
-                                    <!-- Review User -->
-                                    <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
-                                    <!-- Review Calification -->
-                                    <div class="col-xs-6"><img class="img-circle img-calif" src="~/assets/common/img/Acetato-rare.png"></div>
-                                </div>
-
-                                <div class="row">
-                                    <!-- Review Comment -->
-                                    <div class="col-xs-12">
-                                        <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
+                        <div class="col-md-6">
+                            <img id="album-pic-index" class="img-responsive img-circle" src="~/Users/imageAlbum?Id=@Model.BandProfile.Disk.Id" />
                         </div>
-                        <div class="row review-row">
-                            <div class="col-xs-12 review-box">
-
-                                <!-- Review Header -->
-                                <div class="row">
-                                    <!-- Review User -->
-                                    <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
-                                    <!-- Review Calification -->
-                                    <div class="col-xs-6"><img class="img-circle img-calif" src="~/assets/common/img/Acetato-rare.png"></div>
-                                </div>
-
-                                <div class="row">
-                                    <!-- Review Comment -->
-                                    <div class="col-xs-12">
-                                        <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="row review-row">
-                            <div class="col-xs-12 review-box">
-
-                                <!-- Review Header -->
-                                <div class="row">
-                                    <!-- Review User -->
-                                    <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
-                                    <!-- Review Calification -->
-                                    <div class="col-xs-6"><img class="img-circle img-calif" src="~/assets/common/img/Acetato-rare.png"></div>
-                                </div>
-
-                                <div class="row">
-                                    <!-- Review Comment -->
-                                    <div class="col-xs-12">
-                                        <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="row review-row">
-                            <div class="col-xs-12 review-box">
-
-                                <!-- Review Header -->
-                                <div class="row">
-                                    <!-- Review User -->
-                                    <div class="col-xs-6 review-user"><h4>Santiago</h4></div>
-                                    <!-- Review Calification -->
-                                    <div class="col-xs-6"><img class="img-circle img-calif" src="~/assets/common/img/Acetato-rare.png"></div>
-                                </div>
-
-                                <div class="row">
-                                    <!-- Review Comment -->
-                                    <div class="col-xs-12">
-                                        <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
                     </div>
                 </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover" id="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        Name
+                                    </th>
+                                    <th class="text-center">
+                                        Duration
+                                    </th>
+                                    <th class="text-center">
+                                        Live
+                                    </th>
+                                    <th class="text-center">
+                                        Limited Edition
+                                    </th>
+                                    <th class="text-center">
+                                        Link
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var song in Model.BandProfile.Disk.Songs)
+                                {
+                                    <tr><td>@song.Name</td><td>@song.Duration</td><td>@song.Type</td><td>@song.LimitedEdition</td><td><a href="@song.Link" target="_blank">Go To Link</a></td></tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+
 
 
             </div>
-        </div>
 
-        <div class="row">
+            <div class="col-md-3">
+                <div id="review-section-title" class="row">
+                    <h2>Album Reviews</h2>
+                </div>
+                <div id="review-section-viewing" class="row">
+                    <div class="row ">
+                        <div class="col-xs-12 review-box">
+                            <!-- Review Header -->
+                            <div class="row">
+                                <!-- Review User -->
+                                <div class="col-xs-6 review-user"><h3>Santiago</h3></div>
+                                <!-- Review Calification -->
+                                <div class="col-xs-6"><img class="img-circle" src="~/assets/common/img/califications/Acetato-original.png"></div>
+                            </div>
 
-            <div class="col-md-6">
-
-                <div class="row right-section">
-
-                    <table class="table table-bordered table-hover" id="table">
-                        <thead>
-                            <tr>
-                                <th class="text-center">
-                                    Name
-                                </th>
-                                <th class="text-center">
-                                    Duration
-                                </th>
-                                <th class="text-center">
-                                    Live
-                                </th>
-                                <th class="text-center">
-                                    Limited Edition
-                                </th>
-                                <th class="text-center">
-                                    Link
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var song in Model.BandProfile.Disk.Songs)
-                            {
-                                <tr><td>@song.Name</td><td>@song.Duration</td><td>@song.Type</td><td>@song.LimitedEdition</td><td><a href="@song.Link" target="_blank">Go To Link</a></td></tr>
-                            }
-                        </tbody>
-                    </table>
+                            <div class="row">
+                                <!-- Review Comment -->
+                                <div class="col-xs-12">
+                                    <p>User comment goes here, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+
         </div>
-
-
-
-
-
     </div>
-
-
 </body>
-
-
-

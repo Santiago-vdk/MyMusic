@@ -107,7 +107,7 @@ jQuery(function ($) {
             AlbumName: {
                 required: true,
                 minlength: 3,
-                maxlenght: 20
+                maxlength: 20
             },
             DateRelease: {
                 required: true,
