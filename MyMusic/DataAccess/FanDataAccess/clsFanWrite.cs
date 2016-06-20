@@ -16,55 +16,55 @@ namespace DataAccess.FanDataAccess
 
 
         public clsInfoFan createFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
-         {
-           
-             try
-             {                   
-                 SqlCommand cmd = new SqlCommand("myFan.SP_CrearFanatico", conn);
-                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                 cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Username;
-                 cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
-                 cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",",pclsInfoFan.Genres);
-                 cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;
-                 cmd.Parameters.Add("@intPais", System.Data.SqlDbType.Int).Value = pclsInfoFan.Country;
-                 cmd.Parameters.Add("@intSexo", System.Data.SqlDbType.Int).Value = pclsInfoFan.Gender;
-                 cmd.Parameters.Add("@strSalt", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Salt;
-                 cmd.Parameters.Add("@strSaltHashedPassword", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.SaltHashed;
-                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
-                 message.Direction = ParameterDirection.Output;
-                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
-                 cod.Direction = ParameterDirection.Output;
+        {
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_CrearFanatico", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@strLoginName", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Username;
+                cmd.Parameters.Add("@strNombre", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Name;
+                cmd.Parameters.Add("@strGeneros", System.Data.SqlDbType.VarChar).Value = String.Join(",", pclsInfoFan.Genres);
+                cmd.Parameters.Add("@dtFechaNacimiento", System.Data.SqlDbType.Date).Value = pclsInfoFan.Birthday;
+                cmd.Parameters.Add("@intPais", System.Data.SqlDbType.Int).Value = pclsInfoFan.Country;
+                cmd.Parameters.Add("@intSexo", System.Data.SqlDbType.Int).Value = pclsInfoFan.Gender;
+                cmd.Parameters.Add("@strSalt", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.Salt;
+                cmd.Parameters.Add("@strSaltHashedPassword", System.Data.SqlDbType.VarChar).Value = pclsInfoFan.SaltHashed;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
                 SqlParameter id = cmd.Parameters.Add("@intCodeUserReturn", SqlDbType.Int);
                 id.Direction = ParameterDirection.Output;
                 conn.Open();
-                
+
                 SqlDataReader result = cmd.ExecuteReader();
                 Console.WriteLine("entre");
-                pclsInfoFan.Id = Convert.ToInt32(id.Value);     
-                       
+                pclsInfoFan.Id = Convert.ToInt32(id.Value);
+
                 pclsResponse.Code = Convert.ToInt32(cod.Value.ToString());
-                 pclsResponse.Message = message.Value.ToString();
-                 pclsResponse.Success = true;
+                pclsResponse.Message = message.Value.ToString();
+                pclsResponse.Success = true;
 
             }
-             catch (SqlException ex)
-             {
+            catch (SqlException ex)
+            {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
-             catch (Exception ex)
-             {
+            catch (Exception ex)
+            {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
-             finally
-             {
-                 conn.Close(); 
-             }
-             return pclsInfoFan;
-         }
+            finally
+            {
+                conn.Close();
+            }
+            return pclsInfoFan;
+        }
 
         public clsInfoFan updateFan(clsInfoFan pclsInfoFan, ref clsResponse pclsResponse)
         {
@@ -94,13 +94,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -109,7 +109,7 @@ namespace DataAccess.FanDataAccess
             return pclsInfoFan;
         }
 
-        public void followBand(int pintCodFanatico,int pintCodBanda, ref clsResponse pclsResponse)
+        public void followBand(int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace DataAccess.FanDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_SeguirBanda", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodFanatico", System.Data.SqlDbType.Int).Value = pintCodFanatico;
-                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.VarChar).Value =pintCodBanda;
+                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.VarChar).Value = pintCodBanda;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
@@ -133,13 +133,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -172,13 +172,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -260,25 +260,6 @@ namespace DataAccess.FanDataAccess
             }
 
         }
-        public static void Main()
-        {
-            clsFanWrite a = new clsFanWrite();
-            clsInfoFan b = new clsInfoFan();
-            Serializer c = new Serializer();
-            b.Id = 121;
-            b.Username = "StivenBanano22232";
-            b.Password = "aadfads23da";
-            b.Name = "pan121";
-            b.Genres = new List<string>(new string[] { "1","3","4" });
-            b.Birthday = "1-2-2016";
-            b.Country = "7";
-            b.Gender = "1";
-            clsFanWrite d = new clsFanWrite();
-            clsResponse f = new clsResponse();
-            d.updateFan(b,ref f);
-            Console.WriteLine(c.Serialize(b));
-            Console.WriteLine(f.Message);
-            Console.ReadKey();
-        }
+
     }
 }

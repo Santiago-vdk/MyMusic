@@ -50,13 +50,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -95,13 +95,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -110,29 +110,5 @@ namespace DataAccess.BandDataAccess
             return pclsInfoBand;
         }
 
-
-
-
-        public static void Main()
-        {
-            
-            clsInfoBand b = new clsInfoBand();
-            b.Username = "canesa me la besa";
-            b.Name = "canesota";
-            b.CodGenres = new List<int>(new int[] { 1, 2 });
-            b.Members = new List<string>(new string[] { "Panochon69", "PAnochote69" });
-            b.DateCreation = "1-2-2016";
-            b.Biography = "Listo";
-            b.Country = "9";
-            b.Hashtag = "@canepicha";
-            b.Id = 133;
-
-   
-            clsBandWrite d = new clsBandWrite();
-            clsResponse f = new clsResponse();
-            d.updateBand(b, ref f);
-            Console.WriteLine(f.Message);
-            Console.ReadKey();
-        }
     }
 }

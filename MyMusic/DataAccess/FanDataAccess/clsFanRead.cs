@@ -41,13 +41,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -100,13 +100,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -156,13 +156,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -229,7 +229,6 @@ namespace DataAccess.FanDataAccess
             return pclsBandsBlock;
         }
 
-
         public void getFanInfo(ref clsInfoFan pclsInfoFan, ref clsResponse pclsResponse, int pintUserID)
         {
             try
@@ -261,13 +260,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -301,13 +300,13 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -346,7 +345,7 @@ namespace DataAccess.FanDataAccess
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -395,32 +394,6 @@ namespace DataAccess.FanDataAccess
         }
 
 
-
-
-
-
-
-
-        public static void Main()
-        {
-            clsFanRead a = new clsFanRead();
-            Serializer b = new Serializer();
-            clsBandsBlock h = new clsBandsBlock();
-            clsResponse d= new clsResponse();
-            //c.FanCod = 98;
-            //c.Chunks = 10;
-            //c.Offset = 10;
-            clsSearch k = new clsSearch();
-            k.Name = "";
-            List<Int32> l = new List<int>();
-            l.Add(0);
-            k.Genre = "Pop";
-            k.Country = "";
-        
-            Console.WriteLine(b.Serialize(a.getBandsSearch(h, ref d, ref k, 0, 5)));
-            Console.WriteLine(d.Message);
-            Console.ReadKey();
-        }
     }
 
 }

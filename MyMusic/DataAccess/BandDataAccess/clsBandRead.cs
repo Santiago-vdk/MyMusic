@@ -54,13 +54,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -98,13 +98,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -140,13 +140,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -180,13 +180,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -228,13 +228,13 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 1;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Error while procesing your request.";
+                pclsResponse.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -287,7 +287,7 @@ namespace DataAccess.BandDataAccess
             {
                 pclsResponse.Code = 2;
                 pclsResponse.Success = false;
-                pclsResponse.Message = "Unexpected error.";
+                pclsResponse.Message = ex.Message;
             }
             finally
             {
@@ -298,7 +298,6 @@ namespace DataAccess.BandDataAccess
             return Wall;
         }
 
-
         public void getAllBandReviews(ref List<clsReview> pclsReviews, ref clsResponse pclsResponse, int pintBandCode)
         {
             try
@@ -306,14 +305,15 @@ namespace DataAccess.BandDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_GetAllReviewBands", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodBand", System.Data.SqlDbType.Int).Value = pintBandCode;
+                
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
-
+                
                 List<clsReview> reviews = new List<clsReview>();
                 while (result.Read())
                 {
                     clsReview tmp = new clsReview();
-                    tmp.Author = (result["Nombre"].ToString());
+                    tmp.Author = (result["strNombre"].ToString());
                     tmp.Calification = (result["Calificacion"].ToString());
                     tmp.Comment = (result["Comentario"].ToString());
                     reviews.Add(tmp);
@@ -356,7 +356,7 @@ namespace DataAccess.BandDataAccess
                 while (result.Read())
                 {
 
-                    tmp = Convert.ToInt32(result["Nombre"].ToString());
+                    tmp = Convert.ToInt32(result["Calificacion"].ToString());
                     
                 }
  
@@ -423,24 +423,6 @@ namespace DataAccess.BandDataAccess
             return tmp;
         }
 
-        public static void Main()
-        {
-            clsBandRead a = new clsBandRead();
-            clsResponse b = new clsResponse();
-            clsEvent d = new clsEvent();
-
-
-         
-
-
-
-            Serializer r = new Serializer();
-            
-            //a.geteventinfo(ref d,ref b,4);
-            Console.WriteLine(r.Serialize(d));
-            Console.WriteLine(b.Message);
-            Console.ReadKey();
-        }
 
     }
 }
