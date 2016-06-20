@@ -166,7 +166,13 @@ namespace BusinessLogic.BandBusinessLogic
             clsResponse response = new clsResponse();
             clsBandStats BandStats = new clsBandStats();
 
-            //FacadeDA
+            BandStats.Calification = FacadeDA.getCalificationBand(ref response,pintBandId);
+            BandStats.Followers = FacadeDA.getFollowersBand(ref response, pintBandId);
+
+            if (BandStats.Calification==0)
+            {
+                BandStats.Calification = 1; //minimun calification
+            }
 
             response.Data = serializer.Serialize(BandStats);
             return serializer.Serialize(response);

@@ -105,11 +105,11 @@
     <Content Include="assets\common\css\Profile.css" />
     <Content Include="assets\common\img\album.jpg" />
     <Content Include="assets\common\img\avatar.png" />
-    <Content Include="assets\common\img\califications\Acetato-gold.png" />
-    <Content Include="assets\common\img\califications\Acetato-original.png" />
-    <Content Include="assets\common\img\califications\Acetato-rare.png" />
-    <Content Include="assets\common\img\califications\acetato-silver.png" />
-    <Content Include="assets\common\img\califications\acetato-wood.png" />
+    <Content Include="assets\common\img\califications\3.png" />
+    <Content Include="assets\common\img\califications\4.png" />
+    <Content Include="assets\common\img\califications\5.png" />
+    <Content Include="assets\common\img\califications\2.png" />
+    <Content Include="assets\common\img\califications\1.png" />
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
     <Content Include="assets\common\js\Bands.js" />

@@ -28,11 +28,11 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 }
             }
             //[Bandas,Posts]
-           // string response = await clsBandRequests.GetBandInfo(bandId);
+            string response = await Bands.Requests.clsBandRequests.GetBandReviews(bandId);
             string response2 = await Bands.Requests.clsBandRequests.getBandAlbums(bandId);
             string response3 = await Bands.Requests.clsBandRequests.GetBandPosts(bandId);
             string response4 = await Bands.Requests.clsBandRequests.GetBandInfo(bandId);
-            System.Diagnostics.Debug.WriteLine(response2);
+            System.Diagnostics.Debug.WriteLine(response);
             //Hubo error
             /*if (!ErrorParser.parse(response).Equals(""))
             {
@@ -50,7 +50,8 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-           // profile.BandInfo = infoBand;
+
+            profile.BandProfile.Reviews = DataParser.parseReviews(response);
             profile.BandProfile.Albums = DataParser.parseAlbums(response2);
             profile.BandProfile.Posts = DataParser.parsePosts(response3);
             profile.BandProfile.Info = DataParser.parseBandInfo(response4);

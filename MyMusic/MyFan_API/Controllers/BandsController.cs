@@ -44,9 +44,17 @@ namespace MyFan_API.Controllers
             {
                 return new BandControllerCallsGetProfile(Request, bandId);
             }
-            if(String.Equals(q, "stats") && !String.Equals(value,""))
+            if(String.Equals(q, "stats"))
             {
-
+                return new BandControllerCallsGetStats(Request, bandId);
+            }
+            if (String.Equals(q, "reviews"))
+            {
+                return new BandControllerCallsGetReviews(Request, bandId);
+            }
+            if (String.Equals(q, "review") )
+            {
+                return new BandControllerCallsGetOneReview(Request, bandId);
             }
             //Endpoint for retrieving one band
             throw new NotImplementedException();

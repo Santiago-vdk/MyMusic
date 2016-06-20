@@ -235,10 +235,10 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 if (!ParsedMessage.Equals(""))
                 {
                     ViewBag.Message = "Something went wrong";
-                    return Json(new { state = false });
+                    return Json(new { state = "False" });
                 }
 
-                return Json(new { state = true });
+                return Json(new { state = "True"});
             }
             else
             {
@@ -258,10 +258,9 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 if (!ParsedMessage.Equals(""))
                 {
                     ViewBag.Message = "Something went wrong";
-                    return Json(new { state = false });
                 }
 
-                return Json(new { state = true });
+                return Json(new { state = DataParser.parseResponse(response).Data });
             }
             else
             {
@@ -271,7 +270,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
         public async Task<ActionResult> GetBandStats(int fanId, int bandId)
         {
-            System.Diagnostics.Debug.WriteLine(fanId + " unfollwing " + bandId);
+            System.Diagnostics.Debug.WriteLine(fanId + " get stats " + bandId);
             if (Sessions.isAuthenticated(Request, Session))
             {
                 string response = await clsFanRequests.GetBandStats(fanId, bandId);
@@ -285,16 +284,14 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 }
 
                 string j = DataParser.parseResponse(response).Data;
-                //return Json(j);
-                return Json(new { Followers = 1200000, Calification = 5 });
+                System.Diagnostics.Debug.WriteLine(j);
+                return Json(j);
+               // return Json(new { Followers = 1200000, Calification = 5 });
             }
             else
             {
                 return View("~/Views/Login/Index.cshtml");
             }
         }
-
-
-
     }
 }

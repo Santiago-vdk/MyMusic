@@ -19,5 +19,6 @@ namespace MyFan_Webapp.Areas.Bands.Models
         public clsDisk Disk { get; set; }
         public clsNew New { get; set; }
         public clsEvent Event { get; set; }
+        public List<clsReview> Reviews { get; set; }
     }
 }
