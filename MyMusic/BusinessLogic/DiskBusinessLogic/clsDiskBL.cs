@@ -116,8 +116,11 @@ namespace BusinessLogic.DiskBusinessLogic
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
 
-            //validar si el usuario ya habia hecho review
-            //FacadeDA.getbandreviews(ref reviews, ref response, pintBandId);
+            bool existDisk = FacadeDA.existreviewdisk(pintDiskId, request.Id, ref response);
+            if (!existDisk && response.Success)
+            {
+                FacadeDA.creatediskreview(ref review, ref response, request.Id, pintDiskId);
+            }
 
             //data null
             return serializer.Serialize(response);
