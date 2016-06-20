@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyFan_API.WebApiConfig" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\WebApiConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.CopyOfWebApiConfig" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\WebApiConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsGetForm" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsGetSearchParams" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.CopyOfFanControllerCallsGetSearchParams" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.CopyOfFanControllerCallsRegisterFan" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsRegisterFan" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsGetPosts" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAIAACABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsGetBands" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAIAACABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsGetProfile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.CopyOfFanControllerCallsIsFollowing" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAQgAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.CopyOfFanControllerCallsFollowBand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAQgAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.CopyOfFanControllerCallsGetProfile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsIsFollowing" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAQgAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsUpdateProfile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsFollowBand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAQgAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.FanControllerCallsUnFollowBand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAQgAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\FanControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.WebApiApplication" Collapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.CopyOfWebApiApplication" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.JSONResponse" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\JSONResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.CopyOfJSONResponse" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAgAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\JSONResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.AlbumControllerCallsCreateAlbum" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\AlbumControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.AlbumControllerCallsGetAlbum" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEQ=</HashCode>
+      <FileName>ControllerCalls\AlbumControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfAlbumControllerCallsGetAlbum" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEQ=</HashCode>
+      <FileName>ControllerCalls\AlbumControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetForm" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetAlbums" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAIAACABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetProfile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetPosts" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAIAACABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsRegisterBand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfBandControllerCallsRegisterBand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsUpdateProfile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetStats" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfBandControllerCallsGetStats" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfBandControllerCallsGetReviews" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetReviews" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.BandControllerCallsGetOneReview" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\BandControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.EventControllerCallsCreateEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\EventControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfEventControllerCallsCreateEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\EventControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.EventControllerCallGetEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\EventControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfEventControllerCallUpdateEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\EventControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.EventControllerCallUpdateEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\EventControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.NewControllerCallsCreateNew" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\NewControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfNewControllerCallsCreateNew" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\NewControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfNewControllerCallsGetNew" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\NewControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.NewControllerCallsGetNew" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\NewControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.SongControllerCallsCreateSong" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAABAAAAEQ=</HashCode>
+      <FileName>ControllerCalls\SongControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.UserControllerCallsLoginUser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfUserControllerCallsLoginUser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.UserControllerCallsValidateUsername" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.UserControllerCallsGetProfilePicture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfUserControllerCallsGetProfilePicture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.UserControllerCallsGetDiskPicture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.CopyOfUserControllerCallsGetDiskPicture" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.ControllerCalls.UserControllerCallsSearch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAACABAAAAEA=</HashCode>
+      <FileName>ControllerCalls\UserControllerCalls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyFan_API.Controllers.AlbumsController" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAQAAAAQAAAAQAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Controllers\AlbumsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.CopyOfAlbumsController" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAQAAAAQAAAAQAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Controllers\AlbumsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.BandsController" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAQAQCAAAAA=</HashCode>
+      <FileName>Controllers\BandsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.EventsController" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAABAAABIAAAAAABAA=</HashCode>
+      <FileName>Controllers\EventsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.CopyOfEventsController" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAABAAABIAAAAAABAA=</HashCode>
+      <FileName>Controllers\EventsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.FansController" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAgBAAAAAAAAAAAAAEAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Controllers\FansController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.NewsController" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQIAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controllers\NewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.CopyOfNewsController" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQIAAAAAAAAAAAAAgAAAAQAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controllers\NewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.SongsController" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIDAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Controllers\SongsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.CopyOfSongsController" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIDAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Controllers\SongsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Controllers.UsersController" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAgAAA=</HashCode>
+      <FileName>Controllers\UsersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyFan_API.Properties.Settings" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAIAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

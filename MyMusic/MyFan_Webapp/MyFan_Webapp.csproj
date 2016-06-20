@@ -226,6 +226,7 @@
     <Content Include="Areas\Fans\Views\News\Index.cshtml" />
     <Content Include="Areas\Fans\Views\Events\Index.cshtml" />
     <Content Include="Areas\Fans\Views\Albums\Index.cshtml" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

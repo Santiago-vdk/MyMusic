@@ -9,7 +9,7 @@ using BusinessLogic.NewBusinessLogic;
 
 namespace BusinessLogic
 {
-   public class FacadeBL
+    public class FacadeBL
     {
 
         clsEventBL EventBL = new clsEventBL();
@@ -43,7 +43,7 @@ namespace BusinessLogic
         }
         public string getBandPublications(int pintUserId, int pintOffset, int pintLimit)
         {
-            return BandBL.getBandPublications( pintUserId, pintOffset, pintLimit);
+            return BandBL.getBandPublications(pintUserId, pintOffset, pintLimit);
         }
         public string getBands(int pintUserId, int pintOffset, int pintLimit)
         {
@@ -77,11 +77,11 @@ namespace BusinessLogic
 
         public string getBandReviews(int pintBandId)
         {
-            return BandBL.getBandReviews( pintBandId);
+            return BandBL.getBandReviews(pintBandId);
         }
-        public string getDiskReviews( int pintBandId)
+        public string getDiskReviews(int pintDiskId)
         {
-            return DiskBL.getDiskReviews( pintBandId);
+            return DiskBL.getDiskReviews(pintDiskId);
         }
         public string getEventReviews( int pintEventId)
         {
