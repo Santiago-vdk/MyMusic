@@ -25,11 +25,13 @@ namespace MyFest_Webapp.Controllers
             return View();
         }
 
-        public ActionResult CreateGenres(string name)
+        public async Task<ActionResult> CreateGenres(string name)
         {
 
             System.Diagnostics.Debug.WriteLine(name);
-            return View();
+            string response2 = await clsUserRequests.CreateNewGenre(name);
+
+            return Json("");
         }
 
         public async Task<ActionResult> Search(string name, string country, string genre)

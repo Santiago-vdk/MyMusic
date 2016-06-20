@@ -120,7 +120,7 @@ namespace MyFan_API.ControllerCalls
         {
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(_facade.createGenre(value)),
+                Content = new StringContent(_facade.createGenre(_value)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
