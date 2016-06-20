@@ -139,7 +139,7 @@ namespace BusinessLogic.FanBusinessLogic
         public string IsFollowed(int pintFanId, int pintBandId)
         {
             clsResponse response = new clsResponse();
-            FacadeDA.isFollowBand(pintFanId, pintBandId, ref response);
+            response.Data = FacadeDA.isFollowBand(pintFanId, pintBandId, ref response).ToString();
             return serializer.Serialize(response);
         }
         public string UnfollowBand(int pintFanId, int pintBandId)
