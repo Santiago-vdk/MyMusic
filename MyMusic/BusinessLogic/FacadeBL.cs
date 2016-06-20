@@ -106,7 +106,7 @@ namespace BusinessLogic
             return BandBL.getBandStats(pintBandId);
         }
 
-        public string Dashboard(pintBandId)
+        public string Dashboard(int pintBandId)
         {
             return BandBL.Dashboard(pintBandId);
         }

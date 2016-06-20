@@ -287,7 +287,7 @@ namespace MyFan_API.ControllerCalls
         {
             var response = new HttpResponseMessage()
             {
-                //Content = new StringContent(_facade.Dashboard(userId)),
+                Content = new StringContent(_facade.Dashboard(_userId)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
