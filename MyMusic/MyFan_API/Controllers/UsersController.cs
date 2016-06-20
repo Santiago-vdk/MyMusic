@@ -28,6 +28,11 @@ namespace MyFan_API.Controllers
             {
                 return new UserControllerCallsGetDiskPicture(Request, value);
             }
+            if (String.Equals(q.ToLower(), "genre") && String.Equals(action.ToLower(), "create") && (value.ToLower() != null))
+            {
+                System.Diagnostics.Debug.WriteLine("Creating genre with name " + value);
+                return new UserControllerCallsCreateGenre(Request, value);
+            }
             throw new NotImplementedException();
         }
 

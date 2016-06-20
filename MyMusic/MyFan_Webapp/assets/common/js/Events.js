@@ -14,7 +14,7 @@
         data: JSON.stringify(request),
         success: function (data, status) {
 
-            console.log(data);
+            console.log("datatata " + data);
 
                 $("#reviews_show").append(
 
@@ -46,7 +46,7 @@
 
         }
     });
-    return false;
+
 
 }
 
@@ -60,6 +60,7 @@ function GetEventReviews(fanId, bandId, eventId, isConcert) {
     }
 
     GetMyReview(fanId, bandId, eventId);
+
     var request = {
         fanId: fanId,
         bandId: bandId,
@@ -74,7 +75,9 @@ function GetEventReviews(fanId, bandId, eventId, isConcert) {
         data: JSON.stringify(request),
         success: function (data, status) {
 
-            console.log(data);
+            if (data.length == 0) {
+                return false;
+            }
             for (i = 0; i < data.length; i++) {
                 $("#reviews_show").append(
 

@@ -20,7 +20,7 @@ namespace BusinessLogic.FanBusinessLogic
         Serializer serializer = new Serializer();
         clsArchiveManager ArchiveManager = new clsArchiveManager();
 
-        public String getForm()
+        public string getForm()
         {
             clsForm form = new clsForm();
             clsResponse response = new clsResponse();
@@ -136,8 +136,21 @@ namespace BusinessLogic.FanBusinessLogic
 
            
             FacadeDA.followBand(pintFanId,pintBandId,ref response);
-            string msj = "";
-            twitter.sendTweet(msj);
+
+            try
+            {
+                string hashtag = FacadeDA.getHashTag(ref response, pintBandId);
+                string fanName = FacadeDA.getFanName(ref response, pintFanId);
+                string msj = fanName + " sigue a " + hashtag;
+                twitter.sendTweet(msj);
+            }
+            catch
+            {
+                //error info
+                response.Success = false;
+                response.Message = "Error with twitter";
+                response.Code = 5;
+            }
 
             return serializer.Serialize(response);
         }

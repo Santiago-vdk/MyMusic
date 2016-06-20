@@ -41,10 +41,7 @@ namespace MyFan_API.Controllers
             {
                 return new EventControllerCallGetEventReviews(Request, eventId);
             }
-            if (String.Equals(q, "review"))
-            {
-                return new EventControllerCallGetEventReview(Request, eventId);
-            }
+           
 
             return new EventControllerCallGetEvent(Request, eventId);
 
@@ -60,7 +57,14 @@ namespace MyFan_API.Controllers
             {
                 return new EventControllerCallUpdateEvent(Request, eventId, value);
             }
-
+            if (String.Equals(q, "delete"))
+            {
+                return new EventControllerCallDeleteEventReview(Request, eventId);
+            }
+            if (String.Equals(q, "review"))
+            {
+                return new EventControllerCallGetEventReview(Request, eventId);
+            }
 
             return new EventControllerCallUpdateEvent(Request, eventId, value);
             //Endpoint for updating one event of a band
@@ -72,7 +76,7 @@ namespace MyFan_API.Controllers
         // api/v1/users/bands/1/events/1 DELETE
         public IHttpActionResult DeleteOneEvent(int bandId, int eventId, string value = "", string q = "")
         {
-
+           
 
 
             //Endpoint for deleting one event of a band
