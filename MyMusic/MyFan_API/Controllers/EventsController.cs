@@ -54,8 +54,14 @@ namespace MyFan_API.Controllers
 
         [Route("{eventId}"), HttpPut]
         // api/v1/users/bands/1/events/1 PUT
-        public IHttpActionResult UpdateOneEvent(int bandId, int eventId, string value = "")
+        public IHttpActionResult UpdateOneEvent(int bandId, int eventId, string value = "", string q = "")
         {
+            if (String.Equals(q, "state"))
+            {
+                return new EventControllerCallUpdateEvent(Request, eventId, value);
+            }
+
+
             return new EventControllerCallUpdateEvent(Request, eventId, value);
             //Endpoint for updating one event of a band
             throw new NotImplementedException();
@@ -64,8 +70,11 @@ namespace MyFan_API.Controllers
         [Route("{eventId}")]
         [HttpDelete]
         // api/v1/users/bands/1/events/1 DELETE
-        public IHttpActionResult DeleteOneEvent(int bandId, int eventId)
+        public IHttpActionResult DeleteOneEvent(int bandId, int eventId, string value = "", string q = "")
         {
+
+
+
             //Endpoint for deleting one event of a band
             throw new NotImplementedException();
         }

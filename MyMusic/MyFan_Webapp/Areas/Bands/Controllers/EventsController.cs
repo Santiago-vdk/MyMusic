@@ -58,6 +58,42 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
             return View(profile);
         }
 
+        public async Task<ActionResult> Update(int userId, int id, string value)
+        {
+
+            System.Diagnostics.Debug.WriteLine("UPDATING EVENT" + userId + " " + id + " " + value);
+               string response = await clsEventRequests.UpdateEvent(userId,id,value);
+
+             
+
+               BandProfileViewModel profile = new BandProfileViewModel();
+               profile.Id = Int32.Parse(Session["Id"].ToString());
+               profile.Username = Session["Username"].ToString();
+               profile.Name = Session["Name"].ToString();
+
+             
+
+            return Json("");
+        }
+
+        public async Task<ActionResult> Delete(int userId, int id, string value)
+        {
+
+            System.Diagnostics.Debug.WriteLine("UPDATING EVENT" + userId + " " + id + " " + value);
+            string response = await clsEventRequests.DeleteEvent(userId, id, value);
+
+
+
+            BandProfileViewModel profile = new BandProfileViewModel();
+            profile.Id = Int32.Parse(Session["Id"].ToString());
+            profile.Username = Session["Username"].ToString();
+            profile.Name = Session["Name"].ToString();
+
+
+
+            return Json("");
+        }
+
         public async Task<ActionResult> Reviews(int userId, int id)
         {
             System.Diagnostics.Debug.WriteLine(userId + " " + id);

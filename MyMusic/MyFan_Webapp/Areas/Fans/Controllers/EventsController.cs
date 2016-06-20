@@ -81,5 +81,29 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 return View("~/Views/Login/Index.cshtml");
             }
         }
+
+
+        public async Task<ActionResult> Review(int fanId, int bandId, int eventId)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " getting one review from " + bandId + " of event " + eventId);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await Bands.Requests.clsEventRequests.GetEventReview(bandId, eventId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = "False" });
+                }
+
+                return Json(DataParser.parseReviews(response));
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+        }
     }
 }

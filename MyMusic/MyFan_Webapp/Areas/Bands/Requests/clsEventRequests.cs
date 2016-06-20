@@ -44,6 +44,20 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             }
         }
 
+        public static async Task<string> UpdateEvent(int userId, int eventId, string value)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/bands/" + userId + "/events/" + eventId + "/?q=state&value=" + value, "");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
         public static async Task<string> GetEventReviews(int userId, int eventId)
         {
             HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/?q=reviews");
@@ -60,7 +74,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
 
         public static async Task<string> GetEventReview(int userId, int eventId)
         {
-            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/q=review");
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/?q=review");
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;
@@ -72,7 +86,18 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             }
         }
 
-
-
+        public static async Task<string> DeleteEvent(int userId, int eventId, string value)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().DeleteAsync("users/bands/" + userId + "/events/" + eventId );
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
     }
 }

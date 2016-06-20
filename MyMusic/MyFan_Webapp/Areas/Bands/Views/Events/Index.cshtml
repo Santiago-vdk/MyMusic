@@ -80,9 +80,27 @@
                         </div>
                         <div class="col-xs-6">
                             <select class="selectpicker" id="EventStateID" name="EventState" data-width="100%">
-                                <option id="0" selected>Pending</option>
-                                <option id="1">Finalized</option>
-                                <option id="2">Cancelled</option>
+                                @if (String.Equals(Model.Event.State, "Pending"))
+                                {
+                                    <option id="0" selected>Pending</option>
+                                    <option id="1">Finalized</option>
+                                    <option id="2">Cancelled</option>
+                                }
+                                @if (String.Equals(Model.Event.State, "Finalized"))
+                                {
+                                    <option id="0">Pending</option>
+                                    <option id="1" selected>Finalized</option>
+                                    <option id="2">Cancelled</option>
+                                }
+                                @if (String.Equals(Model.Event.State, "Cancelled"))
+                                {
+                                    <option id="0">Pending</option>
+                                    <option id="1">Finalized</option>
+                                    <option id="2" selected>Cancelled</option>
+                                }
+                                
+                                
+                               
                             </select>
                         </div>
                     </div>
@@ -111,10 +129,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-offset-5 col-xs-2">
-                                <button id="post-event" type="button" class="btn btn-success">Update</button>
+                                <button onclick="updateclick(@Model.Id, @Model.Event.Id)" type="button" class="btn btn-success">Update</button>
+                               
                             </div>
                             <div class="col-xs-2">
-                                <a href="~/" class="btn btn-danger">Delete</a>
+                                <a href="~/" onclick="deleteclick" class="btn btn-danger">Delete</a>
                             </div>
                             <div class="col-xs-2">
                                 <a href="~/" class="btn btn-primary">Cancel</a>
