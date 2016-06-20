@@ -88,17 +88,17 @@ namespace BusinessLogic
             return EventBL.getEventReviews( pintEventId);
         }
 
-        public string getOwnBandReview(string pstringRequest,int pintBandId)
+        public string getOwnBandReview(int pintFanId, int pintBandId)
         {
-            return BandBL.getOwnBandReview(pstringRequest, pintBandId);
+            return BandBL.getOwnBandReview(pintFanId, pintBandId);
         }
-        public string getOwnDiskReview(string pstringRequest,int pintBandId)
+        public string getOwnDiskReview(int pintFanId, int pintBandId)
         {
-            return DiskBL.getOwnDiskReview(pstringRequest, pintBandId);
+            return DiskBL.getOwnDiskReview(pintFanId, pintBandId);
         }
-        public string getOwnEventReview(string pstringRequest,int pintEventId)
+        public string getOwnEventReview(int pintFanId, int pintEventId)
         {
-            return EventBL.getOwnEventReview(pstringRequest, pintEventId);
+            return EventBL.getOwnEventReview(pintFanId, pintEventId);
         }
 
         public string getBandStats(int pintBandId)
@@ -162,17 +162,17 @@ namespace BusinessLogic
             return EventBL.reviewEvent(pstringRequest, pintEventId);
         }
 
-        public string deleteBandReview(string pstringRequest, int pintBandId)
+        public string deleteBandReview(int pintFanId, int pintBandId)
         {
-            return BandBL.deleteBandReview(pstringRequest,pintBandId);
+            return BandBL.deleteBandReview(pintFanId, pintBandId);
         }
-        public string deleteDiskReview(string pstringRequest, int pintDiskId)
+        public string deleteDiskReview(int pintFanId, int pintDiskId)
         {
-            return DiskBL.deleteDiskReview(pstringRequest, pintDiskId);
+            return DiskBL.deleteDiskReview(pintFanId, pintDiskId);
         }
-        public string deleteEventReview(string pstringRequest, int pintEventId)
+        public string deleteEventReview(int pintFanId, int pintEventId)
         {
-            return EventBL.deleteEventReview(pstringRequest, pintEventId);
+            return EventBL.deleteEventReview(pintFanId, pintEventId);
         }
 
         public string login(string pstringRequest)
