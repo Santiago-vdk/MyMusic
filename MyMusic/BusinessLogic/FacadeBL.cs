@@ -106,6 +106,11 @@ namespace BusinessLogic
             return BandBL.getBandStats(pintBandId);
         }
 
+        public string Dashboard(pintBandId)
+        {
+            return BandBL.Dashboard(pintBandId);
+        }
+
         public string createFan(string pstringRequest)
         {
             return FanBL.createFan(pstringRequest);

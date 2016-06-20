@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsBandDashboard.cs" />
     <Compile Include="clsBandsBlock.cs" />
     <Compile Include="clsBandStats.cs" />
     <Compile Include="clsDisksBlock.cs" />

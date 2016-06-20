@@ -196,6 +196,18 @@ namespace BusinessLogic.BandBusinessLogic
             response.Data = serializer.Serialize(BandStats);
             return serializer.Serialize(response);
         }
+        public string Dashboard(int pintBandId)
+        {
+            clsResponse response = new clsResponse();
+            clsBandDashboard dashboard = new clsBandDashboard();
+
+            //BandStats.Calification = FacadeDA.getCalificationBand(ref response, pintBandId);
+            //BandStats.Followers = FacadeDA.getFollowersBand(ref response, pintBandId);
+
+            response.Data = serializer.Serialize(dashboard);
+            return serializer.Serialize(response);
+        }
+
 
         public string deleteBandReview(string pstringRequest, int pintBandId)
         {
