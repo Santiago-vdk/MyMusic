@@ -126,8 +126,8 @@ namespace BusinessLogic.BandBusinessLogic
         {
             List<clsReview> reviews = new List<clsReview>();
             clsResponse response = new clsResponse();
-            
-            //FacadeDA
+
+            FacadeDA.getAllBandReviews(ref reviews,ref response,pintBandId);
 
             response.Data = serializer.Serialize(reviews);
             return serializer.Serialize(response);
@@ -139,7 +139,7 @@ namespace BusinessLogic.BandBusinessLogic
             clsReview review = new clsReview();
             clsResponse response = new clsResponse();
 
-            FacadeDA.getReviewBand(ref review,ref response,request.Id,pintBandId);
+            FacadeDA.getReviewBandUser(ref review,ref response,request.Id,pintBandId);
 
             response.Data = serializer.Serialize(review);
             return serializer.Serialize(response);
