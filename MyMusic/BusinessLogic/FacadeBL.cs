@@ -77,15 +77,28 @@ namespace BusinessLogic
 
         public string getBandReviews(int pintBandId)
         {
-            return BandBL.getBandReviews(pintBandId);
+            return BandBL.getBandReviews( pintBandId);
         }
-        public string getDiskReviews(int pintBandId)
+        public string getDiskReviews( int pintBandId)
         {
-            return DiskBL.getDiskReviews(pintBandId);
+            return DiskBL.getDiskReviews( pintBandId);
         }
-        public string getEventReviews(int pintEventId)
+        public string getEventReviews( int pintEventId)
         {
-            return EventBL.getEventReviews(pintEventId);
+            return EventBL.getEventReviews( pintEventId);
+        }
+
+        public string getOwnBandReview(string pstringRequest,int pintBandId)
+        {
+            return BandBL.getOwnBandReview(pstringRequest, pintBandId);
+        }
+        public string getOwnDiskReview(string pstringRequest,int pintBandId)
+        {
+            return DiskBL.getOwnDiskReview(pstringRequest, pintBandId);
+        }
+        public string getOwnEventReview(string pstringRequest,int pintEventId)
+        {
+            return EventBL.getOwnEventReview(pstringRequest, pintEventId);
         }
 
         public string getBandStats(int pintBandId)
