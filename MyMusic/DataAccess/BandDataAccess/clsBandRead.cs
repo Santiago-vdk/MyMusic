@@ -436,7 +436,7 @@ namespace DataAccess.BandDataAccess
                 while (result.Read())
                 {
 
-                    tmp = result["hastag"].ToString();
+                    tmp = result["hashtag"].ToString();
 
                 }
 
