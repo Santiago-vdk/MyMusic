@@ -176,8 +176,14 @@ namespace DataAccess
         {
             return EventsDA.existreviewevent(pintCodDisk, pintUserCode, ref pclsResponse);
         }
-
-
+        public void createReviewBand(ref clsReview pclsReview, int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            FanDA.createReviewBand(ref pclsReview, pintCodFanatico, pintCodBanda, ref pclsResponse);
+        }
+        public void getReviewBand(ref clsReview pclsReview, ref clsResponse pclsResponse, int pintFanCode, int pintBandCode)
+        {
+            FanDA.getReviewBand(ref pclsReview, ref pclsResponse, pintFanCode, pintBandCode);
+        }
 
 
 

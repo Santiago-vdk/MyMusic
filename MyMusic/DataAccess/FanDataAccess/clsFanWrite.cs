@@ -156,7 +156,7 @@ namespace DataAccess.FanDataAccess
                 SqlCommand cmd = new SqlCommand("myFan.SP_NoSeguirBanda", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@intCodFanatico", System.Data.SqlDbType.Int).Value = pintCodFanatico;
-                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.VarChar).Value = pintCodBanda;
+                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.Int).Value = pintCodBanda;
                 SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
                 message.Direction = ParameterDirection.Output;
                 SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
@@ -187,6 +187,46 @@ namespace DataAccess.FanDataAccess
 
         }
 
+        public void createReviewBand(ref clsReview pclsReview, int pintCodFanatico, int pintCodBanda, ref clsResponse pclsResponse)
+        {
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("myFan.SP_IngresarResenaBanda", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intCodUsuarioBanda", System.Data.SqlDbType.Int).Value = pintCodBanda;
+                cmd.Parameters.Add("@intCalificacion", System.Data.SqlDbType.Int).Value = pclsReview.Calification;
+                cmd.Parameters.Add("@strComentario", System.Data.SqlDbType.Int).Value = pclsReview.Comment;
+                cmd.Parameters.Add("@intUsuario", System.Data.SqlDbType.VarChar).Value = pintCodFanatico;
+                SqlParameter message = cmd.Parameters.Add("@strMessageError", SqlDbType.VarChar, 256);
+                message.Direction = ParameterDirection.Output;
+                SqlParameter cod = cmd.Parameters.Add("@strCodError", SqlDbType.VarChar, 4);
+                cod.Direction = ParameterDirection.Output;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
         public static void Main()
         {
             clsFanWrite a = new clsFanWrite();
