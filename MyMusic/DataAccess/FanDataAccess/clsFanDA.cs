@@ -113,5 +113,9 @@ namespace DataAccess.FanDataAccess
             FanWrite.deleteBandReview(ref pclsResponse, pintFanCode, pintCodeBand);
         }
 
+        public string getFanName(ref clsResponse pclsResponse, int pintFanCode)
+        {
+            return FanRead.getFanName(ref pclsResponse, pintFanCode);
+        }
     }
 }
