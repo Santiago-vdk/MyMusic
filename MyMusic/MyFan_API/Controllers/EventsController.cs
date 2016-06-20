@@ -39,9 +39,10 @@ namespace MyFan_API.Controllers
         {
             if (String.Equals(q, "reviews"))
             {
+                System.Diagnostics.Debug.WriteLine("En api trayendo los reviews " + Request);
                 return new EventControllerCallGetEventReviews(Request, eventId);
             }
-           
+
 
             return new EventControllerCallGetEvent(Request, eventId);
 
@@ -63,9 +64,9 @@ namespace MyFan_API.Controllers
             }
             if (String.Equals(q, "review"))
             {
-                return new EventControllerCallGetEventReview(Request, eventId);
+                System.Diagnostics.Debug.WriteLine("En api" + Request);
+                return new EventControllerCallReviewEvent(Request, eventId);
             }
-
             return new EventControllerCallUpdateEvent(Request, eventId, value);
             //Endpoint for updating one event of a band
             throw new NotImplementedException();

@@ -98,7 +98,7 @@ namespace MyFan_Webapp.Areas.Bands.Controllers
         {
             System.Diagnostics.Debug.WriteLine(userId + " " + id);
 
-            string response = await clsEventRequests.GetEventReviews(userId, id);
+            string response = await clsEventRequests.GetAllEventReviews(userId, id);
             System.Diagnostics.Debug.WriteLine(response);
 
             string ParsedMessage = ErrorParser.parse(response);

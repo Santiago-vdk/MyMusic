@@ -61,10 +61,10 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
         public async Task<ActionResult> Reviews(int fanId, int bandId, int eventId)
         {
-            System.Diagnostics.Debug.WriteLine(fanId + " getting revies from " + bandId + " of event " + eventId);
+            System.Diagnostics.Debug.WriteLine(fanId + " getting all revies from " + bandId + " of event " + eventId);
             if (Sessions.isAuthenticated(Request, Session))
             {
-                string response = await Bands.Requests.clsEventRequests.GetEventReviews(bandId, eventId);
+                string response = await Bands.Requests.clsEventRequests.GetAllEventReviews(bandId, eventId);
                 System.Diagnostics.Debug.WriteLine(response);
 
                 string ParsedMessage = ErrorParser.parse(response);

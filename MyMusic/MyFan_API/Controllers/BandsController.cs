@@ -71,8 +71,15 @@ namespace MyFan_API.Controllers
                 System.Diagnostics.Debug.WriteLine("inserting review on band for " + bandId);
                 return new BandControllerCallsPostReview(Request, bandId);
             }
-            return new BandControllerCallsUpdateProfile(Request, bandId);
-
+            if (String.Equals(q, "deletereview"))
+            {
+                System.Diagnostics.Debug.WriteLine("deleting review on band for " + bandId);
+                return new BandControllerCallsDeleteReview(Request, bandId);
+            }
+            if (String.Equals(q, "update"))
+            {
+                return new BandControllerCallsUpdateProfile(Request, bandId);
+            }
             //Endpoint for updating one fan
             throw new NotImplementedException();
         }

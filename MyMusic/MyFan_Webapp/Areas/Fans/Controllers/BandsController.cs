@@ -83,5 +83,29 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 return View("~/Views/Login/Index.cshtml");
             }
         }
+
+
+        public async Task<ActionResult> DeleteReview(int fanId, int bandId)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " deleting review " + bandId);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await Bands.Requests.clsBandRequests.DeleteReview(fanId, bandId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = "False" });
+                }
+
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+        }
     }
 }

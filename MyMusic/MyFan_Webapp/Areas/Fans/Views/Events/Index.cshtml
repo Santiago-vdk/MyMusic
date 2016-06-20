@@ -8,7 +8,7 @@
 <head>
     <title>MyFan</title>
     <script src="~/assets/common/js/Events.js"></script>
-    <script>GetEventReviews(@Model.Id, @Model.BandProfile.Id,@Model.BandProfile.Event.Id,@(Model.BandProfile.Event.IsConcert ? "true":"false")  );</script>
+    <script>GetEventReviews(@Model.Id, @Model.BandProfile.Id,@Model.BandProfile.Event.Id,@(Model.BandProfile.Event.IsConcert ? "true":"false") ,  @Html.Raw(Json.Encode(Model.BandProfile.Event.State))   );</script>
 </head>
 
 <body>
@@ -21,14 +21,16 @@
                 <h3><b>Title:</b> @Model.BandProfile.Event.Title</h3>
                 <h3><b>Date:</b> @Model.BandProfile.Event.Date</h3>
                 <h3><b>Time:</b> @Model.BandProfile.Event.Time</h3>
+                <h3><b>State:</b> @Model.BandProfile.Event.State</h3>
                 @if (@Model.BandProfile.Event.IsConcert == true)
                 {
                     <h3><b>Concert:</b> Yes</h3>
                 }
-                else
+                @if (@Model.BandProfile.Event.IsConcert == false)
                 {
                     <h3><b>Concert:</b> No</h3>
                 }
+
                 @if (String.Equals(@Model.BandProfile.Event.State, "0"))
                 {
                     <h3><b>State:</b> Pending</h3>
@@ -53,8 +55,7 @@
 
                 </div>
 
-
-                <form id="form-new-album" action="~/Fans/@Model.Id/Bands/@Model.BandProfile.Id/Events/PostReview/@Model.BandProfile.Event.Id" class='form-horizontal'>
+                <!--     <form id="form-new-album" action="~/Fans/@Model.Id/Bands/@Model.BandProfile.Id/Events/PostReview/@Model.BandProfile.Event.Id" class='form-horizontal'>
 
                     <input class="form-control" name="fanId" value="@Model.Id" type="hidden" />
                     <input class="form-control" name="bandId" value="@Model.BandProfile.Id" type="hidden" />
@@ -87,7 +88,8 @@
 
 
 
-                </form>
+                </form> -->
+              
 
 
                 <!-- Review Header 

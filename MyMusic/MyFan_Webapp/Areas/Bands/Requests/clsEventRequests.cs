@@ -58,7 +58,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
             }
         }
 
-        public static async Task<string> GetEventReviews(int userId, int eventId)
+        public static async Task<string> GetAllEventReviews(int userId, int eventId)
         {
             HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/bands/" + userId + "/events/" + eventId + "/?q=reviews");
             if (request.IsSuccessStatusCode)
@@ -75,7 +75,7 @@ namespace MyFan_Webapp.Areas.Bands.Requests
         public static async Task<string> GetEventReview(int fanId, int bandId, int eventId)
         {
             clsRequest RequestObject = new clsRequest("-1", fanId, fanId.ToString());
-            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/bands/" + bandId + "/events/" + eventId + "/?q=review", RequestObject);
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/bands/" + bandId + "/events/" + eventId + "/?q=reviewzz", RequestObject);
             if (request.IsSuccessStatusCode)
             {
                 string response = request.Content.ReadAsStringAsync().Result;

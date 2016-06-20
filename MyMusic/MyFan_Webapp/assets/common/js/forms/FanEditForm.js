@@ -76,7 +76,7 @@ jQuery(function ($) {
             if ($("#form-edit").data("changed")) {
                // alert("Put Edit");
                $.ajax({
-                    url: "UpdateProfile",
+                    url: "/UpdateProfile",
                     dataType: 'text',
                     contentType: 'application/json',
                     type: "POST",

@@ -53,6 +53,7 @@ namespace BusinessLogic.EventBusinessLogic
         public string reviewEvent(string pstringRequest, int pintEventId)
         {
             clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            System.Diagnostics.Debug.WriteLine("Data on rafa " + request.Data);
             clsReview review = DeserializeJson.DeserializeReview(request.Data);
             clsResponse response = new clsResponse();
 

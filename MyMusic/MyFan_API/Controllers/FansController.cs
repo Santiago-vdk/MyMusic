@@ -73,7 +73,7 @@ namespace MyFan_API.Controllers
         [Route("{fanId}")]
         [HttpPut]
         // api/v1/users/fans/1 PUT
-        public IHttpActionResult UpdateOneFan(int fanId, string action, string value)
+        public IHttpActionResult UpdateOneFan(int fanId, string action, string value = "")
         {
             //System.Diagnostics.Debug.WriteLine("Updating fan with id " + fanId);
            // System.Diagnostics.Debug.WriteLine("with data " + Request.Content.ReadAsStringAsync().Result);
@@ -85,8 +85,10 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsUnFollowBand(Request, fanId, Int32.Parse(value));
             }
-            return new FanControllerCallsUpdateProfile(Request, fanId);
-
+            if (String.Equals(action, "update"))
+            {
+                return new FanControllerCallsUpdateProfile(Request, fanId);
+            }
 
             //Endpoint for updating one fan
             throw new NotImplementedException();
