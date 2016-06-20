@@ -5,6 +5,7 @@ using MyFan_Webapp.Areas.Fans.Requests;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Requests;
 using MyFan_Webapp.Requests.Register;
+using MyFest_Webapp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,9 +75,24 @@ namespace MyFest_Webapp.Controllers
         {
             System.Diagnostics.Debug.WriteLine("Dashboaer " + bandId);
             string response2 = await MyFan_Webapp.Areas.Bands.Requests.clsBandRequests.GetBandDashboard(Int32.Parse(bandId));
-            return Json("");
+
+
+            string response3 = await MyFan_Webapp.Areas.Bands.Requests.clsBandRequests.GetBandInfo(Int32.Parse(bandId));
+
+
+            System.Diagnostics.Debug.WriteLine(response2);
+            System.Diagnostics.Debug.WriteLine(response3);
+
+
+
+            DashboardViewModel model = DataParser.parseDashboard(response2);
+            model.Info = DataParser.parseBandInfo(response3);
+
+
+            return View(model);
             
         }
 
+        
     }
 }

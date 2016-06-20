@@ -8,6 +8,7 @@ using MyFan_Webapp.Controllers;
 using MyFan_Webapp.Models.Views;
 using MyFan_Webapp.Areas.Fans.Models;
 using MyFan_Webapp.Areas.Bands.Models;
+using MyFest_Webapp.Models;
 
 namespace MyFan_Webapp
 {
@@ -73,6 +74,28 @@ namespace MyFan_Webapp
             return disk;
         }
 
+        public static DashboardViewModel parseDashboard(string json)
+        {
+
+            DashboardViewModel model = new DashboardViewModel();
+            
+            clsResponse Response = parseResponse(json);
+            dynamic data = JObject.Parse(Response.Data);
+
+
+            model.Calification =  Convert.ToString(data.Calification);
+            model.Disco = Convert.ToString(data.Disks);
+            model.Eventos = Convert.ToString(data.Events);
+            model.Followers = Convert.ToString(data.Followers);
+
+            return model;
+
+
+
+
+
+        }
+
         public static int parseNewForm(string json)
         {
             clsResponse Response = parseResponse(json);
@@ -82,7 +105,7 @@ namespace MyFan_Webapp
             return NewId;
         }
 
-        internal static clsInfoBand parseBandInfo(string json)
+        public static clsInfoBand parseBandInfo(string json)
         {
             clsResponse Response = parseResponse(json);
             dynamic data = JObject.Parse(Response.Data);

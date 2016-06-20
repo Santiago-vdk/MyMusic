@@ -164,6 +164,7 @@
     <Compile Include="Areas\Bands\Controllers\NewsController.cs" />
     <Compile Include="Areas\Bands\Models\BandProfileViewModel.cs" />
     <Compile Include="Areas\Bands\Models\clsAlbum.cs" />
+    <Compile Include="Areas\Bands\Models\DashboardViewModel.cs" />
     <Compile Include="Areas\Bands\Requests\clsAlbumRequests.cs" />
     <Compile Include="Areas\Bands\Requests\clsBandRequests.cs" />
     <Compile Include="Areas\Bands\Requests\clsEventRequests.cs" />
