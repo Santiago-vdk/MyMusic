@@ -130,6 +130,11 @@ namespace BusinessLogic
         {
             return EventBL.createEvent(pstringRequest, pintBandId);
         }
+        public string createGenre(string pstringGenre)
+        {
+            return BandBL.createGenre(pstringGenre);
+        }
+
 
         public string checkUsername(string pstringUsername)
         {

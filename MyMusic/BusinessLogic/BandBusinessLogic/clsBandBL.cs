@@ -203,5 +203,15 @@ namespace BusinessLogic.BandBusinessLogic
             
             return serializer.Serialize(response);
         }
+
+        public string createGenre(string pstringGenre)
+        {
+            clsResponse response = new clsResponse();
+
+            FacadeDA.createNewGenero(pstringGenre,ref response);
+
+            return serializer.Serialize(response);
+            
+        }
     }
 }

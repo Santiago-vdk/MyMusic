@@ -20,7 +20,7 @@ namespace BusinessLogic.FanBusinessLogic
         Serializer serializer = new Serializer();
         clsArchiveManager ArchiveManager = new clsArchiveManager();
 
-        public String getForm()
+        public string getForm()
         {
             clsForm form = new clsForm();
             clsResponse response = new clsResponse();
