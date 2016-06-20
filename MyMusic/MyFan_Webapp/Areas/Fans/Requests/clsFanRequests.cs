@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Utility;
+using System;
 
 namespace MyFan_Webapp.Areas.Fans.Requests
 {
@@ -90,6 +91,35 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             }
 
 
+        }
+
+        public static async Task<string> FollowBand(int fanId, int bandId)
+        {
+
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/fans/" + fanId + "?action=follow&value=" + bandId, "");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
+        public static async Task<string> isFollowingBand(int fanId, int bandId)
+        {
+            HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans/" + fanId + "?q=isfollowing&value=" + bandId);
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
         }
     }
 }

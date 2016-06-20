@@ -26,7 +26,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             }
             //[Bandas,Posts]
             List<string> response = await clsFanRequests.GetFanProfile(userId);
-      
+
             //Hubo error
             if (!ErrorParser.parse(response[0]).Equals("") || !ErrorParser.parse(response[1]).Equals(""))
             {
@@ -34,10 +34,18 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             }
 
             FanProfileViewModel profile = DataParser.parseFanProfile(response);
-            profile.Id = Int32.Parse(Session["Id"].ToString());
-            profile.Username = Session["Username"].ToString();
-            profile.Name = Session["Name"].ToString();
-            
+            try
+            {
+                profile.Id = Int32.Parse(Session["Id"].ToString());
+                profile.Username = Session["Username"].ToString();
+                profile.Name = Session["Name"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                //Not logged in
+                ViewBag.Message = "Please log in first";
+                return View("~/Views/Login/Index.cshtml");
+            }
             return View(profile);
         }
 
@@ -58,9 +66,17 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
             profile.Info = DataParser.parseFanInfo(response2);
 
+            try { 
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                //Not logged in
+                ViewBag.Message = "Please log in first";
+                return View("~/Views/Login/Index.cshtml");
+            }
             return View(profile);
         }
 
@@ -83,19 +99,23 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
             profile.Info = DataParser.parseFanInfo(response3);
 
+            try { 
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                //Not logged in
+                ViewBag.Message = "Please log in first";
+                return View("~/Views/Login/Index.cshtml");
+            }
             return View(profile);
 
         }
 
         public async Task<ActionResult> Search(string name, string country, string genre)
         {
-            System.Diagnostics.Debug.WriteLine(name);
-            System.Diagnostics.Debug.WriteLine(country);
-            System.Diagnostics.Debug.WriteLine(genre);
-
             string response = await clsFanRequests.GetFanBands(Int32.Parse(Session["Id"].ToString()));
             clsSearch searchParams = new clsSearch();
             searchParams.Name = name;
@@ -115,9 +135,17 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
             System.Diagnostics.Debug.WriteLine("search " + profile.SearchResults.Count);
 
+            try { 
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                //Not logged in
+                ViewBag.Message = "Please log in first";
+                return View("~/Views/Login/Index.cshtml");
+            }
             //return View(profile);
 
 
@@ -128,7 +156,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> UpdateProfile(string inputName, string inputBirthday, int selectGender, int selectCountry, 
+        public async Task<ActionResult> UpdateProfile(string inputName, string inputBirthday, int selectGender, int selectCountry,
             List<int> selectGenres, string profilePicture)
         {
             System.Diagnostics.Debug.WriteLine(selectGender);
@@ -150,17 +178,76 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 if (!ParsedMessage.Equals(""))
                 {
                     ViewBag.Message = ParsedMessage;
-                    
-                }
 
+                }
+                try { 
                 Session["Name"] = form.Name;
+                }
+                catch (NullReferenceException)
+                {
+                    //Not logged in
+                    ViewBag.Message = "Please log in first";
+                    return View("~/Views/Login/Index.cshtml");
+                }
                 return RedirectToAction("Edit", "Fans", new { area = "Fans", userId = Session["id"] });
-            } else
+            }
+            else
             {
                 return View("~/Views/Login/Index.cshtml");
             }
-            
+
         }
+
+
+
+        public async Task<ActionResult> followBand(int fanId, int bandId)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " " + bandId);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await clsFanRequests.FollowBand(fanId, bandId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = false });
+                }
+
+                return Json(new { state = true });
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+
+        }
+
+        public async Task<ActionResult> isFollowingBand(int fanId, int bandId)
+        {
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await clsFanRequests.isFollowingBand(fanId, bandId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = false });
+                }
+
+                return Json(new { state = true });
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
+
+        }
+
+
 
 
     }

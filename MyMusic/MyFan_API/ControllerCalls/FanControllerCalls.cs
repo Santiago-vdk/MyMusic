@@ -65,7 +65,7 @@ namespace MyFan_API
         }
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-            
+
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_facade.createFan(_request.Content.ReadAsStringAsync().Result)),
@@ -157,6 +157,36 @@ namespace MyFan_API
         }
     }
 
+
+
+    public class FanControllerCallsIsFollowing : IHttpActionResult
+    {
+
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _fanId;
+        int _bandId;
+
+        public FanControllerCallsIsFollowing(HttpRequestMessage request, int fanId, int bandId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _fanId = fanId;
+            _bandId = bandId;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.isFollowed(_fanId, _bandId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
     public class FanControllerCallsUpdateProfile : IHttpActionResult
     {
 
@@ -178,6 +208,33 @@ namespace MyFan_API
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_facade.updateFan(_request.Content.ReadAsStringAsync().Result, _userId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    public class FanControllerCallsFollowBand : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _fanId;
+        int _bandId;
+
+        public FanControllerCallsFollowBand(HttpRequestMessage request, int fanId, int bandId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _fanId = fanId;
+            _bandId = bandId;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.followBand(_fanId, _bandId)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);

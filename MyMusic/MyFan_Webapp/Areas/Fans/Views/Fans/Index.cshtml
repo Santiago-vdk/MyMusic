@@ -36,11 +36,11 @@
                         <div class="col-xs-2 post-read-more">
                             @if (@Post.Type == 1)
                             {
-                                <a href="~/Fans/@Model.Id/News/Index/@Post.Id"><small>Read more...</small></a>
+                                <a href="~/Fans/@Model.Id/Bands/@Post.OwnerId/News/@Post.Id"><small>Read more...</small></a>
                             }
                             else
                             {
-                                <a href="~/Fans/@Model.Id/Events/Index/@Post.Id"><small>Read more...</small></a>
+                                <a href="~/Fans/@Model.Id/Bands/@Post.OwnerId/Events/@Post.Id"><small>Read more...</small></a>
                             }
                             
                         </div>

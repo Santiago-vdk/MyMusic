@@ -16,9 +16,9 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
         // GET: Fans/News
         public async Task<ActionResult> Index(int userId, int bandId, int id)
         {
-            System.Diagnostics.Debug.WriteLine("Checking new from " + userId + " of " + bandId + " with id " + id);
+            System.Diagnostics.Debug.WriteLine("Checking event from " + userId + " of " + bandId + " with id " + id);
 
-
+           // try { } catch ()
             if (Sessions.isAuthenticated(Request, Session))
             {
                 int sessionRol = Int32.Parse(Session["rol"].ToString());
@@ -28,18 +28,18 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
                 }
             }
             //[Bandas,Posts]
-            string response = await Fans.Requests.clsBandRequests.GetBandInfo(bandId);
+           // string response = await Fans.Requests.clsBandRequests.GetBandInfo(bandId);
             string response2 = await Bands.Requests.clsBandRequests.getBandAlbums(bandId);
             string response3 = await Bands.Requests.clsNewRequests.GetNew(bandId, id);
             string response4 = await Bands.Requests.clsBandRequests.GetBandInfo(bandId);
-            System.Diagnostics.Debug.WriteLine(response2);
+            
             //Hubo error
-            if (!ErrorParser.parse(response).Equals(""))
+           /* if (!ErrorParser.parse(response).Equals(""))
             {
                 ViewBag.Message = "Fuck my life...";
-            }
+            }*/
 
-            clsInfoBand infoBand = DataParser.parseBandInfo(response);
+            //clsInfoBand infoBand = DataParser.parseBandInfo(response);
 
             FanProfileViewModel profile = new FanProfileViewModel();
             BandProfileViewModel BandProfile = new BandProfileViewModel();
@@ -50,15 +50,13 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             profile.Id = Int32.Parse(Session["Id"].ToString());
             profile.Username = Session["Username"].ToString();
             profile.Name = Session["Name"].ToString();
-            profile.BandInfo = infoBand;
+           // profile.BandInfo = infoBand;
             profile.BandProfile.Albums = DataParser.parseAlbums(response2);
 
             profile.BandProfile.New = DataParser.parseNew(response3);
 
             profile.BandProfile.Info = DataParser.parseBandInfo(response4);
-
             return View(profile);
-
 
         }
     }

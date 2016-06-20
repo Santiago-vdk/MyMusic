@@ -112,6 +112,7 @@
     <Content Include="assets\common\img\califications\acetato-wood.png" />
     <Content Include="assets\common\img\logo1.png" />
     <Content Include="assets\common\img\logo2.png" />
+    <Content Include="assets\common\js\Bands.js" />
     <Content Include="assets\common\js\Fans.js" />
     <Content Include="assets\common\js\forms\AlbumCreateForm.js" />
     <Content Include="assets\common\js\forms\BandEditForm.js" />
@@ -167,6 +168,7 @@
     <Compile Include="Areas\Bands\Requests\clsNewRequests.cs" />
     <Compile Include="Areas\Fans\Controllers\AlbumsController.cs" />
     <Compile Include="Areas\Fans\Controllers\BandsController.cs" />
+    <Compile Include="Areas\Fans\Controllers\EventsController.cs" />
     <Compile Include="Areas\Fans\Controllers\FansController.cs" />
     <Compile Include="Areas\Fans\Controllers\NewsController.cs" />
     <Compile Include="Areas\Fans\FansAreaRegistration.cs" />
@@ -222,6 +224,8 @@
     <Content Include="Areas\Bands\Views\Events\Index.cshtml" />
     <Content Include="Areas\Fans\Views\Shared\_FanInBandProfileLayout.cshtml" />
     <Content Include="Areas\Fans\Views\News\Index.cshtml" />
+    <Content Include="Areas\Fans\Views\Events\Index.cshtml" />
+    <Content Include="Areas\Fans\Views\Albums\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -231,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Fans\Views\Albums\" />
     <Folder Include="Views\Logout\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
