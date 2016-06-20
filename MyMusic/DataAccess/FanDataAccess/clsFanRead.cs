@@ -324,8 +324,8 @@ namespace DataAccess.FanDataAccess
 
                 SqlCommand cmd = new SqlCommand("myFan.SP_IsFollower", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.Add("@intCodFanatico", System.Data.SqlDbType.Int).Value = pintCodFanatico;
-                cmd.Parameters.Add("@intCodBanda", System.Data.SqlDbType.Int).Value = pintCodBanda;
+                cmd.Parameters.Add("@intCodUserFanatico", System.Data.SqlDbType.Int).Value = pintCodFanatico;
+                cmd.Parameters.Add("@intCodUserBand", System.Data.SqlDbType.Int).Value = pintCodBanda;
                 SqlParameter cod = cmd.Parameters.Add("@btResult", SqlDbType.Bit);
                 cod.Direction = ParameterDirection.Output;
                 conn.Open();
