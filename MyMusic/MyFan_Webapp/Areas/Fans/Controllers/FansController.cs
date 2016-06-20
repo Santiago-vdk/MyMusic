@@ -202,7 +202,7 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
 
         public async Task<ActionResult> followBand(int fanId, int bandId)
         {
-            System.Diagnostics.Debug.WriteLine(fanId + " " + bandId);
+            System.Diagnostics.Debug.WriteLine(fanId + " is going to follow " + bandId);
             if (Sessions.isAuthenticated(Request, Session))
             {
                 string response = await clsFanRequests.FollowBand(fanId, bandId);
@@ -221,11 +221,34 @@ namespace MyFan_Webapp.Areas.Fans.Controllers
             {
                 return View("~/Views/Login/Index.cshtml");
             }
+        }
 
+        public async Task<ActionResult> unfollowBand(int fanId, int bandId)
+        {
+            System.Diagnostics.Debug.WriteLine(fanId + " unfollwing " + bandId);
+            if (Sessions.isAuthenticated(Request, Session))
+            {
+                string response = await clsFanRequests.UnFollowBand(fanId, bandId);
+                System.Diagnostics.Debug.WriteLine(response);
+
+                string ParsedMessage = ErrorParser.parse(response);
+                if (!ParsedMessage.Equals(""))
+                {
+                    ViewBag.Message = "Something went wrong";
+                    return Json(new { state = false });
+                }
+
+                return Json(new { state = true });
+            }
+            else
+            {
+                return View("~/Views/Login/Index.cshtml");
+            }
         }
 
         public async Task<ActionResult> isFollowingBand(int fanId, int bandId)
         {
+            System.Diagnostics.Debug.WriteLine(fanId + "follows? " + bandId);
             if (Sessions.isAuthenticated(Request, Session))
             {
                 string response = await clsFanRequests.isFollowingBand(fanId, bandId);

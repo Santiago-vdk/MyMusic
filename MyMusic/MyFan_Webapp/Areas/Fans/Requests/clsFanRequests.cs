@@ -108,6 +108,21 @@ namespace MyFan_Webapp.Areas.Fans.Requests
             }
         }
 
+        public static async Task<string> UnFollowBand(int fanId, int bandId)
+        {
+
+            HttpResponseMessage request = await clsHttpClient.getClient().PutAsJsonAsync("users/fans/" + fanId + "?action=unfollow&value=" + bandId, "");
+            if (request.IsSuccessStatusCode)
+            {
+                string response = request.Content.ReadAsStringAsync().Result;
+                return await Task.FromResult(response);
+            }
+            else
+            {
+                return await Task.FromResult("Unexpected error ocurred");
+            }
+        }
+
         public static async Task<string> isFollowingBand(int fanId, int bandId)
         {
             HttpResponseMessage request = await clsHttpClient.getClient().GetAsync("users/fans/" + fanId + "?q=isfollowing&value=" + bandId);

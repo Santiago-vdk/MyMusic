@@ -180,7 +180,7 @@ namespace MyFan_API
 
             var response = new HttpResponseMessage()
             {
-                Content = new StringContent(_facade.isFollowed(_fanId, _bandId)),
+                Content = new StringContent(_facade.IsFollowed(_fanId, _bandId)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);
@@ -235,6 +235,33 @@ namespace MyFan_API
             var response = new HttpResponseMessage()
             {
                 Content = new StringContent(_facade.followBand(_fanId, _bandId)),
+                RequestMessage = _request
+            };
+            return Task.FromResult(response);
+        }
+    }
+
+    public class FanControllerCallsUnFollowBand : IHttpActionResult
+    {
+        HttpRequestMessage _request;
+        FacadeBL _facade;
+        int _fanId;
+        int _bandId;
+
+        public FanControllerCallsUnFollowBand(HttpRequestMessage request, int fanId, int bandId)
+        {
+            _request = request;
+            _facade = new FacadeBL();
+            _fanId = fanId;
+            _bandId = bandId;
+
+        }
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+
+            var response = new HttpResponseMessage()
+            {
+                Content = new StringContent(_facade.UnfollowBand(_fanId, _bandId)),
                 RequestMessage = _request
             };
             return Task.FromResult(response);

@@ -28,7 +28,7 @@
 
 
 </head>
-<body>
+<body onload="isFollowing(@Model.Id, @Model.BandProfile.Id)">
     <!-- Container -->
     <div class="container-fluid">
         <!-- Header Section -->
@@ -181,7 +181,7 @@
                     <div id="picture" class="row">
                         <div class="col-xs-12">
                             <div id="follow" class="pull-right">
-                                <button onClick="follow(@Model.Id, @Model.BandProfile.Id)" class="btn btn-warning btn_follow">Follow</button>
+                                <button id="Follow_Button" onClick="follow(@Model.Id, @Model.BandProfile.Id)" class="btn btn-warning btn_follow"></button>
                             </div>
                             <div id="band-profile-pic" class="col-xs-12 center-block no-float content_centered">
                                 <img class="img-circle" src="~/Users/image?Id=@Model.BandProfile.Id">

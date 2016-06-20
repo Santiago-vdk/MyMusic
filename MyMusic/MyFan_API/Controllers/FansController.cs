@@ -41,7 +41,7 @@ namespace MyFan_API.Controllers
 
         [Route("{fanId}"), HttpGet]
         // api/v1/users/fans/1 GET
-        public IHttpActionResult Get(int fanId, string q, string value, int offset = 0, int limit = 5)
+        public IHttpActionResult Get(int fanId, string q, int offset = 0, int limit = 5, string value = "")
         {
             if (String.Equals(q, "bands"))
             {
@@ -57,7 +57,7 @@ namespace MyFan_API.Controllers
             {
                 return new FanControllerCallsGetProfile(Request, fanId);
             }
-            if(String.Equals(q, "isfollowing"))
+            if(String.Equals(q, "isfollowing") && !String.Equals(value, ""))
             {
                 return new FanControllerCallsIsFollowing(Request, fanId, Int32.Parse(value));
             }
@@ -80,6 +80,10 @@ namespace MyFan_API.Controllers
             if(String.Equals(action, "follow"))
             {
                 return new FanControllerCallsFollowBand(Request, fanId, Int32.Parse(value));
+            }
+            if (String.Equals(action, "unfollow"))
+            {
+                return new FanControllerCallsUnFollowBand(Request, fanId, Int32.Parse(value));
             }
             return new FanControllerCallsUpdateProfile(Request, fanId);
 
