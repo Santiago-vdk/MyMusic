@@ -40,5 +40,13 @@ namespace DataAccess.DiskDataAccess
         {
             DiskWrite.creatediskreview(ref pclsReview, ref pclsResponse, pintCodDisc, pintUserCode);
         }
+        public void getdiskReviewFan(ref clsReview pclsReview, int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            DiskRead.getdiskReviewFan(ref pclsReview, pintCodDisk, pintUserCode, ref pclsResponse);
+        }
+        public void deleteDiscReview(ref clsResponse pclsResponse, int pintUserCode, int pintCodeDisc)
+        {
+            DiskWrite.deleteDiscReview(ref pclsResponse, pintUserCode, pintCodeDisc);
+        }
     }
 }

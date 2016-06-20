@@ -36,5 +36,13 @@ namespace DataAccess.EventsDataAccess
         {
             return EventsRead.existreviewevent(pintCodDisk, pintUserCode, ref pclsResponse);
         }
+        public void getEventReviewFan(ref clsReview pclsReview, int pintCodEvent, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            EventsRead.getEventReviewFan(ref pclsReview, pintCodEvent, pintUserCode, ref pclsResponse);
+        }
+        public void deleteEventReview(ref clsResponse pclsResponse, int pintUserCode, int pintCodeEvent)
+        {
+            EventsWrite.deleteEventReview(ref pclsResponse, pintUserCode, pintCodeEvent);
+        }
     }
 }

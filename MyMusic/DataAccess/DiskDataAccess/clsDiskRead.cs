@@ -186,6 +186,51 @@ namespace DataAccess.DiskDataAccess
             }
             return tmp;
         }
+
+        public void getdiskReviewFan(ref clsReview pclsReview, int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
+        {
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("myFan.SP_getReviewDiscUser", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@intUserCodFan", System.Data.SqlDbType.Int).Value = pintCodDisk;
+                cmd.Parameters.Add("@intDisc ", System.Data.SqlDbType.Int).Value = pintUserCode;
+
+
+                conn.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+
+                while (result.Read())
+                {
+                    pclsReview.Comment = (result["Comentario"].ToString());
+                    pclsReview.Calification = result["Calificacion"].ToString();
+                }
+                pclsResponse.Code = 0;
+                pclsResponse.Message = "Done";
+                pclsResponse.Success = true;
+            }
+            catch (SqlException ex)
+            {
+                pclsResponse.Code = 1;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Error while procesing your request.";
+            }
+            catch (Exception ex)
+            {
+                pclsResponse.Code = 2;
+                pclsResponse.Success = false;
+                pclsResponse.Message = "Unexpected error.";
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+
+
     }
 
 

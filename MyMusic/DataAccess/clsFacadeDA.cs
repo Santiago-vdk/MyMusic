@@ -184,8 +184,22 @@ namespace DataAccess
         {
             FanDA.getReviewBand(ref pclsReview, ref pclsResponse, pintFanCode, pintBandCode);
         }
-
-
+        public void getdiscReviewFan(ref clsReview pclsReview, int pintCodDisk, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            DiskDA.getdiskReviewFan(ref pclsReview, pintCodDisk, pintUserCode, ref pclsResponse);
+        }
+        public void getEventReviewFan(ref clsReview pclsReview, int pintCodEvent, int pintUserCode, ref clsResponse pclsResponse)
+        {
+            EventsDA.getEventReviewFan(ref pclsReview, pintCodEvent, pintUserCode, ref pclsResponse);
+        }
+        public void deleteEventReview(ref clsResponse pclsResponse, int pintUserCode, int pintCodeEvent)
+        {
+            EventsDA.deleteEventReview(ref pclsResponse, pintUserCode, pintCodeEvent);
+        }
+        public void deleteDiscReview(ref clsResponse pclsResponse, int pintUserCode, int pintCodeDisc)
+        {
+            DiskDA.deleteDiscReview(ref pclsResponse, pintUserCode, pintCodeDisc);
+        }
 
         public static void Main()
         {

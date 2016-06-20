@@ -365,12 +365,11 @@ namespace DataAccess.FanDataAccess
                 cmd.Parameters.Add("@intUserBandCode", System.Data.SqlDbType.Int).Value = pintFanCode;
                 conn.Open();
                 SqlDataReader result = cmd.ExecuteReader();
-                List<String> tmpGenres = new List<string>();
-                List<int> tmpCodGenres = new List<int>();
+
                 while (result.Read())
                 {
                     pclsReview.Comment =  (result["Comentario"].ToString());
-                    pclsReview.Calification = result["CodigoGenero"].ToString();
+                    pclsReview.Calification = result["Calificacion"].ToString();
                 }
                 pclsResponse.Code = 0;
                 pclsResponse.Message = "Done";
