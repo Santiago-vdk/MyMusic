@@ -162,6 +162,19 @@ namespace BusinessLogic
             return EventBL.reviewEvent(pstringRequest, pintEventId);
         }
 
+        public string deleteBandReview(string pstringRequest, int pintBandId)
+        {
+            return BandBL.deleteBandReview(pstringRequest,pintBandId);
+        }
+        public string deleteDiskReview(string pstringRequest, int pintDiskId)
+        {
+            return DiskBL.deleteDiskReview(pstringRequest, pintDiskId);
+        }
+        public string deleteEventReview(string pstringRequest, int pintEventId)
+        {
+            return EventBL.deleteEventReview(pstringRequest, pintEventId);
+        }
+
         public string login(string pstringRequest)
         {
             return UserBL.login(pstringRequest);

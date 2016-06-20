@@ -137,5 +137,15 @@ namespace BusinessLogic.DiskBusinessLogic
             //data null
             return serializer.Serialize(response);
         }
+
+        public string deleteDiskReview(string pstringRequest, int pintDiskId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsResponse response = new clsResponse();
+
+            FacadeDA.deleteDiscReview(ref response, request.Id, pintDiskId);
+
+            return serializer.Serialize(response);
+        }
     }
 }

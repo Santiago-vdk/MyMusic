@@ -177,5 +177,15 @@ namespace BusinessLogic.BandBusinessLogic
             response.Data = serializer.Serialize(BandStats);
             return serializer.Serialize(response);
         }
+
+        public string deleteBandReview(string pstringRequest, int pintBandId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsResponse response = new clsResponse();
+
+            FacadeDA.deleteBandReview( ref response, request.Id, pintBandId);
+            
+            return serializer.Serialize(response);
+        }
     }
 }

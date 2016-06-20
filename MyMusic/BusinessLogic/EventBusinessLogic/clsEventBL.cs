@@ -97,5 +97,15 @@ namespace BusinessLogic.EventBusinessLogic
 
         }
 
+        public string deleteEventReview(string pstringRequest, int pintEventId)
+        {
+            clsRequest request = JsonConvert.DeserializeObject<clsRequest>(pstringRequest);
+            clsResponse response = new clsResponse();
+
+            FacadeDA.deleteEventReview(ref response, request.Id, pintEventId);
+
+            return serializer.Serialize(response);
+        }
+
     }
 }
